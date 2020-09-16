@@ -1,4 +1,7 @@
 // This is the Web Server
+
+// require('dotenv').config();
+
 const express = require('express');
 const server = express();
 
@@ -23,7 +26,7 @@ server.use((req, res, next) => {
 });
 
 // bring in the DB connection
-const { client } = require('./db');
+const client = require('./db/client');
 
 // connect to the server
 const PORT = process.env.PORT || 5000;
@@ -32,8 +35,8 @@ server.listen(PORT, async () => {
 
   try {
     await client.connect();
-    console.log('Database is all the up!');
+    console.log('Server is all the way up!');
   } catch (error) {
-    console.error("Database is closed for repairs!\n", error);
+    console.error("Server is closed for repairs!\n", error);
   }
 });

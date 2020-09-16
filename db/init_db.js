@@ -1,5 +1,7 @@
 // code to build and initialize DB goes here
-const {client,
+const client = require("./client")
+
+const {
     createUser,
     createProduct,
     getUsers,
