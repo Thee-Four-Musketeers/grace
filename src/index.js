@@ -2,8 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import {
-  App
+  Header, Navigation
 } from './components';
+
+const App = () => {
+
+
+  return (
+    <>
+      <Header />
+      <Navigation />
+    </>
+  )
+}
 
 ReactDOM.render(
   <App />,
