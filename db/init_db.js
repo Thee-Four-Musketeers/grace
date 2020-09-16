@@ -10,13 +10,7 @@ async function buildTables() {
 
     // drop tables in correct order
     await client.query(`
-      DROP TABLE IF EXISTS orders_cheeses;
-      DROP TABLE IF EXISTS users_payments;
-      DROP TABLE IF EXISTS users_orders;
-      DROP TABLE IF EXISTS users_addresses;
-      DROP TABLE IF EXISTS cheeses;
-      DROP TABLE IF EXISTS payments;
-      DROP TABLE IF EXISTS addresses;
+      DROP TABLE IF EXISTS products;
       DROP TABLE IF EXISTS orders;
       DROP TABLE IF EXISTS users;
     `)
@@ -52,6 +46,8 @@ async function buildTables() {
         user VARCHAR (255) REFERENCES users (email),
         item VARCHAR (255) REFERENCES products (name),
         quantity INTEGER,
+        status VARCHAR (255),
+        ADD CONSTRAINT status CHECK (status = "Empty Cart" or status = "Incompleted/Abandoned Cart" or status = "Completed Order"),
         subtotal NUMERIC (6, 2),
         modifier1 NUMERIC (3, 2),
         modifier2 NUMERIC (3, 2),
