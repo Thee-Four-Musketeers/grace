@@ -64,8 +64,7 @@ async function buildTables() {
                 modifier3 NUMERIC (3, 2),
                 modifier4 NUMERIC (3, 2),
                 shipping NUMERIC (5, 2),
-                handling NUMERIC (5, 2),
-                total Numeric (6, 2),
+                total NUMERIC (6, 2),
                 urgency VARCHAR (255)
             );
         `);
