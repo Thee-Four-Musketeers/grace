@@ -69,22 +69,22 @@ async function buildTables() {
 
 async function createInitialUsers(){
   try {
-    console.log('creating initial users')
+    console.log('start creating initial users')
     const userOne = await createUser({
       username: 'Sebas@sebas.com',
       password: 'password'
     })
     console.log(userOne)
-    console.log('finised creating initial user')
+    console.log('end creating initial user')
   } catch (error) {
     throw error
   }
 }
 
-
 // async function createInitialProducts(){
 //   try {
-//     console.log('creating initial products')
+//     console.log('start creating initial products')
+//     console.log('end creating initial products')
 //   } catch (error) {
 //     throw error
 //   }
@@ -92,8 +92,9 @@ async function createInitialUsers(){
 
 async function populateInitialData() {
   try {
-  console.log('creating initial usersx2')
-   await createInitialUsers()
+  console.log('start populating initial users')
+    await createInitialUsers()
+  console.log('end populating initial users')
   } catch (error) {
     throw error;
   }
