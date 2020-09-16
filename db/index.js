@@ -6,6 +6,38 @@ const client = new Client(DB_URL);
 
 // database methods
 
+
+async function getUsers(){
+    try {
+        const { rows: [user] } = await client.query(`
+        SELECT * 
+        FROM users;`);
+
+        return user
+
+    } catch (error) {
+        throw error
+    }
+}
+
+async function getUserById(id){
+    try {
+        const { rows: [user] } = await client.query(`
+        SELECT * 
+        FROM users
+        WHERE id = $1;`, [id])
+
+        if (!user || user.length === 0) {
+            return null;
+        }
+
+        return user
+
+    } catch (error) {
+        throw error 
+    }
+}
+
 async function createUser({username, password}){
     try {
         const { rows: [user]  } = await client.query(`
@@ -15,6 +47,40 @@ async function createUser({username, password}){
             RETURNING *;
         `,[username, password]);
         return user;
+    } catch (error) {
+        throw error
+    }
+}
+
+
+async function getProducts(){
+    try {
+        const  {rows: products } = await client.query(`
+        SELECT * 
+        FROM products;
+        `);
+
+        return products
+        
+    } catch (error) {
+        throw error
+    }
+}
+
+async function getProductById(id){
+    try {
+        const {rows: product } = await client.query(`
+        SELECT *
+        FROM products
+        WHERE id = $1;`
+        , [id])
+
+        if (!product || product.length === 0) {
+            return null;
+        }
+
+        return product
+
     } catch (error) {
         throw error
     }
@@ -34,9 +100,16 @@ async function createProduct({ name, description, price, type }){
     }
 }
 
+
+
+
 // export
 module.exports = {
   client,
   createUser,
-  createProduct
+  createProduct,
+  getUsers,
+  getUserById,
+  getProducts,
+  getProductById
 }

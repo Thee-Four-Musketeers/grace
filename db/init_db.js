@@ -1,5 +1,12 @@
 // code to build and initialize DB goes here
-const { client, createUser, createProduct} = require('./index');
+const {client,
+    createUser,
+    createProduct,
+    getUsers,
+    getUserById,
+    getProducts,
+    getProductById
+} = require('./index');
 
 async function buildTables() {
     try {
@@ -84,6 +91,12 @@ async function createInitialUsers() {
         });
         console.log(userOne);
 
+        const userTwo = await createUser({
+            username: 'ImposterSebas@notanemail.com',
+            password: 'password'
+        
+        })
+
         console.log('end creating initial user');
     } catch (error) {
         throw error;
@@ -103,11 +116,39 @@ async function createInitialProducts() {
         });
         console.log(productOne);
 
+        const productTwo = await createProduct({
+            name: 'FrankenCheese',
+            description: 'Smells like home',
+            price: '3.99',
+            type: '??????'
+        })
+
         console.log('end creating initial products');
     } catch (error) {
         throw error;
     }
 }
+
+async function testDB(){
+    console.log("calling getAllUsers")
+    const allUsers = await getUsers()
+    console.log('users:', allUsers)
+
+    console.log('calling getProducts')
+    const AllProducts = await getProducts()
+    console.log('products:', AllProducts)
+
+    console.log("calling getUserById")
+    const userById = await getUserById(2)
+    console.log('user2:', userById)
+
+    console.log('calling getProductById')
+    const product2 = await getProductById(2)
+    console.log('product2:', product2)
+
+
+}
+
 
 async function populateInitialData() {
     try {
@@ -122,5 +163,6 @@ async function populateInitialData() {
 
 buildTables()
     .then(populateInitialData)
+    .then(testDB)
     .catch(console.error)
     .finally(() => client.end());
