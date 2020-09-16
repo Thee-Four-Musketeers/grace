@@ -1,6 +1,7 @@
 // code to build and initialize DB goes here
 const {
-  client
+  client,
+  createUser
   // other db methods 
 } = require('./index');
 
@@ -32,7 +33,7 @@ async function buildTables() {
         id SERIAL PRIMARY KEY,
         "firstName" VARCHAR (255),
         "lastName" VARCHAR (255),
-        email VARCHAR (255) UNIQUE NOT NULL,
+        username VARCHAR (255) UNIQUE NOT NULL,
         password VARCHAR (255),
         "houseNumber" INTEGER,
         "streetName" VARCHAR (255),
@@ -65,9 +66,35 @@ async function buildTables() {
   }
 }
 
+
+async function createInitialUsers(){
+  try {
+    console.log('start creating initial users')
+    const userOne = await createUser({
+      username: 'Sebas@sebas.com',
+      password: 'password'
+    })
+    console.log(userOne)
+    console.log('end creating initial user')
+  } catch (error) {
+    throw error
+  }
+}
+
+// async function createInitialProducts(){
+//   try {
+//     console.log('start creating initial products')
+//     console.log('end creating initial products')
+//   } catch (error) {
+//     throw error
+//   }
+// }
+
 async function populateInitialData() {
   try {
-    // create useful starting data
+  console.log('start populating initial users')
+    await createInitialUsers()
+  console.log('end populating initial users')
   } catch (error) {
     throw error;
   }
