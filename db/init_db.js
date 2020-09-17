@@ -21,6 +21,7 @@ async function buildTables() {
         `);
 
         console.log('start building users');
+        // not nul need on address
         await client.query(`
             CREATE TABLE users (
                 id SERIAL PRIMARY KEY,
@@ -28,12 +29,12 @@ async function buildTables() {
                 password VARCHAR (255)NOT NULL,
                 "firstName" VARCHAR (255),
                 "lastName" VARCHAR (255),
-                "houseNumber" INTEGER,
-                "streetName" VARCHAR (255),
+                address VARCHAR (255),
+                addresstwo VARCHAR (255),
                 city VARCHAR (255),
                 state VARCHAR (255),
                 zipcode INTEGER,
-                admin BOOLEAN
+                admin BOOLEAN DEFAULT false
             );
         `);
         console.log('end building users');
@@ -41,6 +42,7 @@ async function buildTables() {
         console.log('start building products');
 
         // ADD CONSTRAINT type CHECK (type = "Cheese" or type = "Meat" or type = "Fruit" or type = "Pre-Made Board"),
+        // Add images URL for products
 
         await client.query(`
             CREATE TABLE products (
@@ -58,18 +60,36 @@ async function buildTables() {
 
         console.log('start building orders');
 
-        // ADD CONSTRAINT status CHECK (status = "Empty Cart" or status = "Incompleted/Abandoned Cart" or status = "Completed
+        // ADD CONSTRAINT status CHECK (status = "Cart" or status = "Order"),
+
+        // item should be join table orders_products?
+
+        // await client.query(`
+        //     CREATE TABLE orders_products(
+        //         id SERIAL PRIMARY KEY,
+        //         quantity INTEGER,
+        //         date or current price
+        //         "productId",
+        //         "orderId"
+        //     );
+        // `);
+
+        // default values for numeric values
+        // status gets default
+
+        // get the cart
+        // edit the cart
+        // edit the quantity
+        // checkout
 
         await client.query(`
             CREATE TABLE orders (
                 id SERIAL PRIMARY KEY,
                 customer VARCHAR (255) REFERENCES users (username),
-                item VARCHAR (255) REFERENCES products (name),
-                quantity INTEGER,
                 status VARCHAR (255),
                 subtotal NUMERIC (6, 2),
-                modifier1 NUMERIC (3, 2),
-                modifier2 NUMERIC (3, 2),
+                tax NUMERIC (3, 2),
+                discount NUMERIC (3, 2),
                 modifier3 NUMERIC (3, 2),
                 modifier4 NUMERIC (3, 2),
                 shipping NUMERIC (5, 2),
