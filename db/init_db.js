@@ -21,12 +21,12 @@ async function buildTables() {
         `);
 
         console.log('start building users');
-        // not nul need on address
+        //username in users table is user email address
         await client.query(`
             CREATE TABLE users (
                 id SERIAL PRIMARY KEY,
                 username VARCHAR (255) UNIQUE NOT NULL,
-                password VARCHAR (255)NOT NULL,
+                password VARCHAR (255) NOT NULL,
                 "firstName" VARCHAR (255),
                 "lastName" VARCHAR (255),
                 address VARCHAR (255),
@@ -45,12 +45,14 @@ async function buildTables() {
         // Add images URL for products
 
         await client.query(`
+            CREATE TYPE productchoice AS ENUM ('Cheese', 'Meat', 'Fruit', 'Pre-Made Board');
             CREATE TABLE products (
                 id SERIAL PRIMARY KEY,
                 name VARCHAR (255) UNIQUE NOT NULL,
                 description TEXT NOT NULL,
                 price NUMERIC (6, 2) NOT NULL,
-                type VARCHAR (255) NOT NULL,
+                type productchoice NOT NULL DEFAULT 'Cheese',
+                "imageUrl" VARCHAR (255),
                 origin VARCHAR (255),
                 hardness VARCHAR (255),
                 odor VARCHAR (255)
@@ -83,18 +85,26 @@ async function buildTables() {
         // checkout
 
         await client.query(`
+            CREATE TYPE rush AS ENUM ('Overnight', 'Two Day', 'Ground', 'USPS');
+            CREATE TYPE status AS ENUM ('Cart', 'Order', 'Paid', 'Shipped', 'Complete', 'History')
             CREATE TABLE orders (
                 id SERIAL PRIMARY KEY,
                 customer VARCHAR (255) REFERENCES users (username),
-                status VARCHAR (255),
+                "currStatus" status DEFAULT 'Cart',
                 subtotal NUMERIC (6, 2),
-                tax NUMERIC (3, 2),
-                discount NUMERIC (3, 2),
-                modifier3 NUMERIC (3, 2),
-                modifier4 NUMERIC (3, 2),
-                shipping NUMERIC (5, 2),
+                tax NUMERIC (3, 2) DEFAULT 1.08,
+                discount NUMERIC (3, 2) DEFAULT 1,
+                loyalty NUMERIC (3, 2) DEFAULT 1,
+                "largeOrder" NUMERIC (3, 2) DEFAULT 1,
+                shipping NUMERIC (5, 2) DEFAULT 200*random(),
                 total NUMERIC (6, 2),
-                urgency VARCHAR (255)
+                urgency rush NOT NULL DEFAULT 'USPS'
+            );
+            CREATE TABLE orders_products (
+                id SERIAL PRIMARY KEY,
+                "productId" INTEGER REFERENCES products(id),
+                "orderId" INTEGER REFERENCES orders(id),
+                "productIdQuantity" INTEGER
             );
         `);
         console.log('end building orders');
