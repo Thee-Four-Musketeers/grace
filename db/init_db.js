@@ -114,7 +114,19 @@ async function createInitialUsers() {
         console.log(userOne);
 
         const userTwo = await createUser({
-            username: 'ImposterSebas@notanemail.com',
+            username: 'john@john.com',
+            password: 'password'
+        
+        })
+
+        const userThree = await createUser({
+            username: 'carolyn@carloyn.com',
+            password: 'password'
+        
+        })
+
+        const userFour = await createUser({
+            username: 'duffy@duffy.com',
             password: 'password'
         
         })

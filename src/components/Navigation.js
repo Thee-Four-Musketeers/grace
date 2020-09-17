@@ -5,6 +5,10 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 
 const Navigation = () => {
 
+    // sugestion that we eliminate the drop down of products from the nav
+    // suggested nav items: Cheese, Meats, Fruit, Premade Boards
+    // suggestion that we move the about and contact links to footer
+
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Navbar.Brand href="#home">Cheese!</Navbar.Brand>
