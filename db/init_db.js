@@ -29,7 +29,6 @@ async function buildTables() {
         `);
 
         console.log('start building users');
-        //username in users table is user email address
         await client.query(`
             CREATE TABLE users (
                 id SERIAL PRIMARY KEY,
@@ -48,10 +47,6 @@ async function buildTables() {
         console.log('end building users');
 
         console.log('start building products');
-
-        // ADD CONSTRAINT type CHECK (type = "Cheese" or type = "Meat" or type = "Fruit" or type = "Pre-Made Board"),
-        // Add images URL for products
-
         await client.query(`
         
             CREATE TABLE products (
@@ -69,31 +64,7 @@ async function buildTables() {
         console.log('end building products');
 
         console.log('start building orders');
-
-        // ADD CONSTRAINT status CHECK (status = "Cart" or status = "Order"),
-
-        // item should be join table orders_products?
-
-        // await client.query(`
-        //     CREATE TABLE orders_products(
-        //         id SERIAL PRIMARY KEY,
-        //         quantity INTEGER,
-        //         date or current price
-        //         "productId",
-        //         "orderId"
-        //     );
-        // `);
-
-        // default values for numeric values
-        // status gets default
-
-        // get the cart
-        // edit the cart
-        // edit the quantity
-        // checkout
-
         await client.query(`
-
             CREATE TABLE orders (
                 id SERIAL PRIMARY KEY,
                 customer VARCHAR (255) REFERENCES users (username),
@@ -107,6 +78,11 @@ async function buildTables() {
                 total NUMERIC (6, 2),
                 urgency urgency NOT NULL DEFAULT 'USPS'
             );
+        `);
+        console.log('end building orders');
+
+        console.log('start building orders_products');
+        await client.query(`
             CREATE TABLE orders_products (
                 id SERIAL PRIMARY KEY,
                 "productId" INTEGER REFERENCES products(id),
@@ -114,7 +90,8 @@ async function buildTables() {
                 "productIdQuantity" INTEGER
             );
         `);
-        console.log('end building orders');
+        console.log('end building orders_products');
+
     } catch (error) {
         throw error;
     }
@@ -131,10 +108,22 @@ async function createInitialUsers() {
         console.log(userOne);
 
         const userTwo = await createUser({
-            username: 'ImposterSebas@notanemail.com',
+            username: 'john@john.com',
             password: 'password'
-        
-        })
+        });
+        console.log(userTwo);
+
+        const userThree = await createUser({
+            username: 'duffy@duffy.com',
+            password: 'password',
+        });
+        console.log(userThree);
+
+        const userFour = await createUser({
+            username: 'carolyn@carolyn.com',
+            password: 'password'
+        });
+        console.log(userFour);
 
         console.log('end creating initial user');
     } catch (error) {
@@ -184,10 +173,7 @@ async function testDB(){
     console.log('calling getProductById')
     const product2 = await getProductById(2)
     console.log('product2:', product2) 
-
-
 }
-
 
 async function populateInitialData() {
     try {

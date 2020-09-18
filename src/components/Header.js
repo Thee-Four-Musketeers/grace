@@ -4,6 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
+import Button from 'react-bootstrap/Button';
 
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 
@@ -13,11 +14,11 @@ import './Header.css'
 
 const Header = () => {
     return (
-        <Container id="header" fluid={true}>
-            <Row>
+        <Container id="header" className="px-0" fluid={true}>
+            <Row className="m-auto">
                 <Col>
-                    <Navbar className="header-absolute bg-dark-overlay px-4" collapseOnSelect expand="lg">
-                        <Link className="mr-4 pr-2" to="/">
+                    <Navbar className="px-2" collapseOnSelect expand="xl">
+                        <Link className="px-3" to="/">
                             <img className="nav-logo" src="images/CheezyLogo_white.png" alt="Cheezy Logo" />
                         </Link>
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -27,11 +28,10 @@ const Header = () => {
                                 <Link className="nav-link" to="/cheeses">Our Cheeses</Link>
                                 <Link className="nav-link" to="/boards">Premade Boards</Link>
                                 <Link className="nav-link" to="/sides">Accompaniments</Link>
-
                             </Nav>
                             <Nav>
-                                <Nav.Link href="#login">Login</Nav.Link>
-                                <span className="separator px-4 py-2"> | </span>
+                                <Nav.Link href="#login">Sign In</Nav.Link>
+                                <Navbar.Text>|</Navbar.Text>
                                 <Nav.Link eventKey={2} href="#">
                                     <i className="fas fa-shopping-cart cart-icon"></i>
                                     <span className="cart-count">33</span>

@@ -3,11 +3,13 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 
 
 import Header from "../components/Header";
-import Main from "../components/Main";
+import Home from "../pages/Home";
 import Cheeses from "../pages/Cheeses";
 import Boards from "../pages/Boards";
 import Sides from "../pages/Sides";
 import Footer from "../components/Footer";
+
+import './App.css'
 
 const App = () => {
 
@@ -49,7 +51,7 @@ const App = () => {
                             <Sides />
                         </Route>
                         <Route path="/">
-                            <Main />
+                            <Home />
                         </Route>
                     </Switch>
                 </main>

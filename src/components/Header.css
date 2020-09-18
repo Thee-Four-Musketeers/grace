@@ -1,48 +1,16 @@
-.navbar {
-    font-size: 1.1rem !important;
-    justify-content: flex-start;
-}
+#header { background-color: #26292db8; position: absolute; z-index: 9999; }
+nav { font-size: 1.1rem !important; padding: 1rem !important; }
+
+.nav-left { justify-content: flex-start; }
+.nav-right{ justify-content:flex-end; }
+
+.nav-logo { max-height: 80px; }
 
 .nav-link,
-.separator {
-    color: rgba(255, 255, 255, 0.7) !important;
-    letter-spacing: 1px;
-    padding: 0.5rem 1rem !important;
-}
+.navbar-text { color: rgba(255, 255, 255, 0.7) !important; letter-spacing: 1px; padding: 0.5rem 0.75rem !important; }
+.nav-link:hover { color: rgba(255, 255, 255, 1) !important; }
 
-.nav-link:hover {
-    color: rgba(255, 255, 255, 1) !important;
-}
-
-.navbar-last {
-    justify-content:flex-end;
-}
-
-.header-absolute {
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    width: 100%;
-    z-index: 1030;
-  }
-
-.nav-logo {
-    max-height: 90px;
-}
-
-.bg-dark-overlay {
-    background-color: #26292db8;
-}
-
-.separator { 
-    color: #FFFFFF;
-}
-
-.cart-icon {
-    font-size: 24px;
-}
-
+.cart-icon { font-size: 24px; }
 .cart-count {
     background: rgb(179, 99, 2);
     border-radius: 50%;
@@ -59,3 +27,13 @@
     left: -5px;
     letter-spacing: -1px;
 }
+
+@media (max-width: 1200px) {
+    #header {
+        position: static;
+        background-color: #26292D;
+    }
+    #header {
+        background-color: #26292D;
+    }
+ }
