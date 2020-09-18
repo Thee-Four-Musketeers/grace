@@ -1,13 +1,17 @@
-* {
-    box-sizing: border-box;
-    border: 0;
-    padding: 0;
-    margin: 0;
-  }
-
 .navbar {
+    font-size: 1.1rem !important;
     justify-content: flex-start;
+}
 
+.nav-link,
+.separator {
+    color: rgba(255, 255, 255, 0.7) !important;
+    letter-spacing: 1px;
+    padding: 0.5rem 1rem !important;
+}
+
+.nav-link:hover {
+    color: rgba(255, 255, 255, 1) !important;
 }
 
 .navbar-last {
@@ -17,17 +21,41 @@
 .header-absolute {
     position: absolute;
     left: 0;
-    top: 20px;
+    top: 0;
     right: 0;
     width: 100%;
     z-index: 1030;
   }
 
-.navLogo {
+.nav-logo {
     max-height: 90px;
 }
 
 .bg-dark-overlay {
-background-color: #26292db8;
-color: rgba(242, 233, 233, 0.9);
+    background-color: #26292db8;
+}
+
+.separator { 
+    color: #FFFFFF;
+}
+
+.cart-icon {
+    font-size: 24px;
+}
+
+.cart-count {
+    background: rgb(179, 99, 2);
+    border-radius: 50%;
+    color: #FFFFFF;
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    height: 20px;
+    padding: 2px 1px 0 0;
+    text-align: center;
+    width: 20px;
+    position: relative;
+    top: -15px;
+    left: -5px;
+    letter-spacing: -1px;
 }
