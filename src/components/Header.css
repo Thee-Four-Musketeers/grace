@@ -5,10 +5,19 @@
     margin: 0;
   }
 
+.navbar {
+    justify-content: flex-start;
+
+}
+
+.navbar-last {
+    justify-content:flex-end;
+}
+
 .header-absolute {
     position: absolute;
     left: 0;
-    top: 0;
+    top: 20px;
     right: 0;
     width: 100%;
     z-index: 1030;
@@ -19,6 +28,6 @@
 }
 
 .bg-dark-overlay {
-background-color: #26292d99;
+background-color: #26292db8;
 color: rgba(242, 233, 233, 0.9);
 }

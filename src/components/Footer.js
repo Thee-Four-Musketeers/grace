@@ -4,7 +4,7 @@ import Nav from 'react-bootstrap/Nav'
 
 const Footer = () => {
     return (
-        <Navbar>
+        <Navbar sticky="bottom">
             <Nav.Link href="#about">About</Nav.Link>
             <Nav.Link href="#contactg">Contact</Nav.Link>
         </Navbar>

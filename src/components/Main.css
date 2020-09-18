@@ -7,18 +7,20 @@
 
 .heroWrapper {
     display: block;
-    height: 100vh;
-    margin-bottom: 10px;
-    background: rgb(179, 199, 243) none repeat scroll 0% 0%;
     box-sizing: border-box;
+    overflow-x: scroll
 }
 
 .heroImage {
-    position: absolute;
     object-fit: cover;
     width: 100vw;
 }
 
 .navText {
     color: rgba(255, 255, 255, 0.925);
+}
+
+.clearfix {
+    height: 10px;
+    width: 100vw;
 }
