@@ -5,6 +5,8 @@ import Col from 'react-bootstrap/Col';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Button from 'react-bootstrap/Button';
+import ModalLogin from "./ModalLogin";
+import useModal from './useModal';
 
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 
@@ -13,6 +15,7 @@ import { BrowserRouter as Router, Link } from 'react-router-dom';
 import './Header.css'
 
 const Header = () => {
+    const { isShowing, toggle } = useModal();
     return (
         <Container id="header" className="px-0" fluid={true}>
             <Row className="m-auto">
@@ -30,7 +33,7 @@ const Header = () => {
                                 <Link className="nav-link" to="/sides">Accompaniments</Link>
                             </Nav>
                             <Nav>
-                                <Nav.Link href="#login">Sign In</Nav.Link>
+                                <Nav.Link className="ModalLogin" onClick={toggle}>Sign In</Nav.Link>
                                 <Navbar.Text>|</Navbar.Text>
                                 <Nav.Link eventKey={2} href="#">
                                     <i className="fas fa-shopping-cart cart-icon"></i>
@@ -41,6 +44,11 @@ const Header = () => {
                     </Navbar>
                 </Col>
             </Row>
+            <ModalLogin
+                isShowing={isShowing}
+                hide={toggle}
+            />
+
         </Container>
 
         // <Navbar className="header-absolute bg-dark-overlay" collapseOnSelect expand="xl" sticky="top">
