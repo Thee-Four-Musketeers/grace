@@ -1,0 +1,24 @@
+* {
+    box-sizing: border-box;
+    border: 0;
+    padding: 0;
+    margin: 0;
+  }
+
+.heroWrapper {
+    display: block;
+    height: 100vh;
+    margin-bottom: 10px;
+    background: rgb(179, 199, 243) none repeat scroll 0% 0%;
+    box-sizing: border-box;
+}
+
+.heroImage {
+    position: absolute;
+    object-fit: cover;
+    width: 100vw;
+}
+
+.navText {
+    color: rgba(255, 255, 255, 0.925);
+}
