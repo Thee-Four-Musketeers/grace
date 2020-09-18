@@ -17,9 +17,9 @@ const Header = () => {
             <Row>
                 <Col>
                     <Navbar className="header-absolute bg-dark-overlay px-4" collapseOnSelect expand="lg">
-                        <Navbar.Brand className="mr-4 pr-2" href="#home">
+                        <Link className="mr-4 pr-2" to="/">
                             <img className="nav-logo" src="images/CheezyLogo_white.png" alt="Cheezy Logo" />
-                        </Navbar.Brand>
+                        </Link>
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                         <Navbar.Collapse id="responsive-navbar-nav">
                             <Nav className="mr-auto">
