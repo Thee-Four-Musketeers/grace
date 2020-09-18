@@ -5,6 +5,8 @@ import Col from 'react-bootstrap/Col';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 
+import { BrowserRouter as Router, Link } from 'react-router-dom';
+
 // import NavDropdown from 'react-bootstrap/NavDropdown';
 
 import './Header.css'
@@ -21,9 +23,11 @@ const Header = () => {
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                         <Navbar.Collapse id="responsive-navbar-nav">
                             <Nav className="mr-auto">
-                                <Nav.Link href="#cheese">Our Cheeses</Nav.Link>
-                                <Nav.Link href="">Premade Boards</Nav.Link>
-                                <Nav.Link href="">Accompaniments</Nav.Link>
+
+                                <Link className="nav-link" to="/cheeses">Our Cheeses</Link>
+                                <Link className="nav-link" to="/boards">Premade Boards</Link>
+                                <Link className="nav-link" to="/sides">Accompaniments</Link>
+
                             </Nav>
                             <Nav>
                                 <Nav.Link href="#login">Login</Nav.Link>
