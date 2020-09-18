@@ -15,9 +15,17 @@ async function buildTables() {
         client.connect();
 
         await client.query(`
+
+            DROP TABLE IF EXISTS orders_products;
             DROP TABLE IF EXISTS orders;
             DROP TABLE IF EXISTS products;
             DROP TABLE IF EXISTS users;
+            DROP TYPE IF EXISTS choice;
+            DROP TYPE IF EXISTS urgency;
+            DROP TYPE IF EXISTS status;
+            CREATE TYPE choice AS ENUM ('Cheese', 'Meat', 'Fruit', 'Pre-Made Board');
+            CREATE TYPE urgency AS ENUM ('Overnight', 'Two Day', 'Ground', 'USPS');
+            CREATE TYPE status AS ENUM ('Cart', 'Order', 'Paid', 'Shipped', 'Complete', 'History');
         `);
 
         console.log('start building users');
@@ -45,13 +53,13 @@ async function buildTables() {
         // Add images URL for products
 
         await client.query(`
-            CREATE TYPE productchoice AS ENUM ('Cheese', 'Meat', 'Fruit', 'Pre-Made Board');
+        
             CREATE TABLE products (
                 id SERIAL PRIMARY KEY,
                 name VARCHAR (255) UNIQUE NOT NULL,
                 description TEXT NOT NULL,
                 price NUMERIC (6, 2) NOT NULL,
-                type productchoice NOT NULL DEFAULT 'Cheese',
+                type choice NOT NULL DEFAULT 'Cheese',
                 "imageUrl" VARCHAR (255),
                 origin VARCHAR (255),
                 hardness VARCHAR (255),
@@ -85,12 +93,11 @@ async function buildTables() {
         // checkout
 
         await client.query(`
-            CREATE TYPE rush AS ENUM ('Overnight', 'Two Day', 'Ground', 'USPS');
-            CREATE TYPE status AS ENUM ('Cart', 'Order', 'Paid', 'Shipped', 'Complete', 'History')
+
             CREATE TABLE orders (
                 id SERIAL PRIMARY KEY,
                 customer VARCHAR (255) REFERENCES users (username),
-                "currStatus" status DEFAULT 'Cart',
+                status status DEFAULT 'Cart',
                 subtotal NUMERIC (6, 2),
                 tax NUMERIC (3, 2) DEFAULT 1.08,
                 discount NUMERIC (3, 2) DEFAULT 1,
@@ -98,7 +105,7 @@ async function buildTables() {
                 "largeOrder" NUMERIC (3, 2) DEFAULT 1,
                 shipping NUMERIC (5, 2) DEFAULT 200*random(),
                 total NUMERIC (6, 2),
-                urgency rush NOT NULL DEFAULT 'USPS'
+                urgency urgency NOT NULL DEFAULT 'USPS'
             );
             CREATE TABLE orders_products (
                 id SERIAL PRIMARY KEY,
@@ -152,7 +159,7 @@ async function createInitialProducts() {
             name: 'FrankenCheese',
             description: 'Smells like home',
             price: '3.99',
-            type: '??????'
+            type: 'Cheese'
         })
 
         console.log('end creating initial products');
