@@ -29,6 +29,7 @@ async function buildTables() {
         `);
 
         console.log('start building users');
+        //username in users table is user email address
         await client.query(`
             CREATE TABLE users (
                 id SERIAL PRIMARY KEY,
@@ -37,7 +38,7 @@ async function buildTables() {
                 "firstName" VARCHAR (255),
                 "lastName" VARCHAR (255),
                 address VARCHAR (255),
-                address2 VARCHAR (255),
+                addresstwo VARCHAR (255),
                 city VARCHAR (255),
                 state VARCHAR (255),
                 zipcode INTEGER,
@@ -47,6 +48,10 @@ async function buildTables() {
         console.log('end building users');
 
         console.log('start building products');
+
+        // ADD CONSTRAINT type CHECK (type = "Cheese" or type = "Meat" or type = "Fruit" or type = "Pre-Made Board"),
+        // Add images URL for products
+
         await client.query(`
         
             CREATE TABLE products (
@@ -55,7 +60,7 @@ async function buildTables() {
                 description TEXT NOT NULL,
                 price NUMERIC (6, 2) NOT NULL,
                 type choice NOT NULL DEFAULT 'Cheese',
-                "imageUrl" NOT NULL VARCHAR (255),
+                "imageUrl" VARCHAR (255),
                 origin VARCHAR (255),
                 hardness VARCHAR (255),
                 odor VARCHAR (255)
@@ -64,6 +69,29 @@ async function buildTables() {
         console.log('end building products');
 
         console.log('start building orders');
+
+        // ADD CONSTRAINT status CHECK (status = "Cart" or status = "Order"),
+
+        // item should be join table orders_products?
+
+        // await client.query(`
+        //     CREATE TABLE orders_products(
+        //         id SERIAL PRIMARY KEY,
+        //         quantity INTEGER,
+        //         date or current price
+        //         "productId",
+        //         "orderId"
+        //     );
+        // `);
+
+        // default values for numeric values
+        // status gets default
+
+        // get the cart
+        // edit the cart
+        // edit the quantity
+        // checkout
+
         await client.query(`
 
             CREATE TABLE orders (
@@ -79,11 +107,6 @@ async function buildTables() {
                 total NUMERIC (6, 2),
                 urgency urgency NOT NULL DEFAULT 'USPS'
             );
-        `);
-        console.log('end building orders');
-        
-        console.log('start building orders_products');
-        await client.query(`
             CREATE TABLE orders_products (
                 id SERIAL PRIMARY KEY,
                 "productId" INTEGER REFERENCES products(id),
@@ -92,7 +115,6 @@ async function buildTables() {
             );
         `);
         console.log('end building orders');
-
     } catch (error) {
         throw error;
     }
@@ -109,19 +131,7 @@ async function createInitialUsers() {
         console.log(userOne);
 
         const userTwo = await createUser({
-            username: 'john@john.com',
-            password: 'password'
-        
-        })
-
-        const userThree = await createUser({
-            username: 'carolyn@carloyn.com',
-            password: 'password'
-        
-        })
-
-        const userFour = await createUser({
-            username: 'duffy@duffy.com',
+            username: 'ImposterSebas@notanemail.com',
             password: 'password'
         
         })
@@ -159,29 +169,31 @@ async function createInitialProducts() {
 }
 
 async function testDB(){
-
     console.log("calling getAllUsers")
-        const allUsers = await getUsers()
+    const allUsers = await getUsers()
     console.log('users:', allUsers)
 
     console.log('calling getProducts')
-        const AllProducts = await getProducts()
+    const AllProducts = await getProducts()
     console.log('products:', AllProducts)
 
     console.log("calling getUserById")
-        const userById = await getUserById(2)
+    const userById = await getUserById(2)
     console.log('user2:', userById)
 
     console.log('calling getProductById')
-        const product2 = await getProductById(2)
-    console.log('product2:', product2)
+    const product2 = await getProductById(2)
+    console.log('product2:', product2) 
+
+
 }
+
 
 async function populateInitialData() {
     try {
         console.log('start populating initial users');
-            await createInitialUsers();
-            await createInitialProducts();
+        await createInitialUsers();
+        await createInitialProducts();
         console.log('end populating initial users');
     } catch (error) {
         throw error;
