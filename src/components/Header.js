@@ -15,7 +15,8 @@ import { BrowserRouter as Router, Link } from 'react-router-dom';
 import './Header.css'
 
 const Header = () => {
-    const { isShowing, toggle } = useModal();
+    const { show, toggle } = useModal();
+
     return (
         <Container id="header" className="px-0" fluid={true}>
             <Row className="m-auto">
@@ -45,7 +46,7 @@ const Header = () => {
                 </Col>
             </Row>
             <ModalLogin
-                isShowing={isShowing}
+                show={show}
                 hide={toggle}
             />
 
