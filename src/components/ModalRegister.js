@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-bootstrap/Modal';
 import './ModalLogin.css'
-import './useModal'
+import './useModal1'
 
-const ModalLogin = ({ show, hide }) => show ? ReactDOM.createPortal(
+const ModalRegister = ({ isShowing, hide }) => isShowing ? ReactDOM.createPortal(
     <>
-        <Modal show={show} onHide={hide} backdrop="static">
+        <Modal show={isShowing} onHide={hide} backdrop="static">
             <Modal.Header closeButton>
-                <Modal.Title>Sign In</Modal.Title>
+                <Modal.Title>Registration</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <form>
@@ -35,8 +35,7 @@ const ModalLogin = ({ show, hide }) => show ? ReactDOM.createPortal(
                 </form>
             </Modal.Body>
         </Modal>
-
     </>, document.body
 ) : null;
 
-export default ModalLogin;
+export default ModalRegister;
