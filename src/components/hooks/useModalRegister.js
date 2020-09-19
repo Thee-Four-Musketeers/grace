@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const useModal1 = () => {
+const useModalRegister = () => {
     const [isShowing, setIsShowing] = useState(false);
 
     function toggle1() {
@@ -13,4 +13,4 @@ const useModal1 = () => {
     }
 };
 
-export default useModal1;
+export default useModalRegister;
