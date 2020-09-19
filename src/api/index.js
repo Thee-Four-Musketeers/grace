@@ -31,6 +31,7 @@ export async function register({ username, password }) {
       throw error;
   }
 }
+
 export async function login({ username, password }) {
   try {
       const { data: { user } } = await axios.post('api/users/login', {
