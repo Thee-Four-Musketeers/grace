@@ -22,7 +22,7 @@ const Header = () => {
         <Container id="header" className="px-0" fluid={true}>
             <Row className="m-auto">
                 <Col>
-                    <Navbar className="px-2" collapseOnSelect expand="xl">
+                    <Navbar className="px-2" collapseOnSelect expand="md">
                         <Link className="px-3" to="/">
                             <img className="nav-logo" src="images/CheezyLogo_white.png" alt="Cheezy Logo" />
                         </Link>
