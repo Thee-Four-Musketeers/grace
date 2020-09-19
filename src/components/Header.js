@@ -9,21 +9,20 @@ import ModalRegister from './ModalRegister';
 import useModalRegister from './hooks/useModalRegister';
 import useModalLogin from './hooks/useModalLogin';
 
-import { BrowserRouter as Link } from 'react-router-dom';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 import './Header.css'
 
 const Header = () => {
-    const { show, toggle } = useModalLogin();
+    const { show, toggleLogin } = useModalLogin();
     const { isShowing, toggle1 } = useModalRegister();
-
 
     return (
         <Container id="header" className="px-0" fluid={true}>
             <Row className="m-auto">
                 <Col>
                     <Navbar className="px-2" collapseOnSelect expand="md">
-                        <Link className="px-3" to="/">
+                        <Link className="pl-3 pr-4" to="/">
                             <img className="nav-logo" src="images/CheezyLogo_white.png" alt="Cheezy Logo" />
                         </Link>
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -36,7 +35,7 @@ const Header = () => {
                             <Nav>
                                 <Nav.Link className="ModalLogin" onClick={toggle1}>Register</Nav.Link>
                                 <Navbar.Text>|</Navbar.Text>
-                                <Nav.Link className="ModalLogin" onClick={toggle}>Sign In</Nav.Link>
+                                <Nav.Link className="ModalLogin" onClick={toggleLogin}>Sign In</Nav.Link>
                                 <Navbar.Text>|</Navbar.Text>
                                 <Nav.Link eventKey={2} href="#">
                                     <i className="fas fa-shopping-cart cart-icon"></i>
@@ -49,7 +48,7 @@ const Header = () => {
             </Row>
             <ModalLogin
                 show={show}
-                hide={toggle}
+                hide={toggleLogin}
             />
             <ModalRegister
                 isShowing={isShowing}
