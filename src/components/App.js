@@ -19,25 +19,25 @@ const App = () => {
 
     //user verification
 
-    const [user, setUser] = useState({});
+    // const [user, setUser] = useState({});
 
-	function localStorageUser() {
-		if (localStorage.getItem('user')) {
-			const localStorageUser = JSON.parse(localStorage.getItem('user'));
-			return localStorageUser;
-		} else {
-			return {};
-		}
-    }
+	// function localStorageUser() {
+	// 	if (localStorage.getItem('user')) {
+	// 		const localStorageUser = JSON.parse(localStorage.getItem('user'));
+	// 		return localStorageUser;
+	// 	} else {
+	// 		return {};
+	// 	}
+    // }
     
-	useEffect(() => {
-		setUser(localStorageUser());
-	}, []);
+	// useEffect(() => {
+	// 	setUser(localStorageUser());
+	// }, []);
 
     return (
         <>
             <Router>
-                <Header user={user} setUser={setUser} />
+                <Header />
                 <main>
                     <Switch>
                         <Route path="/cheeses">

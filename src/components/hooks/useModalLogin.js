@@ -4,13 +4,13 @@ import { useState } from 'react';
 const useModalLogin = () => {
     const [show, setShow] = useState(false);
 
-    function toggle() {
+    function toggleLogin() {
         setShow(!show);
     }
 
     return {
         show,
-        toggle,
+        toggleLogin,
     }
 };
 
