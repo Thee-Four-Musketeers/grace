@@ -6,6 +6,8 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Button from 'react-bootstrap/Button';
 import ModalLogin from "./ModalLogin";
+import ModalRegister from './ModalRegister';
+import useModal1 from './useModal1';
 import useModal from './useModal';
 
 import { BrowserRouter as Router, Link } from 'react-router-dom';
@@ -16,6 +18,8 @@ import './Header.css'
 
 const Header = () => {
     const { show, toggle } = useModal();
+    const { isShowing, toggle1 } = useModal1();
+
 
     return (
         <Container id="header" className="px-0" fluid={true}>
@@ -34,6 +38,8 @@ const Header = () => {
                                 <Link className="nav-link" to="/sides">Accompaniments</Link>
                             </Nav>
                             <Nav>
+                                <Nav.Link className="ModalLogin" onClick={toggle1}>Register</Nav.Link>
+                                <Navbar.Text>|</Navbar.Text>
                                 <Nav.Link className="ModalLogin" onClick={toggle}>Sign In</Nav.Link>
                                 <Navbar.Text>|</Navbar.Text>
                                 <Nav.Link eventKey={2} href="#">
@@ -48,6 +54,10 @@ const Header = () => {
             <ModalLogin
                 show={show}
                 hide={toggle}
+            />
+            <ModalRegister
+                isShowing={isShowing}
+                hide={toggle1}
             />
 
         </Container>
