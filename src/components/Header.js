@@ -9,7 +9,7 @@ import ModalRegister from './ModalRegister';
 import useModalRegister from './hooks/useModalRegister';
 import useModalLogin from './hooks/useModalLogin';
 
-import { BrowserRouter as Router, Link } from 'react-router-dom';
+import { BrowserRouter as Link } from 'react-router-dom';
 
 import './Header.css'
 
@@ -29,7 +29,6 @@ const Header = () => {
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                         <Navbar.Collapse id="responsive-navbar-nav">
                             <Nav className="mr-auto">
-
                                 <Link className="nav-link" to="/cheeses">Our Cheeses</Link>
                                 <Link className="nav-link" to="/boards">Premade Boards</Link>
                                 <Link className="nav-link" to="/sides">Accompaniments</Link>
