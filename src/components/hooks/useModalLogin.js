@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 
-const useModal = () => {
+const useModalLogin = () => {
     const [show, setShow] = useState(false);
 
     function toggle() {
@@ -14,4 +14,4 @@ const useModal = () => {
     }
 };
 
-export default useModal;
+export default useModalLogin;

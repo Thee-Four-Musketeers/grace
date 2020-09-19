@@ -4,21 +4,18 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-import Button from 'react-bootstrap/Button';
 import ModalLogin from "./ModalLogin";
 import ModalRegister from './ModalRegister';
-import useModal1 from './useModal1';
-import useModal from './useModal';
+import useModalRegister from './hooks/useModalRegister';
+import useModalLogin from './hooks/useModalLogin';
 
 import { BrowserRouter as Router, Link } from 'react-router-dom';
-
-// import NavDropdown from 'react-bootstrap/NavDropdown';
 
 import './Header.css'
 
 const Header = () => {
-    const { show, toggle } = useModal();
-    const { isShowing, toggle1 } = useModal1();
+    const { show, toggle } = useModalLogin();
+    const { isShowing, toggle1 } = useModalRegister();
 
 
     return (
@@ -61,17 +58,6 @@ const Header = () => {
             />
 
         </Container>
-
-        // <Navbar className="header-absolute bg-dark-overlay" collapseOnSelect expand="xl" sticky="top">
-        //     <img className="navLogo" src="images/CheezyLogo_white.png" alt="cheezylogo" />
-        //     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        //     <Nav.Link className="navText">Premade Boards</Nav.Link>
-        //     <Nav.Link className="navText">View our Cheeses</Nav.Link>
-        //     <Nav.Link className="navText">Accompaniments</Nav.Link>
-        //     <Nav.Link className="text-light float-right">
-        //         <i className="fas fa-shopping-cart"></i>
-        //     </Nav.Link>
-        // </Navbar>
     )
 }
 
