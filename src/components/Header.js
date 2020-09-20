@@ -4,35 +4,36 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-import Button from 'react-bootstrap/Button';
 import ModalLogin from "./ModalLogin";
 import ModalRegister from './ModalRegister';
-import useModal1 from './useModal1';
-import useModal from './useModal';
+import useModalRegister from './hooks/useModalRegister';
+import useModalLogin from './hooks/useModalLogin';
 
-import { BrowserRouter as Router, Link } from 'react-router-dom';
-
-// import NavDropdown from 'react-bootstrap/NavDropdown';
+import { Link } from 'react-router-dom';
 
 import './Header.css'
 
-const Header = () => {
-    const { show, toggle } = useModal();
-    const { isShowing, toggle1 } = useModal1();
+const Header = ({user, setUser}) => {
 
+    const signOutHandler = (event) => {
+        localStorage.removeItem('user');
+        setUser({});
+    }
+
+    const { show, toggleLogin } = useModalLogin();
+    const { isShowing, toggle1 } = useModalRegister();
 
     return (
         <Container id="header" className="px-0" fluid={true}>
             <Row className="m-auto">
                 <Col>
-                    <Navbar className="px-2" collapseOnSelect expand="xl">
-                        <Link className="px-3" to="/">
+                    <Navbar className="px-2" collapseOnSelect expand="md">
+                        <Link className="pl-3 pr-4" to="/">
                             <img className="nav-logo" src="images/CheezyLogo_white.png" alt="Cheezy Logo" />
                         </Link>
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                         <Navbar.Collapse id="responsive-navbar-nav">
                             <Nav className="mr-auto">
-
                                 <Link className="nav-link" to="/cheeses">Our Cheeses</Link>
                                 <Link className="nav-link" to="/boards">Premade Boards</Link>
                                 <Link className="nav-link" to="/sides">Accompaniments</Link>
@@ -40,7 +41,9 @@ const Header = () => {
                             <Nav>
                                 <Nav.Link className="ModalLogin" onClick={toggle1}>Register</Nav.Link>
                                 <Navbar.Text>|</Navbar.Text>
-                                <Nav.Link className="ModalLogin" onClick={toggle}>Sign In</Nav.Link>
+                                <Nav.Link className="ModalLogin" onClick={toggleLogin}>Sign In</Nav.Link>
+                                <Navbar.Text>|</Navbar.Text>
+                                <Link className="nav-link" to="/login" onClick={signOutHandler}>Sign Out</Link>
                                 <Navbar.Text>|</Navbar.Text>
                                 <Nav.Link eventKey={2} href="#">
                                     <i className="fas fa-shopping-cart cart-icon"></i>
@@ -53,26 +56,32 @@ const Header = () => {
             </Row>
             <ModalLogin
                 show={show}
-                hide={toggle}
+                hide={toggleLogin}
+                user={user}
+                setUser={setUser}
             />
             <ModalRegister
                 isShowing={isShowing}
                 hide={toggle1}
+                user={user}
+                setUser={setUser}
             />
 
         </Container>
-
-        // <Navbar className="header-absolute bg-dark-overlay" collapseOnSelect expand="xl" sticky="top">
-        //     <img className="navLogo" src="images/CheezyLogo_white.png" alt="cheezylogo" />
-        //     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        //     <Nav.Link className="navText">Premade Boards</Nav.Link>
-        //     <Nav.Link className="navText">View our Cheeses</Nav.Link>
-        //     <Nav.Link className="navText">Accompaniments</Nav.Link>
-        //     <Nav.Link className="text-light float-right">
-        //         <i className="fas fa-shopping-cart"></i>
-        //     </Nav.Link>
-        // </Navbar>
     )
 }
 
 export default Header;
+
+
+// { user.token 
+// ? <>
+//     <div className="nav-welcome">Welcome, { user.username }</div>
+//     <span>|</span>
+//     <Link className="nav-link" to="/login" onClick={signOutHandler}>Sign Out</Link>
+// </>
+// : <>
+//     <Link className="nav-link" to="/register">Register</Link>
+//     <Link className="nav-link" to="/login">Login</Link>
+// </>
+// }
