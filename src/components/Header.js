@@ -9,11 +9,17 @@ import ModalRegister from './ModalRegister';
 import useModalRegister from './hooks/useModalRegister';
 import useModalLogin from './hooks/useModalLogin';
 
-import { BrowserRouter as Router, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import './Header.css'
 
-const Header = () => {
+const Header = ({user, setUser}) => {
+
+    const signOutHandler = (event) => {
+        localStorage.removeItem('user');
+        setUser({});
+    }
+
     const { show, toggleLogin } = useModalLogin();
     const { isShowing, toggle1 } = useModalRegister();
 
@@ -37,6 +43,8 @@ const Header = () => {
                                 <Navbar.Text>|</Navbar.Text>
                                 <Nav.Link className="ModalLogin" onClick={toggleLogin}>Sign In</Nav.Link>
                                 <Navbar.Text>|</Navbar.Text>
+                                <Link className="nav-link" to="/login" onClick={signOutHandler}>Sign Out</Link>
+                                <Navbar.Text>|</Navbar.Text>
                                 <Nav.Link eventKey={2} href="#">
                                     <i className="fas fa-shopping-cart cart-icon"></i>
                                     <span className="cart-count">33</span>
@@ -49,10 +57,14 @@ const Header = () => {
             <ModalLogin
                 show={show}
                 hide={toggleLogin}
+                user={user}
+                setUser={setUser}
             />
             <ModalRegister
                 isShowing={isShowing}
                 hide={toggle1}
+                user={user}
+                setUser={setUser}
             />
 
         </Container>
@@ -60,3 +72,16 @@ const Header = () => {
 }
 
 export default Header;
+
+
+// { user.token 
+// ? <>
+//     <div className="nav-welcome">Welcome, { user.username }</div>
+//     <span>|</span>
+//     <Link className="nav-link" to="/login" onClick={signOutHandler}>Sign Out</Link>
+// </>
+// : <>
+//     <Link className="nav-link" to="/register">Register</Link>
+//     <Link className="nav-link" to="/login">Login</Link>
+// </>
+// }

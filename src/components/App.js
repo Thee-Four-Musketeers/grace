@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Header from "../components/Header";
@@ -12,14 +12,7 @@ import './App.css'
 
 const App = () => {
 
-    // add state as needed 
-    // add react router stuff below
-    // add footer below
-    // some jwt stuff will go below
-
-    //user verification
-
-    // const [user, setUser] = useState({});
+    const [user, setUser] = useState({});
 
 	// function localStorageUser() {
 	// 	if (localStorage.getItem('user')) {
@@ -37,24 +30,26 @@ const App = () => {
     return (
         <>
             <Router>
-                <Header />
-                <main>
-                    <Switch>
-                        <Route path="/cheeses">
-                            <Cheeses />
-                        </Route>
-                        <Route path="/boards">
-                            <Boards />
-                        </Route>
-                        <Route path="/sides">
-                            <Sides />
-                        </Route>
-                        <Route path="/">
-                            <Home />
-                        </Route>
-                    </Switch>
-                </main>
-                <Footer />
+                <Header user={user} setUser={setUser} />
+                <div id="all">
+                    <main>
+                        <Switch>
+                            <Route path="/cheeses">
+                                <Cheeses />
+                            </Route>
+                            <Route path="/boards">
+                                <Boards />
+                            </Route>
+                            <Route path="/sides">
+                                <Sides />
+                            </Route>
+                            <Route path="/">
+                                <Home />
+                            </Route>
+                        </Switch>
+                    </main>
+                    <Footer />
+                </div>
             </Router>
         </>
     )

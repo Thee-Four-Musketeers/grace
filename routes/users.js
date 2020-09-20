@@ -94,7 +94,6 @@ usersRouter.post('/login', async (req, res, next) => {
 })
 
 
-
 usersRouter.get('/', async (req, res, next) => {
     try {
         const users = await getUsers();
