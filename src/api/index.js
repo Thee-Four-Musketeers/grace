@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { getProductById } from '../../db/products';
 
 // trying without local storage:
 
