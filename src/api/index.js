@@ -1,11 +1,12 @@
 import axios from 'axios';
+import { getProductById } from '../../db/products';
 
 // trying without local storage:
 
 export async function register({ username, password }) {
   try {
       const { data: { user }} = await axios.post("/api/users/register", {
-          username: username,
+          username,
           password: password,
       });
       if (user) {
@@ -23,7 +24,7 @@ export async function register({ username, password }) {
 
 export async function login({ username, password }) {
   try {
-      const { data: { user } } = await axios.post('api/users/login', {
+      const { data: { user } } = await axios.post('/api/users/login', {
           username,
           password
       });
@@ -37,3 +38,15 @@ export async function login({ username, password }) {
       throw error;
   }
 }
+
+export async function getProductByType({type}){
+  try {
+    const { data: product } = await axios.get(`/api/products?type=${type}`)
+
+    return product
+  } catch (error) {
+    throw error 
+  }
+}
+
+// check art collector for q strings for long search terms 
