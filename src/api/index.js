@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { getProductById } from '../../db/products';
 
 export async function getSomething() {
   try {
@@ -14,7 +15,7 @@ export async function getSomething() {
 
 export async function register({ username, password }) {
   try {
-      const { data: { user: newUser } } = await axios.post("/api/users/register", {
+      const { data: { user: newUser } } = await axios.post('/api/users/register', {
           username: username,
           password: password,
       });
@@ -33,7 +34,7 @@ export async function register({ username, password }) {
 }
 export async function login({ username, password }) {
   try {
-      const { data: { user } } = await axios.post('api/users/login', {
+      const { data: { user } } = await axios.post('/api/users/login', {
           username,
           password
       });
@@ -47,3 +48,15 @@ export async function login({ username, password }) {
       throw error;
   }
 }
+
+export async function getProductByType({type}){
+  try {
+    const { data: product } = await axios.get(`/api/products?type=${type}`)
+
+    return product
+  } catch (error) {
+    throw error 
+  }
+}
+
+// check art collector for q strings for long search terms 
