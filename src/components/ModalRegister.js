@@ -2,10 +2,7 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form'
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 
 import './ModalLogin.css'
 import './hooks/useModalRegister'
@@ -51,7 +48,7 @@ const ModalRegister = ({ isShowing, hide, user, setUser}) => {
                     <Modal.Title>Registration</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form>
+                    <Form onSubmit={handleSubmit} >
                         <Form.Group className="form-group">
                             <Form.Label htmlFor="username"><i className="far fa-envelope"></i> Username</Form.Label>
                             <Form.Control 
@@ -79,7 +76,7 @@ const ModalRegister = ({ isShowing, hide, user, setUser}) => {
 
                         <Form.Text id="passwordHelpBlock" muted>Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.</Form.Text>
 
-                        <Button onClick={handleSubmit} className="btn btn-outline-dark" variant="primary" type="submit"><i className="fa fa-sign-in-alt mr-2"></i> Register</Button>
+                        <Button className="btn btn-outline-dark" variant="primary" type="submit"><i className="fa fa-sign-in-alt mr-2"></i> Register</Button>
                     </Form>
                 </Modal.Body>
             </Modal>
