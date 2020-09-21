@@ -62,6 +62,7 @@ usersRouter.post('/login', async (req, res, next) => {
 
     try {
         const user = await getUserByUsername(username);
+        
         // console.log('users router...', user);
         const hashedPassword = user.password;
         bcrypt.compare(password, hashedPassword, function(err, passwordsMatch){

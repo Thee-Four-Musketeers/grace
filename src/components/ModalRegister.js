@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form'
@@ -15,29 +15,32 @@ import { register } from "../api/index";
 
 const ModalRegister = ({ isShowing, hide, user, setUser}) => {
 
-    let username;
-    let password1;
-    let password2;
+    const [username, setUsername] = useState('');
+    const [password1, setPassword] = useState('');
+    const [password2, setPassword2] = useState('');
+
 
     const handleSubmit = (event) => {
         event.preventDefault();
 
+        console.log('password 1...', password1);
+        console.log('password 2...', password2);
+
         if (password1 === password2) {
             register({ username, password: password1 }).then((user) => {
-                console.log('the user in react...', user);
                 setUser(user);
             });
         }
     };
 
     const handleUser = (event) => {
-        username = event.target.value;
+        setUsername(event.target.value);
     };
     const handlePassword = (event) => {
-        password1 = event.target.value;
+        setPassword(event.target.value);
     };
     const handlePassword2 = (event) => {
-        password2 = event.target.value;
+        setPassword2(event.target.value);
     };
 
     return (
@@ -52,33 +55,38 @@ const ModalRegister = ({ isShowing, hide, user, setUser}) => {
                         <Row>
                             <Col>
                                 <div>
-                                    <Form id="login-form" onSubmit={handleSubmit}>
-                                        <Form.Group>
-                                            <Form.Label htmlFor="username">Username</Form.Label>
-                                            <Form.Control id="usernameReg" name="username" type="text" onChange={handleUser} />
-                                        </Form.Group>
+                                    <Form>
 
-                                        <Form.Group>
-                                            <Form.Label htmlFor="password">Password</Form.Label>
-                                            <Form.Control
-                                                id="passwordReg"
-                                                name="Password"
-                                                type="password"
-                                                onChange={handlePassword}
+                                        <Form.Group className="form-group">
+                                            <Form.Label htmlFor="username"><i className="far fa-envelope"></i> Username</Form.Label>
+                                            <Form.Control 
+                                                id="field-username" name="username" 
+                                                className="form-control" placeholder="Enter email" 
+                                                type="text" onChange={handleUser}
                                             />
                                         </Form.Group>
 
                                         <Form.Group>
-                                            <Form.Label htmlFor="confirm-password">Confirm Password</Form.Label>
+                                            <Form.Label htmlFor="password"><i className="fas fa-lock"></i> Password</Form.Label>
                                             <Form.Control
-                                                id="passwordReg2"
-                                                name="Password"
-                                                type="password"
-                                                onChange={handlePassword2}
+                                                id="field-password" name="password" 
+                                                className="form-control" placeholder="Enter password" 
+                                                type="password" onChange={handlePassword}
                                             />
                                         </Form.Group>
 
-                                        <Button className="d-inline-block" variant="primary" type="submit">Register</Button>
+                                        <Form.Group className="form-group">
+                                            <Form.Label htmlFor="confirm-password"><i className="fas fa-lock"></i> Confirm Password</Form.Label>
+                                            <Form.Control
+                                                id="field-password-confirm" name="password-confirm"
+                                                className="form-control" placeholder="Confirm password" 
+                                                type="password" onChange={handlePassword2}
+                                            />
+                                        </Form.Group>
+
+                                        <Form.Text id="passwordHelpBlock" muted>Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.</Form.Text>
+
+                                        <Button onClick={handleSubmit} className="btn btn-outline-dark" variant="primary" type="submit"><i className="fa fa-sign-in-alt mr-2"></i> Register</Button>
                                     </Form>
                                 </div>
                             </Col>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
@@ -9,31 +9,28 @@ import './ModalLogin.css'
 import './hooks/useModalLogin'
 
 
+
 const ModalLogin = ({ show, hide, user, setUser }) => {
-    console.log('the user...',   user);
-    let username;
-    let password;
+
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
 
     const submitHandler = (event) => {
         event.preventDefault();
+        
         login({username, password}).then((user) => {
-            console.log('un and pw...', username);
-            console.log('un and pw...', password);
             localStorage.setItem('user', JSON.stringify(user));
-            console.log('local user...', user);
             setUser(user);
         }).catch((error) => { throw error});
     }
 
     const usernameHandler = (event) => {
-        username = event.target.value;
-        console.log('src login...', username);
+        setUsername(event.target.value);
     }
-    
 
     const passwordHandler = (event) => {
-        password = event.target.value;
-        console.log('src login...', password);
+        setPassword(event.target.value);
+
     }
 
     return (
@@ -46,7 +43,7 @@ const ModalLogin = ({ show, hide, user, setUser }) => {
                     </Modal.Header>
                     <Modal.Body>
 
-                        <Form id="login-form" onSubmit={submitHandler}>
+                        <Form onSubmit={submitHandler}>
                             <Form.Group className="form-group">
                                 <Form.Label htmlFor="username"><i className="far fa-envelope"></i> Email address</Form.Label>
                                 <Form.Control 
@@ -54,6 +51,7 @@ const ModalLogin = ({ show, hide, user, setUser }) => {
                                     className="form-control" placeholder="Enter email" 
                                     type="text" onChange={usernameHandler} />
                             </Form.Group>
+
                             <Form.Group className="form-group">
                                 <Form.Label htmlFor="password"><label><i className="fas fa-lock"></i> Password</label></Form.Label>
                                 <Form.Control 
@@ -61,6 +59,7 @@ const ModalLogin = ({ show, hide, user, setUser }) => {
                                     className="form-control" placeholder="Enter password" 
                                     type="password" onChange={passwordHandler} />
                             </Form.Group>
+
                             <Button className="d-inline-block" variant="primary" type="submit">Log In</Button>
                         </Form>
 

@@ -5,15 +5,15 @@ import axios from 'axios';
 export async function register({ username, password }) {
 	try {
 		const {
-			data: { user: newUser },
+			data: user,
 		} = await axios.post('/api/users/register', {
 			username: username,
 			password: password,
 		});
 
-		if (newUser) {
-			localStorage.setItem('user', JSON.stringify(newUser));
-			return newUser;
+		if (user) {
+			localStorage.setItem('user', JSON.stringify(user));
+			return user;
 		} else {
 			return {message: 'Please login to access these features.'};
 		}
@@ -25,7 +25,7 @@ export async function register({ username, password }) {
 export async function login({ username, password }) {
 	try {
 		const {
-			data: { user },
+			data: user,
 		} = await axios.post('api/users/login', {
 			username,
 			password,
