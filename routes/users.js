@@ -31,10 +31,7 @@ usersRouter.post("/register", async (req, res, next) => {
             bcrypt.hash(password, SALT_COUNT, async (err, hashedPassword) => {
                 securedPassword = hashedPassword;
                 const  user  = await createUser({ username, password: securedPassword });
-                console.log(username, password)
-                console.log(createUser({username, password}))
               
-                console.log(user)
                 const token = jwt.sign({ id: user.id, username }, process.env.JWT_SECRET, {
                     expiresIn: "1w",
                 });
@@ -51,9 +48,10 @@ usersRouter.post("/register", async (req, res, next) => {
 
 
 usersRouter.post('/login', async (req, res, next) => {
+    // console.log('the user route...');
     const { username, password } = req.body;
 
-    console.log(username, password)
+    // console.log(username, password)
 
     if (!username || !password){
         next({
@@ -64,6 +62,7 @@ usersRouter.post('/login', async (req, res, next) => {
 
     try {
         const user = await getUserByUsername(username);
+        // console.log('users router...', user);
         const hashedPassword = user.password;
         bcrypt.compare(password, hashedPassword, function(err, passwordsMatch){
             if (passwordsMatch){
@@ -93,7 +92,6 @@ usersRouter.post('/login', async (req, res, next) => {
 
 })
 
-
 usersRouter.get('/', async (req, res, next) => {
     try {
         const users = await getUsers();
@@ -104,7 +102,5 @@ usersRouter.get('/', async (req, res, next) => {
         throw error;
     }
 })
-
-
 
 module.exports = usersRouter;

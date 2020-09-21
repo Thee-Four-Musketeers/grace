@@ -8,7 +8,7 @@ async function createUser({username, password}){
             ON CONFLICT (username) DO NOTHING 
             RETURNING *;
         `,[username, password]);
-        console.log(user)
+        // console.log(user)
         return user;
     } catch (error) {
         throw error
@@ -53,7 +53,7 @@ async function getUserByUsername(username){
         FROM users
         WHERE username = $1;
         `, [username])
-
+        // console.log('users db...', user)
         return user
     } catch (error) {
         throw error

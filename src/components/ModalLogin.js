@@ -8,25 +8,32 @@ import Button from 'react-bootstrap/Button';
 import './ModalLogin.css'
 import './hooks/useModalLogin'
 
-const ModalLogin = ({ show, hide, user, setUser }) => {
 
+const ModalLogin = ({ show, hide, user, setUser }) => {
+    console.log('the user...',   user);
     let username;
     let password;
 
     const submitHandler = (event) => {
         event.preventDefault();
         login({username, password}).then((user) => {
+            console.log('un and pw...', username);
+            console.log('un and pw...', password);
             localStorage.setItem('user', JSON.stringify(user));
+            console.log('local user...', user);
             setUser(user);
         }).catch((error) => { throw error});
     }
 
     const usernameHandler = (event) => {
         username = event.target.value;
+        console.log('src login...', username);
     }
+    
 
     const passwordHandler = (event) => {
         password = event.target.value;
+        console.log('src login...', password);
     }
 
     return (
