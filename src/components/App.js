@@ -14,14 +14,14 @@ const App = () => {
 
     const [user, setUser] = useState({});
 
-	// function localStorageUser() {
-	// 	if (localStorage.getItem('user')) {
-	// 		const localStorageUser = JSON.parse(localStorage.getItem('user'));
-	// 		return localStorageUser;
-	// 	} else {
-	// 		return {};
-	// 	}
-    // }
+	function localStorageUser() {
+		if (localStorage.getItem('user')) {
+			const localStorageUser = JSON.parse(localStorage.getItem('user'));
+			return localStorageUser;
+		} else {
+			return {};
+		}
+    }
     
 	// useEffect(() => {
 	// 	setUser(localStorageUser());

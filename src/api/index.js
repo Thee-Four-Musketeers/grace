@@ -3,39 +3,40 @@ import axios from 'axios';
 // trying without local storage:
 
 export async function register({ username, password }) {
-  try {
-      const { data: { user }} = await axios.post("/api/users/register", {
-          username,
-          password: password,
-      });
-      if (user) {
-          localStorage.setItem("user", JSON.stringify(user));
-          return user;
-      } else {
-          alert("Please login to access these features.");
-      }
+	try {
+		const {
+			data: { user: newUser },
+		} = await axios.post('/api/users/register', {
+			username: username,
+			password: password,
+		});
 
-      return user
-  } catch (error) {
-      throw error;
-  }
+		if (newUser) {
+			localStorage.setItem('user', JSON.stringify(newUser));
+			return newUser;
+		} else {
+			return {message: 'Please login to access these features.'};
+		}
+	} catch (error) {
+		throw error;
+	}
 }
 
 export async function login({ username, password }) {
-  try {
-      const { data: { user } } = await axios.post('/api/users/login', {
-          username,
-          password
-      });
-      if (user) {
-          localStorage.setItem('user', JSON.stringify(user));
-          return user;
-      }
-
-      return user 
-  } catch (error) {
-      throw error;
-  }
+	try {
+		const {
+			data: { user },
+		} = await axios.post('api/users/login', {
+			username,
+			password,
+		});
+		if (user) {
+			localStorage.setItem('user', JSON.stringify(user));
+			return user;
+		}
+	} catch (error) {
+		throw error;
+	}
 }
 
 export async function getProductByType({type}){
