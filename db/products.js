@@ -6,9 +6,7 @@ async function getProducts(){
         SELECT * 
         FROM products;
         `);
-
         return products
-        
     } catch (error) {
         throw error
     }
@@ -33,8 +31,7 @@ async function getProductById(id){
     }
 }
 
-
-async function getProductByType(type){
+async function getProductsByType(type){
     try{
         const {rows: product } = await client.query(`
         SELECT *
@@ -46,7 +43,6 @@ async function getProductByType(type){
     } catch (error){
     throw error }
 }
-
 
 async function createProduct({ name, description, price, type }){
     try {
@@ -66,5 +62,5 @@ module.exports = {
     createProduct,
     getProducts,
     getProductById,
-    getProductByType
+    getProductsByType
   }

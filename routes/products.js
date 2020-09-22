@@ -13,27 +13,33 @@ const {
 
 // build some routes here
 
-productsRouter.get('/', async (req, res, next)=>{
-    try {
-        const products = await getProducts()
-        res.send({
-            products
-        })
-    } catch (error) {
-        throw errror
-    }
-})
 
-
-productsRouter.get('/products', async (req,res,next) =>{
-    const type = req.query.type
+productsRouter.get('/:type', async (req,res,next) =>{
+    console.log('req path 2', req.path);
+    const { type } = req.params;
     try {
-        const products = await getProductsByType(type)
+        const products = awKeep iait getProductsByType(type)
         res.send({
             products
         })
     } catch (error) {
         throw error
+    }
+})
+
+
+productsRouter.get('/', async (req, res, next)=>{
+    console.log('req path 1', req.path);
+    try {
+
+        // if there not a type idea
+        const products = await getProducts()
+        // else if there is type do something idea
+        res.send({
+            products
+        })
+    } catch (error) {
+        throw errror
     }
 })
 

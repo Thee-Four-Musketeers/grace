@@ -42,7 +42,7 @@ export async function login({ username, password }) {
 export async function getProductByType({type}){
   try {
     const { data: product } = await axios.get(`/api/products?type=${type}`)
-
+    console.log('the product', product)
     return product
   } catch (error) {
     throw error 

@@ -8,8 +8,6 @@ import Button from 'react-bootstrap/Button';
 import './ModalLogin.css'
 import './hooks/useModalLogin'
 
-
-
 const ModalLogin = ({ show, hide, user, setUser }) => {
 
     const [username, setUsername] = useState('');

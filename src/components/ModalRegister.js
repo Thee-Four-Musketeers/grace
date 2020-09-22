@@ -26,8 +26,12 @@ const ModalRegister = ({ isShowing, hide, user, setUser}) => {
         if (password1 === password2) {
             register({ username, password: password1 }).then((user) => {
                 setUser(user);
+                // log them in here
+                // redirect them
             });
         }
+
+        // log them in here
     };
 
     const handleUser = (event) => {

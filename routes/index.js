@@ -3,9 +3,8 @@ const jwt = require('jsonwebtoken');
 const { JWT_SECRET } = process.env;
 const { getUserById } = require('../db/index.js');
 const usersRouter = require('./users');
+const productsRouter = require('./products');
 
-
-// const productsRouter = require('./products');
 // const ordersRouter = require('./orders');
 
 // jwt will go here
@@ -45,7 +44,7 @@ apiRouter.get("/", (req, res, next) => {
 });
 
 apiRouter.use('/users', usersRouter);
-// apiRouter.use('/products', productsRouter);
+apiRouter.use('/products', productsRouter);
 // apiRouter.use('/orders', ordersRouter);
 
 apiRouter.use((error, req, res, next) => {
