@@ -10,8 +10,11 @@ import Footer from "../components/Footer";
 
 import './App.css'
 
-const App = () => {
+import { fetchProductsByType } from '../api';
 
+const App = () => {
+    const [products, setProducts] = useState([]);
+    console.log('got the goods?', products);
     const [user, setUser] = useState({});
 
 	function localStorageUser() {
@@ -27,6 +30,19 @@ const App = () => {
 		setUser(localStorageUser());
     }, []);
     
+    // do we pass a type or not?
+
+    useEffect(() => {
+		fetchProductsByType('')
+			.then((response) => {
+				setProducts(response);
+			})
+			.catch((error) => {
+				setProducts(error);
+			});
+    }, []);
+    
+
     // test with user and without
 
     return (
@@ -37,7 +53,7 @@ const App = () => {
                     <main>
                         <Switch>
                             <Route path="/cheeses">
-                                <Cheeses />
+                                <Cheeses products={products} setProducts={setProducts} />
                             </Route>
                             <Route path="/boards">
                                 <Boards />
