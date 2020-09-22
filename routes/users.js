@@ -93,15 +93,15 @@ usersRouter.post('/login', async (req, res, next) => {
 
 })
 
-usersRouter.get('/', async (req, res, next) => {
-    try {
-        const users = await getUsers();
-        res.send({
-            users
-        });
-    } catch (error) {
-        throw error;
-    }
-})
+// usersRouter.get('/', async (req, res, next) => {
+//     try {
+//         const users = await getUsers();
+//         res.send({
+//             users
+//         });
+//     } catch (error) {
+//         throw error;
+//     }
+// })
 
 module.exports = usersRouter;
