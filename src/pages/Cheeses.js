@@ -25,4 +25,4 @@ const Cheeses = ({ products }) => {
     )
 }
 
-export default Cheeses;
+export default Cheeses; 
