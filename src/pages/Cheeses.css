@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Beth+Ellen&display=swap');
+/* font-family: 'Beth Ellen', cursive; */
+@import url('https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps:wght@700&display=swap');
+/* font-family: 'Oleo Script Swash Caps', cursive; */
+
+#cheeseBackground {
+    background-image: url('/images/CheeseBackground.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    margin-top:112px;
+}
+
+#cheeseBackground {
+    padding-top: 201px;
+    padding-left: 285px;
+    overflow-y: scroll;
+    max-height: 620px;  
+}
+
+.card {    
+    min-width: 150px;
+    max-width: 150px;
+}
+
+.card-deck .card {
+    margin-right: 15px;
+    margin-bottom: 15px;
+    margin-left: 15px;
+}
