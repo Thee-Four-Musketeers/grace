@@ -25,7 +25,9 @@ const App = () => {
     
 	useEffect(() => {
 		setUser(localStorageUser());
-	}, []);
+    }, []);
+    
+    // test with user and without
 
     return (
         <>

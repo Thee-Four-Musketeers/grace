@@ -136,7 +136,7 @@ async function createInitialProducts() {
         console.log('start creating initial products');
 
         const productOne = await createProduct({
-            name: 'Mayonaise Cheese',
+            name: 'Mayonnaise Cheese',
             description: 'This is a really high fat cheese for you Keto fans.',
             price: '5.00',
             type: 'Cheese',
@@ -149,6 +149,20 @@ async function createInitialProducts() {
             description: 'Smells like home',
             price: '3.99',
             type: 'Cheese'
+        })
+
+        const productThree = await createProduct({
+            name: 'Dinasaur Alligator',
+            description: 'It\'s a thing',
+            price: '99.99',
+            type: 'Meat'
+        })
+
+        const productFour = await createProduct({
+            name: 'Purple Passion',
+            description: 'Mmmm purple',
+            price: '0.99',
+            type: 'Fruit'
         })
 
         console.log('end creating initial products');
