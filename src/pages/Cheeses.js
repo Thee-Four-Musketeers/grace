@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import './Cheeses.css'
 import { Container } from 'react-bootstrap';
 import { CardDeck } from 'react-bootstrap';
 import ProductCard from '../components/ProductCard';
 
+import './Cheeses.css'
+
 const Cheeses = ({ products }) => {
 
-    console.log('is this products', products);
     // const [ products, setProducts ] = useState({});
 
     return (
