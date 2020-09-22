@@ -4,19 +4,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps:wght@700&display=swap');
 /* font-family: 'Oleo Script Swash Caps', cursive; */
 
-#cheeseBackground {
-    background-image: url('/images/CheeseBackground.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100vh;
-    margin-top:112px;
-}
-
-#cheeseBackground {
-    padding-top: 201px;
-    padding-left: 285px;
+.cheeseWrapper {
+    padding-top: 10%;
     overflow-y: scroll;
     max-height: 620px;  
+}
+
+.cheeseHeader {
+    font-family: 'Oleo Script Swash Caps', cursive; 
+    font-size: 75px;
+    padding-left: 30px;
+}
+
+.cheeseSider {
+    border: 10px #f4af07 solid;
+background-color: #f4c759;
 }
 
 .card {    
@@ -28,4 +30,11 @@
     margin-right: 15px;
     margin-bottom: 15px;
     margin-left: 15px;
+}
+
+.productsContainer {
+        width: 100%;
+        padding-right: 15px;
+        margin-right: auto;
+        margin-left: 0;
 }

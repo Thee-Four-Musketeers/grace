@@ -8,91 +8,98 @@ import { Card, CardDeck, Button } from 'react-bootstrap';
 const Cheeses = () => {
     return (
         <>
-            <div id="cheeseBackground" className="CheeseWrapper">
+            <div className="cheeseWrapper">
                 <Container className="productsContainer">
-                    <CardDeck>
-                        <Card>
-                            <Card.Img variant="top" src="images/placeholder.jpg" />
-                            <Card.Body>
-                                <Card.Title>Cheese!</Card.Title>
-                                <Card.Text>
-                                    This is where the info goes.
-                                </Card.Text>
-                            </Card.Body>
-                            <Card.Footer>
-                                <Button variant="info">View</Button>
-                            </Card.Footer>
-                        </Card>
-                        <Card>
-                            <Card.Img variant="top" src="images/placeholder.jpg" />
-                            <Card.Body>
-                                <Card.Title>Cheese!</Card.Title>
-                                <Card.Text>
-                                    This is where the info goes.
-                                </Card.Text>
-                            </Card.Body>
-                            <Card.Footer>
-                                <Button variant="info">View</Button>
-                            </Card.Footer>
-                        </Card>                        <Card>
-                            <Card.Img variant="top" src="images/placeholder.jpg" />
-                            <Card.Body>
-                                <Card.Title>Cheese!</Card.Title>
-                                <Card.Text>
-                                    This is where the info goes.
-                                </Card.Text>
-                            </Card.Body>
-                            <Card.Footer>
-                                <Button variant="info">View</Button>
-                            </Card.Footer>
-                        </Card>                        <Card>
-                            <Card.Img variant="top" src="images/placeholder.jpg" />
-                            <Card.Body>
-                                <Card.Title>Cheese!</Card.Title>
-                                <Card.Text>
-                                    This is where the info goes.
-                                </Card.Text>
-                            </Card.Body>
-                            <Card.Footer>
-                                <Button variant="info">View</Button>
-                            </Card.Footer>
-                        </Card>                        <Card>
-                            <Card.Img variant="top" src="images/placeholder.jpg" />
-                            <Card.Body>
-                                <Card.Title>Cheese!</Card.Title>
-                                <Card.Text>
-                                    This is where the info goes.
-                                </Card.Text>
-                            </Card.Body>
-                            <Card.Footer>
-                                <Button variant="info">View</Button>
-                            </Card.Footer>
-                        </Card>                        <Card>
-                            <Card.Img variant="top" src="images/placeholder.jpg" />
-                            <Card.Body>
-                                <Card.Title>Cheese!</Card.Title>
-                                <Card.Text>
-                                    This is where the info goes.
-                                </Card.Text>
-                            </Card.Body>
-                            <Card.Footer>
-                                <Button variant="info">View</Button>
-                            </Card.Footer>
-                        </Card>                        <Card>
-                            <Card.Img variant="top" src="images/placeholder.jpg" />
-                            <Card.Body>
-                                <Card.Title>Cheese!</Card.Title>
-                                <Card.Text>
-                                    This is where the info goes.
-                                </Card.Text>
-                            </Card.Body>
-                            <Card.Footer>
-                                <Button variant="info">View</Button>
-                            </Card.Footer>
-                        </Card>
-                    </CardDeck>
 
+                    <Row>
+                        <Col xs lg="2" className="cheeseSider">This is where we can put filters</Col>
+                        <Col>
+                            <Row className="cheeseHeader">Our Cheeses</Row>
+                            <CardDeck>
+                                <Card>
+                                    <Card.Img variant="top" src="images/placeholder.jpg" />
+                                    <Card.Body>
+                                        <Card.Title>Cheese!</Card.Title>
+                                        <Card.Text>
+                                            This is where the info goes.
+                                </Card.Text>
+                                    </Card.Body>
+                                    <Card.Footer>
+                                        <Button variant="info">View</Button>
+                                    </Card.Footer>
+                                </Card>
+                                <Card>
+                                    <Card.Img variant="top" src="images/placeholder.jpg" />
+                                    <Card.Body>
+                                        <Card.Title>Cheese!</Card.Title>
+                                        <Card.Text>
+                                            This is where the info goes.
+                                </Card.Text>
+                                    </Card.Body>
+                                    <Card.Footer>
+                                        <Button variant="info">View</Button>
+                                    </Card.Footer>
+                                </Card>                        <Card>
+                                    <Card.Img variant="top" src="images/placeholder.jpg" />
+                                    <Card.Body>
+                                        <Card.Title>Cheese!</Card.Title>
+                                        <Card.Text>
+                                            This is where the info goes.
+                                </Card.Text>
+                                    </Card.Body>
+                                    <Card.Footer>
+                                        <Button variant="info">View</Button>
+                                    </Card.Footer>
+                                </Card>                        <Card>
+                                    <Card.Img variant="top" src="images/placeholder.jpg" />
+                                    <Card.Body>
+                                        <Card.Title>Cheese!</Card.Title>
+                                        <Card.Text>
+                                            This is where the info goes.
+                                </Card.Text>
+                                    </Card.Body>
+                                    <Card.Footer>
+                                        <Button variant="info">View</Button>
+                                    </Card.Footer>
+                                </Card>                        <Card>
+                                    <Card.Img variant="top" src="images/placeholder.jpg" />
+                                    <Card.Body>
+                                        <Card.Title>Cheese!</Card.Title>
+                                        <Card.Text>
+                                            This is where the info goes.
+                                </Card.Text>
+                                    </Card.Body>
+                                    <Card.Footer>
+                                        <Button variant="info">View</Button>
+                                    </Card.Footer>
+                                </Card>                        <Card>
+                                    <Card.Img variant="top" src="images/placeholder.jpg" />
+                                    <Card.Body>
+                                        <Card.Title>Cheese!</Card.Title>
+                                        <Card.Text>
+                                            This is where the info goes.
+                                </Card.Text>
+                                    </Card.Body>
+                                    <Card.Footer>
+                                        <Button variant="info">View</Button>
+                                    </Card.Footer>
+                                </Card>                        <Card>
+                                    <Card.Img variant="top" src="images/placeholder.jpg" />
+                                    <Card.Body>
+                                        <Card.Title>Cheese!</Card.Title>
+                                        <Card.Text>
+                                            This is where the info goes.
+                                </Card.Text>
+                                    </Card.Body>
+                                    <Card.Footer>
+                                        <Button variant="info">View</Button>
+                                    </Card.Footer>
+                                </Card>
+                            </CardDeck>
+                        </Col>
+                    </Row>
                 </Container>
+
             </div>
         </>
     )
