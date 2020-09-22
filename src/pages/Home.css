@@ -18,7 +18,8 @@
     max-width: 800px;
     padding: 2rem 4rem;
     text-align: center;
-    width:   100%;
+    width: 100%;
+    margin-top:11%
 }
 
 .btn-lg {
@@ -41,6 +42,10 @@
 .h1 {
     font-size: 6rem;
     font-family: 'Oleo Script Swash Caps', cursive;
+}
+
+.mt-4, .my-4 {
+    margin-top: 11%;
 }
 
 @media (max-width: 1200px) {
