@@ -18,7 +18,7 @@ productsRouter.get('/:type', async (req,res,next) =>{
     console.log('req path 2', req.path);
     const { type } = req.params;
     try {
-        const products = await getProductsByType(type)
+        const products = awKeep iait getProductsByType(type)
         res.send({
             products
         })
