@@ -13,7 +13,6 @@ const {
 
 // build some routes here
 
-
 productsRouter.get('/:type', async (req,res,next) =>{
     console.log('req path 2', req.path);
     const { type } = req.params;
@@ -26,7 +25,6 @@ productsRouter.get('/:type', async (req,res,next) =>{
         throw error
     }
 })
-
 
 productsRouter.get('/', async (req, res, next)=>{
     console.log('req path 1', req.path);
