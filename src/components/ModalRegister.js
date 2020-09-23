@@ -20,9 +20,6 @@ const ModalRegister = ({ isShowing, hide, user, setUser}) => {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        console.log('password 1...', password1);
-        console.log('password 2...', password2);
-
         if (password1 === password2) {
             register({ username, password: password1 }).then((user) => {
                 setUser(user);
@@ -30,8 +27,6 @@ const ModalRegister = ({ isShowing, hide, user, setUser}) => {
                 // redirect them
             });
         }
-
-        // log them in here
     };
 
     const handleUser = (event) => {
@@ -90,29 +85,3 @@ const ModalRegister = ({ isShowing, hide, user, setUser}) => {
 };
 
 export default ModalRegister;
-
-{/* <Modal show={isShowing} onHide={hide} backdrop="static">
-    <Modal.Header closeButton>
-        <Modal.Title>Registration</Modal.Title>
-    </Modal.Header>
-    <Modal.Body>
-        <Form onSubmit={handleSubmit}>
-            <div className="form-group">
-                <label><i className="far fa-envelope"></i> Email address</label>
-            </div>
-            <Form.Label htmlFor="inputPassword5">Password</Form.Label>
-            <Form.Control
-                type="password"
-                id="inputPassword5"
-                aria-describedby="passwordHelpBlock"
-            />
-            <Form.Text id="passwordHelpBlock" muted>
-                Your password must be 8-20 characters long, contain letters and numbers, and
-                must not contain spaces, special characters, or emoji.
-    </Form.Text>
-
-            <button type="submit" className="btn btn-outline-dark"><i className="fa fa-sign-in-alt mr-2"></i>Submit</button>
-
-        </Form>
-    </Modal.Body>
-</Modal> */}

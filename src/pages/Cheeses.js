@@ -1,108 +1,28 @@
-import React from 'react';
-import './Cheeses.css'
+import React, { useState } from 'react';
 import { Container } from 'react-bootstrap';
-import { Row } from 'react-bootstrap';
-import { Col } from 'react-bootstrap';
-import { Card, CardDeck, Button } from 'react-bootstrap';
+import { CardDeck } from 'react-bootstrap';
+import ProductCard from '../components/ProductCard';
 
-const Cheeses = () => {
+import './Cheeses.css'
+
+const Cheeses = ({ products }) => {
+    console.log('Cheese page products', products);
+    const [ product, setProduct ] = useState({});
+
     return (
         <>
-            <div className="cheeseWrapper">
-                <Container className="productsContainer">
-
-                    <Row>
-                        <Col xs lg="2" className="cheeseSider">This is where we can put filters</Col>
-                        <Col>
-                            <Row className="cheeseHeader">Our Cheeses</Row>
-                            <CardDeck>
-                                <Card>
-                                    <Card.Img variant="top" src="images/placeholder.jpg" />
-                                    <Card.Body>
-                                        <Card.Title>Cheese!</Card.Title>
-                                        <Card.Text>
-                                            This is where the info goes.
-                                </Card.Text>
-                                    </Card.Body>
-                                    <Card.Footer>
-                                        <Button variant="info">View</Button>
-                                    </Card.Footer>
-                                </Card>
-                                <Card>
-                                    <Card.Img variant="top" src="images/placeholder.jpg" />
-                                    <Card.Body>
-                                        <Card.Title>Cheese!</Card.Title>
-                                        <Card.Text>
-                                            This is where the info goes.
-                                </Card.Text>
-                                    </Card.Body>
-                                    <Card.Footer>
-                                        <Button variant="info">View</Button>
-                                    </Card.Footer>
-                                </Card>                        <Card>
-                                    <Card.Img variant="top" src="images/placeholder.jpg" />
-                                    <Card.Body>
-                                        <Card.Title>Cheese!</Card.Title>
-                                        <Card.Text>
-                                            This is where the info goes.
-                                </Card.Text>
-                                    </Card.Body>
-                                    <Card.Footer>
-                                        <Button variant="info">View</Button>
-                                    </Card.Footer>
-                                </Card>                        <Card>
-                                    <Card.Img variant="top" src="images/placeholder.jpg" />
-                                    <Card.Body>
-                                        <Card.Title>Cheese!</Card.Title>
-                                        <Card.Text>
-                                            This is where the info goes.
-                                </Card.Text>
-                                    </Card.Body>
-                                    <Card.Footer>
-                                        <Button variant="info">View</Button>
-                                    </Card.Footer>
-                                </Card>                        <Card>
-                                    <Card.Img variant="top" src="images/placeholder.jpg" />
-                                    <Card.Body>
-                                        <Card.Title>Cheese!</Card.Title>
-                                        <Card.Text>
-                                            This is where the info goes.
-                                </Card.Text>
-                                    </Card.Body>
-                                    <Card.Footer>
-                                        <Button variant="info">View</Button>
-                                    </Card.Footer>
-                                </Card>                        <Card>
-                                    <Card.Img variant="top" src="images/placeholder.jpg" />
-                                    <Card.Body>
-                                        <Card.Title>Cheese!</Card.Title>
-                                        <Card.Text>
-                                            This is where the info goes.
-                                </Card.Text>
-                                    </Card.Body>
-                                    <Card.Footer>
-                                        <Button variant="info">View</Button>
-                                    </Card.Footer>
-                                </Card>                        <Card>
-                                    <Card.Img variant="top" src="images/placeholder.jpg" />
-                                    <Card.Body>
-                                        <Card.Title>Cheese!</Card.Title>
-                                        <Card.Text>
-                                            This is where the info goes.
-                                </Card.Text>
-                                    </Card.Body>
-                                    <Card.Footer>
-                                        <Button variant="info">View</Button>
-                                    </Card.Footer>
-                                </Card>
-                            </CardDeck>
-                        </Col>
-                    </Row>
-                </Container>
-
-            </div>
+            <Container className="productsContainer">
+                <CardDeck>
+                { 
+                    products.length ? products.map((product) => {
+                            return (<ProductCard key={product.id} product={product} />)
+                        }) 
+                    : ''
+                }
+                </CardDeck>
+            </Container>
         </>
     )
 }
 
-export default Cheeses;
+export default Cheeses; 
