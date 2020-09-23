@@ -48,14 +48,14 @@ async function getProductByType(type){
 }
 
 
-async function createProduct({ name, description, price, type }){
+async function createProduct({ name, description, price, type, imageUrl, origin, hardness, odor }){
     try {
         const { rows: [product]  } = await client.query(`
-            INSERT INTO products (name, description, price, type)
-            VALUES ($1, $2, $3, $4)
+            INSERT INTO products (name, description, price, type, "imageUrl", origin, hardness, odor)
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
             ON CONFLICT (name) DO NOTHING 
             RETURNING *;
-        `,[name, description, price, type]);
+        `,[name, description, price, type, imageUrl, origin, hardness, odor]);
         return product;
     } catch (error) {
         throw error
