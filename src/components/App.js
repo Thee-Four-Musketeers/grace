@@ -14,7 +14,7 @@ import { fetchProductsByType } from '../api';
 
 const App = () => {
     const [products, setProducts] = useState([]);
-    const [productType, setProductType] = useState('cheese');
+    const [productType, setProductType] = useState('Cheese');
 
 
     console.log('got the goods?', products);

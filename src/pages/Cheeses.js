@@ -9,7 +9,7 @@ import './Cheeses.css'
 
 const Cheeses = ({ products, setProductType }) => {
 
-    setProductType('cheese');
+    setProductType('Cheese');
 
     console.log('Cheese page products', products);
 
@@ -23,9 +23,11 @@ const Cheeses = ({ products, setProductType }) => {
                         <Row className="cheeseHeader">Our Cheeses</Row>
                         <CardDeck>
                             {   
-                                products && products.map(product => (
+                                products.length
+                                ? products.map(product => (
                                     <ProductCard key={product.id} {...product}></ProductCard>)
                                 )
+                                : ''
                             }
                         </CardDeck>
                     </Col>
