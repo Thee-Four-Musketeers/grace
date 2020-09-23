@@ -1,12 +1,39 @@
 import React from 'react';
-// import './Main.css'
+import { Container } from 'react-bootstrap';
+import { CardDeck } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
+import ProductCard from '../components/ProductCard';
 
-const Cheeses = () => {
+import './Cheeses.css'
+
+const Cheeses = ({ products, setProductType }) => {
+
+    setProductType('cheese');
+
+    console.log('Cheese page products', products);
+
     return (
-        <>
-           <div>Our Famous Cheeses</div>
-        </>
+        <div className="cheeseWrapper">
+            <Container className="productsContainer">
+
+                <Row>
+                    <Col xs lg="2" className="cheeseSider">This is where we can put filters</Col>
+                    <Col>
+                        <Row className="cheeseHeader">Our Cheeses</Row>
+                        <CardDeck>
+                            {   
+                                products && products.map(product => (
+                                    <ProductCard key={product.id} {...product}></ProductCard>)
+                                )
+                            }
+                        </CardDeck>
+                    </Col>
+                </Row>
+            </Container>
+        </div>
+
     )
 }
 
-export default Cheeses;
+export default Cheeses; 

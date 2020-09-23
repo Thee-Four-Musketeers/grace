@@ -39,11 +39,10 @@ export async function login({ username, password }) {
 	}
 }
 
-export async function getProductByType({type}){
+export async function fetchProductsByType( type ){
   try {
-    const { data: product } = await axios.get(`/api/products?type=${type}`)
-
-    return product
+    const { data: products } = await axios.get(`/api/products/${type}`)
+    return products
   } catch (error) {
     throw error 
   }

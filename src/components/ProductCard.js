@@ -1,22 +1,21 @@
 import React from 'react';
-import Card from 'react-bootstrap/Card'
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+import './ProductCard.css'
 
 
-const ProductCard = ({title, description, image, type}) => {
-return (
-<Card style={{ width: '18rem' }}>
-  <Card.Img variant="top" src={image} />
-  <Card.Body>
-    <Card.Title>{title}</Card.Title>
-    <Card.Text>{type}</Card.Text>
-    <Card.Text>
-      {description}
-    </Card.Text>
-    <Button variant="primary">Add to Cart</Button>
-  </Card.Body>
-</Card>
-)
-}
+const ProductCard = ({ id, name, type, description }) => {
 
+    return (
+        <Card key={id}>
+            <Card.Body>
+                <Card.Title>{name}</Card.Title>
+                <Card.Text>{type}</Card.Text>
+                <Card.Text>{description}</Card.Text>
+                <Button variant='primary'>Add To Cart</Button>
+            </Card.Body>
+        </Card>
+    );
+};
 
-export default ProductCard
+export default ProductCard;
