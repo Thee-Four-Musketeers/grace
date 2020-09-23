@@ -13,35 +13,36 @@ import './App.css'
 import { fetchProductsByType } from '../api';
 
 const App = () => {
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState({});
     console.log('got the goods?', products);
     const [user, setUser] = useState({});
 
-	function localStorageUser() {
-		if (localStorage.getItem('user')) {
-			const localStorageUser = JSON.parse(localStorage.getItem('user'));
-			return localStorageUser;
-		} else {
-			return {};
-		}
+    function localStorageUser() {
+        if (localStorage.getItem('user')) {
+            const localStorageUser = JSON.parse(localStorage.getItem('user'));
+            return localStorageUser;
+        } else {
+            return {};
+        }
     }
-    
-	useEffect(() => {
-		setUser(localStorageUser());
+
+    useEffect(() => {
+        setUser(localStorageUser());
     }, []);
-    
+
     // do we pass a type or not?
 
     useEffect(() => {
-		fetchProductsByType('')
-			.then((response) => {
-				setProducts(response);
-			})
-			.catch((error) => {
-				setProducts(error);
-			});
+        fetchProductsByType('')
+            .then((response) => {
+                setProducts(response.products);
+                console.log('useEffect FetchProducts', response.products)
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     }, []);
-    
+
 
     // test with user and without
 
@@ -53,7 +54,8 @@ const App = () => {
                     <main>
                         <Switch>
                             <Route path="/cheeses">
-                                <Cheeses products={products} setProducts={setProducts} />
+                                <Cheeses
+                                    setProducts={setProducts} />
                             </Route>
                             <Route path="/boards">
                                 <Boards />

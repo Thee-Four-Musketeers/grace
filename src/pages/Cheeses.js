@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Container } from 'react-bootstrap';
 import { CardDeck } from 'react-bootstrap';
 import ProductCard from '../components/ProductCard';
@@ -6,22 +6,23 @@ import ProductCard from '../components/ProductCard';
 import './Cheeses.css'
 
 const Cheeses = ({ products }) => {
+
     console.log('Cheese page products', products);
-    const [ product, setProduct ] = useState({});
+    // const [ products, setProducts ] = useState({});
 
     return (
-        <>
-            <Container className="productsContainer">
-                <CardDeck>
-                { 
-                    products.length ? products.map((product) => {
-                            return (<ProductCard key={product.id} product={product} />)
-                        }) 
-                    : ''
+        <Container className="productsContainer">
+            <CardDeck>
+                {
+                    products && products.map(product => (
+
+                        <ProductCard
+                            key={product.id}
+                            {...product}>
+                        </ProductCard>))
                 }
-                </CardDeck>
-            </Container>
-        </>
+            </CardDeck>
+        </Container>
     )
 }
 

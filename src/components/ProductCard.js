@@ -1,14 +1,17 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import './ProductCard.css'
 
-const ProductCard = ({ product }) => {
+
+const ProductCard = ({ id, name, type, description }) => {
+
     return (
-        <Card style={{ width: '18rem' }}>
+        <Card key={id}>
             <Card.Body>
-                <Card.Title>{product.name}</Card.Title>
-                <Card.Text>{product.type}</Card.Text>
-                <Card.Text>{product.description}</Card.Text>
+                <Card.Title>{name}</Card.Title>
+                <Card.Text>{type}</Card.Text>
+                <Card.Text>{description}</Card.Text>
                 <Button variant='primary'>Add To Cart</Button>
             </Card.Body>
         </Card>

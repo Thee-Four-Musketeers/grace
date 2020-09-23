@@ -3,17 +3,17 @@ const express = require("express");
 const productsRouter = express.Router()
 // import functions here
 
-const { 
+const {
     getProducts,
     getProductsById,
     createProduct,
     getProductsByType
-} = require ('../db')
+} = require('../db')
 
 
 // build some routes here
 
-productsRouter.get('/:type', async (req,res,next) =>{
+productsRouter.get('/:type', async (req, res, next) => {
     console.log('req path 2', req.path);
     const { type } = req.params;
     try {
@@ -21,12 +21,12 @@ productsRouter.get('/:type', async (req,res,next) =>{
         res.send({
             products
         })
-    } catch (error) {
-        throw error
+    } catch ({ name, message }) {
+        next({ name, message })
     }
 })
 
-productsRouter.get('/', async (req, res, next)=>{
+productsRouter.get('/', async (req, res, next) => {
     console.log('req path 1', req.path);
     try {
 
@@ -36,8 +36,8 @@ productsRouter.get('/', async (req, res, next)=>{
         res.send({
             products
         })
-    } catch (error) {
-        throw errror
+    } catch ({ name, message }) {
+        next({ name, message })
     }
 })
 
