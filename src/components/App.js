@@ -13,7 +13,10 @@ import './App.css'
 import { fetchProductsByType } from '../api';
 
 const App = () => {
-    const [products, setProducts] = useState({});
+    const [products, setProducts] = useState([]);
+    const [productType, setProductType] = useState('cheese');
+
+
     console.log('got the goods?', products);
     const [user, setUser] = useState({});
 
@@ -33,7 +36,7 @@ const App = () => {
     // do we pass a type or not?
 
     useEffect(() => {
-        fetchProductsByType('')
+        fetchProductsByType(productType)
             .then((response) => {
                 setProducts(response.products);
                 console.log('useEffect FetchProducts', response.products)
@@ -54,14 +57,13 @@ const App = () => {
                     <main>
                         <Switch>
                             <Route path="/cheeses">
-                                <Cheeses
-                                    setProducts={setProducts} />
+                                <Cheeses products={products} setProductType={setProductType} />
                             </Route>
                             <Route path="/boards">
-                                <Boards />
+                                <Boards products={products} setProductType={setProductType} />
                             </Route>
                             <Route path="/sides">
-                                <Sides />
+                                <Sides products={products} setProductType={setProductType} />
                             </Route>
                             <Route path="/">
                                 <Home />
