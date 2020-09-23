@@ -7,7 +7,9 @@ import ProductCard from '../components/ProductCard';
 
 import './Cheeses.css'
 
-const Cheeses = ({ products }) => {
+const Cheeses = ({ products, setProductType }) => {
+
+    setProductType('cheese');
 
     console.log('Cheese page products', products);
 
@@ -20,13 +22,10 @@ const Cheeses = ({ products }) => {
                     <Col>
                         <Row className="cheeseHeader">Our Cheeses</Row>
                         <CardDeck>
-                            {
+                            {   
                                 products && products.map(product => (
-
-                                    <ProductCard
-                                        key={product.id}
-                                        {...product}>
-                                    </ProductCard>))
+                                    <ProductCard key={product.id} {...product}></ProductCard>)
+                                )
                             }
                         </CardDeck>
                     </Col>

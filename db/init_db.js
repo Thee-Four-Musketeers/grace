@@ -23,7 +23,7 @@ async function buildTables() {
             DROP TYPE IF EXISTS choice;
             DROP TYPE IF EXISTS urgency;
             DROP TYPE IF EXISTS status;
-            CREATE TYPE choice AS ENUM ('Cheese', 'Meat', 'Fruit', 'Pre-Made Board');
+            CREATE TYPE choice AS ENUM ('cheese', 'meat', 'fruit', 'board');
             CREATE TYPE urgency AS ENUM ('Overnight', 'Two Day', 'Ground', 'USPS');
             CREATE TYPE status AS ENUM ('Cart', 'Order', 'Paid', 'Shipped', 'Complete', 'History');
         `);
@@ -54,7 +54,7 @@ async function buildTables() {
                 name VARCHAR (255) UNIQUE NOT NULL,
                 description TEXT NOT NULL,
                 price NUMERIC (6, 2) NOT NULL,
-                type choice NOT NULL DEFAULT 'Cheese',
+                type choice NOT NULL DEFAULT 'cheese',
                 "imageUrl" VARCHAR (255),
                 origin VARCHAR (255),
                 hardness VARCHAR (255),
@@ -139,7 +139,7 @@ async function createInitialProducts() {
             name: 'Mayonnaise Cheese',
             description: 'This is a really high fat cheese for you Keto fans.',
             price: '5.00',
-            type: 'Cheese',
+            type: 'cheese',
             
         });
         console.log(productOne);
@@ -148,21 +148,21 @@ async function createInitialProducts() {
             name: 'FrankenCheese',
             description: 'Smells like home',
             price: '3.99',
-            type: 'Cheese'
+            type: 'cheese'
         })
 
         const productThree = await createProduct({
             name: 'Dinasaur Alligator',
             description: 'It\'s a thing',
             price: '99.99',
-            type: 'Meat'
+            type: 'meat'
         })
 
         const productFour = await createProduct({
             name: 'Purple Passion',
             description: 'Mmmm purple',
             price: '0.99',
-            type: 'Fruit'
+            type: 'fruit'
         })
 
         console.log('end creating initial products');
