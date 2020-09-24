@@ -7,6 +7,7 @@ import Cheeses from "../pages/Cheeses";
 import Boards from "../pages/Boards";
 import Sides from "../pages/Sides";
 import Footer from "../components/Footer";
+import Cart from '../pages/Cart'
 
 import './App.css'
 
@@ -14,7 +15,10 @@ import { fetchProductsByType } from '../api';
 
 const App = () => {
     const [products, setProducts] = useState([]);
-    const [productType, setProductType] = useState('cheese');
+    const [productType, setProductType] = useState('Cheese');
+    const [cart, setCart] = useState([]);
+    const [cartTotal, setCartTotal] = useState(0);
+
 
 
     console.log('got the goods?', products);
@@ -33,8 +37,6 @@ const App = () => {
         setUser(localStorageUser());
     }, []);
 
-    // do we pass a type or not?
-
     useEffect(() => {
         fetchProductsByType(productType)
             .then((response) => {
@@ -46,13 +48,23 @@ const App = () => {
             });
     }, []);
 
+    useEffect(() => {
+        total();
+    }, [cart]);
 
-    // test with user and without
+    const total = () => {
+        let totalVal = 0;
+        for (let i = 0; i < cart.length; i++) {
+            totalVal += cart[i].price;
+        }
+        setCartTotal(totalVal);
+    };
+
 
     return (
         <>
             <Router>
-                <Header user={user} setUser={setUser} />
+                <Header user={user} setUser={setUser} cart={cart} setCart={setCart} />
                 <div id="all">
                     <main>
                         <Switch>
@@ -64,6 +76,9 @@ const App = () => {
                             </Route>
                             <Route path="/sides">
                                 <Sides products={products} setProductType={setProductType} />
+                            </Route>
+                            <Route path="/cart">
+                                <Cart cart={cart} cartTotal={cartTotal} setCart={setCart} />
                             </Route>
                             <Route path="/">
                                 <Home />
