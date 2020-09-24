@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Container, Row, Col } from 'react-bootstrap';  '
 
 import Header from "../components/Header";
 import Title from "../components/Title";
@@ -10,16 +11,18 @@ import Home from "../pages/Home";
 import Cheeses from "../pages/Cheeses";
 import Boards from "../pages/Boards";
 import Sides from "../pages/Sides";
-
-import { Container, Row, Col } from 'react-bootstrap';  
-
-import './App.css'
+import Cart from '../pages/Cart'
 
 import { fetchProductsByType } from '../api';
+
+import './App.css'
 
 const App = () => {
     const [products, setProducts] = useState([]);
     const [productType, setProductType] = useState('Cheese');
+    const [cart, setCart] = useState([]);
+    const [cartTotal, setCartTotal] = useState(0);
+
 
 
     console.log('got the goods?', products);
@@ -49,10 +52,22 @@ const App = () => {
             });
     }, []);
 
+    useEffect(() => {
+        total();
+    }, [cart]);
+
+    const total = () => {
+        let totalVal = 0;
+        for (let i = 0; i < cart.length; i++) {
+            totalVal += cart[i].price;
+        }
+        setCartTotal(totalVal);
+    };
+
     return (
         <>
             <Router>
-                <Header user={user} setUser={setUser} />
+                <Header user={user} setUser={setUser} cart={cart} setCart={setCart} />
                 <div id="all">
                     <main>
                         <Switch>
@@ -87,6 +102,10 @@ const App = () => {
                                     </Row>
                                 </Container>
                                 
+                            </Route>
+
+                            <Route path="/cart">
+                                <Cart cart={cart} cartTotal={cartTotal} setCart={setCart} />
                             </Route>
 
                             <Route path="/">
