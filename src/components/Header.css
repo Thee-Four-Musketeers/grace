@@ -1,19 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
-* {
-    font-family: 'Josefin Sans', sans-serif;
-}
 
-#header { background-color: #26292db8; position: absolute; top: 0; z-index: 9999; }
+#header { background-color: #26292Db8; position: absolute; top: 0; z-index: 9999; }
+.solid #header { background-color: #26292D; position: static; }
+
+
 nav { font-size: 1.1rem !important; padding: 1rem !important; }
-
 .nav-left { justify-content: flex-start; }
 .nav-right{ justify-content:flex-end; }
 
 .nav-logo { max-height: 80px; }
 
 .nav-link,
-.navbar-text { color: rgba(255, 255, 255, 0.7) !important; letter-spacing: 1px; padding: 0.5rem 0.75rem !important; }
+.navbar-text { color: rgba(255, 255, 255, 0.7) !important; letter-spacing: 1px; padding: 0.5rem !important; }
 .nav-link:hover { color: rgba(255, 255, 255, 1) !important; }
 
 .cart-icon { font-size: 24px; }
