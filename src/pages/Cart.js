@@ -1,7 +1,12 @@
 import React from "react";
+import { Col } from 'react-bootstrap';
+
 import './Cart.css'
 
 const Cart = ({ cart, setCart, cartTotal, setCartTotal }) => {
+
+    document.body.classList.add('solid', 'cart');
+
     const items = [
         {
             id: 1,
@@ -47,14 +52,15 @@ const Cart = ({ cart, setCart, cartTotal, setCartTotal }) => {
     ));
 
     return (
-        <div className="cartWrapper">
-
-            STORE
-            <div>{listItems}</div>
-            <div>CART</div>
-            <div>{cartItems}</div>
-            <div>Total: ${cartTotal}</div>
-        </div>
+        <Col id="content">
+            <div className="cartWrapper">
+                <h4>STORE</h4>
+                <div>{listItems}</div>
+                <h4>CART</h4>
+                <div>{cartItems}</div>
+                <div>Total: ${cartTotal}</div>
+            </div>
+        </Col>
     );
 };
 

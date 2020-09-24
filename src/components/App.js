@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Container, Row, Col } from 'react-bootstrap';  '
+import { Container, Row } from 'react-bootstrap';
 
 import Header from "../components/Header";
 import Title from "../components/Title";
@@ -90,7 +90,6 @@ const App = () => {
                                         <Boards products={products} setProductType={setProductType} />
                                     </Row>
                                 </Container>
-                                
                             </Route>
 
                             <Route path="/sides">
@@ -101,11 +100,15 @@ const App = () => {
                                         <Sides products={products} setProductType={setProductType} />
                                     </Row>
                                 </Container>
-                                
                             </Route>
 
                             <Route path="/cart">
-                                <Cart cart={cart} cartTotal={cartTotal} setCart={setCart} />
+                                <Title title={'Shopping Cart'} />
+                                <Container id="wrapper" fluid>
+                                    <Row>
+                                        <Cart cart={cart} cartTotal={cartTotal} setCart={setCart} />
+                                    </Row>
+                                </Container>
                             </Route>
 
                             <Route path="/">
