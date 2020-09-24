@@ -8,18 +8,21 @@ import ModalLogin from "./ModalLogin";
 import ModalRegister from './ModalRegister';
 import useModalRegister from './hooks/useModalRegister';
 import useModalLogin from './hooks/useModalLogin';
+// import Cart from '../pages/Cart';
 
 import { Link } from 'react-router-dom';
 
 import './Header.css'
 
-const Header = ({user, setUser}) => {
+const Header = ({ user, setUser, cart }) => {
+    let cartCount = cart.reduce((cartCount, items) => {
+        return cartCount + items.count
+    }, 0);
 
     const signOutHandler = (event) => {
         localStorage.removeItem('user');
         setUser({});
     }
-
     const { show, toggleLogin } = useModalLogin();
     const { isShowing, toggle1 } = useModalRegister();
 
@@ -45,9 +48,9 @@ const Header = ({user, setUser}) => {
                                 <Navbar.Text>|</Navbar.Text>
                                 <Link className="nav-link" to="/login" onClick={signOutHandler}>Sign Out</Link>
                                 <Navbar.Text>|</Navbar.Text>
-                                <Nav.Link eventKey={2} href="#">
+                                <Nav.Link eventKey={2} href="/cart">
                                     <i className="fas fa-shopping-cart cart-icon"></i>
-                                    <span className="cart-count">33</span>
+                                    <span className="cart-count">{cartCount}</span>
                                 </Nav.Link>
                             </Nav>
                         </Navbar.Collapse>
@@ -70,6 +73,7 @@ const Header = ({user, setUser}) => {
         </Container>
     )
 }
+
 
 export default Header;
 
