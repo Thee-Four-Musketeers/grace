@@ -1,3 +1,9 @@
-/* main {
-    min-height: 800px; 
-} */
+#sidebar {
+    background: #EEEEEE;
+    padding: 80px 40px;
+}
+
+#content {
+    background: #F9F9F9;
+    padding: 80px;
+}

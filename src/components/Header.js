@@ -4,11 +4,11 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
+
 import ModalLogin from "./ModalLogin";
 import ModalRegister from './ModalRegister';
 import useModalRegister from './hooks/useModalRegister';
 import useModalLogin from './hooks/useModalLogin';
-// import Cart from '../pages/Cart';
 
 import { Link } from 'react-router-dom';
 
@@ -30,7 +30,7 @@ const Header = ({ user, setUser, cart }) => {
         <Container id="header" className="px-0" fluid={true}>
             <Row className="m-auto">
                 <Col>
-                    <Navbar className="px-2" collapseOnSelect expand="md">
+                    <Navbar className="px-2" collapseOnSelect expand="xl">
                         <Link className="pl-3 pr-4" to="/">
                             <img className="nav-logo" src="images/CheezyLogo_white.png" alt="Cheezy Logo" />
                         </Link>
@@ -58,34 +58,16 @@ const Header = ({ user, setUser, cart }) => {
                 </Col>
             </Row>
             <ModalLogin
-                show={show}
-                hide={toggleLogin}
-                user={user}
-                setUser={setUser}
+                show={show} hide={toggleLogin}
+                user={user} setUser={setUser}
             />
             <ModalRegister
-                isShowing={isShowing}
-                hide={toggle1}
-                user={user}
-                setUser={setUser}
+                isShowing={isShowing} hide={toggle1}
+                user={user} setUser={setUser}
             />
-
         </Container>
     )
 }
 
 
 export default Header;
-
-
-// { user.token 
-// ? <>
-//     <div className="nav-welcome">Welcome, { user.username }</div>
-//     <span>|</span>
-//     <Link className="nav-link" to="/login" onClick={signOutHandler}>Sign Out</Link>
-// </>
-// : <>
-//     <Link className="nav-link" to="/register">Register</Link>
-//     <Link className="nav-link" to="/login">Login</Link>
-// </>
-// }
