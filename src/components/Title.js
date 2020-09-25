@@ -13,7 +13,7 @@ const Title = ({ title }) => {
         <Container id="title" fluid>
             <Row>
                 <Col>
-                    <h1 class="title text-center py-4 my-4 mb-0">{title}</h1>
+                    <h1 className="title text-center py-4 my-4 mb-0">{title}</h1>
                 </Col>
             </Row>
         </Container>
