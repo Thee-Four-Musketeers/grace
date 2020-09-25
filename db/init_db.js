@@ -665,7 +665,7 @@ async function createInitialProducts() {
 		console.log(productFortynine);
 		
 		const productFifty = await createProduct({
-			name: 'Mothais a ls Feuille', 
+			name: 'Mothais a la Feuille', 
             description: 'Mothais a la Feuille has a soft, runny texture that becomes dense as it ages. The unique combination of earthy, lemony and mold flavours of the leaf become intense as the cheese matures. Mothais a la Feuille pairs well with Champagne or a single-malt whisky. ',
             price: 16.68,
             type:'Cheese',
@@ -1311,8 +1311,7 @@ async function createInitialProducts() {
             hardness: 'Hard, aged',
 			odor: 'Mild'});
 		console.log(productOnehundredseven);
-		
-		
+			
 		
 		const productOnehundredeight = await createProduct({
 			name: 'Cocoa Dusted Almonds', 
@@ -1324,8 +1323,7 @@ async function createInitialProducts() {
             hardness: 'Hard, aged',
 			odor: 'Mild'});
 		console.log(productOnehundredeight);
-		
-		
+      
 		
 		const productOnehundrednine = await createProduct({
 			name: 'Walnut Halves and Pieces', 
@@ -1542,7 +1540,7 @@ async function createInitialProducts() {
 				
 		
 		const productOnehundredtwentyseven = await createProduct({
-			name: 'Asiago', 
+			name: 'Asiago PDO', 
             description: 'Depending on age, the rinds of Asiago can be straw coloured and elastic to brownish grey and hard. The paste can be white to dark yellow, with small to medium irregular holes. Based on the ageing, Asiago can be used for grating, melting, slicing on a variety of salads, sandwiches, soups, pasta, and sauces. ',
             price: 7.76,
             type:'Cheese',
@@ -1585,7 +1583,9 @@ async function createInitialProducts() {
 			odor: 'Grassy, Milky, Strong'});
 		console.log(productOnehundredthirty);
 				
-		const productOnehundredthirtyone = await createProduct({
+
+			const productOnehundredthirtyone = await createProduct({
+
 			name: 'Cheddar', 
             description: 'Cheddar cheese, the most widely purchased and eaten cheese in the world is always made from cow milk. It is a hard and natural cheese that has a slightly crumbly texture if properly cured and if it is too young, the texture is smooth. ',
             price: 7.56,
@@ -1661,7 +1661,6 @@ async function createInitialProducts() {
             hardness: 'Hard',
 			odor: 'Strong'});
 		console.log(productOnehundredthirtyseven);
-		
 
 		const productOnehundredthirtyeight = await createProduct({
 			name: 'Kanterkaas', 
@@ -1835,8 +1834,18 @@ async function createInitialProducts() {
             origin: 'Italy',
             hardness: 'Hard',
 			odor: 'Mild'});
-		console.log(productOnehundredfiftyone);
-
+        console.log(productOnehundredfiftyone);
+        
+        const productOnehundredfiftytwo = await createProduct({
+			name: 'Nokkelost', 
+            description: 'Flavoured with cumin, caraway seeds and cloves, it is a bit spicy, nutty and tangy in taste. The cheese with 45% of fats is suitable for non-vegetarians. It can be paired with Red Wine and Ripasso.  ',
+            price: 9.95,
+            type:'Cheese',
+            "imageUrl": 'https://image.com',
+            origin: 'Norway',
+            hardness: 'Hard',
+			odor: 'Mild'});
+		console.log(productOnehundredfiftytwo);
 
         console.log('end creating initial products');
     } catch (error) {
