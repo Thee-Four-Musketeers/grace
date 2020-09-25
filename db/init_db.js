@@ -23,7 +23,7 @@ async function buildTables() {
             DROP TYPE IF EXISTS choice;
             DROP TYPE IF EXISTS urgency;
             DROP TYPE IF EXISTS status;
-            CREATE TYPE choice AS ENUM ('Cheese', 'Meat', 'Fruit', 'Board');
+            CREATE TYPE choice AS ENUM ('Cheese', 'Meat', 'Fruit', 'Nut', 'Board', 'cheese', 'meat', 'fruit', 'board', 'nut');
             CREATE TYPE urgency AS ENUM ('Overnight', 'Two Day', 'Ground', 'USPS');
             CREATE TYPE status AS ENUM ('Cart', 'Order', 'Paid', 'Shipped', 'Complete', 'History');
         `);
