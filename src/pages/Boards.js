@@ -5,9 +5,10 @@ import ProductCard from '../components/ProductCard';
 
 import './Boards.css'
 
-const Boards = ({ products, setProductType }) => {
-
+const Boards = ({ products, productType, setProductType }) => {
     setProductType('Boards');
+    console.log(productType);
+
     document.body.classList.add('solid', 'board');
 
     return (

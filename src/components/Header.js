@@ -1,16 +1,13 @@
 import React from 'react';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
+import { Container, Row, Col, Navbar, Nav, Button} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 import ModalLogin from "./ModalLogin";
 import ModalRegister from './ModalRegister';
 import useModalRegister from './hooks/useModalRegister';
 import useModalLogin from './hooks/useModalLogin';
 
-import { Link } from 'react-router-dom';
+
 
 import './Header.css'
 
@@ -36,22 +33,30 @@ const Header = ({ user, setUser, cart }) => {
                         </Link>
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                         <Navbar.Collapse id="responsive-navbar-nav">
-                            <Nav className="mr-auto">
+                            <Nav className="mr-auto nav-left">
                                 <Link className="nav-link" to="/cheeses">Our Cheeses</Link>
                                 <Link className="nav-link" to="/boards">Premade Boards</Link>
                                 <Link className="nav-link" to="/sides">Accompaniments</Link>
                             </Nav>
-                            <Nav>
-                                <Nav.Link className="ModalLogin" onClick={toggle1}>Register</Nav.Link>
-                                <Navbar.Text>|</Navbar.Text>
-                                <Nav.Link className="ModalLogin" onClick={toggleLogin}>Sign In</Nav.Link>
-                                <Navbar.Text>|</Navbar.Text>
-                                <Link className="nav-link" to="/login" onClick={signOutHandler}>Sign Out</Link>
-                                <Navbar.Text>|</Navbar.Text>
-                                <Nav.Link eventKey={2} href="/cart">
+                               
+                            <Nav className="nav-right">
+                                { user.token
+                                    ? <>
+                                        <Button variant="outline-light" className="btn-controls mx-1">Account</Button>
+                                        <Button variant="outline-light" className="btn-controls mx-1" onClick={signOutHandler}>Sign Out</Button>
+                                        {/* <Link className="nav-link" to="/login" onClick={signOutHandler}>Sign Out</Link> */}
+                                    </> : <>
+                                        <Button variant="outline-light" className="btn-controls mx-1" onClick={toggleLogin}>Sign In</Button>
+                                        <Button variant="outline-light" className="btn-controls mx-1" onClick={toggle1}>Sign Up</Button>
+                                        {/* <Nav.Link onClick={toggleLogin}>Sign In</Nav.Link>   
+                                        <Nav.Link onClick={toggle1}>Register</Nav.Link> */}
+                                    </>  
+                                }
+                                <Nav.Link className="cart-link" href="/cart">
                                     <i className="fas fa-shopping-cart cart-icon"></i>
                                     <span className="cart-count">{cartCount}</span>
                                 </Nav.Link>
+
                             </Nav>
                         </Navbar.Collapse>
                     </Navbar>

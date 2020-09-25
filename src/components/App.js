@@ -18,16 +18,14 @@ import { fetchProductsByType } from '../api';
 import './App.css'
 
 const App = () => {
+    const [user, setUser] = useState({});
+    
     const [products, setProducts] = useState([]);
-    const [productType, setProductType] = useState('Cheese');
+    const [productType, setProductType] = useState('');
+    
     const [cart, setCart] = useState([]);
     const [cartTotal, setCartTotal] = useState(0);
-
-
-
-    console.log('got the goods?', products);
-    const [user, setUser] = useState({});
-
+    
     function localStorageUser() {
         if (localStorage.getItem('user')) {
             const localStorageUser = JSON.parse(localStorage.getItem('user'));
@@ -45,12 +43,11 @@ const App = () => {
         fetchProductsByType(productType)
             .then((response) => {
                 setProducts(response.products);
-                console.log('useEffect FetchProducts', response.products)
             })
             .catch((error) => {
                 console.error(error);
             });
-    }, []);
+    }, [productType]);
 
     useEffect(() => {
         total();
