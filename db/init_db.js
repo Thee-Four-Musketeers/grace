@@ -23,7 +23,8 @@ async function buildTables() {
             DROP TYPE IF EXISTS choice;
             DROP TYPE IF EXISTS urgency;
             DROP TYPE IF EXISTS status;
-            CREATE TYPE choice AS ENUM ('Cheese', 'Meat', 'Fruit', 'Board');
+
+            CREATE TYPE choice AS ENUM ('cheese', 'meat', 'fruit', 'nut', 'board', 'Cheese', 'Meat', 'Fruit', 'Nut', 'Board');
             CREATE TYPE urgency AS ENUM ('Overnight', 'Two Day', 'Ground', 'USPS');
             CREATE TYPE status AS ENUM ('Cart', 'Order', 'Paid', 'Shipped', 'Complete', 'History');
         `);
@@ -942,7 +943,7 @@ async function createInitialProducts() {
 			name: 'Oldani Salami', 
             description: 'Very unique salami, made in St Louis for many years. In the 1970s and 1980s, it was the number one salami in Little Italy. The new owner is doing a fabulous job of bringing back this one of a kind salami. Ground fine and finished with red wine and garlic, it is great as an appetizer or in a panino.',
             price: 15.00,
-            type:'Cheese',
+            type:'Meat',
             "imageUrl": 'https://image.com',
             origin: 'Pork',
             hardness: 'Hard, aged',
@@ -1184,7 +1185,7 @@ async function createInitialProducts() {
 			name: 'Black Plums', 
             description: 'Shiny and slightly bumpy on the outside, a sweet, juicy yellow-red on the inside. Besides being exceptionally good eating, this is one of the best cooking plums. Use black plums for preserves, compotes, sauces, or tarts. ',
             price: 3.99,
-            type:'Cheese',
+            type:'Fruit',
             "imageUrl": 'https://image.com',
             origin: 'Fruit',
             hardness: 'Hard, aged',
@@ -1310,8 +1311,7 @@ async function createInitialProducts() {
             hardness: 'Hard, aged',
 			odor: 'Mild'});
 		console.log(productOnehundredseven);
-		
-		
+			
 		
 		const productOnehundredeight = await createProduct({
 			name: 'Cocoa Dusted Almonds', 
@@ -1323,8 +1323,7 @@ async function createInitialProducts() {
             hardness: 'Hard, aged',
 			odor: 'Mild'});
 		console.log(productOnehundredeight);
-		
-		
+      
 		
 		const productOnehundrednine = await createProduct({
 			name: 'Walnut Halves and Pieces', 
@@ -1584,7 +1583,9 @@ async function createInitialProducts() {
 			odor: 'Grassy, Milky, Strong'});
 		console.log(productOnehundredthirty);
 				
+
 			const productOnehundredthirtyone = await createProduct({
+
 			name: 'Cheddar', 
             description: 'Cheddar cheese, the most widely purchased and eaten cheese in the world is always made from cow milk. It is a hard and natural cheese that has a slightly crumbly texture if properly cured and if it is too young, the texture is smooth. ',
             price: 7.56,
@@ -1660,7 +1661,6 @@ async function createInitialProducts() {
             hardness: 'Hard',
 			odor: 'Strong'});
 		console.log(productOnehundredthirtyseven);
-		
 
 		const productOnehundredthirtyeight = await createProduct({
 			name: 'Kanterkaas', 

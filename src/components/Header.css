@@ -4,8 +4,7 @@
 
 
 nav { font-size: 1.1rem !important; padding: 1rem !important; }
-.nav-left { justify-content: flex-start; }
-.nav-right{ justify-content:flex-end; }
+
 
 .nav-logo { max-height: 80px; }
 
@@ -13,6 +12,21 @@ nav { font-size: 1.1rem !important; padding: 1rem !important; }
 .navbar-text { color: rgba(255, 255, 255, 0.7) !important; letter-spacing: 1px; padding: 0.5rem !important; }
 .nav-link:hover { color: rgba(255, 255, 255, 1) !important; }
 
+.nav-left .nav-link { padding: 0.5rem 1rem !important; } 
+
+.btn-controls { 
+    color: rgba(255, 255, 255, 0.7) !important; 
+    height: 40px; padding: 0.25rem 0.5rem;
+    width: 100px;
+}
+
+.btn-controls:hover { 
+    background: rgb(179, 99, 2) !important;
+    border-color: rgb(179, 99, 2) !important;
+    color: #FFFFFF !important; 
+}
+
+.cart-link { padding-left: 1.5rem !important; }
 .cart-icon { font-size: 24px; }
 .cart-count {
     background: rgb(179, 99, 2);

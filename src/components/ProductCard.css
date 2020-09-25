@@ -6,10 +6,28 @@
 
 .card a {
     color: #343A40;
-    font-weight: 700;
+    font-weight: 800;
 }
 
-.btn {
-    line-height: 1.2;
-    padding-top: 10px;
+.card a:hover {
+    color: rgb(179, 99, 2);
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.card-footer {
+    background: none;
+    border-width: 0;
+}
+
+.btn-card {
+    background: rgb(179, 99, 2);
+    border-color: rgb(179, 99, 2);
+    line-height: 1;
+    padding: 15px 20px 12px;
+}
+
+.btn-card:hover {
+    background: cadetblue;
+    border-color: cadetblue;
 }
