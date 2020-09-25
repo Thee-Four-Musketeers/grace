@@ -23,7 +23,8 @@ async function buildTables() {
             DROP TYPE IF EXISTS choice;
             DROP TYPE IF EXISTS urgency;
             DROP TYPE IF EXISTS status;
-            CREATE TYPE choice AS ENUM ('Cheese', 'Meat', 'Fruit', 'Board');
+
+            CREATE TYPE choice AS ENUM ('cheese', 'meat', 'fruit', 'nut', 'board', 'Cheese', 'Meat', 'Fruit', 'Nut', 'Board');
             CREATE TYPE urgency AS ENUM ('Overnight', 'Two Day', 'Ground', 'USPS');
             CREATE TYPE status AS ENUM ('Cart', 'Order', 'Paid', 'Shipped', 'Complete', 'History');
         `);
@@ -942,7 +943,7 @@ async function createInitialProducts() {
 			name: 'Oldani Salami', 
             description: 'Very unique salami, made in St Louis for many years. In the 1970s and 1980s, it was the number one salami in Little Italy. The new owner is doing a fabulous job of bringing back this one of a kind salami. Ground fine and finished with red wine and garlic, it is great as an appetizer or in a panino.',
             price: 15.00,
-            type:'Cheese',
+            type:'Meat',
             "imageUrl": 'https://image.com',
             origin: 'Pork',
             hardness: 'Hard, aged',
@@ -1184,7 +1185,7 @@ async function createInitialProducts() {
 			name: 'Black Plums', 
             description: 'Shiny and slightly bumpy on the outside, a sweet, juicy yellow-red on the inside. Besides being exceptionally good eating, this is one of the best cooking plums. Use black plums for preserves, compotes, sauces, or tarts. ',
             price: 3.99,
-            type:'Cheese',
+            type:'Fruit',
             "imageUrl": 'https://image.com',
             origin: 'Fruit',
             hardness: 'Hard, aged',
@@ -1234,7 +1235,607 @@ async function createInitialProducts() {
             origin: 'Fresh Direct',
             hardness: 'Hard, aged',
 			odor: 'Mild'});
-		console.log(productOnehundredone);
+        console.log(productOnehundredone);
+        
+        		
+		const productOnehundredtwo = await createProduct({
+			name: 'Buffalo Peanuts', 
+            description: 'Pick buffalo peanuts for a bold snack you can take on the go. Tantalizingly sweet and crunchy buffalo peanuts have an initially sweet taste followed by a sizzling spiciness. ',
+            price: 4.99,
+            type:'Nut',
+            "imageUrl": 'https://image.com',
+            origin: 'nuts.com',
+            hardness: 'Hard, aged',
+			odor: 'Mild'});
+		console.log(productOnehundredtwo);
+		
+		const productOnehundredthree = await createProduct({
+			name: 'Bourbon Pecans', 
+            description: ' Each buttery pecan is caramelized in sugar and a splash of real bourbon, making them smoky and sweet with just a warm hint of bourbon flavor. For extra crunch and toasty taste, toss them over a bowl of ice cream, plain granola or yogurt.',
+            price: 11.99,
+            type:'Nut',
+            "imageUrl": 'https://image.com',
+            origin: 'nuts.com',
+            hardness: 'Hard, aged',
+			odor: 'Mild'});
+		console.log(productOnehundredthree);
+		
+		
+		
+		const productOnehundredfour = await createProduct({
+			name: 'Honey Roasted Cashews', 
+            description: 'An exceptional product. Jumbo cashews roasted to perfection, then covered in a honey coating with a slight touch of salt. Honey roasted cashews are one of the best tasting products we sell! ',
+            price: 13.99,
+            type:'Nut',
+            "imageUrl": 'https://image.com',
+            origin: 'nuts.com',
+            hardness: 'Hard, aged',
+			odor: 'Mild'});
+		console.log(productOnehundredfour);
+		
+		
+		
+		const productOnehundredfive = await createProduct({
+			name: 'Salted Cashews', 
+            description: 'These salted cashews are a family favorite that goes back generations. Jumbo cashews freshly roasted to perfection and then slightly salted to enhance a truly delicious taste. ',
+            price: 12.99,
+            type:'Nut',
+            "imageUrl": 'https://image.com',
+            origin: 'nuts.com',
+            hardness: 'Hard, aged',
+			odor: 'Mild'});
+		console.log(productOnehundredfive);
+		
+		
+		
+		const productOnehundredsix = await createProduct({
+			name: 'Praline Pecans', 
+            description: 'There are few nutty treats as classically southern as praline pecans. We take whole, American pecans and candy them with real sugar and butter for a crispy, heavenly morsel you will love.',
+            price: 15.99,
+            type:'Nut',
+            "imageUrl": 'https://image.com',
+            origin: 'nuts.com',
+            hardness: 'Hard, aged',
+			odor: 'Mild'});
+		console.log(productOnehundredsix);
+		
+		
+		
+		const productOnehundredseven = await createProduct({
+			name: 'Salt and Pepper Pistachios', 
+            description: 'Our salt and pepper pistachios are oh so tasty! Each crunchy roasted pistachio has just the right touch of salt and pepper for a perfectly seasoned snack. They are always fun, fresh and delicious. ',
+            price: 13.99,
+            type:'Nut',
+            "imageUrl": 'https://image.com',
+            origin: 'nuts.com',
+            hardness: 'Hard, aged',
+			odor: 'Mild'});
+		console.log(productOnehundredseven);
+		
+		
+		
+		const productOnehundredeight = await createProduct({
+			name: 'Cocoa Dusted Almonds', 
+            description: 'Our cocoa dusted almonds pack a double antioxidant punch. Crunchy almonds are covered in luscious dark chocolate and then rolled in cocoa. This delightful treat is perfect with a cup of coffee, or simply to enjoy as a snack. ',
+            price: 11.99,
+            type:'Nut',
+            "imageUrl": 'https://image.com',
+            origin: 'nuts.com',
+            hardness: 'Hard, aged',
+			odor: 'Mild'});
+		console.log(productOnehundredeight);
+		
+		
+		
+		const productOnehundrednine = await createProduct({
+			name: 'Walnut Halves and Pieces', 
+            description: 'Our raw walnut pieces are carefully shelled and perfectly chopped, ready to be included in all your delicious recipes. ',
+            price: 6.99,
+            type:'Nut',
+            "imageUrl": 'https://image.com',
+            origin: 'Sincerely Nuts',
+            hardness: 'Hard, aged',
+			odor: 'Mild'});
+		console.log(productOnehundrednine);
+		
+		
+		
+		const productOnehundredten = await createProduct({
+			name: 'Macadamias', 
+            description: 'Roasted and salted macadamia nuts are a total treat, with the seasoning perfectly bringing out the sweet, nutty flavor. ',
+            price: 20.99,
+            type:'Nut',
+            "imageUrl": 'https://image.com',
+            origin: 'Sincerely Nuts',
+            hardness: 'Hard, aged',
+			odor: 'Mild'});
+		console.log(productOnehundredten);
+		
+		
+		
+		const productOnehundredeleven = await createProduct({
+			name: 'Mixed Nuts', 
+            description: 'Unsalted roasted mixed nuts are a great low-sodium treat to snack on whenever the occasion calls for a bit of crunchiness. The nut mix contains pecans, cashews, hazelnuts, walnuts, almonds, Brazil nuts, and macadamia nuts. We have ensured there are no peanuts in there, making the mix suitable for anyone allergic to them. And all of that nutty deliciousness brings with it a whole lot of healthiness. The unsalted mixed nuts contain wholesome minerals, vitamins, fiber, antioxidants, and heart-friendly fats. In just one handful, you will enjoy rare nutrients such as the selenium found in Brazil nuts and the metabolism-boosting palmitoleic acid in macadamia nuts. We understand just how important a mouthwatering crunch is in any nuts mix, and that is why we carefully seal every bag to guarantee nothing but freshness. ',
+            price: 4.99,
+            type:'Nut',
+            "imageUrl": 'https://image.com',
+            origin: 'Sincerely Nuts',
+            hardness: 'Hard, aged',
+			odor: 'Mild'});
+		console.log(productOnehundredeleven);
+		
+		
+		
+		const productOnehundredtwelve = await createProduct({
+			name: 'Pignolias', 
+            description: 'Pignolias are a true delicacy, packed with a delicious nutty flavor that tastes great in all your recipes. Whether you want to whip up some fresh pesto sauce, give a nice crunch to your salads, or a nutty sensibility to your desserts, these pignolia nuts are super fresh and sure not to disappoint. And we mean perfectly fresh. Thanks to our diligent packaging, you will never find stale or deformed pignolias in your order; we pride ourselves in making you smile whenever you rip open a bag of our goodies. And this one is as healthy as they come. Pine nuts have been consumed by man for millennia, being a staple food in the diet of ancient Native Americans and other cultures across the world. They contain essential fatty acids, antioxidants, minerals, vitamins and fiber. With just a delicious handful, you will soon be on your way to a healthier lifestyle. ',
+            price: 23.99,
+            type:'Nut',
+            "imageUrl": 'https://image.com',
+            origin: 'Sincerely Nuts',
+            hardness: 'Hard, aged',
+			odor: 'Mild'});
+		console.log(productOnehundredtwelve);
+		
+		
+		
+		const productOnehundredthirteen = await createProduct({
+			name: 'Edamame', 
+            description: 'Edamame are soy beans picked in the initial stages of ripening, and come packed with a concentrated serving of healthy nutrients. ',
+            price: 3.99,
+            type:'Nut',
+            "imageUrl": 'https://image.com',
+            origin: 'Sincerely Nuts',
+            hardness: 'Hard, aged',
+			odor: 'Mild'});
+		console.log(productOnehundredthirteen);
+		
+		
+		
+		const productOnehundredfourteen = await createProduct({
+			name: 'Hazel Nuts', 
+            description: 'These roasted and out of the shell hazelnuts are the same delicious skinless and blanched hazelnuts packed in a single 10 pound box. ',
+            price: 99.77,
+            type:'Nut',
+            "imageUrl": 'https://image.com',
+            origin: 'Superior Nut',
+            hardness: 'Hard, aged',
+			odor: 'Mild'});
+		console.log(productOnehundredfourteen);
+		
+		
+		
+		const productOnehundredfifteen = await createProduct({
+			name: 'Wasabi Peas', 
+            description: 'Looking for a snack that is a good source of protein and that is low in fat? Try our Wasabi coated green peas! They are crunchy, spicy... Hot! You can also create your own Asian-inspired snack mix with this flavorful and spicy treat. ',
+            price: 4.99,
+            type:'Nut',
+            "imageUrl": 'https://image.com',
+            origin: 'nuts.com',
+            hardness: 'Hard, aged',
+			odor: 'Mild'});
+		console.log(productOnehundredfifteen);
+		
+		
+		
+		const productOnehundredsixteen = await createProduct({
+			name: 'Mozzarella di Bufala', 
+            description: 'The cheese goes well in antipasti dishes, with salads, pastas, calzones, vegetables and various side dishes. It is also common in popular Italian dishes like lasagne and baked casserole. ',
+            price: 10.42,
+            type:'Cheese',
+            "imageUrl": 'https://image.com',
+            origin: 'Italy',
+            hardness: 'Soft',
+			odor: 'Fresh'});
+		console.log(productOnehundredsixteen);
+		
+		
+		const productOnehundredseventeen = await createProduct({
+			name: 'Olomucke Tvaruzky', 
+            description: 'As an important and unavoidable part of Czech cuisine, this fetid cheese offers a distinctive, pungent taste with strong aroma. Famous as natural and soft cheese, it does not contain any chemical additives. ',
+            price: 8.71,
+            type:'Cheese',
+            "imageUrl": 'https://image.com',
+            origin: 'Czech Republic',
+            hardness: 'Soft',
+			odor: 'Strong'});
+		console.log(productOnehundredseventeen);
+				
+		const productOnehundredeighteen = await createProduct({
+			name: 'Perail de Brebis', 
+            description: 'The rind of the cheese is smooth, revealing a pate that is pale yellow, soft and thick. It is the perfect choice if you desire something that is creamy and rich with a strong, powerful taste balanced by earthy undertones. The cheese requires a very short maturation period and pairs best with a Pacherin du Vic-Bilh or a Saint Chinian red wine. ',
+            price: 7.78,
+            type:'Cheese',
+            "imageUrl": 'https://image.com',
+            origin: 'France',
+            hardness: 'Soft',
+			odor: 'Earthy'});
+		console.log(productOnehundredeighteen);
+				
+		const productOnehundrednineteen = await createProduct({
+			name: "Za'atar Burrata", 
+            description: "Za'atar Burrata is an Italian Burrata that is filled with labne (a Middle Eastern kefir cheese), Italian mascarpone, and za'atar, a Middle Eastern herb mixture. It is produced by Fiore di Nonno, an artisanal cheese company located in Massachusetts, ",
+            price: 12.18,
+            type:'Cheese',
+            "imageUrl": 'https://image.com',
+            origin: 'US',
+            hardness: 'Soft',
+			odor: 'Aromatic, Herbal'});
+		console.log(productOnehundrednineteen);
+				
+		const productOnehundredtwenty = await createProduct({
+			name: 'Rigotte', 
+            description: 'Rigotte can be eaten fresh but the actual flavours develop on maturity. The pate will become slightly moist and the rind nearly dry and finely wrinkled. A nutty, delicate flavour of honey and acacia will leave a wonderful taste in the mouth. ',
+            price: 19.04,
+            type:'Cheese',
+            "imageUrl": 'https://image.com',
+            origin: 'France',
+            hardness: 'Soft',
+			odor: 'Goaty, Nutty'});
+		console.log(productOnehundredtwenty);
+				
+		const productOnehundredtwentyone = await createProduct({
+			name: 'Rochebaron', 
+            description: 'Rochebaron, also known as Montbriac is a French blue gourmet cheese made in Pouligny-Saint-Pierre in central France. The French are known to produce exceptionally soft, creamy cheese and Rochebaron live up to the expectations. ',
+            price: 6.78,
+            type:'Cheese',
+            "imageUrl": 'https://image.com',
+            origin: 'France',
+            hardness: 'Soft',
+			odor: 'Strong'});
+		console.log(productOnehundredtwentyone);
+				
+		const productOnehundredtwentytwo = await createProduct({
+			name: 'Rustinu', 
+            description: 'Rustinu is a French cheese introduced by famous French cheesemaker, Joseph Guidicelli. This cheese originates from the historical region of Rustinu, where the family business is located.  ',
+            price: 3.79,
+            type:'Cheese',
+            "imageUrl": 'https://image.com',
+            origin: 'France',
+            hardness: 'Soft',
+			odor: 'Fresh'});
+		console.log(productOnehundredtwentytwo);
+				
+		const productOnehundredtwentythree = await createProduct({
+			name: 'Soumaintrain', 
+            description: 'Soumaintrain is a farmhouse (fermier) French cheese made with raw cow’s milk in the Burgundy region of France. The soft, uncooked, and un-pressed paste has a distinct pungent yet sweet and creamy flavour resulting from numerous washings with a solution of brine and Marc de Bourgogne.  ',
+            price: 10.42,
+            type:'Cheese',
+            "imageUrl": 'https://image.com',
+            origin: 'France',
+            hardness: 'Soft',
+			odor: 'Pungent'});
+		console.log(productOnehundredtwentythree);
+				
+		const productOnehundredtwentyfour = await createProduct({
+			name: 'Tommes', 
+            description: 'Tomme is a complex and unpredictable class of cheeses with a delicate milk and buttery aroma. It tastes of fresh butter and cream yet can be complex when compared to some other cheeses. The texture is semi-soft or soft and pliable. Its pate, which is often white to light yellow in colour, comes covered with an ivory to a yellow rind. ',
+            price: 7.74,
+            type:'Cheese',
+            "imageUrl": 'https://image.com',
+            origin: 'Switzerland',
+            hardness: 'Soft',
+			odor: 'Earthy, Fresh, Milky'});
+		console.log(productOnehundredtwentyfour);
+				
+		const productOnehundredtwentyfive = await createProduct({
+			name: 'Torta del Casal', 
+            description: 'Torta del Casar is vegetarian produce coagulated with cardoon, a wild thistle which adds a slightly bitter note to the rich and slightly salty tasting cheese. The cheese is aged for at least 60 days upon which it develops a semi-hard, yellow to an ochre crust and a soft, spreadable, creamy, almost runnier paste. Its insides are yellowish in colour and the aroma is very unique. Torta del Casar can be enjoyed as an appetizer or a dessert, spread on bread with a glass of dry, red wine. ',
+            price: 15.88,
+            type:'Cheese',
+            "imageUrl": 'https://image.com',
+            origin: 'Spain',
+            hardness: 'Soft',
+			odor: 'Lanoline'});
+		console.log(productOnehundredtwentyfive);
+				
+		const productOnehundredtwentysix = await createProduct({
+			name: 'Appenzeller', 
+            description: 'The cheese originates in the north-eastern Swiss canton of the Appenzell near the Liechtenstein border but, today is also made in the canton of St Gallen (which is a siege of a special authority protecting a Genuity of Appenzell). ',
+            price: 19.31,
+            type:'Cheese',
+            "imageUrl": 'https://image.com',
+            origin: 'Switzerland',
+            hardness: 'Hard',
+			odor: 'Mild'});
+		console.log(productOnehundredtwentysix);
+				
+		
+		const productOnehundredtwentyseven = await createProduct({
+			name: 'Asiago', 
+            description: 'Depending on age, the rinds of Asiago can be straw coloured and elastic to brownish grey and hard. The paste can be white to dark yellow, with small to medium irregular holes. Based on the ageing, Asiago can be used for grating, melting, slicing on a variety of salads, sandwiches, soups, pasta, and sauces. ',
+            price: 7.76,
+            type:'Cheese',
+            "imageUrl": 'https://image.com',
+            origin: 'Italy',
+            hardness: 'Hard',
+			odor: 'Pungent'});
+		console.log(productOnehundredtwentyseven);
+				
+		const productOnehundredtwentyeight = await createProduct({
+			name: 'Bavarian Bergkase', 
+            description: 'A cross between Emmental, Appenzeller and Allgauer Bergkase is a high-fat cheese with 62% fat and is mainly consumed in slices, sandwiches, salads and casseroles. ',
+            price: 9.72,
+            type:'Cheese',
+            "imageUrl": 'https://image.com',
+            origin: 'Germany',
+            hardness: 'Hard',
+			odor: 'Aromatic, Rich'});
+		console.log(productOnehundredtwentyeight);
+				
+		const productOnehundredtwentynine = await createProduct({
+			name: 'Boeren-leidse met Sleutels', 
+            description: 'This cheese has a powerful, rich flavour with that extra zing of cumin. It is gently aromatic and becomes more fruity and intense as it ripens. ',
+            price: 6.42,
+            type:'Cheese',
+            "imageUrl": 'https://image.com',
+            origin: 'Holland',
+            hardness: 'Hard',
+			odor: 'Aromatic, Rich'});
+		console.log(productOnehundredtwentynine);
+				
+		const productOnehundredthirty = await createProduct({
+			name: 'Canestrato', 
+            description: 'Due to its hard texture, it has a good reputation as a table cheese and pairs well with fresh, raw vegetables and pears. It can also be grated on pasta and soups. Wines such as Greco di Tufo, Falanghina, Lacryma Christi del Vesuvio and Aglianico make a perfect match with the cheese.  ',
+            price: 9.42,
+            type:'Cheese',
+            "imageUrl": 'https://image.com',
+            origin: 'Italy',
+            hardness: 'Hard',
+			odor: 'Grassy, Milky, Strong'});
+		console.log(productOnehundredthirty);
+				
+		const productOnehundredthirtyone = await createProduct({
+			name: 'Cheddar', 
+            description: 'Cheddar cheese, the most widely purchased and eaten cheese in the world is always made from cow milk. It is a hard and natural cheese that has a slightly crumbly texture if properly cured and if it is too young, the texture is smooth. ',
+            price: 7.56,
+            type:'Cheese',
+            "imageUrl": 'https://image.com',
+            origin: 'England',
+            hardness: 'Hard',
+			odor: 'Mild'});
+		console.log(productOnehundredthirtyone);
+				
+		const productOnehundredthirtytwo = await createProduct({
+			name: 'Dutch Mimolette (Commissiekaas)', 
+            description: 'This cheese looks like giant orange with rough, pitted skin. It is creamery, hard cheese made from cow milk and it is actually a matured Edam coloured with carrot juice.  ',
+            price: 5.99,
+            type:'Cheese',
+            "imageUrl": 'https://image.com',
+            origin: 'Holland',
+            hardness: 'Hard',
+			odor: 'Fruity'});
+		console.log(productOnehundredthirtytwo);
+				
+		const productOnehundredthirtythree = await createProduct({
+			name: 'Emmental', 
+            description: 'The cheese goes well in antipasti dishes, with salads, pastas, calzones, vegetables and various side dishes. It is also common in popular Italian dishes like lasagne and baked casserole. ',
+            price: 12.13,
+            type:'Cheese',
+            "imageUrl": 'https://image.com',
+            origin: 'Switzerland',
+            hardness: 'Hard',
+			odor: 'Mild, Grassy'});
+		console.log(productOnehundredthirtythree);
+				
+		const productOnehundredthirtyfour = await createProduct({
+			name: 'Fiore Sardo', 
+            description: 'As per DOP standards, the cheese is made with milk sourced from a single flock of local Sardinian breed. The cheese after ageing for six months develops a natural rustic brown rind and a sour, damp smell. Upon slicing, the pate reveals a compact, dense, straw yellow or white colour. It is wonderfully rich in flavour, with a granular texture. It is carefully smoked, adding another layer of complexity ',
+            price: 21.19,
+            type:'Cheese',
+            "imageUrl": 'https://image.com',
+            origin: 'Italy',
+            hardness: 'Hard',
+			odor: 'Rich, Strong'});
+		console.log(productOnehundredthirtyfour);
+				
+		const productOnehundredthirtyfive = await createProduct({
+			name: 'Fontina', 
+            description: 'Fontina is a Swedish style cheese made by Emmi Roth USA. Fontina is a hard cheese which has a creamy texture and a subtle tart flavour characterized by a mild yeasty finish. It melts beautifully which makes it ideal for Pizzas, flatbreads, lasagnas, quesadillas.  ',
+            price: 6.68,
+            type:'Cheese',
+            "imageUrl": 'https://image.com',
+            origin: 'US',
+            hardness: 'Hard',
+			odor: 'Mild, Yeasty'});
+		console.log(productOnehundredthirtyfive);
+				
+		const productOnehundredthirtysix = await createProduct({
+			name: 'Gammelost', 
+            description: 'A semisoft, blue cheese, Gammelost imparts a sharp and aromatic flavour. Ripened using Mucor, Rhizopus, and Penicillium moulds, the crust of the cheese is brownish while the pate is brownish-yellow with a hue of blue and green. Texturally, the cheese is firm, dense, moist and usually granular. ',
+            price: 14.44,
+            type:'Cheese',
+            "imageUrl": 'https://image.com',
+            origin: 'Norway',
+            hardness: 'Hard',
+			odor: 'Aromatic'});
+		console.log(productOnehundredthirtysix);
+				
+		const productOnehundredthirtyseven = await createProduct({
+			name: 'Grana', 
+            description: 'Grana refer to a family of hard, mature cheeses from Italy that have a granular, flaky texture and are mainly used for grating. ',
+            price: 10.10,
+            type:'Cheese',
+            "imageUrl": 'https://image.com',
+            origin: 'Italy',
+            hardness: 'Hard',
+			odor: 'Strong'});
+		console.log(productOnehundredthirtyseven);
+		
+
+		const productOnehundredthirtyeight = await createProduct({
+			name: 'Kanterkaas', 
+            description: 'Kanternagelkaas flavour varies from fragrant, spicy, warm and spicy to tangy. The pate of the cheese is firm to hard and over time very suitable for grating. The colour of Kanter cheese is evenly ivory or yellow to yellow-green. It has a closed body, but some holes may exist. The cloves and cumin are evenly spread throughout the pate. ',
+            price: 8.48,
+            type:'Cheese',
+            "imageUrl": 'https://image.com',
+            origin: 'IHolland',
+            hardness: 'Hard',
+			odor: 'Aromatic, Pleasant'});
+		console.log(productOnehundredthirtyeight);
+		
+		const productOnehundredthirtynine = await createProduct({
+			name: 'Kashar', 
+            description: 'Kashar is a Balkan style pasta filata cheese, made by Parish Hill Creamery in southern Vermont, US. It is made by stretching curds and then kept in the bast molds for at least 2 month. During maturation it is rubbed and polished with olive oil that gives an edible rind. Similar to Suffolk,  it is buttery and tangy in taste and is suitable with any meal. Some versions are aged over six months that develops peppery notes. ',
+            price: 6.79,
+            type:'Cheese',
+            "imageUrl": 'https://image.com',
+            origin: 'US',
+            hardness: 'Hard',
+			odor: 'Buttery, Spicy'});
+		console.log(productOnehundredthirtynine);
+				
+	     
+		
+		const productOnehundredforty = await createProduct({
+			name: 'Le Gruyere AOP', 
+            description: 'Le Gruyère AOP (or simply Gruyere) is named after a Swiss village. It is traditional, creamery, unpasteurised, hard cheese. The natural, rusty brown rind is hard and dry. The cheese is darker yellow than Emmental but the texture is more dense and compact. Gruyère is sweet and little salty. When young, it is creamy and nutty but after maturation, the texture becomes earthy and complex with small cracks and grainy.  ',
+            price: 21.12,
+            type:'Cheese',
+            "imageUrl": 'https://image.com',
+            origin: 'Switzerland',
+            hardness: 'Hard',
+			odor: 'Earthy'});
+		console.log(productOnehundredforty);
+				
+	     
+		
+		const productOnehundredfortyone = await createProduct({
+			name: 'Parmesan', 
+            description: 'True Parmesan cheese has a hard, gritty texture and is fruity and nutty in taste. Cheeses mocking Parmesan or inferior Parmesan may have a bitter taste. Parmigiano Reggiano cheese is mostly grated over pastas, used in soups and risottos. It is also eaten on its own as a snack. ',
+            price: 24.35,
+            type:'Cheese',
+            "imageUrl": 'https://image.com',
+            origin: 'Italy',
+            hardness: 'Hard',
+			odor: 'Strong'});
+		console.log(productOnehundredfortyone);
+				
+	     
+		
+		const productOnehundredfortytwo = await createProduct({
+			name: 'Pecorino', 
+            description: 'Pecorinos are traditional, creamery, hard, drum-shaped cheeses. They come in a variety of flavours determined by their age. Aged Pecorinos referred to as ‘stagionato’ are hard and crumbly in texture with buttery and nutty flavours. Young or ‘semi-stagionato’ and ‘fresco’ Pecorinos feature a softer texture with mild, creamy flavours ',
+            price: 16.57,
+            type:'Cheese',
+            "imageUrl": 'https://image.com',
+            origin: 'Italy',
+            hardness: 'Hard',
+			odor: 'Mild'});
+		console.log(productOnehundredfortytwo);
+				
+	     
+		
+		const productOnehundredfortythree = await createProduct({
+			name: 'Pecorino Pepato', 
+            description: 'Pecorino Pepato Mitica® Aged is a pasteurized sheep milk cheese dotted with black peppercorn all over the paste. Originally from Sicily, Italy, it is made in Sardegna. Italy. The cheese is aged for about 6 months during which it develops a flaky yet creamy consistency. The salty, tangy flavours complemented by the spicy peppercorns make this cheese a great table cheese. Shave it on salads or fresh beans or pastas or grate into polenta or atop risotto.  ',
+            price: 19.22,
+            type:'Cheese',
+            "imageUrl": 'https://image.com',
+            origin: 'Italy',
+            hardness: 'Hard',
+			odor: 'Spicy'});
+		console.log(productOnehundredfortythree);
+				
+	     
+		
+		const productOnehundredfortyfour = await createProduct({
+			name: 'Pecorino Romano', 
+            description: 'Pecorino Romano is one of most widely used, sharper alternatives to Parmesan cheeses. Because of the hard texture and sharp & salty flavour, Pecorino Romano is an excellent grating cheese over pasta dishes, breads and baking casseroles. Although, the use of the cheese is limited because of its extreme saltiness. Pair it with a glass of big, bold Italian red wine or a light beer. ',
+            price: 16.76,
+            type:'Cheese',
+            "imageUrl": 'https://image.com',
+            origin: 'Italy',
+            hardness: 'Hard',
+			odor: 'Strong, Nutty'});
+		console.log(productOnehundredfortyfour);
+				
+	     
+		
+		const productOnehundredfortyfive = await createProduct({
+			name: 'Romano', 
+            description: 'Romano cheese works excellent as a table cheese. It can be grated over pasta, soups and salad or shaved onto cooked dishes and cream sauces. Hard cheeses like Romano best pair with fruity wines like Riesling and Prosecco.',
+            price: 14.44,
+            type:'Cheese',
+            "imageUrl": 'https://image.com',
+            origin: 'Italy',
+            hardness: 'Hard',
+			odor: 'Strong'});
+		console.log(productOnehundredfortyfive);
+				
+	     
+		
+		const productOnehundredfortysix = await createProduct({
+			name: 'Roncal', 
+            description: 'Roncal is a wheel-shaped cheese that is covered with a hard, natural rind dotted by a velvety-smooth layer of blue-grey mould. Roncal is complex and piquant, with notes of lanolin and butterscotch.  ',
+            price: 11.44,
+            type:'Cheese',
+            "imageUrl": 'https://image.com',
+            origin: 'Spain',
+            hardness: 'Hard',
+			odor: 'Lanoline'});
+		console.log(productOnehundredfortysix);
+				
+	     
+		
+		const productOnehundredfortyseven = await createProduct({
+			name: 'Roumy', 
+            description: ' Egyptians enjoy the distinctive smell of Roumy with whole wheat pita bread or Baladi bread. In Egypt, slices of Roumy are served at the breakfast table.  ',
+            price: 9.89,
+            type:'Cheese',
+            "imageUrl": 'https://image.com',
+            origin: 'Egypt',
+            hardness: 'Hard',
+			odor: 'Pungent'});
+		console.log(productOnehundredfortyseven);
+					     
+		
+		const productOnehundredfortyeight = await createProduct({
+			name: 'Sancerre', 
+            description: 'When young it has fresh "white wine" fruity flavour and aroma. When aged it develops a strong, nutty, goaty taste with natural rind. Sancerre contains about 40% fats. It goes well with white wine.    ',
+            price: 7.78,
+            type:'Cheese',
+            "imageUrl": 'https://image.com',
+            origin: 'France',
+            hardness: 'Hard',
+			odor: 'Mild'});
+		console.log(productOnehundredfortyeight);
+					     
+		
+		const productOnehundredfortynine = await createProduct({
+			name: 'Smoked Gouda', 
+            description: 'Smoked Gouda is a variant of this famous cheese wherein it is smoked in ancient brick ovens over flaming hickory chip embers. Sensational with beer, this hard cheese has an edible, brown rind and a creamy, yellow interior. It can also perfectly complement tasty snacks like fruits, nuts and dark chocolate. It forms a good combination of sandwiches and burgers.  ',
+            price: 8.32,
+            type:'Cheese',
+            "imageUrl": 'https://image.com',
+            origin: 'Holland',
+            hardness: 'Hard',
+			odor: 'Smokey'});
+		console.log(productOnehundredfortynine);
+					     
+		
+		const productOnehundredfifty = await createProduct({
+			name: 'Swiss', 
+            description: 'The process of Swiss cheese making is designed in a way that no rind forms on the cheese. It can be eaten with fruits such as apples, pears, grapes and thinly-sliced prosciutto ham and salami. Fruity white wine, aged red wine, cran-raspberry juice, tomato or vegetable juices also prove to be great pairs for Swiss cheese.  ',
+            price: 6.77,
+            type:'Cheese',
+            "imageUrl": 'https://image.com',
+            origin: 'Switzerland',
+            hardness: 'Hard',
+			odor: 'Mild'});
+		console.log(productOnehundredfifty);
+					     
+		
+		const productOnehundredfiftyone = await createProduct({
+			name: 'Zanetti Parmigiano Reggiano', 
+            description: 'With its rich, nutty taste and distinctive aroma, it is used by the finest chefs in food preparation. But it is equally delicious to eat with fruit, crackers and wine or sprinkled on pasta, rice or soup.  ',
+            price: 12.22,
+            type:'Cheese',
+            "imageUrl": 'https://image.com',
+            origin: 'Italy',
+            hardness: 'Hard',
+			odor: 'Mild'});
+		console.log(productOnehundredfiftyone);
 
 
         console.log('end creating initial products');
