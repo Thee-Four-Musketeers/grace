@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import './ProductCard.css'
 
 
-const ProductCard = ({ id, name, type, description }) => {
+const ProductCard = ({ id, name, imageUrl, type, description }) => {
 
     function shorten(str,n) {
         return (str.match(RegExp(".{"+n+"}\\S*"))||[str])[0];
@@ -14,7 +14,7 @@ const ProductCard = ({ id, name, type, description }) => {
     return (
         <Card className="text-center" key={id}>
             <Link className="" to="/{type}/{id}">
-                <Card.Img variant="top" src="images/Hero_CheesePlate_1.jpg" />
+                <Card.Img variant="top" src={imageUrl} />
             </Link>
             <Card.Body>
                 <Link className="" to="/{type}/{id}">
