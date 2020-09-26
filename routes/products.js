@@ -7,7 +7,7 @@ const {
     getProducts,
     getProductsById,
     createProduct,
-    getProductsByType
+    getProductsByTypes
 } = require('../db')
 
 
@@ -28,27 +28,23 @@ const {
 // })
 
 productsRouter.get(`/`, async (req, res, next) => {
-    console.log('req path 1', req.path);
     const { type = '' } = req.query
-    console.log("type is:", type)
-
     const typeArray = type.split(',').map(x => x.trim())
+
     try {
-        // if there not a type idea
-        let products
+        let products;
         if (!type) {
-           products =  await getProducts()
+           products =  await getProducts();
         } else {
-            products = await getProductsByType(type)
+            products = await getProductsByTypes(typeArray);
         }
-        // const products = await getProductsByType(type)
-        // else if there is type do something idea
         res.send({
             products
         })
     } catch ({ name, message }) {
         next({ name, message })
     }
+    
 })
 
 

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { Col, CardDeck } from 'react-bootstrap';
 
 import ProductCard from '../components/ProductCard';

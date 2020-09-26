@@ -79,8 +79,8 @@ const App = () => {
                                 </Container>
                             </Route>
 
-                            <Route path="/meats">
-                                <Title title={'Our Meats'} />
+                            <Route path="/boards">
+                                <Title title={'Pre-Made Boards'} />
                                 <Container id="wrapper" fluid>
                                     <Row>
                                         <Sidebar />
@@ -89,8 +89,8 @@ const App = () => {
                                 </Container>
                             </Route>
 
-                            <Route path="/fruits">
-                                <Title title={'Exotic Fruits'} />
+                            <Route path="/sides">
+                                <Title title={'Accompaniments'} />
                                 <Container id="wrapper" fluid>
                                     <Row>
                                         <Sidebar />

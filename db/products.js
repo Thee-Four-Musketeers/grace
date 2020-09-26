@@ -42,18 +42,31 @@ async function getProductById(id){
     }
 }
 
-async function getProductsByType(type){
+
+async function getProductsByTypes(types){
     try{
         const {rows: product } = await client.query(`
-        SELECT *
-        FROM products
-        WHERE type = $1;
-        `, [type])
+            SELECT *
+            FROM products
+            WHERE type = ANY($1::choice[])
+        `, [types])
         return product
     } catch (error){
     throw error }
 }
 
+
+async function getProductsByType(type){
+    try{
+        const {rows: product } = await client.query(`
+            SELECT *
+            FROM products
+            WHERE type = $1;
+        `, [type])
+        return product
+    } catch (error){
+    throw error }
+}
 
 
 async function createProduct({ name, description, price, type, imageUrl, origin, hardness, odor }){
@@ -74,5 +87,6 @@ module.exports = {
     createProduct,
     getProducts,
     getProductById,
-    getProductsByType
-  }
+    getProductsByType,
+    getProductsByTypes
+}
