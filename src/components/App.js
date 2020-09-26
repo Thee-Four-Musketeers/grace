@@ -21,7 +21,7 @@ const App = () => {
     const [user, setUser] = useState({});
     
     const [products, setProducts] = useState([]);
-    const [productType, setProductType] = useState('');
+    const [productType, setProductType] = useState([]);
     
     const [cart, setCart] = useState([]);
     const [cartTotal, setCartTotal] = useState(0);
@@ -40,7 +40,7 @@ const App = () => {
     }, []);
 
     useEffect(() => {
-        fetchProductsByType(productType)
+        fetchProductsByType([productType])
             .then((response) => {
                 setProducts(response.products);
             })
@@ -69,7 +69,7 @@ const App = () => {
                     <main>
                         <Switch>
 
-                            <Route path="/cheeses">
+                            <Route exact path="/cheeses">
                                 <Title title={'Our Cheeses'} />
                                 <Container id="wrapper" fluid>
                                     <Row>
@@ -79,7 +79,7 @@ const App = () => {
                                 </Container>
                             </Route>
 
-                            <Route path="/boards">
+                            <Route exact path="/boards">
                                 <Title title={'Pre-Made Boards'} />
                                 <Container id="wrapper" fluid>
                                     <Row>
@@ -89,7 +89,7 @@ const App = () => {
                                 </Container>
                             </Route>
 
-                            <Route path="/sides">
+                            <Route exact path="/sides">
                                 <Title title={'Accompaniments'} />
                                 <Container id="wrapper" fluid>
                                     <Row>
@@ -99,7 +99,7 @@ const App = () => {
                                 </Container>
                             </Route>
 
-                            <Route path="/cart">
+                            <Route exact path="/cart">
                                 <Title title={'Shopping Cart'} />
                                 <Container id="wrapper" fluid>
                                     <Row>

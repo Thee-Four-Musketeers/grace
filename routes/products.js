@@ -7,38 +7,44 @@ const {
     getProducts,
     getProductsById,
     createProduct,
-    getProductsByType
+    getProductsByTypes
 } = require('../db')
 
 
 // build some routes here
 
-productsRouter.get('/:type', async (req, res, next) => {
-    console.log('req path 2', req.path);
-    const { type } = req.params;
+// productsRouter.get('/:type', async (req, res, next) => {
+//     console.log('req path 2', req.path);
+//     const { type } = req.params;
+//     console.log(type)
+//     try {
+//         const products = await getProductsByType(type)
+//         res.send({
+//             products
+//         })
+//     } catch ({ name, message }) {
+//         next({ name, message })
+//     }
+// })
+
+productsRouter.get(`/`, async (req, res, next) => {
+    const { type = '' } = req.query
+    const typeArray = type.split(',').map(x => x.trim())
+
     try {
-        const products = await getProductsByType(type)
+        let products;
+        if (!type) {
+           products =  await getProducts();
+        } else {
+            products = await getProductsByTypes(typeArray);
+        }
         res.send({
             products
         })
     } catch ({ name, message }) {
         next({ name, message })
     }
-})
-
-productsRouter.get('/', async (req, res, next) => {
-    console.log('req path 1', req.path);
-    try {
-
-        // if there not a type idea
-        const products = await getProducts()
-        // else if there is type do something idea
-        res.send({
-            products
-        })
-    } catch ({ name, message }) {
-        next({ name, message })
-    }
+    
 })
 
 

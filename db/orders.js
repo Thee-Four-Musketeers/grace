@@ -60,9 +60,24 @@ async function getOrders(customer) {
 }
 
 
+async function getAllOrders(){
+    try {
+        const { rows: order } = await client.query(`
+        SELECT *
+        FROM orders
+        `)
+        return orders
+    } catch (error) {
+        throw error
+    }
+}
+
+
+
 module.exports = {
     createOrder,
     createCart,
     getCartById,
-    getOrders
+    getOrders,
+    getAllOrders
 }
