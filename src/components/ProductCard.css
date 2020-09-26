@@ -31,3 +31,8 @@
     background: cadetblue;
     border-color: cadetblue;
 }
+
+img {
+    max-width: 300px;
+    padding-top: 15px;
+}
