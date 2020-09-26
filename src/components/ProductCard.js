@@ -1,11 +1,11 @@
 import React from 'react';
-import { Card, Button } from 'react-bootstrap';
+import { Card, Button, Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 import './ProductCard.css'
 
 
-const ProductCard = ({ id, name, imageUrl, type, description }) => {
+const ProductCard = ({ id, name, imageUrl, type, price, description }) => {
 
     function shorten(str, n) {
         return (str.match(RegExp(".{" + n + "}\\S*")) || [str])[0];
@@ -23,7 +23,10 @@ const ProductCard = ({ id, name, imageUrl, type, description }) => {
                 <Card.Text className="pb-1">{shorten(description, 60) + '...'}</Card.Text>
             </Card.Body>
             <Card.Footer className="pb-4 pt-0">
-                <Button variant="primary" className="btn-card">Add To Cart</Button>
+                <Row>
+                    <Col className="price">${price}</Col>
+                    <Col><Button variant="primary" className="btn-card">Add To Cart</Button></Col>
+                </Row>
             </Card.Footer>
         </Card>
     );
