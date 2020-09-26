@@ -35,9 +35,9 @@ async function createCart({ productId, orderId, productIdQuantity }) {
 async function getCartById(id) {
     try {
         const { rows: cart } = await client.query(`
-        SELECT *
-        FROM orders_products
-        WHERE id = $1;
+            SELECT *
+            FROM orders_products
+            WHERE id=$1;
         `, [id])
         return cart
     } catch (error) {
@@ -49,9 +49,9 @@ async function getCartById(id) {
 async function getOrders(customer) {
     try {
         const { rows: orders } = await client.query(`
-        SELECT *
-        FROM orders
-        WHERE customer = $1;
+            SELECT *
+            FROM orders
+            WHERE customer=$1;
         `, [customer])
         return orders
     } catch (error) {

@@ -1,9 +1,12 @@
 .card {    
-    min-width: 300px;
-    flex: 0 0 300px;
+    min-width: 270px;
+    flex: 0 0 270px;
     margin-bottom: 30px !important;
 }
 
+.card-body { 
+    border-top: 1px solid rgba(0,0,0,.125);
+}
 .card a {
     color: #343A40;
     font-weight: 800;
@@ -30,4 +33,8 @@
 .btn-card:hover {
     background: cadetblue;
     border-color: cadetblue;
+}
+
+img {
+    max-width: 400px;
 }

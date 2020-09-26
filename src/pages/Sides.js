@@ -27,4 +27,4 @@ const Sides = ({ products, setProductType }) => {
 
 }
 
-export default Sides; 
+export default Sides;
