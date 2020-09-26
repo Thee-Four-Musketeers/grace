@@ -35,8 +35,8 @@ const Header = ({ user, setUser, cart }) => {
                         <Navbar.Collapse id="responsive-navbar-nav">
                             <Nav className="mr-auto">
                                 <Link className="nav-link" to="/cheeses">Our Cheeses</Link>
-                                <Link className="nav-link" to="/boards">Premade Boards</Link>
-                                <Link className="nav-link" to="/sides">Accompaniments</Link>
+                                <Link className="nav-link" to="/meats">Meats</Link>
+                                <Link className="nav-link" to="/fruits">Accompaniments</Link>
                             </Nav>
                             <Nav>
                                 { user.token

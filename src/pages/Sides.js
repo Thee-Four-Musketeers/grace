@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Col, CardDeck } from 'react-bootstrap';
 
 import ProductCard from '../components/ProductCard';
@@ -7,7 +7,10 @@ import './Sides.css'
 
 const Sides = ({ products, setProductType }) => {
 
-    setProductType('Fruit');
+    useEffect(() =>{
+        setProductType(['Fruit', 'Nut']);
+    }, [])
+    
     document.body.classList.add('solid', 'sides');
 
     return (

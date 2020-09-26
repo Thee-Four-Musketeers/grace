@@ -21,7 +21,7 @@ const App = () => {
     const [user, setUser] = useState({});
     
     const [products, setProducts] = useState([]);
-    const [productType, setProductType] = useState('');
+    const [productType, setProductType] = useState([]);
     
     const [cart, setCart] = useState([]);
     const [cartTotal, setCartTotal] = useState(0);
@@ -79,8 +79,8 @@ const App = () => {
                                 </Container>
                             </Route>
 
-                            <Route path="/boards">
-                                <Title title={'Pre-Made Boards'} />
+                            <Route path="/meats">
+                                <Title title={'Our Meats'} />
                                 <Container id="wrapper" fluid>
                                     <Row>
                                         <Sidebar />
@@ -89,8 +89,8 @@ const App = () => {
                                 </Container>
                             </Route>
 
-                            <Route path="/sides">
-                                <Title title={'Accompaniments'} />
+                            <Route path="/fruits">
+                                <Title title={'Exotic Fruits'} />
                                 <Container id="wrapper" fluid>
                                     <Row>
                                         <Sidebar />

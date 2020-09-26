@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Col, CardDeck } from 'react-bootstrap';
 
 import ProductCard from '../components/ProductCard';
@@ -6,7 +6,9 @@ import ProductCard from '../components/ProductCard';
 import './Boards.css'
 
 const Boards = ({ products, productType, setProductType }) => {
-    setProductType('Meat');
+    useEffect(() =>{
+        setProductType(['Meat']);
+    },[])
     console.log(productType);
 
     document.body.classList.add('solid', 'board');
