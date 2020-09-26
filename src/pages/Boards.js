@@ -6,7 +6,7 @@ import ProductCard from '../components/ProductCard';
 import './Boards.css'
 
 const Boards = ({ products, productType, setProductType }) => {
-    setProductType('Boards');
+    setProductType('Meat');
     console.log(productType);
 
     document.body.classList.add('solid', 'board');

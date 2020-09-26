@@ -27,36 +27,34 @@ const Header = ({ user, setUser, cart }) => {
         <Container id="header" className="px-0" fluid={true}>
             <Row className="m-auto">
                 <Col>
-                    <Navbar className="px-2" collapseOnSelect expand="xl">
-                        <Link className="pl-3 pr-4" to="/">
-                            <img className="nav-logo" src="images/CheezyLogo_white.png" alt="Cheezy Logo" />
-                        </Link>
-                        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                    <Navbar className="px-3" collapseOnSelect expand="xl">
+                        <Navbar.Brand className="mr-4" href="/">
+                            <img className="nav-logo" src="images/logo.png" alt="Cheezy Logo" />
+                        </Navbar.Brand>
+                        <Navbar.Toggle className="responsive-navbar-nav" />
                         <Navbar.Collapse id="responsive-navbar-nav">
-                            <Nav className="mr-auto nav-left">
+                            <Nav className="mr-auto">
                                 <Link className="nav-link" to="/cheeses">Our Cheeses</Link>
                                 <Link className="nav-link" to="/boards">Premade Boards</Link>
                                 <Link className="nav-link" to="/sides">Accompaniments</Link>
                             </Nav>
-                               
-                            <Nav className="nav-right">
+                            <Nav>
                                 { user.token
                                     ? <>
-                                        <Button variant="outline-light" className="btn-controls mx-1">Account</Button>
-                                        <Button variant="outline-light" className="btn-controls mx-1" onClick={signOutHandler}>Sign Out</Button>
+                                        <Button variant="outline-light" className="btn-controls mx-2">Account</Button>
+                                        <Button variant="outline-light" className="btn-controls mx-2" onClick={signOutHandler}>Sign Out</Button>
                                         {/* <Link className="nav-link" to="/login" onClick={signOutHandler}>Sign Out</Link> */}
                                     </> : <>
-                                        <Button variant="outline-light" className="btn-controls mx-1" onClick={toggleLogin}>Sign In</Button>
-                                        <Button variant="outline-light" className="btn-controls mx-1" onClick={toggle1}>Sign Up</Button>
+                                        <Button variant="outline-light" className="btn-controls mx-2" onClick={toggleLogin}>Sign In</Button>
+                                        <Button variant="outline-light" className="btn-controls mx-2" onClick={toggle1}>Sign Up</Button>
                                         {/* <Nav.Link onClick={toggleLogin}>Sign In</Nav.Link>   
                                         <Nav.Link onClick={toggle1}>Register</Nav.Link> */}
                                     </>  
                                 }
-                                <Nav.Link className="cart-link" href="/cart">
+                                <Link className="cart-link" to="/cart">
                                     <i className="fas fa-shopping-cart cart-icon"></i>
                                     <span className="cart-count">{cartCount}</span>
-                                </Nav.Link>
-
+                                </Link>
                             </Nav>
                         </Navbar.Collapse>
                     </Navbar>

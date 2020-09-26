@@ -7,7 +7,7 @@ import './Sides.css'
 
 const Sides = ({ products, setProductType }) => {
 
-    setProductType('Sides');
+    setProductType('Fruit');
     document.body.classList.add('solid', 'sides');
 
     return (
