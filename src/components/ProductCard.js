@@ -7,8 +7,8 @@ import './ProductCard.css'
 
 const ProductCard = ({ id, name, imageUrl, type, description }) => {
 
-    function shorten(str,n) {
-        return (str.match(RegExp(".{"+n+"}\\S*"))||[str])[0];
+    function shorten(str, n) {
+        return (str.match(RegExp(".{" + n + "}\\S*")) || [str])[0];
     }
 
     return (
@@ -20,14 +20,14 @@ const ProductCard = ({ id, name, imageUrl, type, description }) => {
                 <Link className="" to="/{type}/{id}">
                     <Card.Title className="pb-1">{name}</Card.Title>
                 </Link>
-                <Card.Text className="pb-1">{ shorten(description, 60) + '...'}</Card.Text>
+                <Card.Text className="pb-1">{shorten(description, 60) + '...'}</Card.Text>
             </Card.Body>
             <Card.Footer className="pb-4 pt-0">
                 <Button variant="primary" className="btn-card">Add To Cart</Button>
             </Card.Footer>
         </Card>
     );
-    
+
 };
 
 export default ProductCard;
