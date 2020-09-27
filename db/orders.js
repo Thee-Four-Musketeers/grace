@@ -1,6 +1,8 @@
 const client = require('./client');
 
-//creates order when checking out
+// creates order when checking out
+// this should be invoked when a successful payment was received
+
 async function createOrder({ customer, status, subtotal, tax, discount, loyalty, largeOrder, shipping, total, urgency }) {
     try {
         const { rows: [order] } = await client.query(`
@@ -15,8 +17,24 @@ async function createOrder({ customer, status, subtotal, tax, discount, loyalty,
     }
 }
 
-//creates cart for logged in user
-//need to create alternate for storing in local storage
+// get all orders, most for testing
+// could be used for admin areas to see store wide stats
+
+async function getAllOrders(){
+    try {
+        const { rows: order } = await client.query(`
+        SELECT *
+        FROM orders
+        `)
+        return orders
+    } catch (error) {
+        throw error
+    }
+}
+
+// creates cart for logged in user
+// need to create alternate for storing in local storage
+
 async function createCart({ productId, orderId, productIdQuantity }) {
     try {
         const { rows: [cart] } = await client.query(`
@@ -31,7 +49,10 @@ async function createCart({ productId, orderId, productIdQuantity }) {
     }
 }
 
-//recalls cart when user logs back in
+// recalls cart when user logs back in
+// not sure how this works, might need more functionality
+// might need at getOrderByUser(status="cart") instead
+
 async function getCartById(id) {
     try {
         const { rows: cart } = await client.query(`
@@ -45,8 +66,9 @@ async function getCartById(id) {
     }
 }
 
-//for user to pull up all orders on user account, checks with user ID
-async function getOrders(customer) {
+// for user to pull up all orders on user account, checks with user ID
+
+async function getOrdersByUser(customer) {
     try {
         const { rows: orders } = await client.query(`
             SELECT *
@@ -60,17 +82,7 @@ async function getOrders(customer) {
 }
 
 
-async function getAllOrders(){
-    try {
-        const { rows: order } = await client.query(`
-        SELECT *
-        FROM orders
-        `)
-        return orders
-    } catch (error) {
-        throw error
-    }
-}
+
 
 
 
@@ -78,6 +90,6 @@ module.exports = {
     createOrder,
     createCart,
     getCartById,
-    getOrders,
+    getOrdersByUser,
     getAllOrders
 }
