@@ -1,18 +1,18 @@
 const client = require('./client');
 
-// async function createProduct({ name, description, price, type }){
-//     try {
-//         const { rows: [product]  } = await client.query(`
-//             INSERT INTO products (name, description, price, type)
-//             VALUES ($1, $2, $3, $4)
-//             ON CONFLICT (name) DO NOTHING 
-//             RETURNING *;
-//         `,[name, description, price, type]);
-//         return product;
-//     } catch (error) {
-//         throw error
-//     }
-// }
+async function createProduct({ name, description, price, type, imageUrl, origin, hardness, odor }){
+    try {
+        const { rows: [product]  } = await client.query(`
+            INSERT INTO products (name, description, price, type, "imageUrl", origin, hardness, odor)
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+            ON CONFLICT (name) DO NOTHING 
+            RETURNING *;
+        `,[name, description, price, type, imageUrl, origin, hardness, odor]);
+        return product;
+    } catch (error) {
+        throw error
+    }
+}
 
 async function getProducts(){
     try {
@@ -44,7 +44,7 @@ async function getProductById(id){
 
 
 async function getProductsByTypes(types){
-    try{
+    try {
         const {rows: product } = await client.query(`
             SELECT *
             FROM products
@@ -57,7 +57,7 @@ async function getProductsByTypes(types){
 
 
 async function getProductsByType(type){
-    try{
+    try {
         const {rows: product } = await client.query(`
             SELECT *
             FROM products
@@ -66,21 +66,6 @@ async function getProductsByType(type){
         return product
     } catch (error){
     throw error }
-}
-
-
-async function createProduct({ name, description, price, type, imageUrl, origin, hardness, odor }){
-    try {
-        const { rows: [product]  } = await client.query(`
-            INSERT INTO products (name, description, price, type, "imageUrl", origin, hardness, odor)
-            VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
-            ON CONFLICT (name) DO NOTHING 
-            RETURNING *;
-        `,[name, description, price, type, imageUrl, origin, hardness, odor]);
-        return product;
-    } catch (error) {
-        throw error
-    }
 }
 
 module.exports = {
