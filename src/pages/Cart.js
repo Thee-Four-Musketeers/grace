@@ -3,7 +3,7 @@ import { Col } from 'react-bootstrap';
 
 import './Cart.css'
 
-const Cart = ({ cart, setCart, cartTotal, setCartTotal }) => {
+const Cart = ({ cart, setCart, cartTotal, setCartTotal, count, setCount }) => {
 
     document.body.classList.add('solid', 'cart');
 
@@ -52,15 +52,19 @@ const Cart = ({ cart, setCart, cartTotal, setCartTotal }) => {
     ));
 
     return (
-        <Col id="content">
-            <div className="cartWrapper">
-                <h4>STORE</h4>
-                <div>{listItems}</div>
-                <h4>CART</h4>
-                <div>{cartItems}</div>
-                <div>Total: ${cartTotal}</div>
-            </div>
-        </Col>
+        <>
+            
+            <Col id="content">
+                <button onClick={ () => setCount(count + 1)}>Click</button>
+                <div className="cartWrapper">
+                    <h4>STORE</h4>
+                    <div>{listItems}</div>
+                    <h4>CART</h4>
+                    <div>{cartItems}</div>
+                    <div>Total: ${cartTotal}</div>
+                </div>
+            </Col>
+        </>
     );
 };
 
