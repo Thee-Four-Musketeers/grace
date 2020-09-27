@@ -22,7 +22,6 @@ const Header = ({ user, setUser, cart }) => {
     }
     const { show, toggleLogin } = useModalLogin();
     const { isShowing, toggle1 } = useModalRegister();
-
     const [expanded, setExpanded] = useState(false);
 
     return (

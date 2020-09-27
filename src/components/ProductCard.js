@@ -17,16 +17,12 @@ const ProductCard = ({ id, name, imageUrl, type, price, description }) => {
                 <Card.Img variant="top" src={imageUrl} />
             </Link>
             <Card.Body>
-                <Link className="" to="/{type}/{id}">
-                    <Card.Title className="pb-1">{name}</Card.Title>
-                </Link>
-                <Card.Text className="pb-1">{shorten(description, 60) + '...'}</Card.Text>
+                <Card.Title className="pb-0"><Link className="" to="/{type}/{id}">{name}</Link></Card.Title>
+                <Card.Text className="pb-0">{shorten(description, 60) + '...'}</Card.Text>
             </Card.Body>
             <Card.Footer className="pb-4 pt-0">
-                <Row>
-                    <Col className="price">${price}</Col>
-                    <Col><Button variant="primary" className="btn-card">Add To Cart</Button></Col>
-                </Row>
+                <Card.Text className="pb-0"><h6><strong>${price} per pound</strong></h6></Card.Text>
+                <Button variant="primary" className="btn-card">Add To Cart</Button>
             </Card.Footer>
         </Card>
     );
