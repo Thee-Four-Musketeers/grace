@@ -66,14 +66,15 @@ async function getCartById(id) {
     }
 }
 
-// for user to pull up all orders on user account, checks with user ID
+//for user to pull up all orders on user account, checks with user ID
 
 async function getOrdersByUser(customer) {
     try {
         const { rows: orders } = await client.query(`
             SELECT *
             FROM orders
-            WHERE customer=$1;
+            WHERE customer=$1
+            AND status="open";
         `, [customer])
         return orders
     } catch (error) {
@@ -82,6 +83,17 @@ async function getOrdersByUser(customer) {
 }
 
 
+async function getAllOrders() {
+    try {
+        const { rows: order } = await client.query(`
+        SELECT *
+        FROM orders
+        `)
+        return orders
+    } catch (error) {
+        throw error
+    }
+}
 
 
 

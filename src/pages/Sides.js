@@ -5,20 +5,23 @@ import ProductCard from '../components/ProductCard';
 
 import './Sides.css'
 
-const Sides = ({ products, setProductType }) => {
+const Sides = ({ products, setProductType, addToCart }) => {
 
-    useEffect(() =>{
+    useEffect(() => {
         setProductType(['Fruit', 'Nut']);
     }, [])
-    
+
     document.body.classList.add('solid', 'sides');
 
     return (
         <Col id="content">
             <CardDeck>
-                {   
+                {
                     products && products.map(product => (
-                        <ProductCard key={product.id} {...product}></ProductCard>)
+                        <ProductCard key={product.id}
+                            addToCart={addToCart}
+                            {...product}>
+                        </ProductCard>)
                     )
                 }
             </CardDeck>

@@ -13,19 +13,18 @@ import Boards from "../pages/Boards";
 import Sides from "../pages/Sides";
 import Cart from '../pages/Cart'
 
-import { fetchProductsByType } from '../api';
+import { fetchCart, fetchProductsByType } from '../api';
 
 import './App.css'
 
 const App = () => {
     const [user, setUser] = useState({});
-    
     const [products, setProducts] = useState([]);
     const [productType, setProductType] = useState([]);
     const [count, setCount] = useState(0);
     const [cart, setCart] = useState([]);
     // const [cartTotal, setCartTotal] = useState(0);
-    
+
     function localStorageUser() {
         if (localStorage.getItem('user')) {
             const localStorageUser = JSON.parse(localStorage.getItem('user'));
@@ -49,18 +48,55 @@ const App = () => {
             });
     }, [productType]);
 
+    //cart
 
-    // useEffect(() => {
-    //     total();
-    // }, [cart]);
+    useEffect(() => {
+        // if (!user) {
+        //     localStorageUser()
+        // }
+        fetchCart(user)
+            .then((response) => {
+                setCart(response.user)
+            })
+            .catch((error) => {
+                console.error(error)
+            })
+    }, []);
 
-    // const total = () => {
-    //     let totalVal = 0;
-    //     for (let i = 0; i < cart.length; i++) {
-    //         totalVal += cart[i].price;
-    //     }
-    //     setCartTotal(totalVal);
-    // };
+    const addToCart = ({ id, productId }) => {
+        const nextCart = [...cart];
+        const index = nextCart.findIndex(cart => cart.id === id);
+        if (index > -1) {
+            nextCart[index].count += 1;
+        } else {
+            nextCart.push({
+                id,
+                productId,
+                count: 1
+            })
+        }
+        setCart(nextCart);
+    }
+
+    const removeFromCart = ({ id }) => {
+        const nextCart = [...cart];
+        const index = nextCart.findIndex(cart => cart.id === id);
+
+        if (index === -1) {
+            // don't do anything if we're trying to remove a card not in the deck
+            return;
+        }
+        if (nextCart[index].count === 1) {
+            // remove the card altogether
+            nextCart.splice(index, 1);
+        } else {
+            // decrement the count
+            nextCart[index].count -= 1;
+        }
+
+        setCart(nextCart);
+    }
+    console.log('cart here', cart)
 
 
     return (
@@ -76,7 +112,8 @@ const App = () => {
                                 <Container id="wrapper" fluid>
                                     <Row>
                                         <Sidebar />
-                                        <Cheeses products={products} setProductType={setProductType} />
+                                        <Cheeses products={products} setProductType={setProductType}
+                                            addToCart={addToCart} />
                                     </Row>
                                 </Container>
                             </Route>
@@ -86,7 +123,8 @@ const App = () => {
                                 <Container id="wrapper" fluid>
                                     <Row>
                                         <Sidebar />
-                                        <Boards products={products} setProductType={setProductType} />
+                                        <Boards products={products} setProductType={setProductType}
+                                            addToCart={addToCart} />
                                     </Row>
                                 </Container>
                             </Route>
@@ -96,7 +134,8 @@ const App = () => {
                                 <Container id="wrapper" fluid>
                                     <Row>
                                         <Sidebar />
-                                        <Sides products={products} setProductType={setProductType} />
+                                        <Sides products={products} setProductType={setProductType}
+                                            addToCart={addToCart} />
                                     </Row>
                                 </Container>
                             </Route>
@@ -105,7 +144,7 @@ const App = () => {
                                 <Title title={'Shopping Cart'} />
                                 <Container id="wrapper" fluid>
                                     <Row>
-                                        <Cart cart={cart} count={count} setCount={setCount} />
+                                        <Cart cart=cart={cart} setCart={setCart} count={count} setCount={setCount} />
                                     </Row>
                                 </Container>
                             </Route>
@@ -121,7 +160,7 @@ const App = () => {
             </Router>
         </>
     )
-    
+
 };
 
 export default App;

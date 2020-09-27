@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import './ProductCard.css'
 
 
-const ProductCard = ({ id, name, imageUrl, type, price, description }) => {
+const ProductCard = ({ id, name, imageUrl, type, price, description, addToCart }) => {
 
     function shorten(str, n) {
         return (str.match(RegExp(".{" + n + "}\\S*")) || [str])[0];

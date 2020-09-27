@@ -15,9 +15,9 @@ const Footer = () => {
                     <Navbar className="justify-content-center pb-0">
                         <Nav>
                             <Link className="nav-link small" to="/about">About</Link>
-                            <div class="nav-link small"> | </div>
+                            <div className="nav-link small"> | </div>
                             <Link className="nav-link small" to="/contact">Contact</Link>
-                            <div class="nav-link small"> | </div>
+                            <div className="nav-link small"> | </div>
                             <Link className="nav-link small" to="/admin">Admin</Link>
                         </Nav>
                     </Navbar>
@@ -26,7 +26,7 @@ const Footer = () => {
 
             </Row>
         </Container>
-        
+
     )
 }
 
