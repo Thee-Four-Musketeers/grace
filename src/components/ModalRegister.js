@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-import Modal from 'react-bootstrap/Modal';
-import Form from 'react-bootstrap/Form'
-import Button from "react-bootstrap/Button";
+import { Modal, Form, Button, InputGroup } from 'react-bootstrap';
 
 import './ModalLogin.css'
 import './hooks/useModalRegister'
@@ -44,11 +42,58 @@ const ModalRegister = ({ isShowing, hide, user, setUser}) => {
         <>
             <Modal show={isShowing} onHide={hide} backdrop="static">
                 <Modal.Header closeButton>
-                    <Modal.Title>Registration</Modal.Title>
+                    <Modal.Title>Get Account</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form onSubmit={handleSubmit} >
+                    <Form onSubmit={handleSubmit}>
+
                         <Form.Group className="form-group">
+                            <Form.Label htmlFor="username">Email Address</Form.Label>
+                            <InputGroup>
+                                <InputGroup.Prepend>
+                                <InputGroup.Text><i className="fas fa-envelope"></i></InputGroup.Text>
+                                </InputGroup.Prepend>
+                                <Form.Control
+                                    id="field-username" name="username" 
+                                    className="form-control" placeholder="Enter email" 
+                                    type="text" onChange={handleUser} 
+                                />
+                            </InputGroup>
+                        </Form.Group>
+
+                        <Form.Group className="form-group">
+                            <Form.Label htmlFor="password">Password</Form.Label>
+                            <InputGroup>
+                                <InputGroup.Prepend>
+                                <InputGroup.Text><i className="fas fa-lock"></i></InputGroup.Text>
+                                </InputGroup.Prepend>
+                                <Form.Control 
+                                    id="field-password" name="password" 
+                                    className="form-control" placeholder="Enter password" 
+                                    type="password" onChange={handlePassword} 
+                                />
+                            </InputGroup>
+                        </Form.Group>
+
+                        <Form.Group className="form-group">
+                            <Form.Label htmlFor="confirm-password">Confirm Password</Form.Label>
+                            <InputGroup>
+                                <InputGroup.Prepend>
+                                <InputGroup.Text><i className="fas fa-lock"></i></InputGroup.Text>
+                                </InputGroup.Prepend>
+                                <Form.Control 
+                                    id="field-password-confirm" name="password-confirm" 
+                                    className="form-control" placeholder="Confirm password" 
+                                    type="password" onChange={handlePassword2} 
+                                />
+                            </InputGroup>
+                        </Form.Group>
+
+                        <Form.Text id="passwordHelpBlock" className="ml-1 mb-4" muted>Your password must contain 8-20 characters and may consist of a combination of letters or numbers.</Form.Text>
+
+                        <Button className="btn btn-enter" variant="primary" type="submit">Sign Up <i className="fa fa-sign-in-alt ml-2"></i></Button>
+
+                        {/* <Form.Group className="form-group">
                             <Form.Label htmlFor="username"><i className="far fa-envelope"></i> Username</Form.Label>
                             <Form.Control 
                                 id="field-username" name="username" 
@@ -71,11 +116,9 @@ const ModalRegister = ({ isShowing, hide, user, setUser}) => {
                                 className="form-control" placeholder="Confirm password" 
                                 type="password" onChange={handlePassword2}
                             />
-                        </Form.Group>
+                        </Form.Group> */}
 
-                        <Form.Text id="passwordHelpBlock" muted>Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.</Form.Text>
-
-                        <Button className="btn btn-outline-dark" variant="primary" type="submit"><i className="fa fa-sign-in-alt mr-2"></i> Register</Button>
+                        
                     </Form>
                 </Modal.Body>
             </Modal>

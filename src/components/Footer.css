@@ -2,6 +2,11 @@
     background-color: #26292D;
 }
 
-#footer .col {
-    color: rgba(255, 255, 255, 0.7) !important;
+#footer { padding: 2rem 1.5rem 2.25rem; }
+#footer .col,
+#footer .col a,
+#footer .col .nav-link {
+        color: rgba(255, 255, 255, 0.7) !important; padding: 0 0.25rem;
 }
+
+#footer nav { padding-top: 0.25rem !important; }
