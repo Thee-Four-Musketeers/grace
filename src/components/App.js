@@ -22,9 +22,9 @@ const App = () => {
     
     const [products, setProducts] = useState([]);
     const [productType, setProductType] = useState([]);
-    
+    const [count, setCount] = useState(0);
     const [cart, setCart] = useState([]);
-    const [cartTotal, setCartTotal] = useState(0);
+    // const [cartTotal, setCartTotal] = useState(0);
     
     function localStorageUser() {
         if (localStorage.getItem('user')) {
@@ -49,22 +49,24 @@ const App = () => {
             });
     }, [productType]);
 
-    useEffect(() => {
-        total();
-    }, [cart]);
 
-    const total = () => {
-        let totalVal = 0;
-        for (let i = 0; i < cart.length; i++) {
-            totalVal += cart[i].price;
-        }
-        setCartTotal(totalVal);
-    };
+    // useEffect(() => {
+    //     total();
+    // }, [cart]);
+
+    // const total = () => {
+    //     let totalVal = 0;
+    //     for (let i = 0; i < cart.length; i++) {
+    //         totalVal += cart[i].price;
+    //     }
+    //     setCartTotal(totalVal);
+    // };
+
 
     return (
         <>
             <Router>
-                <Header user={user} setUser={setUser} cart={cart} setCart={setCart} />
+                <Header user={user} setUser={setUser} count={count} setCount={setCount} />
                 <div id="all">
                     <main>
                         <Switch>
@@ -103,7 +105,7 @@ const App = () => {
                                 <Title title={'Shopping Cart'} />
                                 <Container id="wrapper" fluid>
                                     <Row>
-                                        <Cart cart={cart} cartTotal={cartTotal} setCart={setCart} />
+                                        <Cart cart={cart} count={count} setCount={setCount} />
                                     </Row>
                                 </Container>
                             </Route>
