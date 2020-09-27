@@ -3,7 +3,7 @@ import { Col, Table } from 'react-bootstrap';
 import CartItem from '../components/CartItem'
 import './Cart.css'
 
-const Cart = ({ cart, setCart, addToCart, removeFromCart, cartTotal, setCartTotal }) => {
+const Cart = ({ cart, setCart, addToCart, removeFromCart, count, setCount }) => {
 
     document.body.classList.add('solid', 'cart');
     useEffect(() => {
@@ -13,7 +13,9 @@ const Cart = ({ cart, setCart, addToCart, removeFromCart, cartTotal, setCartTota
 
 
     return (
+
         <Col id="content">
+          <button onClick={ () => setCount(count + 1)}>Click</button>
             <div className="cartWrapper">
                 <Table borderless={true}>
                     <thead>
@@ -32,10 +34,10 @@ const Cart = ({ cart, setCart, addToCart, removeFromCart, cartTotal, setCartTota
                             removeFromCart={removeFromCart}
                             {...product} />
                     ))}
-
                 </Table>
             </div>
         </Col>
+
     );
 };
 

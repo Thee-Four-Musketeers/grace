@@ -21,8 +21,8 @@ const App = () => {
     const [user, setUser] = useState({});
     const [products, setProducts] = useState([]);
     const [productType, setProductType] = useState([]);
+    const [count, setCount] = useState(0);
     const [cart, setCart] = useState([]);
-    const [cartCount, setCartCount] = ('0');
     // const [cartTotal, setCartTotal] = useState(0);
 
     function localStorageUser() {
@@ -98,23 +98,11 @@ const App = () => {
     }
     console.log('cart here', cart)
 
-    // useEffect(() => {
-    //     nextCount = [...setCartCount];
-    //     if (!cart) {
-    //         return
-    //     } else {
-    //         setCartCount.reduce((total, item) => {
-    //             return total + item.count
-    //         }, 0);
-    //     } 
-    //     setCartCount(nextCount)
-    // }, [0])
-
 
     return (
         <>
             <Router>
-                <Header user={user} setUser={setUser} cartCount={cartCount} />
+                <Header user={user} setUser={setUser} count={count} setCount={setCount} />
                 <div id="all">
                     <main>
                         <Switch>
@@ -156,8 +144,7 @@ const App = () => {
                                 <Title title={'Shopping Cart'} />
                                 <Container id="wrapper" fluid>
                                     <Row>
-                                        <Cart cart={cart} setCart={setCart}
-                                            addToCart={addToCart} removeFromCart={removeFromCart} />
+                                        <Cart cart=cart={cart} setCart={setCart} count={count} setCount={setCount} />
                                     </Row>
                                 </Container>
                             </Route>

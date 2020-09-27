@@ -11,8 +11,10 @@ import useModalLogin from './hooks/useModalLogin';
 
 import './Header.css'
 
-const Header = ({ user, setUser, cartCount, setCartCount }) => {
-
+const Header = ({ user, setUser, count, setCount }) => {
+    // let cartCount = cart.reduce((cartCount, items) => {
+    //     return cartCount + items.count
+    // }, 0);
 
     const signOutHandler = (event) => {
         localStorage.removeItem('user');
@@ -20,9 +22,8 @@ const Header = ({ user, setUser, cartCount, setCartCount }) => {
     }
     const { show, toggleLogin } = useModalLogin();
     const { isShowing, toggle1 } = useModalRegister();
-
     const [expanded, setExpanded] = useState(false);
-
+    
     return (
         <Container id="header" className="px-0" fluid={true}>
             <Row className="m-auto">
@@ -42,8 +43,8 @@ const Header = ({ user, setUser, cartCount, setCartCount }) => {
                                 <Link className="nav-link" to="/sides" onClick={() => setTimeout(() => { setExpanded(false) }, 50)}>Accompaniments</Link>
                             </Nav>
                             <Nav>
-                                <button onClick={() => setCartCount(cartCount + 1)}> Click me!!! </button>
-                                {user.token
+                                <button onClick={ () => setCount(count + 1)}>Click</button>
+                                { user.token
                                     ? <>
                                         <Button variant="outline-light" className="btn-controls mx-2">Account</Button>
                                         <Button variant="outline-light" className="btn-controls mx-2" onClick={signOutHandler}>Sign Out</Button>
@@ -54,7 +55,7 @@ const Header = ({ user, setUser, cartCount, setCartCount }) => {
                                 }
                                 <Link className="cart-link" to="/cart">
                                     <i className="fas fa-shopping-cart cart-icon"></i>
-                                    <span className="cart-count">{cartCount}</span>
+                                    <span className="cart-count">{count}</span>
                                 </Link>
                             </Nav>
                         </Navbar.Collapse>
