@@ -13,16 +13,16 @@ const Footer = () => {
                     <Navbar className="justify-content-center pt-0">
                         <Nav>
                             <Link className="nav-link small" to="/about">About</Link>
-                            <div class="nav-link small"> | </div>
+                            <div className="nav-link small"> | </div>
                             <Link className="nav-link small" to="/contact">Contact</Link>
-                            <div class="nav-link small"> | </div>
+                            <div className="nav-link small"> | </div>
                             <Link className="nav-link small" to="/admin">Admin</Link>
                         </Nav>
                     </Navbar>
                 </Col>
             </Row>
         </Container>
-        
+
     )
 }
 

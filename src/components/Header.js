@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, Navbar, Nav, Button} from 'react-bootstrap';
+import { Container, Row, Col, Navbar, Nav, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 import ModalLogin from "./ModalLogin";
@@ -11,10 +11,8 @@ import useModalLogin from './hooks/useModalLogin';
 
 import './Header.css'
 
-const Header = ({ user, setUser, cart }) => {
-    let cartCount = cart.reduce((cartCount, items) => {
-        return cartCount + items.count
-    }, 0);
+const Header = ({ user, setUser, cartCount, setCartCount }) => {
+
 
     const signOutHandler = (event) => {
         localStorage.removeItem('user');
@@ -33,25 +31,26 @@ const Header = ({ user, setUser, cart }) => {
                         <Navbar.Brand className="mr-4" href="/">
                             <img className="nav-logo" src="images/logo.png" alt="Cheezy Logo" />
                         </Navbar.Brand>
-                        <Navbar.Toggle 
-                            className="responsive-navbar-nav" 
-                            onClick={() => setExpanded(expanded ? false : "expanded")} 
+                        <Navbar.Toggle
+                            className="responsive-navbar-nav"
+                            onClick={() => setExpanded(expanded ? false : "expanded")}
                         />
                         <Navbar.Collapse id="responsive-navbar-nav">
                             <Nav className="mr-auto">
-                                <Link className="nav-link" to="/cheeses" onClick={() => setTimeout(() => {setExpanded(false)}, 50)}>Our Cheeses</Link>
-                                <Link className="nav-link" to="/boards" onClick={() => setTimeout(() => {setExpanded(false)}, 50)}>Premade Boards</Link>
-                                <Link className="nav-link" to="/sides" onClick={() => setTimeout(() => {setExpanded(false)}, 50)}>Accompaniments</Link>
+                                <Link className="nav-link" to="/cheeses" onClick={() => setTimeout(() => { setExpanded(false) }, 50)}>Our Cheeses</Link>
+                                <Link className="nav-link" to="/boards" onClick={() => setTimeout(() => { setExpanded(false) }, 50)}>Premade Boards</Link>
+                                <Link className="nav-link" to="/sides" onClick={() => setTimeout(() => { setExpanded(false) }, 50)}>Accompaniments</Link>
                             </Nav>
                             <Nav>
-                                { user.token
+                                <button onClick={() => setCartCount(cartCount + 1)}> Click me!!! </button>
+                                {user.token
                                     ? <>
                                         <Button variant="outline-light" className="btn-controls mx-2">Account</Button>
                                         <Button variant="outline-light" className="btn-controls mx-2" onClick={signOutHandler}>Sign Out</Button>
                                     </> : <>
                                         <Button variant="outline-light" className="btn-controls mx-2" onClick={toggleLogin}>Sign In</Button>
                                         <Button variant="outline-light" className="btn-controls mx-2" onClick={toggle1}>Sign Up</Button>
-                                    </>  
+                                    </>
                                 }
                                 <Link className="cart-link" to="/cart">
                                     <i className="fas fa-shopping-cart cart-icon"></i>

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import './ProductCard.css'
 
 
-const ProductCard = ({ id, name, imageUrl, type, price, description }) => {
+const ProductCard = ({ id, name, imageUrl, type, price, description, addToCart }) => {
 
     function shorten(str, n) {
         return (str.match(RegExp(".{" + n + "}\\S*")) || [str])[0];
@@ -25,7 +25,14 @@ const ProductCard = ({ id, name, imageUrl, type, price, description }) => {
             <Card.Footer className="pb-4 pt-0">
                 <Row>
                     <Col className="price">${price}</Col>
-                    <Col><Button variant="primary" className="btn-card">Add To Cart</Button></Col>
+                    <Col><Button variant="primary" className="btn-card"
+                        onClick={() => {
+                            addToCart({
+                                id,
+                                name
+                            })
+                        }}
+                    >Add To Cart</Button></Col>
                 </Row>
             </Card.Footer>
         </Card>
