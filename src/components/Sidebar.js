@@ -6,7 +6,7 @@ import './Sidebar.css'
 const Sidebar = () => {
 
     return (
-        <Col id="sidebar" className="col-pixel-width-320 col-xl-12">
+        <Col id="sidebar" className="col-pixel-width-360 col-xl-12">
             <h4 className="title">Sidebar</h4>
             <div>Filters Go Here</div> 
             <div>Possibly Own Component</div>

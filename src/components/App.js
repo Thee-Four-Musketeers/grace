@@ -9,8 +9,8 @@ import Footer from "../components/Footer";
 
 import Home from "../pages/Home";
 import Cheeses from "../pages/Cheeses";
-import Boards from "../pages/Boards";
-import Sides from "../pages/Sides";
+import Meats from "../pages/Meats";
+import Fruits from "../pages/Fruits";
 import Cart from '../pages/Cart'
 
 import { fetchCart, fetchProductsByType } from '../api';
@@ -108,34 +108,31 @@ const App = () => {
                         <Switch>
 
                             <Route exact path="/cheeses">
-                                <Title title={'Our Cheeses'} />
+                                <Title title={'Artisanal Cheeses'} />
                                 <Container id="wrapper" fluid>
                                     <Row>
+                                        <Cheeses products={products} setProductType={setProductType} addToCart={addToCart} />
                                         <Sidebar />
-                                        <Cheeses products={products} setProductType={setProductType}
-                                            addToCart={addToCart} />
                                     </Row>
                                 </Container>
                             </Route>
 
-                            <Route exact path="/boards">
-                                <Title title={'Pre-Made Boards'} />
+                            <Route exact path="/meats">
+                                <Title title={'Specialty Meats'} />
                                 <Container id="wrapper" fluid>
                                     <Row>
-                                        <Sidebar />
-                                        <Boards products={products} setProductType={setProductType}
-                                            addToCart={addToCart} />
+                                        <Meats products={products} setProductType={setProductType} addToCart={addToCart} />
+                                         <Sidebar />
                                     </Row>
                                 </Container>
                             </Route>
 
-                            <Route exact path="/sides">
-                                <Title title={'Accompaniments'} />
+                            <Route exact path="/fruits">
+                                <Title title={'Fruits & Nuts'} />
                                 <Container id="wrapper" fluid>
                                     <Row>
+                                        <Fruits products={products} setProductType={setProductType} addToCart={addToCart} />
                                         <Sidebar />
-                                        <Sides products={products} setProductType={setProductType}
-                                            addToCart={addToCart} />
                                     </Row>
                                 </Container>
                             </Route>
@@ -144,7 +141,7 @@ const App = () => {
                                 <Title title={'Shopping Cart'} />
                                 <Container id="wrapper" fluid>
                                     <Row>
-                                        <Cart cart=cart={cart} setCart={setCart} count={count} setCount={setCount} />
+                                        <Cart cart={cart} setCart={setCart} count={count} setCount={setCount} />
                                     </Row>
                                 </Container>
                             </Route>

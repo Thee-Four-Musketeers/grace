@@ -3,22 +3,23 @@ import { Col, CardDeck } from 'react-bootstrap';
 
 import ProductCard from '../components/ProductCard';
 
-import './Sides.css'
+import './Meats.css'
 
-const Sides = ({ products, setProductType, addToCart }) => {
+const Meats = ({ products, setProductType, addToCart }) => {
 
     useEffect(() => {
-        setProductType(['Fruit', 'Nut']);
+        setProductType(['meat']);
     }, [])
 
-    document.body.classList.add('solid', 'sides');
+    document.body.classList.add('solid', 'boards');
 
     return (
         <Col id="content">
             <CardDeck>
                 {
                     products && products.map(product => (
-                        <ProductCard key={product.id}
+                        <ProductCard
+                            key={product.id}
                             addToCart={addToCart}
                             {...product}>
                         </ProductCard>)
@@ -30,4 +31,4 @@ const Sides = ({ products, setProductType, addToCart }) => {
 
 }
 
-export default Sides;
+export default Meats; 

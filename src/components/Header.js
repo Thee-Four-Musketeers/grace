@@ -39,8 +39,8 @@ const Header = ({ user, setUser, count, setCount }) => {
                         <Navbar.Collapse id="responsive-navbar-nav">
                             <Nav className="mr-auto">
                                 <Link className="nav-link" to="/cheeses" onClick={() => setTimeout(() => { setExpanded(false) }, 50)}>Our Cheeses</Link>
-                                <Link className="nav-link" to="/boards" onClick={() => setTimeout(() => { setExpanded(false) }, 50)}>Premade Boards</Link>
-                                <Link className="nav-link" to="/sides" onClick={() => setTimeout(() => { setExpanded(false) }, 50)}>Accompaniments</Link>
+                                <Link className="nav-link" to="/meats" onClick={() => setTimeout(() => { setExpanded(false) }, 50)}>Specialty Meats</Link>
+                                <Link className="nav-link" to="/fruits" onClick={() => setTimeout(() => { setExpanded(false) }, 50)}>Fruits &amp; Nuts</Link>
                             </Nav>
                             <Nav>
                                 <button onClick={ () => setCount(count + 1)}>Click</button>
