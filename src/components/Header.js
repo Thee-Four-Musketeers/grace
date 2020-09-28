@@ -3,15 +3,17 @@ import { Container, Row, Col, Navbar, Nav, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 import ModalLogin from "./ModalLogin";
+import toggleLogin from './hooks/useModalLogin';
+
 import ModalRegister from './ModalRegister';
 import useModalRegister from './hooks/useModalRegister';
-import useModalLogin from './hooks/useModalLogin';
+
 
 
 
 import './Header.css'
 
-const Header = ({ user, setUser, count, setCount }) => {
+const Header = ({ user, setUser, count, setCount, setShowLogin }) => {
     // let cartCount = cart.reduce((cartCount, items) => {
     //     return cartCount + items.count
     // }, 0);
@@ -49,7 +51,7 @@ const Header = ({ user, setUser, count, setCount }) => {
                                         <Button variant="outline-light" className="btn-controls mx-2">Account</Button>
                                         <Button variant="outline-light" className="btn-controls mx-2" onClick={signOutHandler}>Sign Out</Button>
                                     </> : <>
-                                        <Button variant="outline-light" className="btn-controls mx-2" onClick={toggleLogin}>Sign In</Button>
+                                        <Button variant="outline-light" className="btn-controls mx-2" onClick={toggle} >Sign In</Button>
                                         <Button variant="outline-light" className="btn-controls mx-2" onClick={toggle1}>Sign Up</Button>
                                     </>
                                 }
@@ -63,7 +65,7 @@ const Header = ({ user, setUser, count, setCount }) => {
                 </Col>
             </Row>
             <ModalLogin
-                show={show} hide={toggleLogin}
+                show = { () => { toggleLogin('get') } } hide={toggleLogin() }
                 user={user} setUser={setUser}
             />
             <ModalRegister

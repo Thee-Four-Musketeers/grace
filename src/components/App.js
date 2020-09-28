@@ -32,6 +32,10 @@ const App = () => {
     const [count, setCount] = useState(0);
     const [cart, setCart] = useState([]);
 
+    const[showLogin, setShowLogin] = useState(false);
+    // const[showReg, setShowReg] = useState(false);
+
+
     // check local storage for user and set user
 
     function localStorageUser() {
@@ -61,6 +65,19 @@ const App = () => {
 
     // cart
 
+    useEffect(() => {
+        // if (!user) {
+        //     localStorageUser()
+        // }
+        fetchCart(user)
+            .then((response) => {
+                setCart(response.user)
+            })
+            .catch((error) => {
+                console.error(error)
+            })
+    }, []);
+
     const addToCart = ({ id, productId }) => {
         const nextCart = [...cart];
         const index = nextCart.findIndex(cart => {
@@ -77,19 +94,6 @@ const App = () => {
         }
         setCart(nextCart);
     }
-
-    useEffect(() => {
-        // if (!user) {
-        //     localStorageUser()
-        // }
-        fetchCart(user)
-            .then((response) => {
-                setCart(response.user)
-            })
-            .catch((error) => {
-                console.error(error)
-            })
-    }, []);
 
     // const removeFromCart = ({ id }) => {
     //     const nextCart = [...cart];
@@ -113,7 +117,7 @@ const App = () => {
     return (
         <>
             <Router>
-                <Header user={user} setUser={setUser} count={count} setCount={setCount} />
+                <Header user={user} setUser={setUser} count={count} setCount={setCount} setShowLogin={setShowLogin} />
                 <div id="all">
                     <main>
                         <Switch>

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-import { Modal, Form, Button, InputGroup } from 'react-bootstrap';
-
-import { login } from '../api/index'
+import Modal from 'react-bootstrap/Modal';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+    import { login } from '../api/index'
 
 import './ModalLogin.css'
 import './hooks/useModalLogin'
@@ -13,12 +14,11 @@ const ModalLogin = ({ show, hide, user, setUser }) => {
     const [password, setPassword] = useState('');
 
     const submitHandler = (event) => {
-        event.preventDefault();     
+        event.preventDefault();
+        
         login({username, password}).then((user) => {
             localStorage.setItem('user', JSON.stringify(user));
-            // check if user login was successful
-            // if successful close modal
-            // else show an error message
+            setUser(user);
         }).catch((error) => { throw error});
     }
 
@@ -37,39 +37,28 @@ const ModalLogin = ({ show, hide, user, setUser }) => {
             <>
                 <Modal show={show} onHide={hide} backdrop="static">
                     <Modal.Header closeButton>
-                        <Modal.Title>Login</Modal.Title>
+                        <Modal.Title>Sign In</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
+
                         <Form onSubmit={submitHandler}>
                             <Form.Group className="form-group">
-                                <Form.Label htmlFor="username">Email Address</Form.Label>
-                                <InputGroup>
-                                    <InputGroup.Prepend>
-                                    <InputGroup.Text><i className="fas fa-envelope"></i></InputGroup.Text>
-                                    </InputGroup.Prepend>
-                                    <Form.Control
-                                        id="field-username" name="username" 
-                                        className="form-control" placeholder="Enter email" 
-                                        type="text" onChange={usernameHandler} 
-                                    />
-                                </InputGroup>
+                                <Form.Label htmlFor="username"><i className="far fa-envelope"></i> Email address</Form.Label>
+                                <Form.Control 
+                                    id="field-username" name="username" 
+                                    className="form-control" placeholder="Enter email" 
+                                    type="text" onChange={usernameHandler} />
                             </Form.Group>
 
-                            <Form.Group className="form-group mb-4">
-                                <Form.Label htmlFor="password">Email</Form.Label>
-                                <InputGroup>
-                                    <InputGroup.Prepend>
-                                    <InputGroup.Text><i className="fas fa-lock"></i></InputGroup.Text>
-                                    </InputGroup.Prepend>
-                                    <Form.Control 
-                                        id="field-password" name="password" 
-                                        className="form-control" placeholder="Enter password" 
-                                        type="password" onChange={passwordHandler} 
-                                    />
-                                </InputGroup>
+                            <Form.Group className="form-group">
+                                <Form.Label htmlFor="password"><label><i className="fas fa-lock"></i> Password</label></Form.Label>
+                                <Form.Control 
+                                    id="field-password" name="password" 
+                                    className="form-control" placeholder="Enter password" 
+                                    type="password" onChange={passwordHandler} />
                             </Form.Group>
 
-                            <Button className="btn btn-enter mt-2" variant="primary" type="submit">Sign In <i className="fa fa-sign-in-alt ml-2"></i></Button>
+                            <Button className="d-inline-block" variant="primary" type="submit">Log In</Button>
                         </Form>
 
                     </Modal.Body>
