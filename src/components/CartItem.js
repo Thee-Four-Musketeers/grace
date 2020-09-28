@@ -4,27 +4,19 @@ import './ProductCard.css'
 const CartItem = ({ id, name, imageUrl, price, addToCart, removeFromCart }) => {
 
     return (
-
-        <tr key={id}>
-            <th>{imageUrl}</th>
-            <th>{name}</th>
-            <th>{price}</th>
-            <td>
-                <button
-                    onClick={() => addToCart(id, name)}
-                    className="btn btn-primary btn-sm"
-                >
-                    +
-                          </button>
+        <div key={id} className="cart-item">
+            <div>{imageUrl}</div>
+            <div>{name}</div>
+            <div>{price}</div>
+            <div>
+                <button onClick={() => addToCart(id, name)} className="btn btn-primary btn-sm"> + </button>
                 {/* {quantity} */}
-                <button
-                    onClick={() => removeFromCart(id)}
-                    className="btn btn-primary btn-sm">-</button>
-            </td>
-            <th className="text-right">Total Price</th>
+                <button onClick={() => removeFromCart(id)} className="btn btn-primary btn-sm"> - </button>
+            </div>
+            <div className="text-right">Total Price</div>
+        </div>
+    );
 
-        </tr>
-    )
-}
+};
 
 export default CartItem;
