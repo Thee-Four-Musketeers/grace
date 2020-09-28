@@ -8,7 +8,7 @@ import './Cheeses.css'
 const Cheeses = ({ products, setProductType, addToCart }) => {
 
     useEffect(() => {
-        setProductType(['Cheese']);
+        setProductType(['cheese']);
     }, [])
 
     document.body.classList.add('solid', 'cheese');
