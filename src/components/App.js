@@ -16,6 +16,7 @@ import Cheeses from "../pages/Cheeses";
 import Meats from "../pages/Meats";
 import Fruits from "../pages/Fruits";
 import Checkout from '../pages/Checkout'
+import ContactUs from '../pages/Contact'
 
 // import fucntions & css
 
@@ -137,7 +138,7 @@ const App = () => {
                                 <Container id="wrapper" fluid>
                                     <Row>
                                         <Meats products={products} setProductType={setProductType} addToCart={addToCart} />
-                                         <Sidebar cart={cart} setCart={setCart} count={count} setCount={setCount} />
+                                        <Sidebar cart={cart} setCart={setCart} count={count} setCount={setCount} />
                                     </Row>
                                 </Container>
                             </Route>
@@ -157,6 +158,15 @@ const App = () => {
                                 <Container id="wrapper" fluid>
                                     <Row>
                                         <Checkout cart={cart} setCart={setCart} count={count} setCount={setCount} />
+                                    </Row>
+                                </Container>
+                            </Route>
+
+                            <Route exact path="/contact">
+                                <Title title={'Contact Us'} />
+                                <Container id="wrapper" fluid>
+                                    <Row>
+                                        <ContactUs />
                                     </Row>
                                 </Container>
                             </Route>
