@@ -68,10 +68,41 @@ async function getProductsByType(type){
     throw error }
 }
 
+async function updateProduct(id, fields = {}){
+    const setString = Object.keys(fields).map(
+        (key, index) => `"${ key }"=$${ index + 1 }`
+      ).join(', ');
+      try {
+         const {rows: prodcut } = await client.query(`
+         UPDATE products
+         SET ${ setString }
+         WHERE id=${ id }
+         RETURNING *;
+         `, Object.values(fields))
+         return product
+      } catch (error) {
+          throw error
+      }
+}
+
+async function deleteProduct(id){
+    try {
+        const {rows: product} = await client.query(`
+        DELETE from products
+        WHERE id=${id}
+        RETURNING *;
+        `, [id])
+    } catch (error) {
+        throw error
+    }
+}
+
 module.exports = {
     createProduct,
     getProducts,
     getProductById,
     getProductsByType,
-    getProductsByTypes
+    getProductsByTypes,
+    updateProduct,
+    deleteProduct
 }
