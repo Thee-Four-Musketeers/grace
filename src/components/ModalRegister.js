@@ -91,38 +91,11 @@ const ModalRegister = ({ isShowing, hide, user, setUser}) => {
 
                         <Form.Text id="passwordHelpBlock" className="ml-1 mb-4" muted>Your password must contain 8-20 characters and may consist of a combination of letters or numbers.</Form.Text>
 
-                        <Button className="btn btn-enter" variant="primary" type="submit">Sign Up <i className="fa fa-sign-in-alt ml-2"></i></Button>
-
-                        {/* <Form.Group className="form-group">
-                            <Form.Label htmlFor="username"><i className="far fa-envelope"></i> Username</Form.Label>
-                            <Form.Control 
-                                id="field-username" name="username" 
-                                className="form-control" placeholder="Enter email" 
-                                type="text" onChange={handleUser}
-                            />
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Label htmlFor="password"><i className="fas fa-lock"></i> Password</Form.Label>
-                            <Form.Control
-                                id="field-password" name="password" 
-                                className="form-control" placeholder="Enter password" 
-                                type="password" onChange={handlePassword}
-                            />
-                        </Form.Group>
-                        <Form.Group className="form-group">
-                            <Form.Label htmlFor="confirm-password"><i className="fas fa-lock"></i> Confirm Password</Form.Label>
-                            <Form.Control
-                                id="field-password-confirm" name="password-confirm"
-                                className="form-control" placeholder="Confirm password" 
-                                type="password" onChange={handlePassword2}
-                            />
-                        </Form.Group> */}
-
-                        
+                        <Button className="btn btn-enter" variant="primary" type="submit">Sign Up <i className="fa fa-sign-in-alt ml-2"></i></Button>                        
                     </Form>
                 </Modal.Body>
             </Modal>
-        </>, document.body
+        </>, document.getElementById('root')
         ) : null
     )
 };
