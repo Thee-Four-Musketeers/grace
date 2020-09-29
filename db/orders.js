@@ -3,14 +3,13 @@ const client = require('./client');
 // creates order when checking out
 // this should be invoked when a successful payment was received
 
-async function createOrder({ customer, status, subtotal, tax, discount, loyalty, largeOrder, shipping, total, urgency }) {
+async function createOrder({ customer, status, subtotal, tax, shipping, total, urgency }) {
     try {
         const { rows: [order] } = await client.query(`
-            INSERT INTO orders (customer, status, subtotal, tax, discount, loyalty, "largeOrder", shipping, total, urgency)
-            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
-            ON CONFLICT (customer) DO NOTHING 
+            INSERT INTO orders (customer, status, subtotal, tax, shipping, total, urgency)
+            VALUES ($1, $2, $3, $4, $5, $6, $7)
             RETURNING *;
-        `, [customer, status, subtotal, tax, discount, loyalty, largeOrder, shipping, total, urgency]);
+        `, [customer, status, subtotal, tax, shipping, total, urgency]);
         return order;
     } catch (error) {
         throw error
@@ -22,11 +21,11 @@ async function createOrder({ customer, status, subtotal, tax, discount, loyalty,
 
 async function getOrders(){
     try {
-        const { rows: order } = await client.query(`
+        const { rows } = await client.query(`
         SELECT *
         FROM orders
         `)
-        return orders
+        return rows
     } catch (error) {
         throw error
     }

@@ -4,6 +4,7 @@ const client = require("./client")
 const {
     createUser,
     createProduct,
+    createOrder,
     getUsers,
     getUserById,
     getProducts,
@@ -131,6 +132,107 @@ async function createInitialUsers() {
         throw error;
     }
 }
+
+async function createInitialOrders() {
+    try {
+        console.log('start creating initial orders');
+
+        const OrderOne = await createOrder({ 
+            customer: 'sebas@sebas.com',
+            status: 'open',
+            subtotal: 10.00, 
+            tax: 0.60, 
+            shipping: 0.00,
+            total: 10.60,
+            urgency: 'usps' 
+        });
+        console.log(OrderOne);
+
+        const OrderTwo = await createOrder({ 
+            customer: 'sebas@sebas.com',
+            status: 'open',
+            subtotal: 15.00, 
+            tax: 0.90, 
+            shipping: 0.00,
+            total: 15.60,
+            urgency: 'usps' 
+        });
+        console.log(OrderTwo);
+
+        const OrderThree = await createOrder({ 
+            customer: 'john@john.com',
+            status: 'open',
+            subtotal: 10.00, 
+            tax: 0.60, 
+            shipping: 0.00,
+            total: 10.60,
+            urgency: 'usps' 
+        });
+        console.log(OrderThree);
+
+        const OrderFour = await createOrder({ 
+            customer: 'john@john.com',
+            status: 'open',
+            subtotal: 15.00, 
+            tax: 0.90, 
+            shipping: 0.00,
+            total: 15.90,
+            urgency: 'usps' 
+        });
+        console.log(OrderFour);
+
+        const OrderFive = await createOrder({ 
+            customer: 'carolyn@carolyn.com',
+            status: 'open',
+            subtotal: 10.00, 
+            tax: 0.60, 
+            shipping: 0.00,
+            total: 10.60,
+            urgency: 'usps' 
+        });
+        console.log(OrderFive);
+
+        const OrderSix = await createOrder({ 
+            customer: 'carolyn@carolyn.com',
+            status: 'open',
+            subtotal: 15.00, 
+            tax: 0.90, 
+            shipping: 0.00,
+            total: 15.90,
+            urgency: 'usps' 
+        });
+        console.log(OrderSix);
+
+        const OrderSeven = await createOrder({ 
+            customer: 'duffy@duffy.com',
+            status: 'open',
+            subtotal: 10.00, 
+            tax: 0.60, 
+            shipping: 0.00,
+            total: 10.60,
+            urgency: 'usps' 
+        });
+        console.log(OrderSeven);
+
+        const OrderEight = await createOrder({ 
+            customer: 'duffy@duffy.com',
+            status: 'open',
+            subtotal: 15.00, 
+            tax: 0.90, 
+            shipping: 0.00,
+            total: 15.90,
+            urgency: 'usps' 
+        });
+        console.log(OrderEight);
+
+        
+
+        console.log('end creating initial orders');
+    } catch (error) {
+        throw error;
+    }
+}
+
 
 async function createInitialProducts() {
     try {
@@ -2008,29 +2110,95 @@ async function createInitialOrders() {
     try {
         console.log('start creating initial orders');
 
-        const userOne = await createOrder({
-            username: 'sebas@sebas.com',
-            password: 'password',
+        const OrderOne = await createOrder({ 
+            customer: 'sebas@sebas.com',
+            status: 'open',
+            subtotal: 10.00, 
+            tax: 0.60, 
+            shipping: 0.00,
+            total: 10.60,
+            urgency: 'usps' 
         });
-        console.log(userOne);
+        console.log(OrderOne);
 
-        const userTwo = await createOrder({
-            username: 'john@john.com',
-            password: 'password'
+        const OrderTwo = await createOrder({ 
+            customer: 'sebas@sebas.com',
+            status: 'open',
+            subtotal: 15.00, 
+            tax: 0.90, 
+            shipping: 0.00,
+            total: 15.60,
+            urgency: 'usps' 
         });
-        console.log(userTwo);
+        console.log(OrderTwo);
 
-        const userThree = await createOrder({
-            username: 'duffy@duffy.com',
-            password: 'password',
+        const OrderThree = await createOrder({ 
+            customer: 'john@john.com',
+            status: 'open',
+            subtotal: 10.00, 
+            tax: 0.60, 
+            shipping: 0.00,
+            total: 10.60,
+            urgency: 'usps' 
         });
-        console.log(userThree);
+        console.log(OrderThree);
 
-        const userFour = await createOrder({
-            username: 'carolyn@carolyn.com',
-            password: 'password'
+        const OrderFour = await createOrder({ 
+            customer: 'john@john.com',
+            status: 'open',
+            subtotal: 15.00, 
+            tax: 0.90, 
+            shipping: 0.00,
+            total: 15.90,
+            urgency: 'usps' 
         });
-        console.log(userFour);
+        console.log(OrderFour);
+
+        const OrderFive = await createOrder({ 
+            customer: 'carolyn@carolyn.com',
+            status: 'open',
+            subtotal: 10.00, 
+            tax: 0.60, 
+            shipping: 0.00,
+            total: 10.60,
+            urgency: 'usps' 
+        });
+        console.log(OrderFive);
+
+        const OrderSix = await createOrder({ 
+            customer: 'carolyn@carolyn.com',
+            status: 'open',
+            subtotal: 15.00, 
+            tax: 0.90, 
+            shipping: 0.00,
+            total: 15.90,
+            urgency: 'usps' 
+        });
+        console.log(OrderSix);
+
+        const OrderSeven = await createOrder({ 
+            customer: 'duffy@duffy.com',
+            status: 'open',
+            subtotal: 10.00, 
+            tax: 0.60, 
+            shipping: 0.00,
+            total: 10.60,
+            urgency: 'usps' 
+        });
+        console.log(OrderSeven);
+
+        const OrderEight = await createOrder({ 
+            customer: 'duffy@duffy.com',
+            status: 'open',
+            subtotal: 15.00, 
+            tax: 0.90, 
+            shipping: 0.00,
+            total: 15.90,
+            urgency: 'usps' 
+        });
+        console.log(OrderEight);
+
+        
 
         console.log('end creating initial orders');
     } catch (error) {

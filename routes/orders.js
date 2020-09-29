@@ -1,9 +1,7 @@
 const express = require("express");
-
-const cartRouter = express.Router();
+const ordersRouter = express.Router();
 
 const {
-    createOrder,
     createCart,
     getCartById,
     getOrders
@@ -13,10 +11,8 @@ const {
     requireUser
 } = require('./utils')
 
-
-
 //creates cart
-cartRouter.get('/cart', async (req, res, next) => {
+ordersRouter.get('/cart', async (req, res, next) => {
     console.log('getting cart', req.path);
     try {
         const cart = await createCart()
@@ -28,8 +24,37 @@ cartRouter.get('/cart', async (req, res, next) => {
     }
 });
 
+// get orders
+
+ordersRouter.get('/', async (req, res, next) => {
+    try {
+        const orders = await getOrders();
+        res.send({
+            orders
+        });
+    } catch (error) {
+        throw error;
+    }
+});
+
+
+// add order
+
+ordersRouter.post('/', requireUser, async (req, res, next) => {
+	try {
+		const { status, subtotal, tax, shipping, total, urgency } = req.body;
+		const customer = req.user.username;
+		const [order] = await createOrder({ customer, status, subtotal, tax, shipping, total, urgency });
+		res.send(order);
+	} catch (error) {
+		throw error;
+	}
+});
+
+
 //recalls cart for logged in user
-cartRouter.get('/cart', requireUser, async (req, res, next) => {
+
+ordersRouter.get('/cart', requireUser, async (req, res, next) => {
     console.log('recalling user cart', req.path);
     try {
         const userCart = await getCartById(id);
@@ -41,18 +66,5 @@ cartRouter.get('/cart', requireUser, async (req, res, next) => {
     }
 })
 
-
-cartRouter.get('/', async (req, res, next) => {
-    try {
-        const orders = await getOrders();
-        res.send({
-            orders
-        });
-    } catch (error) {
-        throw error;
-    }
-})
-
-
-module.exports = cartRouter;
+module.exports = ordersRouter;
 
