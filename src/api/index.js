@@ -79,13 +79,14 @@ export async function addOrder({ status, subtotal, tax, shipping, total, urgency
             urgency
         });
         if (order) {
-			return order;
-		} else {
-			return {};
-		}
+			      return order;
+		    } else {
+			    return {};
+		  }
 	} catch (error) {
 		throw error;
 	}
 }
+
 
 // check art collector for q strings for long search terms 

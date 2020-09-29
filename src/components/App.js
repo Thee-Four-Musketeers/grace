@@ -15,11 +15,13 @@ import Home from "../pages/Home";
 import Cheeses from "../pages/Cheeses";
 import Meats from "../pages/Meats";
 import Fruits from "../pages/Fruits";
+
 import Checkout from '../pages/Checkout'
 import ContactUs from '../pages/Contact'
 import Admin from '../pages/Admin'
+import AboutUs from '../pages/About';
 
-// import fucntions & css
+// import functions & css
 
 import { fetchCart, fetchProductsByType } from '../api';
 import './App.css'
@@ -177,6 +179,15 @@ const App = () => {
                                 <Container id="wrapper" fluid>
                                     <Row>
                                         <ContactUs />
+                                    </Row>
+                                </Container>
+                            </Route>
+
+                            <Route exact path="/about">
+                                <Title title={'About Us'} />
+                                <Container id="wrapper" fluid>
+                                    <Row>
+                                        <AboutUs />
                                     </Row>
                                 </Container>
                             </Route>

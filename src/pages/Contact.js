@@ -1,6 +1,7 @@
 import React from 'react';
 import ContactUsForm from './ContactUsForm';
-import { Col } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
+import './Contact.css';
 
 const ContactUs = () => {
 
@@ -8,6 +9,9 @@ const ContactUs = () => {
 
     return (
         <Col id="content">
+            <Row className="contactForm">
+
+            </Row>
             <ContactUsForm />
         </Col>
     )
