@@ -2,6 +2,7 @@ const express = require("express");
 const ordersRouter = express.Router();
 
 const {
+    createOrder,
     createCart,
     getCartById,
     getOrders
@@ -40,11 +41,11 @@ ordersRouter.get('/', async (req, res, next) => {
 
 // add order
 
-ordersRouter.post('/', requireUser, async (req, res, next) => {
+ordersRouter.post('/', async (req, res, next) => {
 	try {
 		const { status, subtotal, tax, shipping, total, urgency } = req.body;
-		const customer = req.user.username;
-		const [order] = await createOrder({ customer, status, subtotal, tax, shipping, total, urgency });
+		// const customer = req.user.username;
+		const order = await createOrder({ status, subtotal, tax, shipping, total, urgency });
 		res.send(order);
 	} catch (error) {
 		throw error;

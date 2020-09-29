@@ -68,22 +68,21 @@ export async function fetchCart(customer) {
 
 // probably need to add products array here...
 
-export async function addOrder({ customer, status, subtotal, tax, shipping, total, urgency }) {
+export async function addOrder({ status, subtotal, tax, shipping, total, urgency }) {
 	try {
 		const { data: order } = await axios.post('/api/orders', {
-			customer,
-			status,
-			subtotal,
-			tax,
-			shipping,
-			total,
-			urgency
-		});
-		if (order) {
-			return order;
-		} else {
-			return {};
-		}
+            status,
+            subtotal, 
+            tax, 
+            shipping,
+            total,
+            urgency
+        });
+        if (order) {
+			      return order;
+		    } else {
+			    return {};
+		  }
 	} catch (error) {
 		throw error;
 	}
