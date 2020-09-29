@@ -1,13 +1,13 @@
 const express = require("express");
-
 const productsRouter = express.Router()
-// import functions here
 const { requireAdmin } = require('./utils');
 
 const {
   getProducts,
   getProductsByTypes
 } = require('../db')
+
+// products by type or fall back to all
 
 productsRouter.get(`/`, async (req, res, next) => {
   const { type = '' } = req.query
@@ -29,7 +29,8 @@ productsRouter.get(`/`, async (req, res, next) => {
 
 })
 
-// PATCH /products/:productId
+// update product
+
 productsRouter.patch('/:productId', requireAdmin, async (req, res, next) => {
   try {
     const { productId, ...fields } = req.body;
