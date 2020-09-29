@@ -8,6 +8,8 @@ const {
     getProductsByTypes
 } = require('../db')
 
+const { requireAdmin } = require('./utils')
+
 productsRouter.get(`/`, async (req, res, next) => {
     const { type = '' } = req.query
     const typeArr = type.split(',').map(el => el.trim())
