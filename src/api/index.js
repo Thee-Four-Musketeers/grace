@@ -49,12 +49,43 @@ export async function fetchProductsByType(type) {
 	}
 }
 
+export async function fetchOrders() {
+	try {
+		const { data: orders } = await axios.get(`/api/orders`)
+		return orders
+	} catch (error) {
+		throw error
+	}
+}
+
 export async function fetchCart(customer) {
 	try {
 		const { data: cart } = await axios.get(`/api/orders/${customer}`)
 		return cart
 	} catch (error) {
 		throw error
+	}
+
+// probably need to add products array here...
+
+export async function addOrder({ customer, status, subtotal, tax, shipping, total, urgency }) {
+	try {
+		const { data: order } = await axios.post('/api/orders', {
+			customer,
+            status,
+            subtotal, 
+            tax, 
+            shipping,
+            total,
+            urgency
+        });
+        if (order) {
+			return order;
+		} else {
+			return {};
+		}
+	} catch (error) {
+		throw error;
 	}
 }
 
@@ -68,5 +99,6 @@ router.patch('/:productId', requireAdmin, async (req, res, next) => {
 	  next(error);
 	}
   });
+
 
 // check art collector for q strings for long search terms 
