@@ -7,7 +7,7 @@ import { login } from '../api/index'
 import './ModalLogin.css'
 import './hooks/useModalLogin'
 
-const ModalLogin = ({ show, hide, user, setUser }) => {
+const ModalLogin = ({ show, toggleLogin, user, setUser }) => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -16,9 +16,15 @@ const ModalLogin = ({ show, hide, user, setUser }) => {
         event.preventDefault();     
         login({username, password}).then((user) => {
             localStorage.setItem('user', JSON.stringify(user));
-            // check if user login was successful
-            // if successful close modal
-            // else show an error message
+            setUser(user);
+            toggleLogin();
+
+            // check if user has open order
+            // if so load it, if not show empty cart
+
+            // some messaging if login failed
+            // new use state called error message
+            
         }).catch((error) => { throw error});
     }
 
@@ -35,7 +41,7 @@ const ModalLogin = ({ show, hide, user, setUser }) => {
         show 
         ? ReactDOM.createPortal(
             <>
-                <Modal show={show} onHide={hide} backdrop="static">
+                <Modal show={show} onHide={toggleLogin} backdrop="static">
                     <Modal.Header closeButton>
                         <Modal.Title>Login</Modal.Title>
                     </Modal.Header>
@@ -74,7 +80,7 @@ const ModalLogin = ({ show, hide, user, setUser }) => {
 
                     </Modal.Body>
                 </Modal>
-            </>, document.body
+            </>, document.getElementById('root')
         ) : null
     )
 };

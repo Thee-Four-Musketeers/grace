@@ -6,7 +6,7 @@ const client = require('./client');
 async function createOrder({ customer, status, subtotal, tax, discount, loyalty, largeOrder, shipping, total, urgency }) {
     try {
         const { rows: [order] } = await client.query(`
-            INSERT INTO products (customer, status, subtotal, tax, discount, loyalty, "largeOrder", shipping, total, urgency)
+            INSERT INTO orders (customer, status, subtotal, tax, discount, loyalty, "largeOrder", shipping, total, urgency)
             VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
             ON CONFLICT (customer) DO NOTHING 
             RETURNING *;
@@ -20,7 +20,7 @@ async function createOrder({ customer, status, subtotal, tax, discount, loyalty,
 // get all orders, most for testing
 // could be used for admin areas to see store wide stats
 
-async function getAllOrders(){
+async function getOrders(){
     try {
         const { rows: order } = await client.query(`
         SELECT *
@@ -32,10 +32,10 @@ async function getAllOrders(){
     }
 }
 
-// creates cart for logged in user
+// add cart item for all users
 // need to create alternate for storing in local storage
 
-async function createCart({ productId, orderId, productIdQuantity }) {
+async function createCartItem({ productId, orderId, productIdQuantity }) {
     try {
         const { rows: [cart] } = await client.query(`
         INSERT INTO orders_products ("productId", "orderId", "productIdQuantity")
@@ -52,6 +52,8 @@ async function createCart({ productId, orderId, productIdQuantity }) {
 // recalls cart when user logs back in
 // not sure how this works, might need more functionality
 // might need at getOrderByUser(status="cart") instead
+
+// find all orders by user and then find open order to return here 
 
 async function getCartById(id) {
     try {
@@ -83,25 +85,11 @@ async function getOrdersByUser(customer) {
 }
 
 
-async function getAllOrders() {
-    try {
-        const { rows: order } = await client.query(`
-        SELECT *
-        FROM orders
-        `)
-        return orders
-    } catch (error) {
-        throw error
-    }
-}
-
-
-
 
 module.exports = {
     createOrder,
-    createCart,
+    getOrders,
+    createCartItem,
     getCartById,
     getOrdersByUser,
-    getAllOrders
 }

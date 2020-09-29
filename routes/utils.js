@@ -1,3 +1,6 @@
+// make a require admin
+// check the boolean user table isAdmin
+
 function requireUser(req, res, next) {
     if (!req.user) {
         next({

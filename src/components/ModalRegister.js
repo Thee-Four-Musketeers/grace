@@ -8,7 +8,7 @@ import './hooks/useModalRegister'
 import { register } from "../api/index";
 
 
-const ModalRegister = ({ isShowing, hide, user, setUser}) => {
+const ModalRegister = ({ isShowing, toggleRegister, user, setUser}) => {
 
     const [username, setUsername] = useState('');
     const [password1, setPassword] = useState('');
@@ -19,8 +19,10 @@ const ModalRegister = ({ isShowing, hide, user, setUser}) => {
         event.preventDefault();
 
         if (password1 === password2) {
-            register({ username, password: password1 }).then((user) => {
-                setUser(user);
+            register({ username, password: password1 }).then((data) => {
+                setUser(data.user);
+                toggleRegister();
+                
                 // log them in here
                 // redirect them
             });
@@ -40,7 +42,7 @@ const ModalRegister = ({ isShowing, hide, user, setUser}) => {
     return (
         isShowing ? ReactDOM.createPortal(
         <>
-            <Modal show={isShowing} onHide={hide} backdrop="static">
+            <Modal show={isShowing} onHide={toggleRegister} backdrop="static">
                 <Modal.Header closeButton>
                     <Modal.Title>Get Account</Modal.Title>
                 </Modal.Header>
@@ -91,38 +93,11 @@ const ModalRegister = ({ isShowing, hide, user, setUser}) => {
 
                         <Form.Text id="passwordHelpBlock" className="ml-1 mb-4" muted>Your password must contain 8-20 characters and may consist of a combination of letters or numbers.</Form.Text>
 
-                        <Button className="btn btn-enter" variant="primary" type="submit">Sign Up <i className="fa fa-sign-in-alt ml-2"></i></Button>
-
-                        {/* <Form.Group className="form-group">
-                            <Form.Label htmlFor="username"><i className="far fa-envelope"></i> Username</Form.Label>
-                            <Form.Control 
-                                id="field-username" name="username" 
-                                className="form-control" placeholder="Enter email" 
-                                type="text" onChange={handleUser}
-                            />
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Label htmlFor="password"><i className="fas fa-lock"></i> Password</Form.Label>
-                            <Form.Control
-                                id="field-password" name="password" 
-                                className="form-control" placeholder="Enter password" 
-                                type="password" onChange={handlePassword}
-                            />
-                        </Form.Group>
-                        <Form.Group className="form-group">
-                            <Form.Label htmlFor="confirm-password"><i className="fas fa-lock"></i> Confirm Password</Form.Label>
-                            <Form.Control
-                                id="field-password-confirm" name="password-confirm"
-                                className="form-control" placeholder="Confirm password" 
-                                type="password" onChange={handlePassword2}
-                            />
-                        </Form.Group> */}
-
-                        
+                        <Button className="btn btn-enter" variant="primary" type="submit">Sign Up <i className="fa fa-sign-in-alt ml-2"></i></Button>                        
                     </Form>
                 </Modal.Body>
             </Modal>
-        </>, document.body
+        </>, document.getElementById('root')
         ) : null
     )
 };

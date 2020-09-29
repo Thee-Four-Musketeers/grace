@@ -15,11 +15,13 @@ import Home from "../pages/Home";
 import Cheeses from "../pages/Cheeses";
 import Meats from "../pages/Meats";
 import Fruits from "../pages/Fruits";
-import Checkout from '../pages/Checkout';
-import ContactUs from '../pages/Contact';
+
+import Checkout from '../pages/Checkout'
+import ContactUs from '../pages/Contact'
+import Admin from '../pages/Admin'
 import AboutUs from '../pages/About';
 
-// import fucntions & css
+// import functions & css
 
 import { fetchCart, fetchProductsByType } from '../api';
 import './App.css'
@@ -33,6 +35,10 @@ const App = () => {
     const [productType, setProductType] = useState([]);
     const [count, setCount] = useState(0);
     const [cart, setCart] = useState([]);
+
+    const[showLogin, setShowLogin] = useState(false);
+    // const[showReg, setShowReg] = useState(false);
+
 
     // check local storage for user and set user
 
@@ -63,6 +69,19 @@ const App = () => {
 
     // cart
 
+    useEffect(() => {
+        // if (!user) {
+        //     localStorageUser()
+        // }
+        fetchCart(user)
+            .then((response) => {
+                setCart(response.user)
+            })
+            .catch((error) => {
+                console.error(error)
+            })
+    }, []);
+
     const addToCart = ({ id, productId }) => {
         const nextCart = [...cart];
         const index = nextCart.findIndex(cart => {
@@ -80,42 +99,29 @@ const App = () => {
         setCart(nextCart);
     }
 
-    useEffect(() => {
-        // if (!user) {
-        //     localStorageUser()
-        // }
-        fetchCart(user)
-            .then((response) => {
-                setCart(response.user)
-            })
-            .catch((error) => {
-                console.error(error)
-            })
-    }, []);
+    const removeFromCart = ({ id }) => {
+        const nextCart = [...cart];
+        const index = nextCart.findIndex(cart => cart.id === id);
 
-    // const removeFromCart = ({ id }) => {
-    //     const nextCart = [...cart];
-    //     const index = nextCart.findIndex(cart => cart.id === id);
+        if (index === -1) {
+            // don't do anything if we're trying to remove a card not in the deck
+            return;
+        }
+        if (nextCart[index].count === 1) {
+            // remove the card altogether
+            nextCart.splice(index, 1);
+        } else {
+            // decrement the count
+            nextCart[index].count -= 1;
+        }
 
-    //     if (index === -1) {
-    //         // don't do anything if we're trying to remove a card not in the deck
-    //         return;
-    //     }
-    //     if (nextCart[index].count === 1) {
-    //         // remove the card altogether
-    //         nextCart.splice(index, 1);
-    //     } else {
-    //         // decrement the count
-    //         nextCart[index].count -= 1;
-    //     }
-
-    //     setCart(nextCart);
-    // }
+        setCart(nextCart);
+    }
 
     return (
         <>
             <Router>
-                <Header user={user} setUser={setUser} count={count} setCount={setCount} />
+                <Header user={user} setUser={setUser} count={count} setCount={setCount} setShowLogin={setShowLogin} />
                 <div id="all">
                     <main>
                         <Switch>
@@ -155,6 +161,15 @@ const App = () => {
                                 <Container id="wrapper" fluid>
                                     <Row>
                                         <Checkout cart={cart} setCart={setCart} count={count} setCount={setCount} />
+                                    </Row>
+                                </Container>
+                            </Route>
+
+                            <Route exact path="/admin">
+                                <Title title={'Admin'} />
+                                <Container id="wrapper" fluid>
+                                    <Row>
+                                        <Admin />
                                     </Row>
                                 </Container>
                             </Route>

@@ -7,11 +7,29 @@ const Cart = ({ products, cart, setCart, addToCart, removeFromCart, count, setCo
 
     console.log('the count is', count);    
 
-    // useEffect(() => {
-    //     setCart(['user']);
-    // }, [])
+    useEffect(() => {
+        setCart(['user']);
+    }, [])
 
     return (
+
+        // const products = [
+        //     {
+        //       id: 1,
+        //       name: "Malm",
+        //       price: 9900,
+        //     },
+        //     {
+        //       id: 2,
+        //       name: "Nordli",
+        //       price: 16500,
+        //     },
+        //     {
+        //       id: 3,
+        //       name: "Kullen",
+        //       price: 4500,
+        //     },
+        // ];
 
         <>
         <button onClick={ () => setCount(count + 1) }>Click</button>
