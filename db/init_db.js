@@ -225,8 +225,6 @@ async function createInitialOrders() {
         });
         console.log(OrderEight);
 
-        
-
         console.log('end creating initial orders');
     } catch (error) {
         throw error;
