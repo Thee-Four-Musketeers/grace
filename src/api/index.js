@@ -1,5 +1,4 @@
 import axios from 'axios';
-const { requireAdmin } = require('./utils');
 
 // trying without local storage:
 
@@ -65,6 +64,7 @@ export async function fetchCart(customer) {
 	} catch (error) {
 		throw error
 	}
+}
 
 // probably need to add products array here...
 
@@ -72,14 +72,14 @@ export async function addOrder({ customer, status, subtotal, tax, shipping, tota
 	try {
 		const { data: order } = await axios.post('/api/orders', {
 			customer,
-            status,
-            subtotal, 
-            tax, 
-            shipping,
-            total,
-            urgency
-        });
-        if (order) {
+			status,
+			subtotal,
+			tax,
+			shipping,
+			total,
+			urgency
+		});
+		if (order) {
 			return order;
 		} else {
 			return {};
@@ -88,7 +88,6 @@ export async function addOrder({ customer, status, subtotal, tax, shipping, tota
 		throw error;
 	}
 }
-
 
 
 // check art collector for q strings for long search terms 

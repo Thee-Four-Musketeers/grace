@@ -5,7 +5,7 @@ import './Cart.css'
 
 const Cart = ({ products, cart, setCart, addToCart, removeFromCart, count, setCount }) => {
 
-    console.log('the count is', count);    
+    console.log('the count is', count);
 
     useEffect(() => {
         setCart(['user']);
@@ -32,23 +32,23 @@ const Cart = ({ products, cart, setCart, addToCart, removeFromCart, count, setCo
         // ];
 
         <>
-        <button onClick={ () => setCount(count + 1) }>Click</button>
-        <Container id="cart">
-            
+            <button onClick={() => setCount(count + 1)}>Click</button>
+            <Container id="cart">
+
                 {
                     cart && cart.map(product => (
                         <Col>
-                            <CartItem   
+                            <CartItem
                                 key={product.id}
                                 addToCart={addToCart}
                                 removeFromCart={removeFromCart}
-                                {...product} 
+                                {...product}
                             />
                         </Col>
                     ))
                 }
 
-        </Container>
+            </Container>
         </>
 
     );
@@ -56,7 +56,7 @@ const Cart = ({ products, cart, setCart, addToCart, removeFromCart, count, setCo
 
 export default Cart;
 
- {/* <div className="cartWrapper">
+{/* <div className="cartWrapper">
     <Table borderless={true}>
         <thead>
             <tr>
