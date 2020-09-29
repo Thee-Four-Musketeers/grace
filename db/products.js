@@ -1,4 +1,5 @@
 const client = require('./client');
+const util = require('./util');
 
 async function createProduct({ name, description, price, type, imageUrl, origin, hardness, odor }){
     try {
@@ -68,22 +69,21 @@ async function getProductsByType(type){
     throw error }
 }
 
-async function updateProduct(id, fields = {}){
-    const setString = Object.keys(fields).map(
-        (key, index) => `"${ key }"=$${ index + 1 }`
-      ).join(', ');
-      try {
-         const {rows: prodcut } = await client.query(`
-         UPDATE products
-         SET ${ setString }
-         WHERE id=${ id }
-         RETURNING *;
-         `, Object.values(fields))
-         return product
-      } catch (error) {
-          throw error
+async function updateProduct({id, ...fields}) {
+    try {
+      if (util.dbFields(fields).insert.length > 0) {
+        const {rows: [product]} = await client.query(`
+            UPDATE products
+            SET ${ util.dbFields(fields).insert }
+            WHERE id=${ id }
+            RETURNING *;
+        `, Object.values(fields));
+        return product;
       }
-}
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
 async function deleteProduct(id){
     try {
