@@ -1,5 +1,6 @@
 import React from 'react';
 import { Col } from 'react-bootstrap';
+import ModalNewProduct from '../components/ModalNewProduct'
 
 const Admin = () => {
 
@@ -7,7 +8,12 @@ const Admin = () => {
 
     return (
         <Col id="content">
-            test
+            <ModalNewProduct />
+
+        Find User
+
+        Find Orders
+
         </Col>
     )
 }
