@@ -3,13 +3,13 @@ import { useState } from 'react';
 const useModalRegister = () => {
     const [isShowing, setIsShowing] = useState(false);
 
-    function toggle1() {
+    function toggleRegister() {
         setIsShowing(!isShowing);
     }
 
     return {
         isShowing,
-        toggle1,
+        toggleRegister,
     }
 };
 
