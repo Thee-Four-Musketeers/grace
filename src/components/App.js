@@ -17,6 +17,7 @@ import Meats from "../pages/Meats";
 import Fruits from "../pages/Fruits";
 import Checkout from '../pages/Checkout'
 import ContactUs from '../pages/Contact'
+import Admin from '../pages/Admin'
 
 // import fucntions & css
 
@@ -96,24 +97,24 @@ const App = () => {
         setCart(nextCart);
     }
 
-    // const removeFromCart = ({ id }) => {
-    //     const nextCart = [...cart];
-    //     const index = nextCart.findIndex(cart => cart.id === id);
+    const removeFromCart = ({ id }) => {
+        const nextCart = [...cart];
+        const index = nextCart.findIndex(cart => cart.id === id);
 
-    //     if (index === -1) {
-    //         // don't do anything if we're trying to remove a card not in the deck
-    //         return;
-    //     }
-    //     if (nextCart[index].count === 1) {
-    //         // remove the card altogether
-    //         nextCart.splice(index, 1);
-    //     } else {
-    //         // decrement the count
-    //         nextCart[index].count -= 1;
-    //     }
+        if (index === -1) {
+            // don't do anything if we're trying to remove a card not in the deck
+            return;
+        }
+        if (nextCart[index].count === 1) {
+            // remove the card altogether
+            nextCart.splice(index, 1);
+        } else {
+            // decrement the count
+            nextCart[index].count -= 1;
+        }
 
-    //     setCart(nextCart);
-    // }
+        setCart(nextCart);
+    }
 
     return (
         <>
@@ -158,6 +159,15 @@ const App = () => {
                                 <Container id="wrapper" fluid>
                                     <Row>
                                         <Checkout cart={cart} setCart={setCart} count={count} setCount={setCount} />
+                                    </Row>
+                                </Container>
+                            </Route>
+
+                            <Route exact path="/admin">
+                                <Title title={'Admin'} />
+                                <Container id="wrapper" fluid>
+                                    <Row>
+                                        <Admin />
                                     </Row>
                                 </Container>
                             </Route>

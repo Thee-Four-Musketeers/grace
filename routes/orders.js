@@ -13,6 +13,8 @@ const {
     requireUser
 } = require('./utils')
 
+
+
 //creates cart
 cartRouter.get('/cart', async (req, res, next) => {
     console.log('getting cart', req.path);
@@ -40,4 +42,17 @@ cartRouter.get('/cart', requireUser, async (req, res, next) => {
 })
 
 
+cartRouter.get('/', async (req, res, next) => {
+    try {
+        const orders = await getOrders();
+        res.send({
+            orders
+        });
+    } catch (error) {
+        throw error;
+    }
+})
+
+
 module.exports = cartRouter;
+

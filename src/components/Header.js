@@ -21,7 +21,7 @@ const Header = ({ user, setUser, count, setCount }) => {
         setUser({});
     }
     const { show, toggleLogin } = useModalLogin();
-    const { isShowing, toggle1 } = useModalRegister();
+    const { isShowing, toggleRegister } = useModalRegister();
     const [expanded, setExpanded] = useState(false);
     
     return (
@@ -50,7 +50,7 @@ const Header = ({ user, setUser, count, setCount }) => {
                                         <Button variant="outline-light" className="btn-controls mx-2" onClick={signOutHandler}>Sign Out</Button>
                                     </> : <>
                                         <Button variant="outline-light" className="btn-controls mx-2" onClick={toggleLogin}>Sign In</Button>
-                                        <Button variant="outline-light" className="btn-controls mx-2" onClick={toggle1}>Sign Up</Button>
+                                        <Button variant="outline-light" className="btn-controls mx-2" onClick={toggleRegister}>Sign Up</Button>
                                     </>
                                 }
                                 <Link className="cart-link" to="/cart">
@@ -63,11 +63,11 @@ const Header = ({ user, setUser, count, setCount }) => {
                 </Col>
             </Row>
             <ModalLogin
-                show={show} hide={toggleLogin}
+                show={show} toggleLogin={toggleLogin}
                 user={user} setUser={setUser}
             />
             <ModalRegister
-                isShowing={isShowing} hide={toggle1}
+                isShowing={isShowing} toggleRegister={toggleRegister}
                 user={user} setUser={setUser}
             />
         </Container>

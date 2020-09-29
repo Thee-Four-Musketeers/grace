@@ -2004,6 +2004,42 @@ async function createInitialProducts() {
     }
 }
 
+async function createInitialOrders() {
+    try {
+        console.log('start creating initial orders');
+
+        const userOne = await createOrder({
+            username: 'sebas@sebas.com',
+            password: 'password',
+        });
+        console.log(userOne);
+
+        const userTwo = await createOrder({
+            username: 'john@john.com',
+            password: 'password'
+        });
+        console.log(userTwo);
+
+        const userThree = await createOrder({
+            username: 'duffy@duffy.com',
+            password: 'password',
+        });
+        console.log(userThree);
+
+        const userFour = await createOrder({
+            username: 'carolyn@carolyn.com',
+            password: 'password'
+        });
+        console.log(userFour);
+
+        console.log('end creating initial orders');
+    } catch (error) {
+        throw error;
+    }
+}
+
+
+
 async function testDB() {
     console.log("calling getAllUsers")
     const allUsers = await getUsers()
@@ -2026,8 +2062,17 @@ async function populateInitialData() {
     try {
         console.log('start populating initial users');
         await createInitialUsers();
-        await createInitialProducts();
         console.log('end populating initial users');
+
+        console.log('start populating initial products');
+        await createInitialProducts();
+        console.log('end populating initial products');
+
+        console.log('start populating initial orders');
+        await createInitialOrders();
+        console.log('end populating initial orders');
+
+
     } catch (error) {
         throw error;
     }

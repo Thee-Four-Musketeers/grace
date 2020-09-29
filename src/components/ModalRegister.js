@@ -8,7 +8,7 @@ import './hooks/useModalRegister'
 import { register } from "../api/index";
 
 
-const ModalRegister = ({ isShowing, hide, user, setUser}) => {
+const ModalRegister = ({ isShowing, toggleRegister, user, setUser}) => {
 
     const [username, setUsername] = useState('');
     const [password1, setPassword] = useState('');
@@ -19,8 +19,10 @@ const ModalRegister = ({ isShowing, hide, user, setUser}) => {
         event.preventDefault();
 
         if (password1 === password2) {
-            register({ username, password: password1 }).then((user) => {
-                setUser(user);
+            register({ username, password: password1 }).then((data) => {
+                setUser(data.user);
+                toggleRegister();
+                
                 // log them in here
                 // redirect them
             });
@@ -40,7 +42,7 @@ const ModalRegister = ({ isShowing, hide, user, setUser}) => {
     return (
         isShowing ? ReactDOM.createPortal(
         <>
-            <Modal show={isShowing} onHide={hide} backdrop="static">
+            <Modal show={isShowing} onHide={toggleRegister} backdrop="static">
                 <Modal.Header closeButton>
                     <Modal.Title>Get Account</Modal.Title>
                 </Modal.Header>
