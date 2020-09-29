@@ -28,6 +28,18 @@ productsRouter.get(`/`, async (req, res, next) => {
     
 })
 
+// PATCH /products/:productId
+productsRouter.patch('/:productId', requireAdmin, async (req, res, next) => {
+	try {
+	  const {productId, ...fields} = req.body;
+	  const updatedProduct = await updateProduct({id: req.params.routineId, productId, ...fields})
+	  res.send(updatedProduct);
+	} catch (error) {
+	  next(error);
+	}
+  });
+
+
 
 
 

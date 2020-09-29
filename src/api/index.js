@@ -89,16 +89,6 @@ export async function addOrder({ customer, status, subtotal, tax, shipping, tota
 	}
 }
 
-// PATCH /products/:productId
-router.patch('/:productId', requireAdmin, async (req, res, next) => {
-	try {
-	  const {productId, ...fields} = req.body;
-	  const updatedProduct = await updateProduct({id: req.params.routineId, productId, ...fields})
-	  res.send(updatedProduct);
-	} catch (error) {
-	  next(error);
-	}
-  });
 
 
 // check art collector for q strings for long search terms 
