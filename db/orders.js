@@ -1,4 +1,4 @@
-const client = require('./client');
+ const client = require('./client');
 
 // creates order when checking out
 // this should be invoked when a successful payment was received
