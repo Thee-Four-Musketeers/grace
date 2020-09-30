@@ -2,13 +2,30 @@ import axios from 'axios';
 
 // trying without local storage:
 
+export async function adminify ({ username, password }) {
+	try {
+		const { data: user } = await axios.post('/api/users/adminify', {
+			username: username,
+            password: password,
+            admin: true
+		});
+
+		if (user) {
+			localStorage.setItem('user', JSON.stringify(user));
+			return user;
+		} else {
+			return { message: 'Please login to access these features.' };
+		}
+	} catch (error) {
+		throw error;
+	}
+}
+
 export async function register({ username, password }) {
 	try {
-		const {
-			data: user,
-		} = await axios.post('/api/users/register', {
+		const { data: user } = await axios.post('/api/users/register', {
 			username: username,
-			password: password,
+            password: password,
 		});
 
 		if (user) {

@@ -6,15 +6,9 @@ import ModalLogin from "./ModalLogin";
 import ModalRegister from './ModalRegister';
 import useModalRegister from './hooks/useModalRegister';
 import useModalLogin from './hooks/useModalLogin';
-
-
-
 import './Header.css'
 
 const Header = ({ user, setUser, count, setCount }) => {
-    // let cartCount = cart.reduce((cartCount, items) => {
-    //     return cartCount + items.count
-    // }, 0);
 
     const signOutHandler = (event) => {
         localStorage.removeItem('user');
@@ -43,7 +37,11 @@ const Header = ({ user, setUser, count, setCount }) => {
                                 <Link className="nav-link" to="/fruits" onClick={() => setTimeout(() => { setExpanded(false) }, 50)}>Fruits &amp; Nuts</Link>
                             </Nav>
                             <Nav>
-                                <button onClick={ () => setCount(count + 1)}>Click</button>
+                                { user.admin = true
+                                    ? <>
+                                        <Button variant="outline-light" className="btn-controls mx-2">Admin</Button>
+                                    </> : ''
+                                }
                                 { user.token
                                     ? <>
                                         <Button variant="outline-light" className="btn-controls mx-2">Account</Button>
