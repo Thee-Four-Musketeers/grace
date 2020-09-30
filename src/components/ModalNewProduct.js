@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { Modal, Form, Button, Col } from 'react-bootstrap';
 
@@ -93,7 +94,12 @@ const ModalNewProduct = () => {
 
                             <Form.Group controlId="formNewProduct">
                                 <Form.Label>Hardness</Form.Label>
-                                <Form.Control type="text" placeholder="Enter product origin" />
+                                <Form.Control type="text" placeholder="Enter product hardness" />
+                            </Form.Group>
+
+                            <Form.Group controlId="formNewProduct">
+                                <Form.Label>Odor</Form.Label>
+                                <Form.Control type="text" placeholder="Enter product odor" />
                             </Form.Group>
 
                         </Col>
