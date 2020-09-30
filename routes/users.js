@@ -102,8 +102,7 @@ usersRouter.post('/login', async (req, res, next) => {
 
     try {
         const user = await getUserByUsername(username);
-        
-        // console.log('users router...', user);
+        const isAdmin = user.admin;
         const hashedPassword = user.password;
         bcrypt.compare(password, hashedPassword, function(err, passwordsMatch){
             if (passwordsMatch){
@@ -115,13 +114,14 @@ usersRouter.post('/login', async (req, res, next) => {
                 });
 
                 res.send({
-                    message: "you're logged in!",
-                    token: token
+                    message: "You are logged in!",
+                    token: token,
+                    admin: isAdmin
                 })
             } else {
                 next({
                     name: 'incorrect Credentials',
-                    message: 'username or password is incorrect'
+                    message: 'Username or password is incorrect'
                 })
             }
         })

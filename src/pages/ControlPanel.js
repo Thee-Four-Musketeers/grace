@@ -9,6 +9,9 @@ document.body.classList.add('solid', 'admin');
 
 const ControlPanel = ({ user, setUser }) => {
 
+
+
+
     const [username, setUsername] = useState('');
     const [password1, setPassword1] = useState('');
     const [password2, setPassword2] = useState('');
@@ -34,9 +37,15 @@ const ControlPanel = ({ user, setUser }) => {
         setPassword2(event.target.value);
     };
 
+    let admin = false;
+    if (localStorage.getItem('user') && user.admin) {
+        admin = true
+    }
+
     return (
-        <>
         <Col id="content">
+        { admin 
+            ? 
             <Form onSubmit={handleAdminify}>
 
                 <Form.Group className="form-group">
@@ -86,8 +95,9 @@ const ControlPanel = ({ user, setUser }) => {
                 <Button className="btn btn-enter" variant="primary" type="submit">Sign Up <i className="fa fa-sign-in-alt ml-2"></i></Button>  
                                       
             </Form>
+            : <div>Access Denied</div>
+        }
         </Col>
-        </>
     )
 };
 

@@ -37,20 +37,27 @@ const Header = ({ user, setUser, count, setCount }) => {
                                 <Link className="nav-link" to="/fruits" onClick={() => setTimeout(() => { setExpanded(false) }, 50)}>Fruits &amp; Nuts</Link>
                             </Nav>
                             <Nav>
-                                { user.admin = true
+                                { user.admin && user.token
                                     ? <>
                                         <Button variant="outline-light" className="btn-controls mx-2">Admin</Button>
                                     </> : ''
                                 }
-                                { user.token
+
+                                { !user.admin && user.token
                                     ? <>
                                         <Button variant="outline-light" className="btn-controls mx-2">Account</Button>
+                                    </> : ''
+                                }
+
+                                { user.token
+                                    ? <>
                                         <Button variant="outline-light" className="btn-controls mx-2" onClick={signOutHandler}>Sign Out</Button>
                                     </> : <>
                                         <Button variant="outline-light" className="btn-controls mx-2" onClick={toggleLogin}>Sign In</Button>
                                         <Button variant="outline-light" className="btn-controls mx-2" onClick={toggleRegister}>Sign Up</Button>
                                     </>
                                 }
+                               
                                 <Link className="cart-link" to="/cart">
                                     <i className="fas fa-shopping-cart cart-icon"></i>
                                     <span className="cart-count">{count}</span>
