@@ -1,0 +1,20 @@
+.list-group {
+    border-radius: 0;
+    border-bottom: 0;
+    font-size: 15px;
+    font-weight: 400 !important;
+}
+
+.list-group-item {
+    border: 0;
+    border-bottom: 1px solid #DFDFDF;
+    padding: 0.75rem 1rem 0.4rem !important;
+}
+
+.col-pixel-width-60 {
+    flex: 0 0 75px;
+}
+
+.col-pixel-width-120 {
+    flex: 0 0 150px;
+}

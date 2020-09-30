@@ -37,6 +37,8 @@ const App = () => {
     const [count, setCount] = useState(0);
     const [cart, setCart] = useState([]);
 
+
+
     // check local storage for user and set user
 
     function localStorageUser() {
@@ -52,6 +54,13 @@ const App = () => {
         setUser(localStorageUser());
     }, []);
 
+
+
+   
+
+
+
+
     // check product type for fetching correct products to product pages     
 
     useEffect(() => {
@@ -63,6 +72,8 @@ const App = () => {
                 console.error(error);
             });
     }, [productType]);
+
+
 
     // cart
 
@@ -164,16 +175,16 @@ const App = () => {
 
                             <Route exact path="/admin">
                                 <Title title={'Admin'} />
-                                <Container id="wrapper" fluid>
+                                <Container id="wrapper">
                                     <Row>
-                                        <Admin />
+                                        <Admin user={user} setUser={setUser} products={products} setProductType={setProductType} />
                                     </Row>
                                 </Container>
                             </Route>
 
                             <Route exact path="/control-panel">
                                 <Title title={'Control Panel'} />
-                                <Container id="wrapper" fluid>
+                                <Container id="wrapper">
                                     <Row>
                                         <ControlPanel user={user} setUser={setUser} />
                                     </Row>

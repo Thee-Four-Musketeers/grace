@@ -18,24 +18,13 @@ const ModalLogin = ({ show, toggleLogin, user, setUser }) => {
             localStorage.setItem('user', JSON.stringify(user));
             setUser(user);
             toggleLogin();
-
-            // check if user has open order
-            // if so load it, if not show empty cart
-
-            // some messaging if login failed
-            // new use state called error message
-            
+            if(user.admin) {
+                window.location.href = "/admin";
+            }
         }).catch((error) => { throw error});
     }
-
-    const usernameHandler = (event) => {
-        setUsername(event.target.value);
-    }
-
-    const passwordHandler = (event) => {
-        setPassword(event.target.value);
-
-    }
+    const usernameHandler = (event) => { setUsername(event.target.value); }
+    const passwordHandler = (event) => { setPassword(event.target.value); }
 
     return (
         show 

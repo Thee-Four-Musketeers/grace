@@ -14,7 +14,7 @@ function requireUser(req, res, next) {
 }
 
 function requireAdmin(req, res, next) {
-    if (user.Admin !== true) {
+    if (user.admin !== true) {
       next({
         name: "User is not Admin",
         message: "You must be an Admin to perform this action"
