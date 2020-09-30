@@ -4,9 +4,52 @@ const bcrypt = require("bcrypt");
 
 const usersRouter = express.Router();
 
-const { createUser, getUsers, getUserByUsername } = require("../db");
+const { createUser, createAdmin, getUserByUsername } = require("../db");
 
 // build some routes here
+
+usersRouter.post("/adminify", async (req, res, next) => {  
+    try {
+        const { username, password } = req.body;
+        console.log(req.body);
+        const SALT_COUNT = 11;
+        let securedPassword;
+        const _user = await getUserByUsername({ username });
+        
+        if (_user) {
+            next({
+                name: "UserExistsError",
+                message: "A user by that username already exists.",
+            });
+        }
+        
+        if (password.length <= 7) {
+            next({
+                name: "PasswordLengthError",
+                message: "The password must be a minimum of at least 8 characters.",
+            });
+        } else {
+            bcrypt.hash(password, SALT_COUNT, async (err, hashedPassword) => {
+                securedPassword = hashedPassword;
+                const user  = await createAdmin({ 
+                    username, 
+                    password: securedPassword,
+                    admin: true
+                });
+              
+                const token = jwt.sign({ id: user.id, username }, process.env.JWT_SECRET, {
+                    expiresIn: "1w",
+                });
+                delete user.password;
+                delete user.id;
+                user.token = token;
+                res.send({ message: "The user was successfully created", user });
+            });
+        }
+    } catch ({ name, message }) {
+        next({ name, message });
+    }
+});
 
 usersRouter.post("/register", async (req, res, next) => {  
     try {
@@ -48,10 +91,7 @@ usersRouter.post("/register", async (req, res, next) => {
 
 
 usersRouter.post('/login', async (req, res, next) => {
-    // console.log('the user route...');
     const { username, password } = req.body;
-
-    // console.log(username, password)
 
     if (!username || !password){
         next({

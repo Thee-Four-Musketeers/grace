@@ -8,6 +8,7 @@ const Admin = () => {
 
     return (
         <Col id="content">
+            
             <ModalNewProduct />
 
         Find User
