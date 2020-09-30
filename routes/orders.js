@@ -45,14 +45,14 @@ ordersRouter.get('/', async (req, res, next) => {
 
 
 ordersRouter.post('/', async (req, res, next) => {
-	try {
-		const { status, subtotal, tax, shipping, total, urgency, products } = req.body;
-		// const customer = req.user.username;
-		const order = await createOrder({ status, subtotal, tax, shipping, total, urgency, products });
-		res.send(order);
-	} catch (error) {
-		throw error;
-	}
+    try {
+        const { status, subtotal, tax, shipping, total, urgency, products } = req.body;
+        // const customer = req.user.username;
+        const order = await createOrder({ status, subtotal, tax, shipping, total, urgency, products });
+        res.send(order);
+    } catch (error) {
+        throw error;
+    }
 });
 
 //recalls cart for logged in user
@@ -67,7 +67,9 @@ ordersRouter.get('/cart', requireUser, async (req, res, next) => {
     } catch ({ name, message }) {
         next({ name, message })
     }
-})
+});
+
+
 
 module.exports = ordersRouter;
 

@@ -1,9 +1,9 @@
- const client = require('./client');
+const client = require('./client');
 
 // creates order when checking out
 // this should be invoked when a successful payment was received
 
-async function createOrder({ customer, status, subtotal, tax, shipping, total, urgency, products })  {
+async function createOrder({ customer, status, subtotal, tax, shipping, total, urgency, products }) {
     try {
         const { rows: [order] } = await client.query(`
             INSERT INTO orders (customer, status, subtotal, tax, shipping, total, urgency)
@@ -33,12 +33,12 @@ async function createOrder({ customer, status, subtotal, tax, shipping, total, u
 //     }
 //   }
 
-  
+
 
 // get all orders, most for testing
 // could be used for admin areas to see store wide stats
 
-async function getOrders(){
+async function getOrders() {
     try {
         const { rows } = await client.query(`
         SELECT *
@@ -50,7 +50,7 @@ async function getOrders(){
     }
 }
 
-async function getOrderById(orderId){
+async function getOrderById(orderId) {
     try {
         const { rows: order } = await client.query(`
             SELECT *
@@ -63,6 +63,20 @@ async function getOrderById(orderId){
     }
 }
 
+async function addToCart(id) {
+    try {
+        const { row: product } = await client.query(`
+    SELECT o.customer, p.name, op."productIdQuantity" AS count
+    FROM orders AS o
+	JOIN orders_products as op ON o.id = op."orderId"
+	JOIN products as p ON p.id = op."productId"
+    WHERE o.id=$1;
+    `, [id]);
+        return product
+    } catch (error) {
+        throw error
+    }
+}
 
 // recalls cart when user logs back in
 // not sure how this works, might need more functionality
@@ -100,6 +114,7 @@ async function getOrdersByUser(customer) {
 }
 
 module.exports = {
+    addToCart,
     createOrder,
     getOrders,
     getOrderById,

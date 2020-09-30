@@ -3,6 +3,7 @@ const productsRouter = express.Router()
 const { requireAdmin } = require('./utils');
 
 const {
+  addToCart,
   getProducts,
   getProductsByTypes
 } = require('../db')
@@ -32,22 +33,34 @@ productsRouter.get(`/`, async (req, res, next) => {
 // update product
 
 productsRouter.patch('/:productId', requireAdmin, async (req, res, next) => {
-  
-	// const [product] = await getProductsById(req.params.productId);
-  
-    try {
+
+  // const [product] = await getProductsById(req.params.productId);
+
+  try {
 
     const { productId, ...fields } = req.body;
-    const updatedProduct = await updateProduct({ 
-        id: req.params.routineId, 
-        productId, 
-        ...fields 
+    const updatedProduct = await updateProduct({
+      id: req.params.routineId,
+      productId,
+      ...fields
     })
     res.send(updatedProduct);
   } catch (error) {
     next(error);
   }
 
+});
+
+productsRouter.put('/:productId', async (req, res, next) => {
+  console.log('adding item to cart', req.path);
+  try {
+    const item = await addToCart(id);
+    res.send({
+      item
+    })
+  } catch ({ name, message }) {
+    next({ name, message })
+  }
 });
 
 
