@@ -2,13 +2,30 @@ import axios from 'axios';
 
 // trying without local storage:
 
+export async function adminify ({ username, password }) {
+	try {
+		const { data: user } = await axios.post('/api/users/adminify', {
+			username: username,
+            password: password,
+            admin: true
+		});
+
+		if (user) {
+			localStorage.setItem('user', JSON.stringify(user));
+			return user;
+		} else {
+			return { message: 'Please login to access these features.' };
+		}
+	} catch (error) {
+		throw error;
+	}
+}
+
 export async function register({ username, password }) {
 	try {
-		const {
-			data: user,
-		} = await axios.post('/api/users/register', {
+		const { data: user } = await axios.post('/api/users/register', {
 			username: username,
-			password: password,
+            password: password,
 		});
 
 		if (user) {
@@ -66,20 +83,13 @@ export async function fetchCart(customer) {
 	}
 }
 
-// probably need to add products array here...
-
-export async function addOrder({ status, subtotal, tax, shipping, total, urgency }) {
+export async function addOrder({ status, subtotal, tax, shipping, total, urgency, products = [] }) {
 	try {
-		const { data: order } = await axios.post('/api/orders', {
-            status,
-            subtotal, 
-            tax, 
-            shipping,
-            total,
-            urgency
+		const { data: order } = await axios.post('/api/orders', { 
+            status, subtotal, tax, shipping, total, urgency, products 
         });
         if (order) {
-			      return order;
+			    return order;
 		    } else {
 			    return {};
 		  }
@@ -87,6 +97,3 @@ export async function addOrder({ status, subtotal, tax, shipping, total, urgency
 		throw error;
 	}
 }
-
-
-// check art collector for q strings for long search terms 

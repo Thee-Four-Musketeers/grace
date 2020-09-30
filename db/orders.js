@@ -3,7 +3,7 @@
 // creates order when checking out
 // this should be invoked when a successful payment was received
 
-async function createOrder({ customer, status, subtotal, tax, shipping, total, urgency }) {
+async function createOrder({ customer, status, subtotal, tax, shipping, total, urgency, products })  {
     try {
         const { rows: [order] } = await client.query(`
             INSERT INTO orders (customer, status, subtotal, tax, shipping, total, urgency)
@@ -15,6 +15,25 @@ async function createOrder({ customer, status, subtotal, tax, shipping, total, u
         throw error
     }
 }
+
+
+// async function getMoviesByCart(cartId) {
+//     try {
+//       const { rows: movies } = await client.query(`
+//           SELECT c.id, m.title, m.price, m.img_url, mc.quantity
+//           FROM cart as c
+//           JOIN movies_cart as mc ON c.id = mc."cartId"
+//           JOIN movies as m ON "movieId" = m.id
+//           WHERE c.id = $1
+//           RETURNING *;
+//           `, [cartId]);
+//       return movies;
+//     } catch (error) {
+//       console.error(error);
+//     }
+//   }
+
+  
 
 // get all orders, most for testing
 // could be used for admin areas to see store wide stats
@@ -31,22 +50,19 @@ async function getOrders(){
     }
 }
 
-// add cart item for all users
-// need to create alternate for storing in local storage
-
-async function createCartItem({ productId, orderId, productIdQuantity }) {
+async function getOrderById(orderId){
     try {
-        const { rows: [cart] } = await client.query(`
-        INSERT INTO orders_products ("productId", "orderId", "productIdQuantity")
-            VALUES ($1, $2, $3)
-            ON CONFLICT ("productId") DO NOTHING 
-            RETURNING *;
-        `, [productId, orderId, productIdQuantity]);
-        return cart;
+        const { rows: order } = await client.query(`
+            SELECT *
+            FROM orders
+            WHERE id=$1;
+        `, [orderId]);
+        return order
     } catch (error) {
         throw error
     }
 }
+
 
 // recalls cart when user logs back in
 // not sure how this works, might need more functionality
@@ -83,12 +99,10 @@ async function getOrdersByUser(customer) {
     }
 }
 
-
-
 module.exports = {
     createOrder,
     getOrders,
-    createCartItem,
+    getOrderById,
     getCartById,
     getOrdersByUser,
 }

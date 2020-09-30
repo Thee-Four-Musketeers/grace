@@ -22,9 +22,6 @@ const ModalRegister = ({ isShowing, toggleRegister, user, setUser}) => {
             register({ username, password: password1 }).then((data) => {
                 setUser(data.user);
                 toggleRegister();
-                
-                // log them in here
-                // redirect them
             });
         }
     };

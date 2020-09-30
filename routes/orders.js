@@ -13,6 +13,7 @@ const {
 } = require('./utils')
 
 //creates cart
+
 ordersRouter.get('/cart', async (req, res, next) => {
     console.log('getting cart', req.path);
     try {
@@ -38,20 +39,21 @@ ordersRouter.get('/', async (req, res, next) => {
     }
 });
 
-
 // add order
+// we may need to associate the order ID with a customer
+// once they register or sign in
+
 
 ordersRouter.post('/', async (req, res, next) => {
 	try {
-		const { status, subtotal, tax, shipping, total, urgency } = req.body;
+		const { status, subtotal, tax, shipping, total, urgency, products } = req.body;
 		// const customer = req.user.username;
-		const order = await createOrder({ status, subtotal, tax, shipping, total, urgency });
+		const order = await createOrder({ status, subtotal, tax, shipping, total, urgency, products });
 		res.send(order);
 	} catch (error) {
 		throw error;
 	}
 });
-
 
 //recalls cart for logged in user
 

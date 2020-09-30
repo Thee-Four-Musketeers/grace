@@ -6,15 +6,9 @@ import ModalLogin from "./ModalLogin";
 import ModalRegister from './ModalRegister';
 import useModalRegister from './hooks/useModalRegister';
 import useModalLogin from './hooks/useModalLogin';
-
-
-
 import './Header.css'
 
 const Header = ({ user, setUser, count, setCount }) => {
-    // let cartCount = cart.reduce((cartCount, items) => {
-    //     return cartCount + items.count
-    // }, 0);
 
     const signOutHandler = (event) => {
         localStorage.removeItem('user');
@@ -43,16 +37,27 @@ const Header = ({ user, setUser, count, setCount }) => {
                                 <Link className="nav-link" to="/fruits" onClick={() => setTimeout(() => { setExpanded(false) }, 50)}>Fruits &amp; Nuts</Link>
                             </Nav>
                             <Nav>
-                                <button onClick={ () => setCount(count + 1)}>Click</button>
-                                { user.token
+                                { user.admin && user.token
+                                    ? <>
+                                        <Button variant="outline-light" className="btn-controls mx-2">Admin</Button>
+                                    </> : ''
+                                }
+
+                                { !user.admin && user.token
                                     ? <>
                                         <Button variant="outline-light" className="btn-controls mx-2">Account</Button>
+                                    </> : ''
+                                }
+
+                                { user.token
+                                    ? <>
                                         <Button variant="outline-light" className="btn-controls mx-2" onClick={signOutHandler}>Sign Out</Button>
                                     </> : <>
                                         <Button variant="outline-light" className="btn-controls mx-2" onClick={toggleLogin}>Sign In</Button>
                                         <Button variant="outline-light" className="btn-controls mx-2" onClick={toggleRegister}>Sign Up</Button>
                                     </>
                                 }
+                               
                                 <Link className="cart-link" to="/cart">
                                     <i className="fas fa-shopping-cart cart-icon"></i>
                                     <span className="cart-count">{count}</span>

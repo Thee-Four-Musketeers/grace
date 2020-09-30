@@ -20,6 +20,7 @@ import Checkout from '../pages/Checkout'
 import ContactUs from '../pages/Contact'
 import Admin from '../pages/Admin'
 import AboutUs from '../pages/About';
+import ControlPanel from '../pages/ControlPanel';
 
 // import functions & css
 
@@ -35,9 +36,6 @@ const App = () => {
     const [productType, setProductType] = useState([]);
     const [count, setCount] = useState(0);
     const [cart, setCart] = useState([]);
-
-    const [showLogin, setShowLogin] = useState(false);
-    // const[showReg, setShowReg] = useState(false);
 
 
     // check local storage for user and set user
@@ -55,6 +53,13 @@ const App = () => {
         setUser(localStorageUser());
     }, []);
 
+
+
+   
+
+
+
+
     // check product type for fetching correct products to product pages     
 
     useEffect(() => {
@@ -66,6 +71,8 @@ const App = () => {
                 console.error(error);
             });
     }, [productType]);
+
+
 
     // cart
 
@@ -121,7 +128,7 @@ const App = () => {
     return (
         <>
             <Router>
-                <Header user={user} setUser={setUser} count={count} setCount={setCount} setShowLogin={setShowLogin} />
+                <Header user={user} setUser={setUser} count={count} setCount={setCount} />
                 <div id="all">
                     <main>
                         <Switch>
@@ -167,9 +174,18 @@ const App = () => {
 
                             <Route exact path="/admin">
                                 <Title title={'Admin'} />
-                                <Container id="wrapper" fluid>
+                                <Container id="wrapper">
                                     <Row>
-                                        <Admin products={products} setProductType={setProductType} />
+                                        <Admin user={user} setUser={setUser} products={products} setProductType={setProductType} />
+                                    </Row>
+                                </Container>
+                            </Route>
+
+                            <Route exact path="/control-panel">
+                                <Title title={'Control Panel'} />
+                                <Container id="wrapper">
+                                    <Row>
+                                       <ControlPanel user={user} setUser={setUser} />
                                     </Row>
                                 </Container>
                             </Route>

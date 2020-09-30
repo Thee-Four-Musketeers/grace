@@ -13,11 +13,11 @@ const ProductCard = ({ id, name, imageUrl, type, price, description, addToCart }
 
     return (
         <Card className="text-center" key={id}>
-            <Link className="" to={{ pathname: `/` + `${type}` + '/' + `${id}` }}>
+            <Link to={{ pathname: `/` + `${type}` + '/' + `${id}` }}>
                 <Card.Img variant="top" src={imageUrl} />
             </Link>
             <Card.Body>
-                <Card.Title className="pb-0"><Link className="" to="/{type}/{id}">{name}</Link></Card.Title>
+                <Card.Title className="pb-0"><Link to={{ pathname: `/` + `${type}` + '/' + `${id}` }}>{name}</Link></Card.Title>
                 <Card.Text className="pb-0">{shorten(description, 50) + '...'}</Card.Text>
             </Card.Body>
             <Card.Footer className="pb-4 pt-0">
