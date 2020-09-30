@@ -11,8 +11,6 @@ const Meats = ({ products, setProductType, addToCart }) => {
         setProductType(['meat']);
     }, [])
 
-    document.body.classList.add('solid', 'boards');
-
     return (
         <Col id="content">
             <CardDeck>

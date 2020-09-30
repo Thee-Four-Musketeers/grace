@@ -6,8 +6,6 @@ import ProductList from '../components/ProductList';
 
 const Admin = ({ user, products, setProductType }) => {
 
-    document.body.classList.add('solid', 'admin');
-
     useEffect(() => {
         setProductType(['fruit', 'nut']);
     }, [])

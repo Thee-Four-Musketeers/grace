@@ -4,8 +4,6 @@ import './Contact.css';
 
 const AboutUs = () => {
 
-    document.body.classList.add('solid', 'cheese');
-
     return (
         <Col id="content">
             <Row className="contactForm">

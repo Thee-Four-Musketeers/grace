@@ -5,12 +5,7 @@ import { adminify } from '../api/index'
 
 // import './ModalLogin.css'
 
-document.body.classList.add('solid', 'admin');
-
 const ControlPanel = ({ user, setUser }) => {
-
-
-
 
     const [username, setUsername] = useState('');
     const [password1, setPassword1] = useState('');

@@ -4,8 +4,6 @@ import './Checkout.css'
 
 const Checkout = ({ cart, setCart, count, setCount  }) => {
 
-    document.body.classList.add('solid', 'cart');
-
     return (
         <Col id="content">
             <Container>
