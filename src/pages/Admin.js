@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Col, CardDeck } from 'react-bootstrap';
 import ModalNewProduct from '../components/ModalNewProduct'
+import ModalEditProduct from '../components/ModalEditProduct'
 import ProductList from '../components/ProductList';
 
 const Admin = ({ user, products, setProductType }) => {

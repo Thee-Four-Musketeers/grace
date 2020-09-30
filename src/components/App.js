@@ -38,7 +38,6 @@ const App = () => {
     const [cart, setCart] = useState([]);
 
 
-
     // check local storage for user and set user
 
     function localStorageUser() {
@@ -186,7 +185,7 @@ const App = () => {
                                 <Title title={'Control Panel'} />
                                 <Container id="wrapper">
                                     <Row>
-                                        <ControlPanel user={user} setUser={setUser} />
+                                       <ControlPanel user={user} setUser={setUser} />
                                     </Row>
                                 </Container>
                             </Route>
