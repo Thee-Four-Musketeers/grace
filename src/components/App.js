@@ -24,7 +24,7 @@ import ControlPanel from '../pages/ControlPanel';
 
 // import functions & css
 
-import { fetchCart, fetchProductsByType } from '../api';
+import { addItemToCart, fetchCart, fetchProductsByType } from '../api';
 import './App.css'
 
 const App = () => {
@@ -54,12 +54,6 @@ const App = () => {
     }, []);
 
 
-
-   
-
-
-
-
     // check product type for fetching correct products to product pages     
 
     useEffect(() => {
@@ -77,17 +71,15 @@ const App = () => {
     // cart
 
     useEffect(() => {
-        // if (!user) {
-        //     localStorageUser()
-        // }
-        fetchCart(user)
+        addItemToCart([cart])
             .then((response) => {
-                setCart(response.user)
+                setCart(response.item)
             })
             .catch((error) => {
-                console.error(error)
+                console.error(error);
             })
     }, []);
+
 
     const addToCart = ({ id, productId }) => {
         const nextCart = [...cart];
@@ -185,7 +177,7 @@ const App = () => {
                                 <Title title={'Control Panel'} />
                                 <Container id="wrapper">
                                     <Row>
-                                       <ControlPanel user={user} setUser={setUser} />
+                                        <ControlPanel user={user} setUser={setUser} />
                                     </Row>
                                 </Container>
                             </Route>
