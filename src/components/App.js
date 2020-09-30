@@ -36,7 +36,7 @@ const App = () => {
     const [count, setCount] = useState(0);
     const [cart, setCart] = useState([]);
 
-    const[showLogin, setShowLogin] = useState(false);
+    const [showLogin, setShowLogin] = useState(false);
     // const[showReg, setShowReg] = useState(false);
 
 
@@ -169,7 +169,7 @@ const App = () => {
                                 <Title title={'Admin'} />
                                 <Container id="wrapper" fluid>
                                     <Row>
-                                        <Admin />
+                                        <Admin products={products} setProductType={setProductType} />
                                     </Row>
                                 </Container>
                             </Route>
