@@ -98,10 +98,9 @@ export async function addOrder({ status, subtotal, tax, shipping, total, urgency
 	}
 }
 
-export async function addItemToCart({ id, name, price, count }) {
-	console.log('JSON PARSE', JSON.parse(localStorage.getItem('user')).token)
+export async function addItemToCart({ id, name, price }) {
 	try {
-		const { product } = await axios.post(`/api/cart/${id}`, { count }, {
+		const { product } = await axios.post(`/api/cart/${id}`, { id, name, price }, {
 			headers: {
 				'Content-Type': 'application/json; charset=utf-8',
 				'Authorization':

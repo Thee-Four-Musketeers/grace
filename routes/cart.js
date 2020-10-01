@@ -41,11 +41,14 @@ cartRouter.post('/:productId', requireUser, async (req, res, next) => {
     console.log('adding item to cart', req.path);
     try {
         const cart = await getOrdersByUser(req.user.username)
+        console.log('CART', cart)
         const item = await createCartItem(req.params.productId, cart.id, 1)
         res.send({
             cart,
-            item,
+            item
         })
+        console.log('cart', cart);
+        console.log('item', item);
     } catch ({ name, message }) {
         next({ name, message })
     }

@@ -105,9 +105,9 @@ async function getOrdersByUser(customer) {
             SELECT * 
             FROM orders
             WHERE customer=$1
-            AND status='open'
-            LIMIT 1;
+            AND status='open';
         `, [customer])
+        console.log('getOrderbyuser', orders[0])
         return orders[0]
     } catch (error) {
         throw error

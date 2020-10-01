@@ -4,26 +4,26 @@ const bcrypt = require("bcrypt");
 
 const usersRouter = express.Router();
 
-const { createUser, createAdmin, getUserByUsername } = require("../db");
+const { createOrder, createUser, createAdmin, getUserByUsername } = require("../db");
 const { requireAdmin } = require('./utils');
 
 // build some routes here
 
-usersRouter.post("/adminify", requireAdmin, async (req, res, next) => {  
+usersRouter.post("/adminify", requireAdmin, async (req, res, next) => {
     try {
         const { username, password } = req.body;
         console.log(req.body);
         const SALT_COUNT = 11;
         let securedPassword;
         const _user = await getUserByUsername({ username });
-        
+
         if (_user) {
             next({
                 name: "UserExistsError",
                 message: "A user by that username already exists.",
             });
         }
-        
+
         if (password.length <= 7) {
             next({
                 name: "PasswordLengthError",
@@ -32,12 +32,12 @@ usersRouter.post("/adminify", requireAdmin, async (req, res, next) => {
         } else {
             bcrypt.hash(password, SALT_COUNT, async (err, hashedPassword) => {
                 securedPassword = hashedPassword;
-                const user  = await createAdmin({ 
-                    username, 
+                const user = await createAdmin({
+                    username,
                     password: securedPassword,
                     admin: true
                 });
-              
+
                 const token = jwt.sign({ id: user.id, username }, process.env.JWT_SECRET, {
                     expiresIn: "1w",
                 });
@@ -52,20 +52,20 @@ usersRouter.post("/adminify", requireAdmin, async (req, res, next) => {
     }
 });
 
-usersRouter.post("/register", async (req, res, next) => {  
+usersRouter.post("/register", async (req, res, next) => {
     try {
         const { username, password } = req.body;
         const SALT_COUNT = 11;
         let securedPassword;
         const _user = await getUserByUsername({ username });
-        
+
         if (_user) {
             next({
                 name: "UserExistsError",
                 message: "A user by that username already exists.",
             });
         }
-        
+
         if (password.length <= 7) {
             next({
                 name: "PasswordLengthError",
@@ -74,8 +74,8 @@ usersRouter.post("/register", async (req, res, next) => {
         } else {
             bcrypt.hash(password, SALT_COUNT, async (err, hashedPassword) => {
                 securedPassword = hashedPassword;
-                const  user  = await createUser({ username, password: securedPassword });
-              
+                const user = await createUser({ username, password: securedPassword });
+
                 const token = jwt.sign({ id: user.id, username }, process.env.JWT_SECRET, {
                     expiresIn: "1w",
                 });
@@ -93,7 +93,7 @@ usersRouter.post("/register", async (req, res, next) => {
 usersRouter.post('/login', async (req, res, next) => {
     const { username, password } = req.body;
 
-    if (!username || !password){
+    if (!username || !password) {
         next({
             name: "Missing Credentials",
             message: "Please supply a username and a password "
@@ -104,8 +104,8 @@ usersRouter.post('/login', async (req, res, next) => {
         const user = await getUserByUsername(username);
         const isAdmin = user.admin;
         const hashedPassword = user.password;
-        bcrypt.compare(password, hashedPassword, function(err, passwordsMatch){
-            if (passwordsMatch){
+        bcrypt.compare(password, hashedPassword, function (err, passwordsMatch) {
+            if (passwordsMatch) {
                 const token = jwt.sign({
                     id: user.id,
                     username
@@ -126,22 +126,27 @@ usersRouter.post('/login', async (req, res, next) => {
             }
         })
 
-    } catch (error) {
-        console.log(error)
-        next(error)
+    } catch ({ name, message }) {
+        next({ name, message });
     }
 
 })
 
-// usersRouter.get('/', async (req, res, next) => {
-//     try {
-//         const users = await getUsers();
-//         res.send({
-//             users
-//         });
-//     } catch (error) {
-//         throw error;
-//     }
-// })
+usersRouter.post('/', async (req, res, next) => {
+    const customer = req.user.username
+    console.log('Customer Cart', customer)
+    try {
+        if (customer) {
+            const cart = await createOrder(customer);
+            res.send({
+                cart
+            });
+        } else {
+            console.log('Please Log in')
+        }
+    } catch ({ name, message }) {
+        next({ name, message });
+    }
+})
 
 module.exports = usersRouter;
