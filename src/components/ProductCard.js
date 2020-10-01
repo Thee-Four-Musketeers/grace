@@ -13,17 +13,17 @@ const ProductCard = ({ id, name, imageUrl, type, price, description, setCart }) 
 
     function handleSubmit(event) {
         event.preventDefault();
+        console.log('here')
         addItemToCart({
             id,
-            name,
-            price
+            count: 1
         }).then(({ item }) => {
             setCart(item)
         })
     };
 
     return (
-        <Card className="text-center" key={id} onSubmit={handleSubmit}>
+        <Card className="text-center" key={id}>
             <Link to={{ pathname: `/` + `${type}` + '/' + `${id}` }}>
                 <Card.Img variant="top" src={imageUrl} />
             </Link>
@@ -33,7 +33,7 @@ const ProductCard = ({ id, name, imageUrl, type, price, description, setCart }) 
             </Card.Body>
             <Card.Footer className="pb-4 pt-0">
                 <Card.Text className="pb-0 price">${price} per pound</Card.Text>
-                <Button variant="primary" className="btn-card" type="submit">Add To Cart</Button>
+                <Button variant="primary" className="btn-card" type="submit" onClick={handleSubmit}>Add To Cart</Button>
             </Card.Footer>
         </Card>
     );

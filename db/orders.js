@@ -63,7 +63,7 @@ async function getOrderById(orderId) {
     }
 }
 
-async function addToCart(id) {
+async function renderCart(id) {
     try {
         const { row: product } = await client.query(`
     SELECT o.customer, p.name, op."productIdQuantity" AS count
@@ -102,19 +102,20 @@ async function getCartById(id) {
 async function getOrdersByUser(customer) {
     try {
         const { rows: orders } = await client.query(`
-            SELECT *
+            SELECT * 
             FROM orders
             WHERE customer=$1
-            AND status="open";
+            AND status='open'
+            LIMIT 1;
         `, [customer])
-        return orders
+        return orders[0]
     } catch (error) {
         throw error
     }
 }
 
 module.exports = {
-    addToCart,
+    // addToCart,
     createOrder,
     getOrders,
     getOrderById,
