@@ -12,20 +12,6 @@ const {
     requireUser
 } = require('./utils')
 
-//creates cart
-
-ordersRouter.get('/cart', async (req, res, next) => {
-    console.log('getting cart', req.path);
-    try {
-        const cart = await createCart()
-        res.send({
-            cart
-        })
-    } catch ({ name, message }) {
-        next({ name, message })
-    }
-});
-
 // get orders
 
 ordersRouter.get('/', async (req, res, next) => {
@@ -55,21 +41,8 @@ ordersRouter.post('/', async (req, res, next) => {
     }
 });
 
-//recalls cart for logged in user
 
-ordersRouter.get('/cart', requireUser, async (req, res, next) => {
-    console.log('recalling user cart', req.path);
-    try {
-        const userCart = await getCartById(id);
-        res.send({
-            userCart
-        })
-    } catch ({ name, message }) {
-        next({ name, message })
-    }
-});
 
 
 
 module.exports = ordersRouter;
-

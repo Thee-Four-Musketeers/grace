@@ -3,7 +3,7 @@ const client = require('./client');
 
 
 
-async function createCartItem({ productId, orderId, productIdQuantity }) {
+async function createCartItem(productId, orderId, productIdQuantity) {
     try {
         const { rows: [cart] } = await client.query(`
         INSERT INTO orders_products ("productId", "orderId", "productIdQuantity")

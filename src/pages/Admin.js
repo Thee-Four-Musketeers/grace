@@ -6,27 +6,29 @@ import ProductList from '../components/ProductList';
 
 const Admin = ({ user, products, setProductType }) => {
 
+    document.body.classList.add('solid', 'admin');
+
     useEffect(() => {
-        setProductType(['chesse', 'meat', 'fruit', 'nut']);
-    }, []);
-    
-    let admin = false;
+        setProductType(['fruit', 'nut']);
+    }, [])
+
+    let admin = true;
     if (localStorage.getItem('user') && user.admin) {
         admin = true
     }
-    
+
     return (
-    
+
         <Col id="content">
-            { admin 
+            { admin
                 ? <>
                     <Row>
-                        <Col><ModalNewProduct /></Col>    
+                        <Col><ModalNewProduct /></Col>
                     </Row>
 
                     <Row>
                         <Col>
-                        
+
                             {
                                 products && products.map(product => (
                                     <ProductList
@@ -35,16 +37,16 @@ const Admin = ({ user, products, setProductType }) => {
                                     </ProductList>)
                                 )
                             }
-                        
-                        </Col>    
+
+                        </Col>
                     </Row>
-                </> 
-                : <><div>Access Denied</div></> 
+                </>
+                : <><div>Access Denied</div></>
             }
         </Col>
 
-        
-        
+
+
     )
 }
 
