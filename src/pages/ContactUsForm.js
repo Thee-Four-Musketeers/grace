@@ -4,13 +4,16 @@ import './Contact.css'
 
 const ContactUsForm = () => {
     // const [form, setForm] = useState('')
+
+    document.body.classList.add('solid', 'cheese');
+
     return (
         <Container fluid className="contactForm">
             <Row >
                 <Col className="contactRow">
                     <InputGroup className="mb-3">
                         <InputGroup.Prepend>
-                            <InputGroup.Text id="basic-addon1"><i class="fas fa-portrait"></i></InputGroup.Text>
+                            <InputGroup.Text id="basic-addon1"><i className="fas fa-portrait"></i></InputGroup.Text>
                         </InputGroup.Prepend>
                         <FormControl
                             placeholder="Enter name"

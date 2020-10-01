@@ -132,7 +132,7 @@ const App = () => {
                                 <Title title={'Artisanal Cheeses'} />
                                 <Container id="wrapper" fluid>
                                     <Row>
-                                        <Cheeses products={products} setProductType={setProductType} addToCart={addToCart} />
+                                        <Cheeses products={products} setProductType={setProductType} cart={cart} setCart={setCart} addToCart={addToCart} />
                                         <Sidebar cart={cart} setCart={setCart} count={count} setCount={setCount} />
                                     </Row>
                                 </Container>

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import './ProductCard.css'
 import { addItemToCart } from '../api/index'
 
-const ProductCard = ({ id, name, imageUrl, type, price, description, setCart }) => {
+const ProductCard = ({ id, name, imageUrl, type, price, description, cart, setCart }) => {
 
     function shorten(str, n) {
         return (str.match(RegExp(".{" + n + "}\\S*")) || [str])[0];
@@ -13,12 +13,12 @@ const ProductCard = ({ id, name, imageUrl, type, price, description, setCart }) 
 
     function handleSubmit(event) {
         event.preventDefault();
-        console.log('here')
+        console.log('Handle Submit here')
         addItemToCart({
             id,
             count: 1
-        }).then(({ item }) => {
-            setCart(item)
+        }).then(id => {
+            setCart(id)
         })
     };
 
