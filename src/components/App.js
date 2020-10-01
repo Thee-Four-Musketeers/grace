@@ -32,10 +32,14 @@ const App = () => {
     // set up various state variables
 
     const [user, setUser] = useState({});
+
     const [products, setProducts] = useState([]);
     const [productType, setProductType] = useState([]);
+
     const [count, setCount] = useState(0);
     const [cart, setCart] = useState([]);
+
+    const [headerClass, setHeaderClass] = useState('');
 
 
     // check local storage for user and set user
@@ -52,7 +56,6 @@ const App = () => {
     useEffect(() => {
         setUser(localStorageUser());
     }, []);
-
 
     // check product type for fetching correct products to product pages     
 
@@ -120,7 +123,7 @@ const App = () => {
     return (
         <>
             <Router>
-                <Header user={user} setUser={setUser} count={count} setCount={setCount} />
+                <Header user={user} setUser={setUser} count={count} setCount={setCount} headerClass={headerClass} />
                 <div id="all">
                     <main>
                         <Switch>
@@ -201,7 +204,7 @@ const App = () => {
                             </Route>
 
                             <Route path="/">
-                                <Home />
+                                <Home setHeaderClass={setHeaderClass} />
                             </Route>
 
                         </Switch>

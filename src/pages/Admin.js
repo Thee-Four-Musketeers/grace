@@ -6,11 +6,9 @@ import ProductList from '../components/ProductList';
 
 const Admin = ({ user, products, setProductType }) => {
 
-    document.body.classList.add('solid', 'admin');
-
     useEffect(() => {
-        setProductType(['fruit', 'nut']);
-    }, [])
+        setProductType(['chesse', 'meat', 'fruit', 'nut']);
+    }, []);
     
     let admin = false;
     if (localStorage.getItem('user') && user.admin) {

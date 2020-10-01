@@ -11,8 +11,6 @@ const Sides = ({ products, setProductType, addToCart }) => {
         setProductType(['fruit', 'nut']);
     }, [])
 
-    document.body.classList.add('solid', 'sides');
-
     return (
         <Col id="content">
             <CardDeck>

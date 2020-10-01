@@ -1,5 +1,5 @@
-#header { background-color: rgba(38,41,45, 0.9); position: absolute; top: 0; z-index: 9999; }
-.solid #header { background-color: #26292D; position: static; }
+#header { background-color: #26292D; position: static; top: 0; z-index: 9999; }
+#header.home { background-color: rgba(38,41,45, 0.9); position: absolute; }
 
 #header nav { font-size: 1.1rem !important; }
 #header .navbar-brand { padding: 0; }

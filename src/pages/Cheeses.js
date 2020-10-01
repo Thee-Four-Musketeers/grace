@@ -9,9 +9,7 @@ const Cheeses = ({ products, setProductType, addToCart }) => {
 
     useEffect(() => {
         setProductType(['cheese']);
-    }, [])
-
-    document.body.classList.add('solid', 'cheese');
+    }, []);
 
     return (
         <Col id="content">

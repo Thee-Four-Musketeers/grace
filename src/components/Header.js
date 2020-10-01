@@ -8,7 +8,7 @@ import useModalRegister from './hooks/useModalRegister';
 import useModalLogin from './hooks/useModalLogin';
 import './Header.css'
 
-const Header = ({ user, setUser, count, setCount }) => {
+const Header = ({ user, setUser, count, headerClass }) => {
 
     const signOutHandler = (event) => {
         localStorage.removeItem('user');
@@ -19,7 +19,7 @@ const Header = ({ user, setUser, count, setCount }) => {
     const [expanded, setExpanded] = useState(false);
     
     return (
-        <Container id="header" className="px-0" fluid={true}>
+        <Container id="header" className={`px-0 ${headerClass}`} fluid={true}>
             <Row className="m-auto">
                 <Col>
                     <Navbar className="px-3" collapseOnSelect expanded={expanded} expand="xl">
