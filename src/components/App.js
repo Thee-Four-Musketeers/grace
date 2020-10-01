@@ -70,15 +70,15 @@ const App = () => {
 
     // cart
 
-    useEffect(() => {
-        addItemToCart([cart])
-            .then((response) => {
-                setCart(response.item)
-            })
-            .catch((error) => {
-                console.error(error);
-            })
-    }, []);
+    // useEffect(() => {
+    //     addItemToCart([cart])
+    //         .then((response) => {
+    //             setCart(response.item)
+    //         })
+    //         .catch((error) => {
+    //             console.error(error);
+    //         })
+    // }, []);
 
 
     const addToCart = ({ id, productId }) => {

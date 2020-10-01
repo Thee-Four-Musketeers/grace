@@ -3,12 +3,11 @@ const client = require('./client');
 
 
 
-async function createCartItem({ productId, orderId, productIdQuantity }) {
+async function createCartItem(productId, orderId, productIdQuantity) {
     try {
         const { rows: [cart] } = await client.query(`
         INSERT INTO orders_products ("productId", "orderId", "productIdQuantity")
             VALUES ($1, $2, $3)
-            ON CONFLICT ("productId") DO NOTHING 
             RETURNING *;
         `, [productId, orderId, productIdQuantity]);
         return cart;

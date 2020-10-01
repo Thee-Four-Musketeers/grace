@@ -1,6 +1,6 @@
 const express = require("express");
 const productsRouter = express.Router()
-const { requireAdmin } = require('./utils');
+const { requireAdmin, requireUser } = require('./utils');
 
 const {
   addToCart,
@@ -51,17 +51,6 @@ productsRouter.patch('/:productId', requireAdmin, async (req, res, next) => {
 
 });
 
-productsRouter.put('/:productId', async (req, res, next) => {
-  console.log('adding item to cart', req.path);
-  try {
-    const item = await addToCart(id);
-    res.send({
-      item
-    })
-  } catch ({ name, message }) {
-    next({ name, message })
-  }
-});
 
 
 // // update link

@@ -11,24 +11,24 @@ const Admin = ({ user, products, setProductType }) => {
     useEffect(() => {
         setProductType(['fruit', 'nut']);
     }, [])
-    
-    let admin = false;
+
+    let admin = true;
     if (localStorage.getItem('user') && user.admin) {
         admin = true
     }
-    
+
     return (
-    
+
         <Col id="content">
-            { admin 
+            { admin
                 ? <>
                     <Row>
-                        <Col><ModalNewProduct /></Col>    
+                        <Col><ModalNewProduct /></Col>
                     </Row>
 
                     <Row>
                         <Col>
-                        
+
                             {
                                 products && products.map(product => (
                                     <ProductList
@@ -37,16 +37,16 @@ const Admin = ({ user, products, setProductType }) => {
                                     </ProductList>)
                                 )
                             }
-                        
-                        </Col>    
+
+                        </Col>
                     </Row>
-                </> 
-                : <><div>Access Denied</div></> 
+                </>
+                : <><div>Access Denied</div></>
             }
         </Col>
 
-        
-        
+
+
     )
 }
 

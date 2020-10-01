@@ -5,13 +5,15 @@ const { getUserById } = require('../db/index.js');
 const usersRouter = require('./users');
 const productsRouter = require('./products');
 const ordersRouter = require('./orders');
-
+const cartRouter = require('./cart');
 // jwt will go here
 
 apiRouter.use(async (req, res, next) => {
-	
+
 	const prefix = 'Bearer ';
 	const auth = req.header('Authorization');
+	console.log('auth', auth);
+	console.log('HEADER', req.header);
 	if (!auth) {
 		// nothing to see here
 		next();
@@ -37,15 +39,15 @@ apiRouter.use(async (req, res, next) => {
 });
 
 apiRouter.get("/", (req, res, next) => {
-  res.send({
-    message: "API is under construction!"
-  });
+	res.send({
+		message: "API is under construction!"
+	});
 });
 
 apiRouter.use('/users', usersRouter);
 apiRouter.use('/products', productsRouter);
 apiRouter.use('/orders', ordersRouter);
-
+apiRouter.use('/cart', cartRouter);
 apiRouter.use((error, req, res, next) => {
 	res.status(500).send(error);
 })
