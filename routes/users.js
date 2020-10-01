@@ -5,10 +5,11 @@ const bcrypt = require("bcrypt");
 const usersRouter = express.Router();
 
 const { createUser, createAdmin, getUserByUsername } = require("../db");
+const { requireAdmin } = require('./utils');
 
 // build some routes here
 
-usersRouter.post("/adminify", async (req, res, next) => {  
+usersRouter.post("/adminify", requireAdmin, async (req, res, next) => {  
     try {
         const { username, password } = req.body;
         console.log(req.body);
@@ -88,7 +89,6 @@ usersRouter.post("/register", async (req, res, next) => {
         next({ name, message });
     }
 });
-
 
 usersRouter.post('/login', async (req, res, next) => {
     const { username, password } = req.body;

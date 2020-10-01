@@ -5,15 +5,11 @@ import ProductCard from '../components/ProductCard';
 
 import './Cheeses.css'
 
-const Cheeses = ({ products, setProductType, addToCart, setHeaderClass }) => {
+const Cheeses = ({ products, setProductType, addToCart }) => {
 
     useEffect(() => {
         setProductType(['cheese']);
     }, []);
-
-    // useEffect(() => {
-    //     setHeaderClass('solid');
-    // }, []);
 
     return (
         <Col id="content">

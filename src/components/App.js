@@ -57,13 +57,6 @@ const App = () => {
         setUser(localStorageUser());
     }, []);
 
-
-
-   
-
-
-
-
     // check product type for fetching correct products to product pages     
 
     useEffect(() => {
@@ -151,7 +144,7 @@ const App = () => {
                                 <Title title={'Specialty Meats'} />
                                 <Container id="wrapper" fluid>
                                     <Row>
-                                        <Meats products={products} setProductType={setProductType} addToCart={addToCart} setHeaderClass={setHeaderClass} />
+                                        <Meats products={products} setProductType={setProductType} addToCart={addToCart} />
                                         <Sidebar cart={cart} setCart={setCart} count={count} setCount={setCount} />
                                     </Row>
                                 </Container>
