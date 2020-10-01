@@ -3,16 +3,27 @@ import { Card, Button, Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 import './ProductCard.css'
+import { addItemToCart } from '../api/index'
 
-
-const ProductCard = ({ id, name, imageUrl, type, price, description, addToCart }) => {
+const ProductCard = ({ id, name, imageUrl, type, price, description, setCart }) => {
 
     function shorten(str, n) {
         return (str.match(RegExp(".{" + n + "}\\S*")) || [str])[0];
     }
 
+    function handleSubmit(event) {
+        event.preventDefault();
+        addItemToCart({
+            id,
+            name,
+            price
+        }).then(({ item }) => {
+            setCart(item)
+        })
+    };
+
     return (
-        <Card className="text-center" key={id}>
+        <Card className="text-center" key={id} onSubmit={handleSubmit}>
             <Link to={{ pathname: `/` + `${type}` + '/' + `${id}` }}>
                 <Card.Img variant="top" src={imageUrl} />
             </Link>
@@ -21,8 +32,8 @@ const ProductCard = ({ id, name, imageUrl, type, price, description, addToCart }
                 <Card.Text className="pb-0">{shorten(description, 50) + '...'}</Card.Text>
             </Card.Body>
             <Card.Footer className="pb-4 pt-0">
-                <Card.Text className="pb-0"><h6><strong>${price} per pound</strong></h6></Card.Text>
-                <Button variant="primary" className="btn-card">Add To Cart</Button>
+                <Card.Text className="pb-0 price">${price} per pound</Card.Text>
+                <Button variant="primary" className="btn-card" type="submit">Add To Cart</Button>
             </Card.Footer>
         </Card>
     );

@@ -2,12 +2,12 @@ import axios from 'axios';
 
 // trying without local storage:
 
-export async function adminify ({ username, password }) {
+export async function adminify({ username, password }) {
 	try {
 		const { data: user } = await axios.post('/api/users/adminify', {
 			username: username,
-            password: password,
-            admin: true
+			password: password,
+			admin: true
 		});
 
 		if (user) {
@@ -25,7 +25,7 @@ export async function register({ username, password }) {
 	try {
 		const { data: user } = await axios.post('/api/users/register', {
 			username: username,
-            password: password,
+			password: password,
 		});
 
 		if (user) {
@@ -85,15 +85,30 @@ export async function fetchCart(customer) {
 
 export async function addOrder({ status, subtotal, tax, shipping, total, urgency, products = [] }) {
 	try {
-		const { data: order } = await axios.post('/api/orders', { 
-            status, subtotal, tax, shipping, total, urgency, products 
-        });
-        if (order) {
-			    return order;
-		    } else {
-			    return {};
-		  }
+		const { data: order } = await axios.post('/api/orders', {
+			status, subtotal, tax, shipping, total, urgency, products
+		});
+		if (order) {
+			return order;
+		} else {
+			return {};
+		}
 	} catch (error) {
 		throw error;
+	}
+}
+
+export async function addItemToCart(id, name, price, count) {
+	try {
+		const { product } = await axios.put('/api/cart', {
+			id, name, price, count
+		});
+		if (product) {
+			return product;
+		} else {
+			return {};
+		}
+	} catch (error) {
+		throw error
 	}
 }
