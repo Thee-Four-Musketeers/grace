@@ -3,7 +3,7 @@ import { Card, Button, Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 import './ProductCard.css'
-import { addItemToCart } from '../api/index'
+import { fetchCart, addItemToCart } from '../api/index'
 
 const ProductCard = ({ id, name, imageUrl, type, price, description, cart, setCart }) => {
 
@@ -11,17 +11,19 @@ const ProductCard = ({ id, name, imageUrl, type, price, description, cart, setCa
         return (str.match(RegExp(".{" + n + "}\\S*")) || [str])[0];
     }
 
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
         event.preventDefault();
         console.log('Handle Submit here')
-        addItemToCart({
-            id,
-            count: 1
-        }).then(id => {
-            setCart(id)
-        })
-    };
-
+        try {
+            await addItemToCart({ id, count: 1 });
+            await fetchCart()
+                .then(result => {
+                    setCart(result.id);
+                })
+        } catch (error) {
+            throw error
+        }
+    }
     return (
         <Card className="text-center" key={id}>
             <Link to={{ pathname: `/` + `${type}` + '/' + `${id}` }}>

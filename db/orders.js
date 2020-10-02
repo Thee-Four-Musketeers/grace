@@ -53,9 +53,9 @@ async function getOrders() {
 async function getOrderById(orderId) {
     try {
         const { rows: order } = await client.query(`
-            SELECT *
-            FROM orders
-            WHERE id=$1;
+        SELECT *
+        FROM orders_products
+        WHERE "orderId"=$1;
         `, [orderId]);
         return order
     } catch (error) {
