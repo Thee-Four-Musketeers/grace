@@ -32,13 +32,10 @@ const App = () => {
     // set up various state variables
 
     const [user, setUser] = useState({});
-
     const [products, setProducts] = useState([]);
     const [productType, setProductType] = useState([]);
-
     const [count, setCount] = useState(0);
     const [cart, setCart] = useState([]);
-
     const [headerClass, setHeaderClass] = useState('');
 
 
@@ -55,6 +52,10 @@ const App = () => {
 
     useEffect(() => {
         setUser(localStorageUser());
+        fetchCart(user)
+            .then((response) => {
+                setCart(response.user)
+            })
     }, []);
 
     // check product type for fetching correct products to product pages     
@@ -158,7 +159,7 @@ const App = () => {
                                 </Container>
                             </Route>
 
-                            <Route exact path="/checkout">
+                            <Route exact path="/cart">
                                 <Title title={'Shopping Cart'} />
                                 <Container id="wrapper" fluid>
                                     <Row>
