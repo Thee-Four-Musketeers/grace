@@ -48,7 +48,6 @@ const Cart = ({ products, count, setCount }) => {
         setCart({ product, type: 'remove' });
     }
 
-
     return (
 
         <>
@@ -56,7 +55,6 @@ const Cart = ({ products, count, setCount }) => {
             <Container id="cart">
                 <p>Your cart currently has {cart.length} items</p>
                 <Col>
-
                     {
                         products && products.map(product => (
                             <div key={product.id} className="cart-item">
@@ -74,7 +72,6 @@ const Cart = ({ products, count, setCount }) => {
                     }
                 </Col>
                 <p>Your total is ${getTotal(cart)}</p>
-
             </Container>
         </>
 

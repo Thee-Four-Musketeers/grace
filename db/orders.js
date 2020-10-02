@@ -1,7 +1,6 @@
 const client = require('./client');
 
 // creates order when checking out
-// this should be invoked when a successful payment was received
 
 async function createOrder({ customer, status, subtotal, tax, shipping, total, urgency }) {
     try {
@@ -16,27 +15,11 @@ async function createOrder({ customer, status, subtotal, tax, shipping, total, u
     }
 }
 
-
-// async function getMoviesByCart(cartId) {
-//     try {
-//       const { rows: movies } = await client.query(`
-//           SELECT c.id, m.title, m.price, m.img_url, mc.quantity
-//           FROM cart as c
-//           JOIN movies_cart as mc ON c.id = mc."cartId"
-//           JOIN movies as m ON "movieId" = m.id
-//           WHERE c.id = $1
-//           RETURNING *;
-//           `, [cartId]);
-//       return movies;
-//     } catch (error) {
-//       console.error(error);
-//     }
-//   }
+// write checkout funtion for logged in user
+// that will update status and other things.
 
 
-
-// get all orders, most for testing
-// could be used for admin areas to see store wide stats
+// get all orders, mostly for testing
 
 async function getOrders() {
     try {
@@ -49,6 +32,8 @@ async function getOrders() {
         throw error
     }
 }
+
+// not sure if this is being used
 
 async function getOrderById(orderId) {
     try {
@@ -63,24 +48,22 @@ async function getOrderById(orderId) {
     }
 }
 
+// not sure if this is being used
+
 async function renderCart(id) {
     try {
         const { row: product } = await client.query(`
-    SELECT o.customer, p.name, op."productIdQuantity" AS count
-    FROM orders AS o
-	JOIN orders_products as op ON o.id = op."orderId"
-	JOIN products as p ON p.id = op."productId"
-    WHERE o.id=$1;
-    `, [id]);
+            SELECT o.customer, p.name, op."productIdQuantity" AS count
+            FROM orders AS o
+            JOIN orders_products as op ON o.id = op."orderId"
+            JOIN products as p ON p.id = op."productId"
+            WHERE o.id=$1;
+        `, [id]);
         return product
     } catch (error) {
         throw error
     }
 }
-
-// recalls cart when user logs back in
-// not sure how this works, might need more functionality
-// might need at getOrderByUser(status="cart") instead
 
 // find all orders by user and then find open order to return here 
 
@@ -101,11 +84,6 @@ async function getCartById(id) {
 
 async function getOrderByUser(customer) {
 
-    // if there is no order
-
-    // createOrder()
-
-
     try {
         const { rows: orders } = await client.query(`
             SELECT * 
@@ -113,19 +91,17 @@ async function getOrderByUser(customer) {
             WHERE customer=$1
             AND status='open';
         `, [customer])
-        
         if (!orders[0]) {
-            await createOrder();
+            const newCart = await createOrder({ customer,status: 'open', urgency: 'usps' });
+            return newCart;
         }  
         return orders[0];
-
     } catch (error) {
         throw error
     }
 }
 
 module.exports = {
-    // addToCart,
     renderCart,
     createOrder,
     getOrders,

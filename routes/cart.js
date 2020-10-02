@@ -3,7 +3,7 @@ const cartRouter = express.Router()
 const { requireAdmin, requireUser } = require('./utils');
 
 const {
-    addToCart, getOrderByUser, createCartItem
+    getOrderByUser, createCartItem
 } = require('../db')
 
 
@@ -38,12 +38,8 @@ cartRouter.get('/cart', requireUser, async (req, res, next) => {
 // Adds item to a cart
 
 cartRouter.post('/:productId', requireUser, async (req, res, next) => {
-    console.log('adding item to cart', req.path);
     try {
-    
         const cart = await getOrderByUser(req.user.username)
-        console.log('CART', cart)
-
         const item = await createCartItem(req.params.productId, cart.id, 1)
         res.send({
             cart,
