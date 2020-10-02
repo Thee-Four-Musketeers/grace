@@ -140,7 +140,7 @@ const App = () => {
                                 <Title title={'Specialty Meats'} />
                                 <Container id="wrapper" fluid>
                                     <Row>
-                                        <Meats products={products} setProductType={setProductType} addToCart={addToCart} setHeaderClass={setHeaderClass} />
+                                        <Meats products={products} setProductType={setProductType} cart={cart} setCart={setCart} addToCart={addToCart} setHeaderClass={setHeaderClass} />
                                         <Sidebar cart={cart} setCart={setCart} count={count} setCount={setCount} />
                                     </Row>
                                 </Container>
@@ -150,7 +150,7 @@ const App = () => {
                                 <Title title={'Fruits & Nuts'} />
                                 <Container id="wrapper" fluid>
                                     <Row>
-                                        <Fruits products={products} setProductType={setProductType} addToCart={addToCart} setHeaderClass={setHeaderClass} />
+                                        <Fruits products={products} setProductType={setProductType} cart={cart} setCart={setCart} addToCart={addToCart} setHeaderClass={setHeaderClass} />
                                         <Sidebar cart={cart} setCart={setCart} count={count} setCount={setCount} />
                                     </Row>
                                 </Container>

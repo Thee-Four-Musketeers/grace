@@ -3,7 +3,24 @@
     padding: 80px 40px;
 }
 
+.col-pixel-width-360 {
+    flex: 0 0 360px;
+}
+
+
 #content {
     background: #F9F9F9;
     padding: 80px;
 }
+
+
+@media (max-width: 767px) {
+
+    #content { padding: 40px; }
+    .col-pixel-width-360 { flex: 0 0 100% !important; }
+    
+}
+
+
+
+

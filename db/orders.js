@@ -16,9 +16,7 @@ async function createOrder({ customer, status, subtotal, tax, shipping, total, u
 }
 
 // write checkout funtion for logged in user
-// that will update status and other things.
-
-
+// that will update status and other things
 // get all orders, mostly for testing
 
 async function getOrders() {
