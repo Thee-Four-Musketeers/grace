@@ -99,7 +99,13 @@ async function getCartById(id) {
 
 //for user to pull up all orders on user account, checks with user ID
 
-async function getOrdersByUser(customer) {
+async function getOrderByUser(customer) {
+
+    // if there is no order
+
+    // createOrder()
+
+
     try {
         const { rows: orders } = await client.query(`
             SELECT * 
@@ -107,8 +113,12 @@ async function getOrdersByUser(customer) {
             WHERE customer=$1
             AND status='open';
         `, [customer])
-        console.log('getOrderbyuser', orders[0])
-        return orders[0]
+        
+        if (!orders[0]) {
+            await createOrder();
+        }  
+        return orders[0];
+
     } catch (error) {
         throw error
     }
@@ -121,5 +131,5 @@ module.exports = {
     getOrders,
     getOrderById,
     getCartById,
-    getOrdersByUser,
+    getOrderByUser,
 }
