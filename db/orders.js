@@ -3,7 +3,7 @@ const client = require('./client');
 // creates order when checking out
 // this should be invoked when a successful payment was received
 
-async function createOrder({ customer, status, subtotal, tax, shipping, total, urgency, products }) {
+async function createOrder({ customer, status, subtotal, tax, shipping, total, urgency }) {
     try {
         const { rows: [order] } = await client.query(`
             INSERT INTO orders (customer, status, subtotal, tax, shipping, total, urgency)
@@ -116,6 +116,7 @@ async function getOrdersByUser(customer) {
 
 module.exports = {
     // addToCart,
+    renderCart,
     createOrder,
     getOrders,
     getOrderById,

@@ -83,10 +83,10 @@ export async function fetchCart(customer) {
 	}
 }
 
-export async function addOrder({ status, subtotal, tax, shipping, total, urgency, products = [] }) {
+export async function addOrder({ customer, status, subtotal, tax, shipping, total, urgency}) {
 	try {
 		const { data: order } = await axios.post('/api/orders', {
-			status, subtotal, tax, shipping, total, urgency, products
+			customer, status, subtotal, tax, shipping, total, urgency
 		});
 		if (order) {
 			return order;
@@ -100,14 +100,21 @@ export async function addOrder({ status, subtotal, tax, shipping, total, urgency
 
 export async function addItemToCart({ id, name, price }) {
 	try {
+        const customer = JSON.parse(localStorage.getItem('user')).customer;
+        console.log('customer from api', customer)
 		const { product } = await axios.post(`/api/cart/${id}`, { id, name, price }, {
 			headers: {
 				'Content-Type': 'application/json; charset=utf-8',
 				'Authorization':
 					'Bearer ' + JSON.parse(localStorage.getItem('user')
 					).token
-			}
-		});
+            },
+            body: {
+                'Customer': customer
+            }
+        });
+        
+
 		if (product) {
 			return product;
 		} else {

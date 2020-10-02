@@ -32,9 +32,8 @@ ordersRouter.get('/', async (req, res, next) => {
 
 ordersRouter.post('/', async (req, res, next) => {
     try {
-        const { status, subtotal, tax, shipping, total, urgency, products } = req.body;
-        // const customer = req.user.username;
-        const order = await createOrder({ status, subtotal, tax, shipping, total, urgency, products });
+        const { customer, status, subtotal, tax, shipping, total, urgency } = req.body;
+        const order = await createOrder({ customer, status, subtotal, tax, shipping, total, urgency });
         res.send(order);
     } catch (error) {
         throw error;

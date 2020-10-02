@@ -103,6 +103,7 @@ usersRouter.post('/login', async (req, res, next) => {
     try {
         const user = await getUserByUsername(username);
         const isAdmin = user.admin;
+        const customer = user.username
         const hashedPassword = user.password;
         bcrypt.compare(password, hashedPassword, function (err, passwordsMatch) {
             if (passwordsMatch) {
@@ -116,7 +117,8 @@ usersRouter.post('/login', async (req, res, next) => {
                 res.send({
                     message: "You are logged in!",
                     token: token,
-                    admin: isAdmin
+                    admin: isAdmin,
+                    customer
                 })
             } else {
                 next({
