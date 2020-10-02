@@ -132,7 +132,7 @@ const App = () => {
                                 <Title title={'Artisanal Cheeses'} />
                                 <Container id="wrapper" fluid>
                                     <Row>
-                                        <Cheeses products={products} setProductType={setProductType} cart={cart} setCart={setCart} addToCart={addToCart} />
+                                        <Cheeses products={products} setProductType={setProductType} cart={cart} setCart={setCart} addToCart={addToCart} setHeaderClass={setHeaderClass} />
                                         <Sidebar cart={cart} setCart={setCart} count={count} setCount={setCount} />
                                     </Row>
                                 </Container>
@@ -142,7 +142,7 @@ const App = () => {
                                 <Title title={'Specialty Meats'} />
                                 <Container id="wrapper" fluid>
                                     <Row>
-                                        <Meats products={products} setProductType={setProductType} addToCart={addToCart} />
+                                        <Meats products={products} setProductType={setProductType} addToCart={addToCart} setHeaderClass={setHeaderClass} />
                                         <Sidebar cart={cart} setCart={setCart} count={count} setCount={setCount} />
                                     </Row>
                                 </Container>
@@ -152,7 +152,7 @@ const App = () => {
                                 <Title title={'Fruits & Nuts'} />
                                 <Container id="wrapper" fluid>
                                     <Row>
-                                        <Fruits products={products} setProductType={setProductType} addToCart={addToCart} />
+                                        <Fruits products={products} setProductType={setProductType} addToCart={addToCart} setHeaderClass={setHeaderClass} />
                                         <Sidebar cart={cart} setCart={setCart} count={count} setCount={setCount} />
                                     </Row>
                                 </Container>
@@ -162,7 +162,7 @@ const App = () => {
                                 <Title title={'Shopping Cart'} />
                                 <Container id="wrapper" fluid>
                                     <Row>
-                                        <Checkout cart={cart} setCart={setCart} count={count} setCount={setCount} />
+                                        <Checkout cart={cart} setCart={setCart} count={count} setCount={setCount} setHeaderClass={setHeaderClass} />
                                     </Row>
                                 </Container>
                             </Route>
@@ -171,7 +171,7 @@ const App = () => {
                                 <Title title={'Admin'} />
                                 <Container id="wrapper">
                                     <Row>
-                                        <Admin user={user} setUser={setUser} products={products} setProductType={setProductType} />
+                                        <Admin user={user} setUser={setUser} products={products} setProductType={setProductType} setHeaderClass={setHeaderClass} />
                                     </Row>
                                 </Container>
                             </Route>
@@ -180,7 +180,7 @@ const App = () => {
                                 <Title title={'Control Panel'} />
                                 <Container id="wrapper">
                                     <Row>
-                                        <ControlPanel user={user} setUser={setUser} />
+                                        <ControlPanel user={user} setUser={setUser} setHeaderClass={setHeaderClass} />
                                     </Row>
                                 </Container>
                             </Route>
@@ -189,7 +189,7 @@ const App = () => {
                                 <Title title={'Contact Us'} />
                                 <Container id="wrapper" fluid>
                                     <Row>
-                                        <ContactUs />
+                                        <ContactUs setHeaderClass={setHeaderClass} />
                                     </Row>
                                 </Container>
                             </Route>
@@ -198,7 +198,7 @@ const App = () => {
                                 <Title title={'About Us'} />
                                 <Container id="wrapper" fluid>
                                     <Row>
-                                        <AboutUs />
+                                        <AboutUs setHeaderClass={setHeaderClass} />
                                     </Row>
                                 </Container>
                             </Route>

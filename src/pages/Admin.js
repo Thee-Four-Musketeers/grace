@@ -4,9 +4,11 @@ import ModalNewProduct from '../components/ModalNewProduct'
 import ModalEditProduct from '../components/ModalEditProduct'
 import ProductList from '../components/ProductList';
 
-const Admin = ({ user, products, setProductType }) => {
+const Admin = ({ user, products, setProductType, setHeaderClass }) => {
 
-    document.body.classList.add('solid', 'admin');
+    useEffect(() => {
+        setHeaderClass('admin');
+    }, []);
 
     useEffect(() => {
         setProductType(['fruit', 'nut']);

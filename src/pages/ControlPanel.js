@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Col, Form, Button, InputGroup } from 'react-bootstrap';
 
 import { adminify } from '../api/index'
 
 // import './ModalLogin.css'
 
-const ControlPanel = ({ user, setUser }) => {
+const ControlPanel = ({ user, setUser, setHeaderClass }) => {
+
+    useEffect(() => {
+        setHeaderClass('control');
+    }, []);
 
     const [username, setUsername] = useState('');
     const [password1, setPassword1] = useState('');

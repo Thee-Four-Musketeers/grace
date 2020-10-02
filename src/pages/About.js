@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Col, Row, Image } from 'react-bootstrap';
 import './Contact.css';
 
-const AboutUs = () => {
+const AboutUs = ({ setHeaderClass }) => {
+
+    useEffect(() => {
+        setHeaderClass('about');
+    }, []);
 
     return (
         <Col id="content">

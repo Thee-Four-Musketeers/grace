@@ -1,11 +1,11 @@
-#title { background-repeat: no-repeat; background-size: cover; }
+#title { background-image: url('/images/Hero_CheesePlate_1.jpg'); background-repeat: no-repeat; background-size: cover; }
 #title .row { background: rgba(0,0,0,0.5) }
 #title .col { color: #FFFFFF; }
 
-.cheese #title { background-image: url('/images/Hero_CheesePlate_1.jpg'); }
+/* .cheese #title { background-image: url('/images/Hero_CheesePlate_1.jpg'); }
 .boards #title { background-image: url('/images/Hero_CheesePlate_1.jpg'); }
 .sides #title { background-image: url('/images/Hero_CheesePlate_1.jpg'); }
-.cart #title { background-image: url('/images/Hero_CheesePlate_1.jpg'); }
+.cart #title { background-image: url('/images/Hero_CheesePlate_1.jpg'); } */
 
 #title .title { font-family: 'Oleo Script Swash Caps', cursive; font-size: 70px; }
 
