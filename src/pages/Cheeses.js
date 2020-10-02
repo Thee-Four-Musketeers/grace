@@ -5,7 +5,7 @@ import ProductCard from '../components/ProductCard';
 
 import './Cheeses.css'
 
-const Cheeses = ({ products, setProductType, addToCart, setHeaderClass }) => {
+const Cheeses = ({ products, setProductType, cart, setCart, addToCart, setHeaderClass }) => {
     document.body.classList.add('solid', 'cheese');
 
 
@@ -25,6 +25,8 @@ const Cheeses = ({ products, setProductType, addToCart, setHeaderClass }) => {
                         <ProductCard
                             key={product.id}
                             addToCart={addToCart}
+                            cart={cart}
+                            setCart={setCart}
                             {...product}>
                         </ProductCard>)
                     )

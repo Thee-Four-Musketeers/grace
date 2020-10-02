@@ -107,14 +107,11 @@ const App = () => {
         const index = nextCart.findIndex(cart => cart.id === id);
 
         if (index === -1) {
-            // don't do anything if we're trying to remove a card not in the deck
             return;
         }
         if (nextCart[index].count === 1) {
-            // remove the card altogether
             nextCart.splice(index, 1);
         } else {
-            // decrement the count
             nextCart[index].count -= 1;
         }
 
