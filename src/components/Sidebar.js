@@ -7,7 +7,7 @@ import './Sidebar.css'
 const Sidebar = ({ cart, setCart, count, setCount }) => {
 
     return (
-        <Col id="sidebar" className="col-pixel-width-360 col-xl-12">
+        <Col id="sidebar" className="col-pixel-width-360 col-md-12">
             <h4 className="title">Build You Own Board</h4>
             <Cart  cart={cart} setCart={setCart} count={count} setCount={setCount} />
         </Col>       

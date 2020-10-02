@@ -13,16 +13,23 @@ const ProductCard = ({ id, name, imageUrl, type, price, description, cart, setCa
 
     async function handleSubmit(event) {
         event.preventDefault();
-        console.log('Handle Submit here')
+
+        console.log('Product Card Handle Submit')
+
         try {
             await addItemToCart({ id, count: 1 });
-            await fetchCart()
-                .then(result => {
-                    setCart(result.id);
-                })
+
+            // FETCH CART IS NOT RETURNING
+            // SEE CART.JS IN ROUTES
+
+            await fetchCart().then(result => {
+                setCart(result.id);
+            });
+            
         } catch (error) {
             throw error
         }
+
     }
     return (
         <Card className="text-center" key={id}>
