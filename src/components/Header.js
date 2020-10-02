@@ -34,7 +34,7 @@ const Header = ({ user, setUser, count, headerClass }) => {
                             <Nav className="mr-auto">
                                 <Link className="nav-link" to="/cheeses" onClick={() => setTimeout(() => { setExpanded(false) }, 50)}>Our Cheeses</Link>
                                 <Link className="nav-link" to="/meats" onClick={() => setTimeout(() => { setExpanded(false) }, 50)}>Specialty Meats</Link>
-                                <Link className="nav-link" to="/fruits" onClick={() => setTimeout(() => { setExpanded(false) }, 50)}>Fruits &amp; Nuts</Link>
+                                <Link className="nav-link" to="/fruits" onClick={() => setTimeout(() => { setExpanded(false) }, 50)}>Fruits&amp;Nuts</Link>
                             </Nav>
                             <Nav>
                                 { user.admin && user.token

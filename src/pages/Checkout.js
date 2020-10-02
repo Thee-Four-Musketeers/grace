@@ -2,7 +2,11 @@ import React, { useEffect } from "react";
 import { Container, Row, Col } from 'react-bootstrap';
 import './Checkout.css'
 
-const Checkout = ({ cart, setCart, count, setCount  }) => {
+const Checkout = ({ cart, setCart, count, setCount, setHeaderClass }) => {
+
+    useEffect(() => {
+        setHeaderClass('checkout');
+    }, []);
 
     return (
         <Col id="content">

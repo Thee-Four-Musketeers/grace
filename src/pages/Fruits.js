@@ -5,7 +5,11 @@ import ProductCard from '../components/ProductCard';
 
 import './Fruits.css'
 
-const Sides = ({ products, setProductType, addToCart }) => {
+const Sides = ({ products, setProductType, addToCart, setHeaderClass }) => {
+
+    useEffect(() => {
+        setHeaderClass('fruit');
+    }, []);
 
     useEffect(() => {
         setProductType(['fruit', 'nut']);
