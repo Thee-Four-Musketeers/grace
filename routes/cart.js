@@ -3,7 +3,7 @@ const cartRouter = express.Router()
 const { requireUser } = require('./utils');
 
 const {
-    getOrderByUser, createCartItem
+    getOrderByUser, createCartItem, renderCart
 } = require('../db')
 
 
@@ -27,30 +27,32 @@ const {
 
 // I BELIEVE THIS ROUTE NEEDS TO BE CHECKED
 
-// cartRouter.get('/cart/', requireUser, async (req, res, next) => {
-//     console.log('recalling user cart', req.path);
-//     try {
-//         const userCart = await getCartById(id);
-//         res.send({
-//             userCart
-//         })
-//     } catch ({ name, message }) {
-//         next({ name, message })
-//     }
-// });
-
-// I REWROTE THIS ROUTE BELOW, ORIGNAL IS ABOVE
-
 cartRouter.get('/', requireUser, async (req, res, next) => {
+    console.log('recalling user cart', req.path);
     try {
-        const cart = await getOrderByUser(req.user.username)
+        const order = await getOrderByUser(req.user.username);
+        const cart = await renderCart(order.id);
         res.send({
+            order,
             cart
         })
     } catch ({ name, message }) {
         next({ name, message })
     }
 });
+
+// I REWROTE THIS ROUTE BELOW, ORIGNAL IS ABOVE
+
+// cartRouter.get('/', requireUser, async (req, res, next) => {
+//     try {
+//         const cart = await getOrderByUser(req.user.username)
+//         res.send({
+//             cart
+//         })
+//     } catch ({ name, message }) {
+//         next({ name, message })
+//     }
+// });
 
 // Adds item to a cart
 

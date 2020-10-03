@@ -49,9 +49,10 @@ async function getOrderById(orderId) {
 // not sure if this is being used
 
 async function renderCart(id) {
+    console.log('from orders db render cart', id);
     try {
-        const { row: product } = await client.query(`
-            SELECT o.customer, p.name, op."productIdQuantity" AS count
+        const { rows: product } = await client.query(`
+            SELECT o.customer, p.name, p.price, op."productIdQuantity" AS count
             FROM orders AS o
             JOIN orders_products as op ON o.id = op."orderId"
             JOIN products as p ON p.id = op."productId"
@@ -70,7 +71,7 @@ async function getCartById(id) {
         const { rows: cart } = await client.query(`
             SELECT *
             FROM orders_products
-            WHERE id=$1;
+            WHERE "orderId"=$1;
         `, [id])
         return cart
     } catch (error) {
