@@ -17,14 +17,18 @@ const ProductCard = ({ id, name, imageUrl, type, price, description, cart, setCa
         console.log('Product Card Handle Submit')
 
         try {
-            await addItemToCart({ id, count: 1 });
+            const result = await addItemToCart({ id, count: 1 });
+            setCart({ id, name, price, count: 1 });
+
+            // console.log('product from produt card', product);
+            console.log('cart from produt card', cart);
 
             // FETCH CART IS NOT RETURNING
             // SEE CART.JS IN ROUTES
 
-            await fetchCart().then(result => {
-                setCart(result.id);
-            });
+            // await fetchCart().then(result => {
+
+            // });
             
         } catch (error) {
             throw error

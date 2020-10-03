@@ -76,8 +76,16 @@ export async function fetchOrders() {
 
 export async function fetchCart(customer) {
 	try {
-		const { data: cart } = await axios.get(`/api/orders/${customer}`)
-		return cart
+		const { data: result } = await axios.get(`/api/cart`, {
+            headers: {
+				'Content-Type': 'application/json; charset=utf-8',
+				'Authorization':
+					'Bearer ' + JSON.parse(localStorage.getItem('user')
+					).token
+            }
+        });
+        
+		return result.cart
 	} catch (error) {
 		throw error
 	}
@@ -101,8 +109,7 @@ export async function addOrder({ customer, status, subtotal, tax, shipping, tota
 export async function addItemToCart({ id, name, price }) {
 	try {
         const customer = JSON.parse(localStorage.getItem('user')).customer;
-        console.log('customer from api', customer)
-		const { product } = await axios.post(`/api/cart/${id}`, { id, name, price }, {
+		const { data } = await axios.post(`/api/cart/${id}`, { id, name, price }, {
 			headers: {
 				'Content-Type': 'application/json; charset=utf-8',
 				'Authorization':
@@ -114,9 +121,11 @@ export async function addItemToCart({ id, name, price }) {
             }
         });
         
+        
 
-		if (product) {
-			return product;
+		if (data) {
+            console.log('axious add to cart data item', data.item);
+			return data.item;
 		} else {
 			return {};
 		}

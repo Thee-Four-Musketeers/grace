@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useReducer}  from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Container, Row } from 'react-bootstrap';
 
@@ -36,8 +36,102 @@ const App = () => {
     const [products, setProducts] = useState([]);
     const [productType, setProductType] = useState([]);
     const [count, setCount] = useState(0);
-    const [cart, setCart] = useState([]);
+    // const [cart, setCart] = useState([]);
     const [headerClass, setHeaderClass] = useState('');
+
+
+    const currencyOptions = {
+        // minimumFractionDigits: 2,
+        // maximumFractionDigits: 2,
+    }
+    
+    function getTotal(cart) {
+
+        console.log('cart from app', cart);
+        // console.log('cart from app', item);
+
+        if(cart) {
+            const total = cart.reduce((currentTotal, item) => currentTotal + Number(item.price), 0);
+            return total.toLocaleString(undefined, currencyOptions)
+        } else {
+            return '0';
+        }
+    }
+    
+    
+    function cartReducer(state, action) {
+        console.log('state...', state)
+        console.log('action...', action)
+                
+        switch (action.type) {
+            
+            case 
+                'add':
+                
+                return [...state, action.product];
+            case 'remove':
+                const productIndex = state.findIndex(item => item.name === action.product.name);
+                if (productIndex < 0) {
+                    return state;
+                }
+                const update = [...state];
+                update.splice(productIndex, 1)
+                return update
+            
+                case 'set':
+
+                    return action.cart;
+
+            // case for increaseQty
+
+                // const increaseQty = ({ id, productId }) => {
+                //     const nextCart = [...cart];
+                //     const index = nextCart.findIndex(cart => {
+                //         return cart.id === id
+                //     });
+                //     if (index > -1) {
+                //         nextCart[index].count += 1;
+                //     } else {
+                //         nextCart.push({
+                //             id,
+                //             productId,
+                //             count: 1
+                //         })
+                //     }
+                //     setCart(nextCart);
+                // }
+
+            // case for decreaseQty
+
+                // const decreaseQty = ({ id }) => {
+                //     const nextCart = [...cart];
+                //     const index = nextCart.findIndex(cart => cart.id === id);
+
+                //     if (index === -1) {
+                //         return;
+                //     }
+                //     if (nextCart[index].count === 1) {
+                //         nextCart.splice(index, 1);
+                //     } else {
+                //         nextCart[index].count -= 1;
+                //     }
+                //     setCart(nextCart);
+                // }
+
+            default:
+                return state;
+        }
+    }
+
+    const [cart, setCart] = useReducer(cartReducer, []);
+    
+    function addToCart(product) {
+        setCart({ product, type: 'add' });
+    }
+
+    function removeFromCart(product) {
+        setCart({ product, type: 'remove' });
+    }
 
 
     // check local storage for user and set user
@@ -55,7 +149,8 @@ const App = () => {
         setUser(localStorageUser());
         fetchCart(user)
             .then((response) => {
-                setCart(response.user)
+                setCart({ type: 'set', cart: response })
+                console.log('from app response', response);
             })
     }, []);
 
@@ -71,54 +166,6 @@ const App = () => {
             });
     }, [productType]);
 
-
-
-    // cart
-
-    // useEffect(() => {
-    //     addItemToCart([cart])
-    //         .then((response) => {
-    //             setCart(response.item)
-    //         })
-    //         .catch((error) => {
-    //             console.error(error);
-    //         })
-    // }, []);
-
-
-    const addToCart = ({ id, productId }) => {
-        const nextCart = [...cart];
-        const index = nextCart.findIndex(cart => {
-            return cart.id === id
-        });
-        if (index > -1) {
-            nextCart[index].count += 1;
-        } else {
-            nextCart.push({
-                id,
-                productId,
-                count: 1
-            })
-        }
-        setCart(nextCart);
-    }
-
-    const removeFromCart = ({ id }) => {
-        const nextCart = [...cart];
-        const index = nextCart.findIndex(cart => cart.id === id);
-
-        if (index === -1) {
-            return;
-        }
-        if (nextCart[index].count === 1) {
-            nextCart.splice(index, 1);
-        } else {
-            nextCart[index].count -= 1;
-        }
-
-        setCart(nextCart);
-    }
-
     return (
         <>
             <Router>
@@ -131,8 +178,8 @@ const App = () => {
                                 <Title title={'Artisanal Cheeses'} />
                                 <Container id="wrapper" fluid>
                                     <Row>
-                                        <Cheeses products={products} setProductType={setProductType} cart={cart} setCart={setCart} addToCart={addToCart} setHeaderClass={setHeaderClass} />
-                                        <Sidebar cart={cart} setCart={setCart} count={count} setCount={setCount} />
+                                        <Cheeses products={products} setProductType={setProductType} cart={cart} setCart={addToCart} setHeaderClass={setHeaderClass} />
+                                        <Sidebar products={products} cart={cart} setCart={addToCart} count={count} setCount={setCount} getTotal={getTotal} />
                                     </Row>
                                 </Container>
                             </Route>
@@ -141,8 +188,8 @@ const App = () => {
                                 <Title title={'Specialty Meats'} />
                                 <Container id="wrapper" fluid>
                                     <Row>
-                                        <Meats products={products} setProductType={setProductType} cart={cart} setCart={setCart} addToCart={addToCart} setHeaderClass={setHeaderClass} />
-                                        <Sidebar cart={cart} setCart={setCart} count={count} setCount={setCount} />
+                                        <Meats products={products} setProductType={setProductType} cart={cart} setCart={addToCart} setHeaderClass={setHeaderClass} />
+                                        <Sidebar products={products} cart={cart} setCart={addToCart} count={count} setCount={setCount} getTotal={getTotal} />
                                     </Row>
                                 </Container>
                             </Route>
@@ -151,8 +198,8 @@ const App = () => {
                                 <Title title={'Fruits & Nuts'} />
                                 <Container id="wrapper" fluid>
                                     <Row>
-                                        <Fruits products={products} setProductType={setProductType} cart={cart} setCart={setCart} addToCart={addToCart} setHeaderClass={setHeaderClass} />
-                                        <Sidebar cart={cart} setCart={setCart} count={count} setCount={setCount} />
+                                        <Fruits products={products} setProductType={setProductType} cart={cart} setCart={addToCart} setHeaderClass={setHeaderClass} />
+                                        <Sidebar products={products} cart={cart} setCart={addToCart} count={count} setCount={setCount} getTotal={getTotal} />
                                     </Row>
                                 </Container>
                             </Route>
@@ -161,7 +208,7 @@ const App = () => {
                                 <Title title={'Shopping Cart'} />
                                 <Container id="wrapper" fluid>
                                     <Row>
-                                        <Checkout cart={cart} setCart={setCart} count={count} setCount={setCount} setHeaderClass={setHeaderClass} />
+                                        <Checkout products={products} cart={cart} setCart={addToCart} count={count} setCount={setCount} setHeaderClass={setHeaderClass} getTotal={getTotal} />
                                     </Row>
                                 </Container>
                             </Route>
