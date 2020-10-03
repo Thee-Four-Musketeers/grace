@@ -8,7 +8,7 @@ import useModalRegister from './hooks/useModalRegister';
 import useModalLogin from './hooks/useModalLogin';
 import './Header.css'
 
-const Header = ({ user, setUser, count, headerClass }) => {
+const Header = ({ user, setUser, cart, headerClass }) => {
 
     const signOutHandler = (event) => {
         localStorage.removeItem('user');
@@ -60,7 +60,7 @@ const Header = ({ user, setUser, count, headerClass }) => {
 
                                 <Link className="cart-link" to="/cart">
                                     <i className="fas fa-shopping-cart cart-icon"></i>
-                                    <span className="cart-count">{count}</span>
+                                    <span className="cart-count">{cart.length}</span>
                                 </Link>
                             </Nav>
                         </Navbar.Collapse>
