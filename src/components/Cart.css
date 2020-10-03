@@ -1,0 +1,41 @@
+.cartName {
+    font-weight: 600;
+    padding-top: 3px;
+    padding-right: 48px;
+    font-size: 1.1rem;
+}
+
+.cartActions {
+    display: flex;
+    flex-flow: row nowrap;
+    /* width: 40px; */
+    padding: 0 0;
+}
+
+.cartPrice {
+    font-weight: 600;
+    padding-top: 4px;
+    padding-left: 34px;
+}
+
+.cart-item {
+    height: 52px;
+    margin-bottom: 20px;
+    border-bottom: 1px #d0cfcf solid;
+}
+
+.cartTotal {
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.cartLength {
+    padding-bottom: 20px;
+    font-size: 19px
+}
+
+.cart-icon1 {
+    color: black;
+    font-size: 19px;
+    padding: 0.4rem 0 0.4rem;
+}
