@@ -36,7 +36,6 @@ const App = () => {
     const [products, setProducts] = useState([]);
     const [productType, setProductType] = useState([]);
     const [count, setCount] = useState(0);
-    // const [cart, setCart] = useState([]);
     const [headerClass, setHeaderClass] = useState('');
 
 
@@ -47,9 +46,6 @@ const App = () => {
     
     function getTotal(cart) {
 
-        console.log('cart from app', cart);
-        // console.log('cart from app', item);
-
         if(cart) {
             const total = cart.reduce((currentTotal, item) => currentTotal + Number(item.price), 0);
             return total.toLocaleString(undefined, currencyOptions)
@@ -58,16 +54,11 @@ const App = () => {
         }
     }
     
-    
-    function cartReducer(state, action) {
-        console.log('state...', state)
-        console.log('action...', action)
-                
+    function cartReducer(state, action) {        
         switch (action.type) {
             
             case 
                 'add':
-                
                 return [...state, action.product];
             case 'remove':
                 const productIndex = state.findIndex(item => item.name === action.product.name);
@@ -78,9 +69,9 @@ const App = () => {
                 update.splice(productIndex, 1)
                 return update
             
-                case 'set':
+            case 'set':
 
-                    return action.cart;
+                return action.cart;
 
             // case for increaseQty
 
@@ -150,7 +141,6 @@ const App = () => {
         fetchCart(user)
             .then((response) => {
                 setCart({ type: 'set', cart: response })
-                console.log('from app response', response);
             })
     }, []);
 

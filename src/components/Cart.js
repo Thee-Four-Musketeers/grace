@@ -3,12 +3,7 @@ import { Container, Col, Row, Table } from 'react-bootstrap';
 
 import './Cart.css'
 
-
-
-
 const Cart = ({ products, cart, addToCart, removeFromCart, getTotal }) => {
-    
-    console.log('products in cart', products);
 
     return (
 
@@ -27,8 +22,6 @@ const Cart = ({ products, cart, addToCart, removeFromCart, getTotal }) => {
                                     <span clssName="cart-item-quantity">{product.quantity}</span>
                                     <button onClick={() => removeFromCart(product)} className="btn btn-primary btn-sm cart-item-remove "> - </button>
                                 </div>
-
-                                
                             </div>
                         ))
                     }

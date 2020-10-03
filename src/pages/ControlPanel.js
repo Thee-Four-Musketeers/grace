@@ -20,7 +20,6 @@ const ControlPanel = ({ user, setUser, setHeaderClass }) => {
         if (password1 === password2) {
             adminify({ username, password: password1 })
             .then((data) => {
-                console.log(data);
                 setUser(data.user);
             });
         }
