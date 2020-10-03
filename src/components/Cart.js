@@ -30,6 +30,7 @@ const Cart = ({ products, cart, addToCart, removeFromCart, getTotal }) => {
                                         <div className="cart-item cartPrice">${Number(product.price) * Number(product.count)}</div>
                                     </Col>
                                 </Row>
+
                             </div>
 
                         ))

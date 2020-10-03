@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Row, Col, CardDeck } from 'react-bootstrap';
+import React, { useEffect } from 'react';
+import { Row, Col, Tabs, Tab } from 'react-bootstrap';
 import ModalNewProduct from '../components/ModalNewProduct'
-import ModalEditProduct from '../components/ModalEditProduct'
 import ProductList from '../components/ProductList';
+import AdminNav from '../components/AdminNav';
 
 const Admin = ({ user, products, setProductType, setHeaderClass }) => {
 
@@ -11,7 +11,7 @@ const Admin = ({ user, products, setProductType, setHeaderClass }) => {
     }, []);
 
     useEffect(() => {
-        setProductType(['fruit', 'nut']);
+        setProductType(['cheese', 'meat', 'fruit', 'nut']);
     }, [])
 
     let admin = true;
@@ -19,11 +19,30 @@ const Admin = ({ user, products, setProductType, setHeaderClass }) => {
         admin = true
     }
 
+    
     return (
-
+        <> 
+        
         <Col id="content">
             { admin
                 ? <>
+                    <Row>
+                        <Col>
+                    
+                            <Tabs id="uncontrolled-tab-example">
+                            <Tab eventKey="home" title="Home">
+                                <div>test</div>
+                            </Tab>
+                            <Tab eventKey="profile" title="Profile">
+                                <div>does it work</div>
+                            </Tab>
+                            <Tab eventKey="contact" title="Contact">
+                                <div>i hope so</div>
+                            </Tab>
+                            </Tabs>
+                            
+                        </Col>
+                    </Row>
                     <Row>
                         <Col><ModalNewProduct /></Col>
                     </Row>
@@ -46,7 +65,7 @@ const Admin = ({ user, products, setProductType, setHeaderClass }) => {
                 : <><div>Access Denied</div></>
             }
         </Col>
-
+        </>
 
 
     )
