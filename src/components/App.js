@@ -159,7 +159,7 @@ const App = () => {
     return (
         <>
             <Router>
-                <Header user={user} setUser={setUser} count={count} setCount={setCount} headerClass={headerClass} />
+                <Header user={user} setUser={setUser} cart={cart} headerClass={headerClass} />
                 <div id="all">
                     <main>
                         <Switch>

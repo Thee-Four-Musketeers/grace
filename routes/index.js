@@ -6,23 +6,16 @@ const usersRouter = require('./users');
 const productsRouter = require('./products');
 const ordersRouter = require('./orders');
 const cartRouter = require('./cart');
-// jwt will go here
 
 apiRouter.use(async (req, res, next) => {
-
 	const prefix = 'Bearer ';
 	const auth = req.header('Authorization');
-	console.log('auth', auth);
-	console.log('HEADER', req.header);
-	if (!auth) {
-		// nothing to see here
+	if (!auth) { // nothing to see here
 		next();
 	} else if (auth.startsWith(prefix)) {
 		const token = auth.slice(prefix.length);
-
 		try {
 			const { id } = jwt.verify(token, JWT_SECRET);
-
 			if (id) {
 				req.user = await getUserById(id);
 				next();
