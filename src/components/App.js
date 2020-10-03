@@ -40,8 +40,8 @@ const App = () => {
 
 
     const currencyOptions = {
-        // minimumFractionDigits: 2,
-        // maximumFractionDigits: 2,
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
     }
     
     function getTotal(cart) {
@@ -137,14 +137,15 @@ const App = () => {
     }
 
     useEffect(() => {
-        setUser(localStorageUser());
+        setUser(localStorageUser());       
         fetchCart(user)
             .then((response) => {
                 setCart({ type: 'set', cart: response })
-            })
+            }
+        )
     }, []);
 
-    // check product type for fetching correct products to product pages     
+    // technical debt, app crashes when user is logged out    
 
     useEffect(() => {
         fetchProductsByType([productType])
@@ -153,7 +154,8 @@ const App = () => {
             })
             .catch((error) => {
                 console.error(error);
-            });
+            }
+        );
     }, [productType]);
 
     return (

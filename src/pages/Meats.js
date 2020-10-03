@@ -5,7 +5,7 @@ import ProductCard from '../components/ProductCard';
 
 import './Meats.css'
 
-const Meats = ({ products, setProductType, addToCart, setHeaderClass }) => {
+const Meats = ({ products, setProductType, cart, setCart, addToCart, setHeaderClass }) => {
 
     useEffect(() => {
         setProductType(['meat']);
@@ -23,6 +23,8 @@ const Meats = ({ products, setProductType, addToCart, setHeaderClass }) => {
                         <ProductCard
                             key={product.id}
                             addToCart={addToCart}
+                            cart={cart}
+                            setCart={setCart}
                             {...product}>
                         </ProductCard>)
                     )
