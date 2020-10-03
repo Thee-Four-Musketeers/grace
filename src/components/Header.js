@@ -17,7 +17,7 @@ const Header = ({ user, setUser, count, headerClass }) => {
     const { show, toggleLogin } = useModalLogin();
     const { isShowing, toggleRegister } = useModalRegister();
     const [expanded, setExpanded] = useState(false);
-    
+
     return (
         <Container id="header" className={`px-0 ${headerClass}`} fluid={true}>
             <Row className="m-auto">
@@ -37,19 +37,19 @@ const Header = ({ user, setUser, count, headerClass }) => {
                                 <Link className="nav-link" to="/fruits" onClick={() => setTimeout(() => { setExpanded(false) }, 50)}>Fruits&amp;Nuts</Link>
                             </Nav>
                             <Nav>
-                                { user.admin && user.token
+                                {user.admin && user.token
                                     ? <>
                                         <Button variant="outline-light" className="btn-controls mx-2">Admin</Button>
                                     </> : ''
                                 }
 
-                                { !user.admin && user.token
+                                {!user.admin && user.token
                                     ? <>
-                                        <Button variant="outline-light" className="btn-controls mx-2">Account</Button>
+                                        <Link className="nav-link" to="/user-account" onClick={() => setTimeout(() => { setExpanded(false) }, 50)}>Account</Link>
                                     </> : ''
                                 }
 
-                                { user.token
+                                {user.token
                                     ? <>
                                         <Button variant="outline-light" className="btn-controls mx-2" onClick={signOutHandler}>Sign Out</Button>
                                     </> : <>
@@ -57,7 +57,7 @@ const Header = ({ user, setUser, count, headerClass }) => {
                                         <Button variant="outline-light" className="btn-controls mx-2" onClick={toggleRegister}>Sign Up</Button>
                                     </>
                                 }
-                               
+
                                 <Link className="cart-link" to="/cart">
                                     <i className="fas fa-shopping-cart cart-icon"></i>
                                     <span className="cart-count">{count}</span>

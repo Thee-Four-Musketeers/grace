@@ -21,6 +21,7 @@ import ContactUs from '../pages/Contact'
 import Admin from '../pages/Admin'
 import AboutUs from '../pages/About';
 import ControlPanel from '../pages/ControlPanel';
+import UserAccount from '../pages/UserAccount';
 
 // import functions & css
 
@@ -188,6 +189,15 @@ const App = () => {
                                 <Container id="wrapper" fluid>
                                     <Row>
                                         <ContactUs setHeaderClass={setHeaderClass} />
+                                    </Row>
+                                </Container>
+                            </Route>
+
+                            <Route exact path="/user-account">
+                                <Title title={'User Info'} />
+                                <Container id="wrapper" fluid>
+                                    <Row>
+                                        <UserAccount setHeaderClass={setHeaderClass} user={user} setUser={setUser} />
                                     </Row>
                                 </Container>
                             </Route>
