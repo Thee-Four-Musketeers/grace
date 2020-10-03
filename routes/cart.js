@@ -6,27 +6,6 @@ const {
     getOrderByUser, createCartItem, renderCart
 } = require('../db')
 
-
-// creates cart
-
-// POSSIBLY NOT NECESSARY
-
-// cartRouter.get('/cart', async (req, res, next) => {
-//     console.log('getting cart', req.path);
-//     try {
-//         const cart = await createCart()
-//         res.send({
-//             cart
-//         })
-//     } catch ({ name, message }) {
-//         next({ name, message })
-//     }
-// });
-
-//recalls cart for logged in user
-
-// I BELIEVE THIS ROUTE NEEDS TO BE CHECKED
-
 cartRouter.get('/', requireUser, async (req, res, next) => {
     console.log('recalling user cart', req.path);
     try {
@@ -41,20 +20,6 @@ cartRouter.get('/', requireUser, async (req, res, next) => {
     }
 });
 
-// I REWROTE THIS ROUTE BELOW, ORIGNAL IS ABOVE
-
-// cartRouter.get('/', requireUser, async (req, res, next) => {
-//     try {
-//         const cart = await getOrderByUser(req.user.username)
-//         res.send({
-//             cart
-//         })
-//     } catch ({ name, message }) {
-//         next({ name, message })
-//     }
-// });
-
-// Adds item to a cart
 
 cartRouter.post('/:productId', requireUser, async (req, res, next) => {
     try {
@@ -64,8 +29,6 @@ cartRouter.post('/:productId', requireUser, async (req, res, next) => {
             cart,
             item
         })
-        console.log('cart', cart);
-        console.log('item', item);
     } catch ({ name, message }) {
         next({ name, message })
     }

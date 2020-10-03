@@ -1,6 +1,6 @@
 const client = require('./client');
 
-// creates order when checking out
+// creates order and new cart
 
 async function createOrder({ customer, status, subtotal, tax, shipping, total, urgency }) {
     try {
@@ -15,8 +15,6 @@ async function createOrder({ customer, status, subtotal, tax, shipping, total, u
     }
 }
 
-// write checkout funtion for logged in user
-// that will update status and other things
 // get all orders, mostly for testing
 
 async function getOrders() {
@@ -46,10 +44,9 @@ async function getOrderById(orderId) {
     }
 }
 
-// not sure if this is being used
+// recall cart
 
 async function renderCart(id) {
-    console.log('from orders db render cart', id);
     try {
         const { rows: product } = await client.query(`
             SELECT o.customer, p.name, p.price, op."productIdQuantity" AS count

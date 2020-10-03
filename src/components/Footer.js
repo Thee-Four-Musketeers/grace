@@ -26,7 +26,6 @@ const Footer = () => {
 
             </Row>
         </Container>
-
     )
 }
 

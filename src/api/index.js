@@ -119,12 +119,8 @@ export async function addItemToCart({ id, name, price }) {
             body: {
                 'Customer': customer
             }
-        });
-        
-        
-
+        });    
 		if (data) {
-            console.log('axious add to cart data item', data.item);
 			return data.item;
 		} else {
 			return {};

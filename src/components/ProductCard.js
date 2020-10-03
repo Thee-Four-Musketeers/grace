@@ -3,7 +3,7 @@ import { Card, Button, Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 import './ProductCard.css'
-import { fetchCart, addItemToCart } from '../api/index'
+import { addItemToCart } from '../api/index'
 
 const ProductCard = ({ id, name, imageUrl, type, price, description, cart, setCart }) => {
 
@@ -14,27 +14,17 @@ const ProductCard = ({ id, name, imageUrl, type, price, description, cart, setCa
     async function handleSubmit(event) {
         event.preventDefault();
 
-        console.log('Product Card Handle Submit')
-
         try {
             const result = await addItemToCart({ id, count: 1 });
             setCart({ id, name, price, count: 1 });
 
-            // console.log('product from produt card', product);
-            console.log('cart from produt card', cart);
-
-            // FETCH CART IS NOT RETURNING
-            // SEE CART.JS IN ROUTES
-
-            // await fetchCart().then(result => {
-
-            // });
             
         } catch (error) {
             throw error
         }
 
     }
+    
     return (
         <Card className="text-center" key={id}>
             <Link to={{ pathname: `/` + `${type}` + '/' + `${id}` }}>
