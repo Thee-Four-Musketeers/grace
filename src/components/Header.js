@@ -34,7 +34,7 @@ const Header = ({ user, setUser, cart, headerClass }) => {
                             <Nav className="mr-auto">
                                 <Link className="nav-link" to="/cheeses" onClick={() => setTimeout(() => { setExpanded(false) }, 50)}>Our Cheeses</Link>
                                 <Link className="nav-link" to="/meats" onClick={() => setTimeout(() => { setExpanded(false) }, 50)}>Specialty Meats</Link>
-                                <Link className="nav-link" to="/fruits" onClick={() => setTimeout(() => { setExpanded(false) }, 50)}>Fruits&amp;Nuts</Link>
+                                <Link className="nav-link" to="/fruits" onClick={() => setTimeout(() => { setExpanded(false) }, 50)}>Fruits&nbsp;&amp;&nbsp;Nuts</Link>
                             </Nav>
                             <Nav>
                                 {user.admin && user.token
@@ -45,7 +45,10 @@ const Header = ({ user, setUser, cart, headerClass }) => {
 
                                 {!user.admin && user.token
                                     ? <>
-                                        <Link className="nav-link" to="/user-account" onClick={() => setTimeout(() => { setExpanded(false) }, 50)}>Account</Link>
+                                        <Button variant="outline-light" className="btn-controls btn-link mx-2">
+                                            <Link to="/user-account" onClick={() => setTimeout(() => { setExpanded(false) }, 50)}>Account</Link>
+                                        </Button>
+                                        
                                     </> : ''
                                 }
 

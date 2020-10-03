@@ -6,8 +6,6 @@ import ProductCard from '../components/ProductCard';
 import './Cheeses.css'
 
 const Cheeses = ({ products, setProductType, cart, setCart, addToCart, setHeaderClass }) => {
-    document.body.classList.add('solid', 'cheese');
-
 
     useEffect(() => {
         setProductType(['cheese']);

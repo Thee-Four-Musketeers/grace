@@ -12,6 +12,11 @@
 .btn-controls { color: rgba(255, 255, 255, 0.7) !important;  height: 40px; padding-top: 0.25rem; padding-bottom: 0.25rem; width: 100px; }
 .btn-controls:hover { background: rgb(179, 99, 2) !important; border-color: rgb(179, 99, 2) !important; color: #FFFFFF !important; }
 
+.btn-link a { color: rgba(255, 255, 255, 0.8) !important; letter-spacing: 1px; }
+.btn-link:hover { text-decoration: none !important;}
+.btn-link:hover a { color: rgba(255, 255, 255, 1); }
+.btn-link a:hover { text-decoration: none !important; }
+
 .cart-icon { color: rgba(255, 255, 255, 0.7); font-size: 26px; padding: 0.4rem 0 0.4rem 2rem; }
 .cart-count {
     background: rgb(179, 99, 2);border-radius: 50%; color: #FFFFFF; display: inline-block; font-size: 0.8rem;font-weight: 700;
