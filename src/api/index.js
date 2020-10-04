@@ -86,21 +86,21 @@ export async function fetchOrders() {
 export async function fetchCart(customer) {
 	try {
 		const { data: result } = await axios.get(`/api/cart`, {
-            headers: {
+			headers: {
 				'Content-Type': 'application/json; charset=utf-8',
 				'Authorization':
 					'Bearer ' + JSON.parse(localStorage.getItem('user')
 					).token
-            }
-        });
-        
+			}
+		});
+
 		return result.cart
 	} catch (error) {
 		throw error
 	}
 }
 
-export async function addOrder({ customer, status, subtotal, tax, shipping, total, urgency}) {
+export async function addOrder({ customer, status, subtotal, tax, shipping, total, urgency }) {
 	try {
 		const { data: order } = await axios.post('/api/orders', {
 			customer, status, subtotal, tax, shipping, total, urgency
@@ -117,20 +117,49 @@ export async function addOrder({ customer, status, subtotal, tax, shipping, tota
 
 export async function addItemToCart({ id, name, price }) {
 	try {
-        const customer = JSON.parse(localStorage.getItem('user')).customer;
+		const customer = JSON.parse(localStorage.getItem('user')).customer;
 		const { data } = await axios.post(`/api/cart/${id}`, { id, name, price }, {
 			headers: {
 				'Content-Type': 'application/json; charset=utf-8',
 				'Authorization':
 					'Bearer ' + JSON.parse(localStorage.getItem('user')
 					).token
-            },
-            body: {
-                'Customer': customer
-            }
-        });    
+			},
+			body: {
+				'Customer': customer
+			}
+		});
 		if (data) {
 			return data.item;
+		} else {
+			return {};
+		}
+	} catch (error) {
+		throw error
+	}
+}
+
+export async function deleteItemFromCart(id) {
+	console.log('deleting from cart api function')
+	try {
+		console.log('Delete api', id)
+
+		const customer = JSON.parse(localStorage.getItem('user')).customer;
+		const { data } = await axios.delete(`/api/cart/${id}`, { id },
+			{
+				headers: {
+					'Content-Type': 'application/json; charset=utf-8',
+					'Authorization':
+						'Bearer ' + JSON.parse(localStorage.getItem('user')
+						).token
+				},
+				body: {
+					'Customer': customer
+				}
+			}
+		);
+		if (data) {
+			return data.id;
 		} else {
 			return {};
 		}

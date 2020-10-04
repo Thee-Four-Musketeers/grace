@@ -16,6 +16,20 @@ async function createCartItem(productId, orderId, productIdQuantity) {
     }
 }
 
+async function deleteCartItem(productId, orderId) {
+    console.log('hitting delete on db')
+    try {
+        const { rows: [cart] } = await client.query(`
+        DELETE  FROM orders_products AS op
+        WHERE op."productId"=$1
+        AND op."orderId"=$2;
+        `, [productId, orderId]);
+        return cart
+    } catch (error) {
+        throw error
+    }
+}
+
 // async function createOrderProduct(orderId, productId) {
 //     try {
 //         const {
@@ -46,7 +60,8 @@ async function createCartItem(productId, orderId, productIdQuantity) {
 // }
 
 module.exports = {
-    createCartItem
+    createCartItem,
+    deleteCartItem
     // addProductsToOrder,
     // createOrderProduct
 };
