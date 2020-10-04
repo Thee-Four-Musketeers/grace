@@ -34,9 +34,9 @@ async function getProductById(id){
         FROM products
         WHERE id = $1;`
         , [id])
-        if (!product || product.length === 0) {
-            return null;
-        }
+        // if (!product || product.length === 0) {
+        //     return null;
+        // }
         return product
     } catch (error) {
         throw error
