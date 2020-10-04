@@ -5,7 +5,8 @@ const { requireAdmin, requireUser } = require('./utils');
 const {
   addToCart,
   getProducts,
-  getProductsByTypes
+  getProductsByTypes, 
+  getProductById
 } = require('../db')
 
 // products by type or fall back to all
@@ -29,6 +30,22 @@ productsRouter.get(`/`, async (req, res, next) => {
   }
 
 })
+
+
+
+productsRouter.get('/:id', async (req, res, next) => {
+  const  id = req.params.id
+  console.log('id:', id)
+  try {
+    const product = await getProductById(id)
+    res.send({
+      product
+    })
+  } catch (error) {
+    throw error
+  }
+})
+
 
 // update product
 

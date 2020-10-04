@@ -27,7 +27,8 @@ const ProductCard = ({ id, name, imageUrl, type, price, description, cart, setCa
     
     return (
         <Card className="text-center" key={id}>
-            <Link to={{ pathname: `/` + `${type}` + '/' + `${id}` }}>
+            
+            <Link to={{ pathname: `/products` + '/' + `${id}` }}>
                 <Card.Img variant="top" src={imageUrl} />
             </Link>
             <Card.Body>

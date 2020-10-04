@@ -22,6 +22,7 @@ import Admin from '../pages/Admin'
 import AboutUs from '../pages/About';
 import ControlPanel from '../pages/ControlPanel';
 import UserAccount from '../pages/UserAccount';
+import ProductPage from '../pages/ProductPage';
 
 // import functions & css
 
@@ -165,6 +166,17 @@ const App = () => {
                 <div id="all">
                     <main>
                         <Switch>
+
+
+                        <Route exact path="/products/:id">
+                                <Title title={'Product Page'} />
+                                <Container id="wrapper" fluid>
+                                    <Row>
+                                        <ProductPage products={products} setProductType={setProductType} cart={cart} setCart={addToCart} setHeaderClass={setHeaderClass} />
+                                        <Sidebar products={products} cart={cart} setCart={addToCart} count={count} setCount={setCount} getTotal={getTotal} />
+                                    </Row>
+                                </Container>
+                            </Route>
 
                             <Route exact path="/cheeses">
                                 <Title title={'Artisanal Cheeses'} />
