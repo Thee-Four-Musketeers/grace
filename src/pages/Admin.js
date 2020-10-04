@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
-import { Row, Col, Tabs, Tab } from 'react-bootstrap';
-import ModalNewProduct from '../components/ModalNewProduct'
-import ProductList from '../components/ProductList';
-import AdminNav from '../components/AdminNav';
+import { Col, Tabs, Tab } from 'react-bootstrap';
+import AdminProducts from '../components/AdminProducts';
+import AdminOrders from '../components/AdminOrders';
+import AdminUsers from '../components/AdminUsers';
 
-const Admin = ({ user, products, setProductType, setHeaderClass }) => {
+import './Admin.css'
+
+const Admin = ({ user, setUser, products, setProductType, setHeaderClass }) => {
 
     useEffect(() => {
         setHeaderClass('admin');
@@ -14,7 +16,7 @@ const Admin = ({ user, products, setProductType, setHeaderClass }) => {
         setProductType(['cheese', 'meat', 'fruit', 'nut']);
     }, [])
 
-    let admin = true;
+    let admin = false;
     if (localStorage.getItem('user') && user.admin) {
         admin = true
     }
@@ -22,45 +24,20 @@ const Admin = ({ user, products, setProductType, setHeaderClass }) => {
     
     return (
         <> 
-        
         <Col id="content">
             { admin
                 ? <>
-                    <Row>
-                        <Col>
-                    
-                            <Tabs id="uncontrolled-tab-example">
-                            <Tab eventKey="home" title="Home">
-                                <div>test</div>
-                            </Tab>
-                            <Tab eventKey="profile" title="Profile">
-                                <div>does it work</div>
-                            </Tab>
-                            <Tab eventKey="contact" title="Contact">
-                                <div>i hope so</div>
-                            </Tab>
-                            </Tabs>
-                            
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col><ModalNewProduct /></Col>
-                    </Row>
-
-                    <Row>
-                        <Col>
-
-                            {
-                                products && products.map(product => (
-                                    <ProductList
-                                        key={product.id}
-                                        {...product}>
-                                    </ProductList>)
-                                )
-                            }
-
-                        </Col>
-                    </Row>
+                    <Tabs id="uncontrolled-tab-example">
+                        <Tab eventKey="products" title="Products">
+                            <AdminProducts products={products} />
+                        </Tab>
+                        <Tab eventKey="orders" title="Orders">
+                            <AdminOrders />
+                        </Tab>
+                        <Tab eventKey="users" title="Users">
+                        <AdminUsers />
+                        </Tab>
+                    </Tabs>    
                 </>
                 : <><div>Access Denied</div></>
             }

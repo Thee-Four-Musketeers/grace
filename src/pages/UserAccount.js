@@ -7,11 +7,13 @@ import OrderList from '../components/OrderList';
 import { fetchOrders } from '../api';
 
 const UserAccountPage = ({ user, setUser, setHeaderClass }) => {
-    const [orders, setOrders] = useState([])
+    
     useEffect(() => {
         setHeaderClass('Account');
     }, []);
 
+    const [orders, setOrders] = useState([])
+    
     useEffect(() => {
         setUser('customer')
         fetchOrders(customer)
@@ -40,7 +42,6 @@ const UserAccountPage = ({ user, setUser, setHeaderClass }) => {
                                     </OrderList>)
                                 )
                             }
-
                         </Col>
                     </Row>
                 </>
