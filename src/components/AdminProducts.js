@@ -1,14 +1,14 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import ProductList from '../components/ProductList';
-import ModalNewProduct from '../components/ModalNewProduct'
+import ModalAddProduct from '../components/ModalAddProduct'
 
 const AdminProducts = ({ products }) => {
 
     return (
         <>
             <Row>
-                <Col><ModalNewProduct /></Col>
+                <Col className="pb-5"><ModalAddProduct /></Col>
             </Row>
             <Row>
                 <Col>

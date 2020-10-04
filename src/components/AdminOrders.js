@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import ProductList from '../components/ProductList';
-import ModalNewProduct from '../components/ModalNewProduct'
+import ModalAddProduct from '../components/ModalAddProduct'
 import OrderList from '../components/OrderList';
 import { fetchOrders } from '../api';
 import '../components/ProductList.css'
@@ -25,7 +25,7 @@ const AdminOrders = ({ user, setUser }) => {
     return (
         <>
             <Row>
-                <Col><ModalNewProduct /></Col>
+                <Col><ModalAddProduct /></Col>
             </Row>
             <Row>
                 <Col>

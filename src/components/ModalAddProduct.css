@@ -43,12 +43,8 @@ label {
 }
 
 .form-control {
-    /* height: auto; */
+    height: auto;
     padding: 0.6rem 1rem 0.5rem;
-}
-
-.form-control-file {
-    padding-top: 5px;
 }
 
 .btn-enter { background: rgb(179, 99, 2) !important; border-color: rgb(179, 99, 2) !important; color: #FFFFFF !important; padding: 0.5rem 2rem 0.4rem !important; }
