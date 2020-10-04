@@ -26,8 +26,8 @@ const Cheeses = ({ products, setProductType, cart, setCart, addToCart, setHeader
                             cart={cart}
                             setCart={setCart}
                             {...product}>
-                        </ProductCard>)
-                    )
+                        </ProductCard>
+                    ))
                 }
             </CardDeck>
         </Col>
