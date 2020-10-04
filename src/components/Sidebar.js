@@ -1,5 +1,6 @@
 import React from 'react';
-import { Col } from 'react-bootstrap';
+import { Col, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import Cart from '../components/Cart'
 
 import './Sidebar.css'
@@ -11,6 +12,8 @@ const Sidebar = ({ cart, setCart, count, setCount, getTotal, removeFromCart, add
             <h4 className="sidebarTitle">Build Your Own Board</h4>
 
             <Cart products={products} cart={cart} setCart={setCart} count={count} setCount={setCount} getTotal={getTotal} removeFromCart={removeFromCart} addToCart={addToCart} />
+            <Link className="cart-link" to="/checkout"><Button variant="primary" className="btn-card" type="submit">Checkout</Button></Link>
+
         </Col>
     );
 

@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { Container, Row, Col } from 'react-bootstrap';
 import './Checkout.css'
+import Cart from '../components/Cart'
 
-const Checkout = ({ cart, setCart, count, setCount, setHeaderClass }) => {
+const Checkout = ({ products, cart, addToCart, count, setCount, setHeaderClass, getTotal, removeFromCart }) => {
 
     useEffect(() => {
         setHeaderClass('checkout');
@@ -13,14 +14,18 @@ const Checkout = ({ cart, setCart, count, setCount, setHeaderClass }) => {
             <Container>
                 <Row>
                     <Col className="col-6">
-                        test
+                        <Cart products={products}
+                            cart={cart}
+                            setCart={addToCart}
+                            removeFromCart={removeFromCart}
+                            count={count} setCount={setCount}
+                            setHeaderClass={setHeaderClass}
+                            getTotal={getTotal} />
                     </Col>
                     <Col className="col-6">
-                        <button onClick={ () => setCount(count + 1)}>Click</button>
                     </Col>
                 </Row>
             </Container>
-          <button onClick={ () => setCount(count + 1)}>Click</button>
         </Col>
     );
 };

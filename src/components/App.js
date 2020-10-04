@@ -229,11 +229,11 @@ const App = () => {
                                 </Container>
                             </Route>
 
-                            <Route exact path="/control-panel">
-                                <Title title={'Control Panel'} />
+                            <Route exact path="/checkout">
+                                <Title title={'Checkout'} />
                                 <Container id="wrapper">
                                     <Row>
-                                        <ControlPanel user={user} setUser={setUser} setHeaderClass={setHeaderClass} />
+                                        <Checkout products={products} cart={cart} setCart={addToCart} removeFromCart={removeFromCart} count={count} setCount={setCount} setHeaderClass={setHeaderClass} getTotal={getTotal}  />
                                     </Row>
                                 </Container>
                             </Route>
