@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer}  from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Container, Row } from 'react-bootstrap';
 
@@ -26,7 +26,7 @@ import ProductPage from '../pages/ProductPage';
 
 // import functions & css
 
-import { addItemToCart, fetchCart, fetchProductsByType } from '../api';
+import { fetchCart, fetchProductsByType } from '../api';
 import './App.css'
 
 const App = () => {
@@ -44,71 +44,74 @@ const App = () => {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2,
     }
-    
+
     function getTotal(cart) {
 
-        if(cart) {
+        if (cart) {
             const total = cart.reduce((currentTotal, item) => currentTotal + Number(item.price), 0);
             return total.toLocaleString(undefined, currencyOptions)
         } else {
             return '0';
         }
     }
-    
-    function cartReducer(state, action) {        
+
+    function cartReducer(state, action) {
         switch (action.type) {
-            
-            case 
+
+            case
                 'add':
                 return [...state, action.product];
             case 'remove':
                 const productIndex = state.findIndex(item => item.name === action.product.name);
+                console.log('REMOVE prod idx', productIndex)
                 if (productIndex < 0) {
                     return state;
                 }
                 const update = [...state];
                 update.splice(productIndex, 1)
                 return update
-            
+
             case 'set':
 
                 return action.cart;
 
-            // case for increaseQty
+            // case 'increaseQty':
+            //     if (productIndex > -1) {
+            //         return state[productIndex].count += 1;
 
-                // const increaseQty = ({ id, productId }) => {
-                //     const nextCart = [...cart];
-                //     const index = nextCart.findIndex(cart => {
-                //         return cart.id === id
-                //     });
-                //     if (index > -1) {
-                //         nextCart[index].count += 1;
-                //     } else {
-                //         nextCart.push({
-                //             id,
-                //             productId,
-                //             count: 1
-                //         })
-                //     }
-                //     setCart(nextCart);
-                // }
+            // const increaseQty = ({ id, productId }) => {
+            //     const nextCart = [...cart];
+            //     const index = nextCart.findIndex(cart => {
+            //         return cart.id === id
+            //     });
+            //     if (index > -1) {
+            //         nextCart[index].count += 1;
+            //     } else {
+            //         nextCart.push({
+            //             id,
+            //             productId,
+            //             count: 1
+            //         })
+            //     }
+            //     setCart(nextCart);
+            // }
 
             // case for decreaseQty
 
-                // const decreaseQty = ({ id }) => {
-                //     const nextCart = [...cart];
-                //     const index = nextCart.findIndex(cart => cart.id === id);
+            // const decreaseQty = ({ id }) => {
+            //     const nextCart = [...cart];
+            //     const index = nextCart.findIndex(cart => cart.id === id);
 
-                //     if (index === -1) {
-                //         return;
-                //     }
-                //     if (nextCart[index].count === 1) {
-                //         nextCart.splice(index, 1);
-                //     } else {
-                //         nextCart[index].count -= 1;
-                //     }
-                //     setCart(nextCart);
-                // }
+            //     if (index === -1) {
+            //         return;
+            //     }
+            //     if (nextCart[index].count === 1) {
+            //         nextCart.splice(index, 1);
+            //     } else {
+            //         nextCart[index].count -= 1;
+            //     }
+            //     setCart(nextCart);
+            // }
 
             default:
                 return state;
@@ -116,7 +119,7 @@ const App = () => {
     }
 
     const [cart, setCart] = useReducer(cartReducer, []);
-    
+
     function addToCart(product) {
         setCart({ product, type: 'add' });
     }
@@ -138,12 +141,12 @@ const App = () => {
     }
 
     useEffect(() => {
-        setUser(localStorageUser());       
+        setUser(localStorageUser());
         fetchCart(user)
             .then((response) => {
                 setCart({ type: 'set', cart: response })
             }
-        )
+            )
     }, []);
 
     // technical debt, app crashes when user is logged out    
@@ -156,7 +159,7 @@ const App = () => {
             .catch((error) => {
                 console.error(error);
             }
-        );
+            );
     }, [productType]);
 
     return (
@@ -183,7 +186,7 @@ const App = () => {
                                 <Container id="wrapper" fluid>
                                     <Row>
                                         <Cheeses products={products} setProductType={setProductType} cart={cart} setCart={addToCart} setHeaderClass={setHeaderClass} />
-                                        <Sidebar products={products} cart={cart} setCart={addToCart} count={count} setCount={setCount} getTotal={getTotal} />
+                                        <Sidebar products={products} cart={cart} setCart={addToCart} removeFromCart={removeFromCart} count={count} setCount={setCount} getTotal={getTotal} />
                                     </Row>
                                 </Container>
                             </Route>
@@ -193,7 +196,7 @@ const App = () => {
                                 <Container id="wrapper" fluid>
                                     <Row>
                                         <Meats products={products} setProductType={setProductType} cart={cart} setCart={addToCart} setHeaderClass={setHeaderClass} />
-                                        <Sidebar products={products} cart={cart} setCart={addToCart} count={count} setCount={setCount} getTotal={getTotal} />
+                                        <Sidebar products={products} cart={cart} setCart={addToCart} removeFromCart={removeFromCart} count={count} setCount={setCount} getTotal={getTotal} />
                                     </Row>
                                 </Container>
                             </Route>
@@ -203,7 +206,7 @@ const App = () => {
                                 <Container id="wrapper" fluid>
                                     <Row>
                                         <Fruits products={products} setProductType={setProductType} cart={cart} setCart={addToCart} setHeaderClass={setHeaderClass} />
-                                        <Sidebar products={products} cart={cart} setCart={addToCart} count={count} setCount={setCount} getTotal={getTotal} />
+                                        <Sidebar products={products} cart={cart} setCart={addToCart} removeFromCart={removeFromCart} count={count} setCount={setCount} getTotal={getTotal} />
                                     </Row>
                                 </Container>
                             </Route>
@@ -212,7 +215,7 @@ const App = () => {
                                 <Title title={'Shopping Cart'} />
                                 <Container id="wrapper" fluid>
                                     <Row>
-                                        <Checkout products={products} cart={cart} setCart={addToCart} count={count} setCount={setCount} setHeaderClass={setHeaderClass} getTotal={getTotal} />
+                                        <Checkout products={products} cart={cart} setCart={addToCart} removeFromCart={removeFromCart} count={count} setCount={setCount} setHeaderClass={setHeaderClass} getTotal={getTotal} />
                                     </Row>
                                 </Container>
                             </Route>

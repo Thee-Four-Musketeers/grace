@@ -5,7 +5,7 @@ const { requireAdmin, requireUser } = require('./utils');
 const {
   addToCart,
   getProducts,
-  getProductsByTypes, 
+  getProductsByTypes,
   getProductById
 } = require('../db')
 
@@ -34,7 +34,7 @@ productsRouter.get(`/`, async (req, res, next) => {
 
 
 productsRouter.get('/:id', async (req, res, next) => {
-  const  id = req.params.id
+  const id = req.body.id
   console.log('id:', id)
   try {
     const product = await getProductById(id)
