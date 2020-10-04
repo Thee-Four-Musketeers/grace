@@ -41,8 +41,8 @@ productsRouter.get('/:id', async (req, res, next) => {
     res.send({
       product
     })
-  } catch (error) {
-    throw error
+  } catch ({ name, message }) {
+    next({ name, message })
   }
 })
 

@@ -48,7 +48,7 @@ const Header = ({ user, setUser, cart, headerClass }) => {
                                         <Button variant="outline-light" className="btn-controls btn-link mx-2">
                                             <Link to="/user-account" onClick={() => setTimeout(() => { setExpanded(false) }, 50)}>Account</Link>
                                         </Button>
-                                        
+
                                     </> : ''
                                 }
 
@@ -61,7 +61,7 @@ const Header = ({ user, setUser, cart, headerClass }) => {
                                     </>
                                 }
 
-                                <Link className="cart-link" to="/cart">
+                                <Link className="cart-link" to="/checkout">
                                     <i className="fas fa-shopping-cart cart-icon"></i>
                                     <span className="cart-count">{cart.length}</span>
                                 </Link>

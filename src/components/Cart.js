@@ -27,7 +27,6 @@ const Cart = ({ products, count, setCart, cart, addToCart, removeFromCart, getTo
                     ))}
                 </Col>
                 <div className="cartTotal">Your total is: ${getTotal(cart)}</div>
-                <Button variant="primary" className="btn-card" type="submit">Checkout</Button>
 
             </Container>
         </>
