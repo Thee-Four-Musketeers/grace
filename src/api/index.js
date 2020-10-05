@@ -160,7 +160,7 @@ export async function deleteItemFromCart(id) {
 			}
 		);
 		if (data) {
-			return data.id;
+			return data;
 		} else {
 			return {};
 		}
