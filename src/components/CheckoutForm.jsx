@@ -83,12 +83,12 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }) => {
 
     return (
         <form onSubmit={handleFormSubmit}>
-            <div>Shipping information:</div>
+            <div className="checkoutTitle">Billing/Shipping information:</div>
 
             <Row>
                 <BillingDetailsFields />
             </Row>
-            <div>Card information:</div>
+            <div className="checkoutTitle">Card information:</div>
 
             <Row >
 
