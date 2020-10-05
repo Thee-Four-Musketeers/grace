@@ -49,7 +49,7 @@ async function getOrderById(orderId) {
 async function renderCart(id) {
     try {
         const { rows: product } = await client.query(`
-            SELECT o.customer, p.name, p.price, op."productIdQuantity" AS count
+            SELECT o.customer, p.name, p.price, p."imageUrl", p.description, op."productIdQuantity" AS count
             FROM orders AS o
             JOIN orders_products as op ON o.id = op."orderId"
             JOIN products as p ON p.id = op."productId"

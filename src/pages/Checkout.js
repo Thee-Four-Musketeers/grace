@@ -13,6 +13,8 @@ const Checkout = ({ products, cart, addToCart, count, setCount, setHeaderClass, 
         <Col id="content">
             <Container>
                 <Row>
+                    
+                    <Col className="col-6">Cart</Col>
                     <Col className="col-6">
                         <Cart products={products}
                             cart={cart}
@@ -22,8 +24,7 @@ const Checkout = ({ products, cart, addToCart, count, setCount, setHeaderClass, 
                             setHeaderClass={setHeaderClass}
                             getTotal={getTotal} />
                     </Col>
-                    <Col className="col-6">
-                    </Col>
+                    
                 </Row>
             </Container>
         </Col>
