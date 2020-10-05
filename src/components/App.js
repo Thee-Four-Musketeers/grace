@@ -16,9 +16,9 @@ import Cheeses from "../pages/Cheeses";
 import Meats from "../pages/Meats";
 import Fruits from "../pages/Fruits";
 
-import Checkout from '../pages/Checkout'
-import ContactUs from '../pages/Contact'
-import Admin from '../pages/Admin'
+import Checkout from '../pages/Checkout';
+import ContactUs from '../pages/Contact';
+import Admin from '../pages/Admin';
 import AboutUs from '../pages/About';
 import ControlPanel from '../pages/ControlPanel';
 import UserAccount from '../pages/UserAccount';
@@ -27,17 +27,15 @@ import ProductPage from '../pages/ProductPage';
 // import functions & css
 
 import { fetchCart, fetchProductsByType } from '../api';
-import './App.css'
+import './App.css';
 
 const App = () => {
-
-    // set up various state variables
-
     const [user, setUser] = useState({});
     const [products, setProducts] = useState([]);
     const [productType, setProductType] = useState([]);
     const [count, setCount] = useState(0);
     const [headerClass, setHeaderClass] = useState('');
+    const [cart, setCart] = useReducer(cartReducer, []);
 
 
     const currencyOptions = {
@@ -55,7 +53,15 @@ const App = () => {
         }
     }
 
+
     function cartReducer(state, action) {
+        const formatPrice = ({ amount, currency, quantity }) => {
+            const numberFormat = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency,
+                currencyDisplay: 'symbol',
+            })
+        };
         switch (action.type) {
 
             case
@@ -72,53 +78,33 @@ const App = () => {
                 return update
 
             case 'set':
-
                 return action.cart;
-
-            // case 'increaseQty':
-            //     if (productIndex > -1) {
-            //         return state[productIndex].count += 1;
-
-            // const increaseQty = ({ id, productId }) => {
-            //     const nextCart = [...cart];
-            //     const index = nextCart.findIndex(cart => {
-            //         return cart.id === id
-            //     });
-            //     if (index > -1) {
-            //         nextCart[index].count += 1;
-            //     } else {
-            //         nextCart.push({
-            //             id,
-            //             productId,
-            //             count: 1
-            //         })
-            //     }
-            //     setCart(nextCart);
-            // }
-
-            // case for decreaseQty
-
-            // const decreaseQty = ({ id }) => {
-            //     const nextCart = [...cart];
-            //     const index = nextCart.findIndex(cart => cart.id === id);
-
-            //     if (index === -1) {
-            //         return;
-            //     }
-            //     if (nextCart[index].count === 1) {
-            //         nextCart.splice(index, 1);
-            //     } else {
-            //         nextCart[index].count -= 1;
-            //     }
-            //     setCart(nextCart);
-            // }
+            case 'increment':
+                return {
+                    ...state,
+                    quantity: state.quantity + 1,
+                    price: formatPrice({
+                        amount: state.unitAmount,
+                        currency: state.currency,
+                        quantity: state.quantity + 1,
+                    }),
+                };
+            case 'decrement':
+                return {
+                    ...state,
+                    quantity: state.quantity - 1,
+                    price: formatPrice({
+                        amount: state.unitAmount,
+                        currency: state.currency,
+                        quantity: state.quantity - 1,
+                    }),
+                };
 
             default:
                 return state;
         }
     }
 
-    const [cart, setCart] = useReducer(cartReducer, []);
 
     function addToCart(product) {
         setCart({ product, type: 'add' });
@@ -171,7 +157,7 @@ const App = () => {
                         <Switch>
 
 
-                        <Route exact path="/products/:id">
+                            <Route exact path="/products/:id">
                                 <Title title={'Product Page'} />
                                 <Container id="wrapper" fluid>
                                     <Row>
@@ -233,7 +219,7 @@ const App = () => {
                                 <Title title={'Checkout'} />
                                 <Container id="wrapper">
                                     <Row>
-                                        <Checkout products={products} cart={cart} setCart={addToCart} removeFromCart={removeFromCart} count={count} setCount={setCount} setHeaderClass={setHeaderClass} getTotal={getTotal}  />
+                                        <Checkout products={products} cart={cart} setCart={addToCart} removeFromCart={removeFromCart} count={count} setCount={setCount} setHeaderClass={setHeaderClass} getTotal={getTotal} />
                                     </Row>
                                 </Container>
                             </Route>

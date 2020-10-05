@@ -65,7 +65,7 @@ export async function fetchProductsByType(type) {
 	}
 }
 
-export async function fetchProductById(id){
+export async function fetchProductById(id) {
 	try {
 		const { data: product } = await axios.get(`/api/products/${id}`)
 		return product
@@ -159,7 +159,7 @@ export async function deleteItemFromCart(id) {
 			}
 		);
 		if (data) {
-			return data.id;
+			return data;
 		} else {
 			return {};
 		}

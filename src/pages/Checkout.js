@@ -1,7 +1,13 @@
 import React, { useEffect } from "react";
 import { Container, Row, Col } from 'react-bootstrap';
+import Router from "next/router";
 import './Checkout.css'
 import Cart from '../components/Cart'
+import CheckoutForm from '../components/CheckoutForm';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js'
+
+const StripePromise = loadStripe('pk_test_Gs27UHBrvRJZqik9NTC3dSID');
 
 const Checkout = ({ products, cart, addToCart, count, setCount, setHeaderClass, getTotal, removeFromCart }) => {
 
@@ -10,6 +16,8 @@ const Checkout = ({ products, cart, addToCart, count, setCount, setHeaderClass, 
     }, []);
 
     return (
+
+
         <Col id="content">
             <Container>
                 <Row>
@@ -23,10 +31,17 @@ const Checkout = ({ products, cart, addToCart, count, setCount, setHeaderClass, 
                             getTotal={getTotal} />
                     </Col>
                     <Col className="col-6">
+                        <Elements stripe={StripePromise}>
+                            <CheckoutForm
+                                price={getTotal(cart)}
+                                onSuccessfulCheckout={() => Router.push("/success")} />
+                        </Elements>
                     </Col>
                 </Row>
             </Container>
         </Col>
+
+
     );
 };
 
