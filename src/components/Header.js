@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Navbar, Nav, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import ModalLogin from "./ModalLogin";
 import ModalRegister from './ModalRegister';
@@ -10,9 +10,14 @@ import './Header.css'
 
 const Header = ({ user, setUser, cart, headerClass }) => {
 
+
+    const history = useHistory();
+
     const signOutHandler = (event) => {
         localStorage.removeItem('user');
         setUser({});
+        history.push('/');
+        
     }
     const { show, toggleLogin } = useModalLogin();
     const { isShowing, toggleRegister } = useModalRegister();

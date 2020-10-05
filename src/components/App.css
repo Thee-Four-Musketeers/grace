@@ -3,8 +3,8 @@
     padding: 80px 40px;
 }
 
-.col-pixel-width-360 {
-    flex: 0 0 360px;
+.col-pixel-width-480 {
+    flex: 0 0 480px;
 }
 
 
@@ -17,7 +17,7 @@
 @media (max-width: 767px) {
 
     #content { padding: 40px; }
-    .col-pixel-width-360 { flex: 0 0 100% !important; }
+    .col-pixel-width-480 { flex: 0 0 100% !important; }
     
 }
 

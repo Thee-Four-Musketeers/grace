@@ -1,36 +1,40 @@
 import React from "react";
 import { Container, Col, Row, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import CartItem from "./CartItem";
 
 import './Cart.css'
 
-import CartItem from "./CartItem";
-
-const Cart = ({ products, count, setCart, cart, addToCart, removeFromCart, getTotal }) => {
-
+const Cart = ({ cart, setCart, addToCart, removeFromCart, getTotal }) => {
 
     return (
-
         <>
             <Container id="cart">
-                <div className="cartLength">Current<i className="fas fa-shopping-cart cart-icon1"></i> :    {cart.length} items</div>
-                <Col>
+                <Col className="col-12 cart-length pb-4">
+                    <h4 className="cart-title text-center">Build Your Own Board</h4>
+                    <div className="cart-item-message text-center">
+                        <i className="fas fa-shopping-cart cart-icon1"></i> 
+                        <span>&nbsp;&nbsp;Your cart has&nbsp;<span class="cart-length-count">{cart.length}</span>&nbsp;items</span>
+                    </div>
+                </Col>
+                <Col className="col-12 p-0">
                     {cart && cart.map(product => (
-
                         <CartItem
                             key={product.id}
-                            addToCart={addToCart}
                             cart={cart}
-                            removeFromCart={removeFromCart}
                             setCart={setCart}
+                            addToCart={addToCart}
+                            removeFromCart={removeFromCart}
                             {...product}
                         />
                     ))}
                 </Col>
-                <div className="cartTotal">Your total is: ${getTotal(cart)}</div>
-
+                <Link className="cart-link mt-3" to="/checkout">
+                    <Button variant="primary" className="btn-checkout" type="submit">Checkout ${getTotal(cart)}</Button>
+                </Link>
+                
             </Container>
         </>
-
     )
 };
 
