@@ -2,13 +2,14 @@ import React from "react";
 import { Container, Col, Row, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import CartItem from "./CartItem";
+import { Container, Col, Row, Button } from 'react-bootstrap';
 
 import './Cart.css'
 
 const Cart = ({ cart, setCart, addToCart, removeFromCart, getTotal }) => {
-
     return (
         <>
+
             <Container id="cart">
                 <Col className="col-12 cart-length pb-4">
                     <h4 className="cart-title text-center">Build Your Own Board</h4>
