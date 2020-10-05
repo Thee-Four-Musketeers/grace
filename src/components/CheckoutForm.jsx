@@ -13,7 +13,7 @@ const CardElementContainer = styled.div`
   height: 40px;
   display: flex;
   align-items: center;
-
+  background-color: #FFFFFF;
   & 
   .StripeElement {
     width: 100%;
