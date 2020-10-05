@@ -30,10 +30,13 @@ const Cart = ({ cart, setCart, addToCart, removeFromCart, getTotal }) => {
                         />
                     ))}
                 </Col>
+                { cart.length > 0 || !null
+                ?
                 <Link className="cart-link mt-3" to="/checkout">
                     <Button variant="primary" className="btn-checkout" type="submit">Checkout ${getTotal(cart)}</Button>
                 </Link>
-                
+                : ''
+                }
             </Container>
         </>
     )

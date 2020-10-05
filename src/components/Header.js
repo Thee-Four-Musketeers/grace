@@ -16,8 +16,7 @@ const Header = ({ user, setUser, cart, headerClass }) => {
     const signOutHandler = (event) => {
         localStorage.removeItem('user');
         setUser({});
-        history.push('/');
-        
+        history.push('/');        
     }
     const { show, toggleLogin } = useModalLogin();
     const { isShowing, toggleRegister } = useModalRegister();
@@ -51,7 +50,7 @@ const Header = ({ user, setUser, cart, headerClass }) => {
                                 {!user.admin && user.token
                                     ? <>
                                         <Button variant="outline-light" className="btn-controls btn-link mx-2">
-                                            <Link to="/user-account" onClick={() => setTimeout(() => { setExpanded(false) }, 50)}>Account</Link>
+                                            <Link to="/account" onClick={() => setTimeout(() => { setExpanded(false) }, 50)}>Account</Link>
                                         </Button>
 
                                     </> : ''
