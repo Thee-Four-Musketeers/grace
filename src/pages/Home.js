@@ -21,7 +21,7 @@ const Home = ({ setHeaderClass }) => {
                                 <h5 className="text-uppercase text-white font-weight-light py-2 letter-spacing-5 font-weight-bold">Welcome, Cheese Lovers</h5>
                                 <h1 className="pb-4 h1">Get Cheezy!</h1>
                                 <p className="lead pb-3">
-                                    Build your own Charcuterie board with the perfect selection of artisanal cheese, specialty meat, and exotic fruits &amp; nuts.
+                                    Build your own Charcuterie board with the perfect selection of artisanal cheeses, specialty meats, and delicious fruits &amp; nuts.
                                     {/* Whether you're searching for the perfect variety of cheeses with fruits, nuts, crackers, and spreads for the ultimate appetizer platter, or an artisan cheese from a breakout American cheesemaker, a handmade raw milk cheese you've been daydreaming of since your Italian vacation, or a classic fresh cheese imported from France, you’ll find it here. */}
                                 </p>
                                 <Link to="/cheeses">

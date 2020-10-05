@@ -6,7 +6,7 @@ import OrderList from '../components/OrderList';
 
 import { fetchOrders } from '../api';
 
-const UserAccountPage = ({ user, setUser, setHeaderClass }) => {
+const Account = ({ user, setUser, setHeaderClass }) => {
     
     useEffect(() => {
         setHeaderClass('Account');
@@ -51,4 +51,4 @@ const UserAccountPage = ({ user, setUser, setHeaderClass }) => {
     )
 }
 
-export default UserAccountPage
+export default Account

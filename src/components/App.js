@@ -17,11 +17,11 @@ import Meats from "../pages/Meats";
 import Fruits from "../pages/Fruits";
 
 import Checkout from '../pages/Checkout'
-import ContactUs from '../pages/Contact'
 import Admin from '../pages/Admin'
-import AboutUs from '../pages/About';
-import UserAccount from '../pages/UserAccount';
+import Account from '../pages/Account';
 import Products from '../pages/Products';
+import AboutUs from '../pages/About';
+import ContactUs from '../pages/Contact'
 
 // import functions & css
 
@@ -37,7 +37,15 @@ const App = () => {
     const [productType, setProductType] = useState([]);
     const [count, setCount] = useState(0);
     const [headerClass, setHeaderClass] = useState('');
+    const [cart, setCart] = useReducer(cartReducer, []);
 
+    function addToCart(product) {
+        setCart({ product, type: 'add' });
+    }
+
+    function removeFromCart(product) {
+        setCart({ product, type: 'remove' });
+    }
 
     const currencyOptions = {
         minimumFractionDigits: 2,
@@ -119,15 +127,7 @@ const App = () => {
         }
     }
 
-    const [cart, setCart] = useReducer(cartReducer, []);
 
-    function addToCart(product) {
-        setCart({ product, type: 'add' });
-    }
-
-    function removeFromCart(product) {
-        setCart({ product, type: 'remove' });
-    }
 
 
     // check local storage for user and set user
@@ -246,11 +246,11 @@ const App = () => {
                                 </Container>
                             </Route>
 
-                            <Route exact path="/user-account">
-                                <Title title={'User Info'} />
+                            <Route exact path="/account">
+                                <Title title={'Account Info'} />
                                 <Container id="wrapper" fluid>
                                     <Row>
-                                        <UserAccount setHeaderClass={setHeaderClass} user={user} setUser={setUser} />
+                                        <Account setHeaderClass={setHeaderClass} user={user} setUser={setUser} />
                                     </Row>
                                 </Container>
                             </Route>
