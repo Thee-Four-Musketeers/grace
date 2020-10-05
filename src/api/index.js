@@ -67,7 +67,8 @@ export async function fetchProductsByType(type) {
 
 export async function fetchProductById(id) {
 	try {
-		const { data: product } = await axios.get(`/api/products/${id}`)
+        const { data: product } = await axios.get(`/api/products/${id}`)
+        console.log('product api', product);
 		return product
 	} catch (error) {
 		throw error

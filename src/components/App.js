@@ -20,9 +20,8 @@ import Checkout from '../pages/Checkout';
 import ContactUs from '../pages/Contact';
 import Admin from '../pages/Admin';
 import AboutUs from '../pages/About';
-import ControlPanel from '../pages/ControlPanel';
 import UserAccount from '../pages/UserAccount';
-import ProductPage from '../pages/ProductPage';
+import Products from '../pages/Products';
 
 // import functions & css
 
@@ -67,14 +66,17 @@ const App = () => {
             case
                 'add':
                 return [...state, action.product];
+
             case 'remove':
                 const productIndex = state.findIndex(item => item.name === action.product.name);
-                console.log('REMOVE prod idx', productIndex)
+                
                 if (productIndex < 0) {
                     return state;
                 }
+
                 const update = [...state];
                 update.splice(productIndex, 1)
+
                 return update
 
             case 'set':
@@ -155,13 +157,12 @@ const App = () => {
                 <div id="all">
                     <main>
                         <Switch>
-
-
                             <Route exact path="/products/:id">
-                                <Title title={'Product Page'} />
+                                <Title title={'Products'} />
+
                                 <Container id="wrapper" fluid>
                                     <Row>
-                                        <ProductPage products={products} setProductType={setProductType} cart={cart} setCart={addToCart} setHeaderClass={setHeaderClass} />
+                                        <Products products={products} setProductType={setProductType} cart={cart} setCart={addToCart} setHeaderClass={setHeaderClass} />
                                         <Sidebar products={products} cart={cart} setCart={addToCart} count={count} setCount={setCount} getTotal={getTotal} />
                                     </Row>
                                 </Container>
@@ -254,7 +255,6 @@ const App = () => {
                             <Route path="/">
                                 <Home setHeaderClass={setHeaderClass} />
                             </Route>
-
                         </Switch>
                     </main>
                     <Footer />

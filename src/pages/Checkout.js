@@ -21,6 +21,8 @@ const Checkout = ({ products, cart, addToCart, count, setCount, setHeaderClass, 
         <Col id="content">
             <Container>
                 <Row>
+                    
+                    <Col className="col-6">Cart</Col>
                     <Col className="col-6">
                         <Cart products={products}
                             cart={cart}
@@ -37,6 +39,7 @@ const Checkout = ({ products, cart, addToCart, count, setCount, setHeaderClass, 
                                 onSuccessfulCheckout={() => Router.push("/success")} />
                         </Elements>
                     </Col>
+
                 </Row>
             </Container>
         </Col>
