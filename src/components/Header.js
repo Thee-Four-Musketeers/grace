@@ -16,8 +16,7 @@ const Header = ({ user, setUser, cart, headerClass }) => {
     const signOutHandler = (event) => {
         localStorage.removeItem('user');
         setUser({});
-        history.push('/');
-        
+        history.push('/');        
     }
     const { show, toggleLogin } = useModalLogin();
     const { isShowing, toggleRegister } = useModalRegister();
