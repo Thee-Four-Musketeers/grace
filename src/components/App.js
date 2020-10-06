@@ -22,6 +22,7 @@ import Account from '../pages/Account';
 import Products from '../pages/Products';
 import AboutUs from '../pages/About';
 import ContactUs from '../pages/Contact'
+import ControlPanel from '../pages/ControlPanel'
 
 // import functions & css
 
@@ -58,7 +59,6 @@ const App = () => {
             return '0';
         }
     }
-
 
     function cartReducer(state, action) {
         const formatPrice = ({ amount, currency, quantity }) => {
@@ -232,7 +232,7 @@ const App = () => {
 
                             <Route exact path="/contact">
                                 <Title title={'Contact Us'} />
-                                <Container id="wrapper" fluid>
+                                <Container id="wrapper">
                                     <Row>
                                         <ContactUs setHeaderClass={setHeaderClass} />
                                     </Row>
@@ -241,7 +241,7 @@ const App = () => {
 
                             <Route exact path="/account">
                                 <Title title={'Account Info'} />
-                                <Container id="wrapper" fluid>
+                                <Container id="wrapper">
                                     <Row>
                                         <Account setHeaderClass={setHeaderClass} user={user} setUser={setUser} />
                                     </Row>
@@ -250,9 +250,18 @@ const App = () => {
 
                             <Route exact path="/about">
                                 <Title title={'About Us'} />
-                                <Container id="wrapper" fluid>
+                                <Container id="wrapper">
                                     <Row>
                                         <AboutUs setHeaderClass={setHeaderClass} />
+                                    </Row>
+                                </Container>
+                            </Route>
+
+                            <Route exact path="/control-panel">
+                                <Title title={'About Us'} />
+                                <Container id="wrapper">
+                                    <Row>
+                                        <ControlPanel setHeaderClass={setHeaderClass} />
                                     </Row>
                                 </Container>
                             </Route>
