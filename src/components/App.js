@@ -22,7 +22,9 @@ import Account from '../pages/Account';
 import Products from '../pages/Products';
 import AboutUs from '../pages/About';
 import ContactUs from '../pages/Contact'
+import PaymentSuccess from '../pages/PaymentSuccess'
 import ControlPanel from '../pages/ControlPanel'
+
 
 // import functions & css
 
@@ -255,6 +257,15 @@ const App = () => {
                                 <Container id="wrapper">
                                     <Row>
                                         <Checkout products={products} cart={cart} setCart={addToCart} removeFromCart={removeFromCart} count={count} setCount={setCount} setHeaderClass={setHeaderClass} getTotal={getTotal} increaseCart={increaseCart} decreaseCart={decreaseCart} />
+                                    </Row>
+                                </Container>
+                            </Route>
+
+                            <Route exact path="/checkoutsuccess">
+                                <Title title={'Thank you for your order!'} />
+                                <Container id="wrapper">
+                                    <Row>
+                                        <PaymentSuccess setHeaderClass={setHeaderClass} user={user} setUser={setUser} />
                                     </Row>
                                 </Container>
                             </Route>

@@ -1,13 +1,30 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
-
+// import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 import Row from "./prebuilt/Row";
 import BillingDetailsFields from "./prebuilt/BillingDetailsFields";
 import SubmitButton from "./prebuilt/SubmitButton";
 import CheckoutError from "./prebuilt/CheckoutError";
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
-import { loadStripe } from '@stripe/stripe-js'
 import axios from "axios";
+
+const Button = styled.button`
+display: block;
+height: 40px;
+width: 100%;
+font-size: inherit;
+font-weight: 600;
+  cursor: pointer;
+  background: rgb(179, 99, 2);
+  border-radius: 4px;
+  color: white;
+
+  &: hover {
+      background: cadetblue;
+      text-decoration: none
+  }
+`;
 
 const CardElementContainer = styled.div`
   height: 40px;
@@ -97,11 +114,12 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }) => {
                 </CardElementContainer>
             </Row>
             {checkoutError && <CheckoutError>{checkoutError}</CheckoutError>}
-            <Row>
+            {/* <Row>
                 <SubmitButton disabled={isProcessing}>
                     {isProcessing ? "Processing..." : `Pay $${price}`}
                 </SubmitButton>
-            </Row>
+            </Row> */}
+            <Link to={'/checkoutsuccess'} > <Button>{`Pay $${price}`}</Button></Link>
         </form>
     );
 };
