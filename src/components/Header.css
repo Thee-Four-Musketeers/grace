@@ -20,7 +20,7 @@
 .btn-link a:hover { text-decoration: none !important; }
 
 .mobile-cart { display: none; }
-.cart-link { padding: 0 30px 0 15px; }
+.cart-link { padding: 0 25px 0 20px; }
 .cart-icon { color: rgba(255, 255, 255, 0.7); font-size: 26px; padding: 0.4rem 0 0.4rem 1rem; }
 .cart-count {
     background: rgb(179, 99, 2);border-radius: 50%; color: #FFFFFF; display: inline-block; font-size: 0.8rem;font-weight: 700;
