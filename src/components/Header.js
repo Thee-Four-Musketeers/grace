@@ -24,7 +24,7 @@ const Header = ({ user, setUser, cart, headerClass }) => {
 
     return (
         <Container id="header" className={`p-0 ${headerClass}`} fluid={true}>
-            <Row className="">
+            <Row className="mx-0">
                 <Col className="">
                     <Navbar className="navbar-dark p-0" collapseOnSelect expanded={expanded} expand="xl">
                         <Navbar.Brand className="m-0" href="/">
