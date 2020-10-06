@@ -6,8 +6,8 @@ const FormFieldContainer = styled.div`
   display: flex;
   -ms-flex-align: center;
   align-items: center;
-  margin-left: 15px;
-  border-top: 1px solid black;
+  padding-left: 10px;
+  border-top: 1px solid #ced4da;
   &:first-of-type {
     border-top: none;
   }
@@ -17,20 +17,20 @@ const Label = styled.label`
   width: 20%;
   min-width: 70px;
   padding: 11px 0;
-  color: #ffffff;
+  color: #495057;
   overflow: hidden;
   font-size: 16px;
   text-overflow: ellipsis;
   white-space: nowrap;
-  border-right: 1px solid black;
-  background-color: #b36302;
+  border-right: 1px solid #ced4da;
+  background-color: #e9ecef;
 `;
 
 const Input = styled.input`
   font-size: 16px;
   width: 100%;
   padding: 11px 15px 11px 8px;
-  color: black;
+  color: #495057;
   background-color: white;
   animation: 1ms void-animation-out;
 

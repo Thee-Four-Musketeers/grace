@@ -60,14 +60,16 @@ const App = () => {
         }
     }
 
+    //cart reducer handles page state and actions with useReducer
     function cartReducer(state, action) {
         const formatPrice = ({ amount, currency, quantity }) => {
             const numberFormat = new Intl.NumberFormat('en-US', {
                 style: 'currency',
-                currency,
+                currency: 'USD',
                 currencyDisplay: 'symbol',
             })
         };
+
         switch (action.type) {
 
             case
@@ -76,18 +78,16 @@ const App = () => {
 
             case 'remove':
                 const productIndex = state.findIndex(item => item.name === action.product.name);
-                
                 if (productIndex < 0) {
                     return state;
                 }
-
                 const update = [...state];
                 update.splice(productIndex, 1)
-
                 return update
 
             case 'set':
                 return action.cart;
+
             case 'increment':
                 return {
                     ...state,
@@ -98,6 +98,7 @@ const App = () => {
                         quantity: state.quantity + 1,
                     }),
                 };
+
             case 'decrement':
                 return {
                     ...state,
@@ -112,17 +113,45 @@ const App = () => {
             default:
                 return state;
         }
-    }
+    };
 
+    //**reducer state functions**//
 
     function addToCart(product) {
         setCart({ product, type: 'add' });
+    };
+
+    function removeFromCart(product) {
+        setCart({ product, type: 'remove' });
+    };
+
+    function decreaseCart(product) {
+        setCart({ product, type: 'decrement' })
+    };
+
+    function increaseCart(product) {
+        setCart({ product, type: 'increment' })
+    };
+
+    //sets price decimals to correct placement
+    const currencyOptions = {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
     }
 
+    //sum of total of all items in cart
+    function getTotal(cart) {
 
+        if (cart) {
+            const total = cart.reduce((currentTotal, item) => currentTotal + Number(item.price), 0);
+            return total.toLocaleString(undefined, currencyOptions)
+        } else {
+            return '0';
+        }
+    }
 
-
-    // check local storage for user and set user
+    // checks local storage for user and sets user, or not.
+    // technical debt, app crashes when user is logged out    
 
     function localStorageUser() {
         if (localStorage.getItem('user')) {
@@ -134,16 +163,22 @@ const App = () => {
     }
 
     useEffect(() => {
-        setUser(localStorageUser());
-        fetchCart(user)
-            .then((response) => {
-                setCart({ type: 'set', cart: response })
-            }
-            )
+        setUser(localStorageUser())
+        console.log('localstorageuser', user)
+        if (localStorage.getItem('user')) {
+            fetchCart(user)
+                .then((response) => {
+                    setCart({ type: 'set', cart: response })
+                })
+                .catch((error) => {
+                    console.error(error);
+                })
+        } else {
+            setCart({ type: 'set', cart: [] })
+        }
     }, []);
 
-    // technical debt, app crashes when user is logged out    
-
+    //sets product type on correct page
     useEffect(() => {
         fetchProductsByType([productType])
             .then((response) => {
@@ -168,7 +203,7 @@ const App = () => {
                                 <Container id="wrapper" fluid>
                                     <Row>
                                         <Products products={products} setProductType={setProductType} cart={cart} setCart={addToCart} setHeaderClass={setHeaderClass} />
-                                        <Sidebar products={products} cart={cart} setCart={addToCart} count={count} setCount={setCount} getTotal={getTotal} />
+                                        <Sidebar products={products} cart={cart} setCart={addToCart} count={count} setCount={setCount} getTotal={getTotal} increaseCart={increaseCart} decreaseCart={decreaseCart} removeFromCart={removeFromCart} />
                                     </Row>
                                 </Container>
                             </Route>
@@ -178,7 +213,7 @@ const App = () => {
                                 <Container id="wrapper" fluid>
                                     <Row>
                                         <Cheeses products={products} setProductType={setProductType} cart={cart} setCart={addToCart} setHeaderClass={setHeaderClass} />
-                                        <Sidebar products={products} cart={cart} setCart={addToCart} removeFromCart={removeFromCart} count={count} setCount={setCount} getTotal={getTotal} />
+                                        <Sidebar products={products} cart={cart} setCart={addToCart} removeFromCart={removeFromCart} count={count} setCount={setCount} getTotal={getTotal} increaseCart={increaseCart} decreaseCart={decreaseCart} />
                                     </Row>
                                 </Container>
                             </Route>
@@ -188,7 +223,7 @@ const App = () => {
                                 <Container id="wrapper" fluid>
                                     <Row>
                                         <Meats products={products} setProductType={setProductType} cart={cart} setCart={addToCart} setHeaderClass={setHeaderClass} />
-                                        <Sidebar products={products} cart={cart} setCart={addToCart} removeFromCart={removeFromCart} count={count} setCount={setCount} getTotal={getTotal} />
+                                        <Sidebar products={products} cart={cart} setCart={addToCart} removeFromCart={removeFromCart} count={count} setCount={setCount} getTotal={getTotal} increaseCart={increaseCart} decreaseCart={decreaseCart} />
                                     </Row>
                                 </Container>
                             </Route>
@@ -198,7 +233,7 @@ const App = () => {
                                 <Container id="wrapper" fluid>
                                     <Row>
                                         <Fruits products={products} setProductType={setProductType} cart={cart} setCart={addToCart} setHeaderClass={setHeaderClass} />
-                                        <Sidebar products={products} cart={cart} setCart={addToCart} removeFromCart={removeFromCart} count={count} setCount={setCount} getTotal={getTotal} />
+                                        <Sidebar products={products} cart={cart} setCart={addToCart} removeFromCart={removeFromCart} count={count} setCount={setCount} getTotal={getTotal} increaseCart={increaseCart} decreaseCart={decreaseCart} />
                                     </Row>
                                 </Container>
                             </Route>
@@ -207,7 +242,7 @@ const App = () => {
                                 <Title title={'Shopping Cart'} />
                                 <Container id="wrapper" fluid>
                                     <Row>
-                                        <Checkout products={products} cart={cart} setCart={addToCart} removeFromCart={removeFromCart} count={count} setCount={setCount} setHeaderClass={setHeaderClass} getTotal={getTotal} />
+                                        <Checkout products={products} cart={cart} setCart={addToCart} removeFromCart={removeFromCart} count={count} setCount={setCount} setHeaderClass={setHeaderClass} getTotal={getTotal} increaseCart={increaseCart} decreaseCart={decreaseCart} />
                                     </Row>
                                 </Container>
                             </Route>
@@ -225,7 +260,7 @@ const App = () => {
                                 <Title title={'Checkout'} />
                                 <Container id="wrapper">
                                     <Row>
-                                        <Checkout products={products} cart={cart} setCart={addToCart} removeFromCart={removeFromCart} count={count} setCount={setCount} setHeaderClass={setHeaderClass} getTotal={getTotal} />
+                                        <Checkout products={products} cart={cart} setCart={addToCart} removeFromCart={removeFromCart} count={count} setCount={setCount} setHeaderClass={setHeaderClass} getTotal={getTotal} increaseCart={increaseCart} decreaseCart={decreaseCart} />
                                     </Row>
                                 </Container>
                             </Route>

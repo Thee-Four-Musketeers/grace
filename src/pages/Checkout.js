@@ -22,7 +22,6 @@ const Checkout = ({ products, cart, addToCart, count, setCount, setHeaderClass, 
             <Container>
                 <Row>
                     
-                    <Col className="col-6">Cart</Col>
                     <Col className="col-6">
                         <Cart products={products}
                             cart={cart}
@@ -34,9 +33,7 @@ const Checkout = ({ products, cart, addToCart, count, setCount, setHeaderClass, 
                     </Col>
                     <Col className="col-6">
                         <Elements stripe={StripePromise}>
-                            <CheckoutForm
-                                price={getTotal(cart)}
-                                onSuccessfulCheckout={() => Router.push("/success")} />
+                            <CheckoutForm price={getTotal(cart)} onSuccessfulCheckout={() => Router.push("/success")} />
                         </Elements>
                     </Col>
 
