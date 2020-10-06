@@ -21,7 +21,7 @@ const Checkout = ({ products, cart, addToCart, count, setCount, setHeaderClass, 
         <Col id="content">
             <Container>
                 <Row>
-                    
+
                     <Col className="col-6">
                         <Cart products={products}
                             cart={cart}
