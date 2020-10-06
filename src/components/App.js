@@ -133,12 +133,6 @@ const App = () => {
         setCart({ product, type: 'increment' })
     };
 
-    //sets price decimals to correct placement
-    const currencyOptions = {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2,
-    }
-
     //sum of total of all items in cart
     function getTotal(cart) {
 

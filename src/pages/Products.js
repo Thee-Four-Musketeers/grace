@@ -50,7 +50,7 @@ const Products = ({ products, setProductType, cart, setCart, addToCart, setHeade
                     </Card.Footer>
                 </Card>        
                 }
-        </Col>
+            </Col>
         </>
     );
 
