@@ -13,7 +13,7 @@ const CardElementContainer = styled.div`
   height: 40px;
   display: flex;
   align-items: center;
-
+  background-color: #FFFFFF;
   & 
   .StripeElement {
     width: 100%;
@@ -83,12 +83,12 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }) => {
 
     return (
         <form onSubmit={handleFormSubmit}>
-            <div>Shipping information:</div>
+            <div className="checkoutTitle">Billing/Shipping information:</div>
 
             <Row>
                 <BillingDetailsFields />
             </Row>
-            <div>Card information:</div>
+            <div className="checkoutTitle">Card information:</div>
 
             <Row >
 

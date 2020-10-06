@@ -1,11 +1,11 @@
 import React from "react";
 import { Container, Col, Row, Button } from 'react-bootstrap';
-
+import { Link } from 'react-router-dom'
 import './Cart.css'
 
 import { deleteItemFromCart } from '../api/index'
 
-const CartItem = ({ id, name, imageUrl, description, count, price, addToCart, removeFromCart, product }) => {
+const CartItem = ({ id, name, imageUrl, description, count, price, addToCart, removeFromCart, product, increaseCart, decreaseCart }) => {
 
     console.log('product', product);
 
@@ -13,7 +13,7 @@ const CartItem = ({ id, name, imageUrl, description, count, price, addToCart, re
         event.preventDefault();
         try {
             const result = await deleteItemFromCart(id);
-            removeFromCart(id);
+            removeFromCart({ name });
         } catch (error) {
             throw error
         }
@@ -41,16 +41,16 @@ const CartItem = ({ id, name, imageUrl, description, count, price, addToCart, re
                     <Col className="col-pixel-width-150 pb-0 d-flex">
                         <div className="cart-item-actions m-auto w-100">
                             <div className="cart-item-quantity">
-                                <button className="btn btn-sm cart-item-change" onClick={() => addToCart(product)}>
+                                <button className="btn btn-sm cart-item-change" onClick={() => increaseCart(product)}>
                                     <i class="fas fa-plus" aria-hidden="true"></i>
                                 </button>
                                 <span className="cart-item-count text-center">{count}</span>
-                                <button className="btn btn-sm cart-item-change" onClick={handleDelete} >
+                                <button className="btn btn-sm cart-item-change" onClick={() => decreaseCart(product)} >
                                     <i class="fas fa-minus" aria-hidden="true"></i>
                                 </button>
                             </div>
-                            <div class="cart-item-remove pt-2 text-center">
-                                <a href="#">remove</a>
+                            <div class="cart-item-remove pt-2 text-center" >
+                                <Link onClick={handleDelete}>remove</Link>
                             </div>
                         </div>
                     </Col>
@@ -58,7 +58,7 @@ const CartItem = ({ id, name, imageUrl, description, count, price, addToCart, re
                         <div className="cart-item-price w-100 text-right pr-3">
                             <span>$&nbsp;&nbsp;&nbsp;&nbsp;</span>
                             <span>{Number(price) * Number(count)}</span>
-                            </div>
+                        </div>
                     </Col>
                 </Row>
 
