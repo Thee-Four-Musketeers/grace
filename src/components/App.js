@@ -37,7 +37,6 @@ const App = () => {
     const [headerClass, setHeaderClass] = useState('');
     const [cart, setCart] = useReducer(cartReducer, []);
 
-<<<<<<< HEAD
     function addToCart(product) {
         setCart({ product, type: 'add' });
     }
@@ -61,9 +60,7 @@ const App = () => {
         }
     }
 
-=======
-    //cart reducer handles page state and actions with useReducer
->>>>>>> e3dc876467d9f51759a249a64008093be3e40756
+
     function cartReducer(state, action) {
         const formatPrice = ({ amount, currency, quantity }) => {
             const numberFormat = new Intl.NumberFormat('en-US', {
