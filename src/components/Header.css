@@ -1,14 +1,16 @@
 #header { background-color: #26292D; position: static; top: 0; z-index: 9999; }
-#header.home { background-color: rgba(38,41,45, 0.9); position: absolute; }
+#header.home { background-color: #26292de6; position: absolute; }
 
 #header nav { font-size: 1.1rem !important; }
-#header .navbar-brand { padding: 0; }
+#header .navbar-brand { padding: 15px 30px; }
 #header .nav-logo { max-height: 70px; }
+#header .navbar-toggler { margin: 0 30px; }
 
 #header .nav-link,
 #header .navbar-text { color: rgba(255, 255, 255, 0.8) !important; letter-spacing: 1px; padding: 0.5rem 0.75rem !important; }
 #header .nav-link:hover { color: rgba(255, 255, 255, 1) !important; }
 
+.nav-controls { align-items: center; }
 .btn-controls { color: rgba(255, 255, 255, 0.7) !important;  height: 40px; padding-top: 0.25rem; padding-bottom: 0.25rem; width: 100px; }
 .btn-controls:hover { background: rgb(179, 99, 2) !important; border-color: rgb(179, 99, 2) !important; color: #FFFFFF !important; }
 
@@ -17,13 +19,24 @@
 .btn-link:hover a { color: rgba(255, 255, 255, 1); }
 .btn-link a:hover { text-decoration: none !important; }
 
-.cart-icon { color: rgba(255, 255, 255, 0.7); font-size: 26px; padding: 0.4rem 0 0.4rem 2rem; }
+.mobile-cart { display: none; }
+.cart-link { padding: 0 25px 0 20px; }
+.cart-icon { color: rgba(255, 255, 255, 0.7); font-size: 26px; padding: 0.4rem 0 0.4rem 1rem; }
 .cart-count {
     background: rgb(179, 99, 2);border-radius: 50%; color: #FFFFFF; display: inline-block; font-size: 0.8rem;font-weight: 700;
     height: 20px; left: -5px; letter-spacing: -1px; padding: 1px 1px 0 0; position: relative; text-align: center; top: -15px; width: 20px;
 }
 
 @media (max-width: 1200px) {
-    #header { background-color: #26292D;  position: static; }
+    #header.home { background-color: #26292D; position: static; }
     #header { background-color: #26292D; }
+    #header .screen-cart {display: none; }
+    #header .mobile-cart { display: block; padding: 25px 15px; position: absolute; right: 90px; top: 6px; }
+    #header .navbar-collapse { 
+        background: slategray; padding: 20px 0;  
+        text-align: center; width: 100vw; 
+    }
+    #header .btn-controls { border-color: transparent !important; font-size: 1.1rem !important; }
+    #header .btn-controls:hover { background: transparent !important; }
+
 }
