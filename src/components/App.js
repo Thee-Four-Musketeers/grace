@@ -22,6 +22,7 @@ import Account from '../pages/Account';
 import Products from '../pages/Products';
 import AboutUs from '../pages/About';
 import ContactUs from '../pages/Contact'
+import ControlPanel from '../pages/ControlPanel'
 
 // import functions & css
 
@@ -35,6 +36,29 @@ const App = () => {
     const [count, setCount] = useState(0);
     const [headerClass, setHeaderClass] = useState('');
     const [cart, setCart] = useReducer(cartReducer, []);
+
+    function addToCart(product) {
+        setCart({ product, type: 'add' });
+    }
+
+    function removeFromCart(product) {
+        setCart({ product, type: 'remove' });
+    }
+
+    const currencyOptions = {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+    }
+
+    function getTotal(cart) {
+
+        if (cart) {
+            const total = cart.reduce((currentTotal, item) => currentTotal + Number(item.price), 0);
+            return total.toLocaleString(undefined, currencyOptions)
+        } else {
+            return '0';
+        }
+    }
 
     //cart reducer handles page state and actions with useReducer
     function cartReducer(state, action) {
@@ -243,7 +267,7 @@ const App = () => {
 
                             <Route exact path="/contact">
                                 <Title title={'Contact Us'} />
-                                <Container id="wrapper" fluid>
+                                <Container id="wrapper">
                                     <Row>
                                         <ContactUs setHeaderClass={setHeaderClass} />
                                     </Row>
@@ -252,7 +276,7 @@ const App = () => {
 
                             <Route exact path="/account">
                                 <Title title={'Account Info'} />
-                                <Container id="wrapper" fluid>
+                                <Container id="wrapper">
                                     <Row>
                                         <Account setHeaderClass={setHeaderClass} user={user} setUser={setUser} />
                                     </Row>
@@ -261,9 +285,18 @@ const App = () => {
 
                             <Route exact path="/about">
                                 <Title title={'About Us'} />
-                                <Container id="wrapper" fluid>
+                                <Container id="wrapper">
                                     <Row>
                                         <AboutUs setHeaderClass={setHeaderClass} />
+                                    </Row>
+                                </Container>
+                            </Route>
+
+                            <Route exact path="/control-panel">
+                                <Title title={'About Us'} />
+                                <Container id="wrapper">
+                                    <Row>
+                                        <ControlPanel setHeaderClass={setHeaderClass} />
                                     </Row>
                                 </Container>
                             </Route>

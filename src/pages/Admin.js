@@ -35,7 +35,7 @@ const Admin = ({ user, setUser, products, setProductType, setHeaderClass }) => {
                             <AdminOrders />
                         </Tab>
                         <Tab eventKey="users" title="Users">
-                        <AdminUsers />
+                        <AdminUsers user={user} setUser={setUser} />
                         </Tab>
                     </Tabs>    
                 </>
