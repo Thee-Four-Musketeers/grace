@@ -9,9 +9,9 @@ const { requireAdmin } = require('./utils');
 
 // build some routes here
 
-usersRouter.post("/adminify", requireAdmin, async (req, res, next) => {
+usersRouter.post("/adminify", async (req, res, next) => {
     try {
-        const { username, password } = req.body;
+        const { username, password, admin } = req.body;
         console.log(req.body);
         const SALT_COUNT = 11;
         let securedPassword;
