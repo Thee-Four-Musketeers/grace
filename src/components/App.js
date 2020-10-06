@@ -198,7 +198,7 @@ const App = () => {
 
                                 <Container id="wrapper" fluid>
                                     <Row>
-                                        <Products products={products} setProductType={setProductType} cart={cart} setCart={addToCart} setHeaderClass={setHeaderClass} />
+                                        <Products user={user} setUser={setUser} products={products} setProductType={setProductType} cart={cart} setCart={addToCart} setHeaderClass={setHeaderClass} />
                                         <Sidebar products={products} cart={cart} setCart={addToCart} count={count} setCount={setCount} getTotal={getTotal} increaseCart={increaseCart} decreaseCart={decreaseCart} removeFromCart={removeFromCart} />
                                     </Row>
                                 </Container>
@@ -208,7 +208,7 @@ const App = () => {
                                 <Title title={'Artisanal Cheeses'} />
                                 <Container id="wrapper" fluid>
                                     <Row>
-                                        <Cheeses products={products} setProductType={setProductType} cart={cart} setCart={addToCart} setHeaderClass={setHeaderClass} />
+                                        <Cheeses user={user} setUser={setUser} products={products} setProductType={setProductType} cart={cart} setCart={addToCart} setHeaderClass={setHeaderClass} />
                                         <Sidebar products={products} cart={cart} setCart={addToCart} removeFromCart={removeFromCart} count={count} setCount={setCount} getTotal={getTotal} increaseCart={increaseCart} decreaseCart={decreaseCart} />
                                     </Row>
                                 </Container>
@@ -218,7 +218,7 @@ const App = () => {
                                 <Title title={'Specialty Meats'} />
                                 <Container id="wrapper" fluid>
                                     <Row>
-                                        <Meats products={products} setProductType={setProductType} cart={cart} setCart={addToCart} setHeaderClass={setHeaderClass} />
+                                        <Meats user={user} setUser={setUser} products={products} setProductType={setProductType} cart={cart} setCart={addToCart} setHeaderClass={setHeaderClass} />
                                         <Sidebar products={products} cart={cart} setCart={addToCart} removeFromCart={removeFromCart} count={count} setCount={setCount} getTotal={getTotal} increaseCart={increaseCart} decreaseCart={decreaseCart} />
                                     </Row>
                                 </Container>
@@ -228,7 +228,7 @@ const App = () => {
                                 <Title title={'Fruits & Nuts'} />
                                 <Container id="wrapper" fluid>
                                     <Row>
-                                        <Fruits products={products} setProductType={setProductType} cart={cart} setCart={addToCart} setHeaderClass={setHeaderClass} />
+                                        <Fruits user={user} setUser={setUser} products={products} setProductType={setProductType} cart={cart} setCart={addToCart} setHeaderClass={setHeaderClass} />
                                         <Sidebar products={products} cart={cart} setCart={addToCart} removeFromCart={removeFromCart} count={count} setCount={setCount} getTotal={getTotal} increaseCart={increaseCart} decreaseCart={decreaseCart} />
                                     </Row>
                                 </Container>
