@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Container, Row, Col, Button, Img } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 import './Home.css'
@@ -25,7 +25,7 @@ const Home = ({ setHeaderClass }) => {
                                     {/* Whether you're searching for the perfect variety of cheeses with fruits, nuts, crackers, and spreads for the ultimate appetizer platter, or an artisan cheese from a breakout American cheesemaker, a handmade raw milk cheese you've been daydreaming of since your Italian vacation, or a classic fresh cheese imported from France, you’ll find it here. */}
                                 </p>
                                 <Link to="/cheeses">
-                                    <Button className="btn btn-lg py-2 px-5 mb-" type="submit">Build Your Own Board!</Button>
+                                    <Button className="btn btn-lg py-2 px-5" type="submit">Build Your Own Board!</Button>
                                 </Link>
                                 
                             </div>
@@ -33,21 +33,65 @@ const Home = ({ setHeaderClass }) => {
                     </Row>
                 </Container>
             </div>
-            {/* <div className="section">
-                <Row>
-                    <Col>
-                        <Img src="" alt="Our Cheeses" />
-                    </Col>
-                    <Col>
-                        <p>From our artisan cheesemakers to our partner farms, at Cheezy we are passionate about dairy as a force for good. Our original mission to provide delicious cheese from around the word, made with loving hands and a touch of soul. </p>
-                        <Button><Link to="/cheeses"></Link></Button>
-                    </Col>
-                </Row>
-            </div> */}
+
+            <div class="sell">
+                <Container className="section">
+                    <Row>
+                        <Col xl={4} className="d-flex align-items-center px-4">
+                            <img className="round" src="images/cheese_wheels.jpg" alt="Our Cheese" />
+                        </Col>
+                        <Col xl={8} className="d-flex align-items-center px-4">
+                            <div>
+                                <h3>Artisanal Cheeses</h3>
+                                <p>From our artisan cheesemakers to our partner farms, everyone at Cheezy are passionate about dairy as a force of good. We stand commited to our original mission to provide delicious cheeses from around the world that are made with loving hands and a touch of soul. </p>
+                                <Link to="/cheeses">
+                                    <Button className="btn btn-lg py-2 px-1" type="submit">Shop Cheese</Button>
+                                </Link>
+                            </div>
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
+            <div className="sell">
+                <Container className="section">
+                    <Row>
+                        <Col xl={8} className="d-flex align-items-center px-4">
+                            <div>
+                                <h3>Specialty Meats</h3>
+                                <p> Food is an art and every step of the process takes true craftsmanship. Just as a chef combines ingredients to create the perfect dish, our selection of specialty meats, procured from the finest purveyors of beef, pork, and fowl will make a stunning addition to any cheese board.</p>
+                                <Link to="/meats">
+                                    <Button className="btn btn-lg py-2 px-1" type="submit">Shop Meats</Button>
+                                </Link>
+                            </div>
+                        </Col>
+                        <Col xl={4} className="d-flex align-items-center px-4">
+                            <img className="round" src="images/meats_hanging.jpg" alt="Our Cheese" />
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
+            <div className="sell">
+                <Container className="section">
+                    <Row>
+                        <Col xl={4} className="d-flex align-items-center px-4">
+                            <img className="round" src="images/fruit_basket.jpg" alt="Our Cheese" />
+                        </Col>
+                        <Col xl={8} className="d-flex align-items-center px-4">
+                            <div>
+                                <h3>Exotic Fruits &amp; Nuts</h3>
+                               <p>We source the highest quality exotic fruits and nuts from around the globe so that you can create a unique culinary experience for your guests. Amplify the savory delights of our artisanal cheese and meats, with these sweet and bold flavors.</p>
+                               <Link to="/fruits">
+                                    <Button className="btn btn-lg py-2 px-1" type="submit">Shop Fruits &amp; Nuts</Button>
+                                </Link>
+                            </div>
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
 
         </>
     )
-}
+}   
 
 export default Home;
 
