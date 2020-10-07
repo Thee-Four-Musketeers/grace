@@ -5,7 +5,7 @@ import ProductCard from '../components/ProductCard';
 
 import './Fruits.css'
 
-const Sides = ({ products, setProductType, cart, setCart, addToCart, setHeaderClass }) => {
+const Sides = ({ products, setProductType, cart, setCart, addToCart, setHeaderClass, user }) => {
 
     useEffect(() => {
         setHeaderClass('fruit');
@@ -21,6 +21,7 @@ const Sides = ({ products, setProductType, cart, setCart, addToCart, setHeaderCl
                 {
                     products && products.map(product => (
                         <ProductCard
+                            user={user}
                             key={product.id}
                             addToCart={addToCart}
                             cart={cart}

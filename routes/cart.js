@@ -7,7 +7,6 @@ const {
 } = require('../db')
 
 cartRouter.get('/', requireUser, async (req, res, next) => {
-    console.log('recalling user cart', req.path);
     try {
         const order = await getOrderByUser(req.user.username);
         const cart = await renderCart(order.id);
@@ -24,7 +23,6 @@ cartRouter.get('/', requireUser, async (req, res, next) => {
 cartRouter.post('/:productId', requireUser, async (req, res, next) => {
     try {
         const cart = await getOrderByUser(req.user.username)
-        console.log('cart', cart)
         const item = await createCartItem(req.params.productId, cart.id, 1)
         res.send({
             cart,
@@ -35,10 +33,10 @@ cartRouter.post('/:productId', requireUser, async (req, res, next) => {
     }
 });
 
-cartRouter.delete('/:productId', requireUser, async (req, res, next) => {
-    console.log('hiting delete cart router')
+cartRouter.delete('/:productId', async (req, res, next) => {
+    console.log('did we hit this route? ')
     try {
-        const cart = await getOrderByUser(req.user.username)
+        const cart = await getOrderByUser(req.user)
         const item = await deleteCartItem(req.params.productId, cart.id)
         res.send({
             cart,
