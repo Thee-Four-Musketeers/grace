@@ -21,7 +21,7 @@ const Cheeses = ({ products, setProductType, cart, setCart, addToCart, setHeader
                 {
                     products && products.map(product => (
                         <ProductCard
-                            user={user}
+                            customer={user}
                             key={product.id}
                             addToCart={addToCart}
                             cart={cart}

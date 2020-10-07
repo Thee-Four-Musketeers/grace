@@ -29,6 +29,7 @@ const Cart = ({ id, orderId, cart, setCart, addToCart, removeFromCart, getTotal,
                         <CartItem
                             key={id}
                             orderId={orderId}
+                            productId={product.productId}
                             id={product.id}
                             cart={cart}
                             setCart={setCart}
