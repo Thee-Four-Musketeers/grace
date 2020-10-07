@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Button, Col, Row, Popover, OverlayTrigger } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import {    Link } from 'react-router-dom';
 import './ProductCard.css'
 import { addItemToCart } from '../api/index'
 

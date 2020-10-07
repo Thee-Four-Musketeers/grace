@@ -10,7 +10,7 @@ const ContactUsForm = () => {
     return (
         <Col id="contact-form">
             <Row>
-                <Col sm={12} className="intro">We welcome your questions, comments, and well wishes. Just fill out the form to get in touch. In the meanwhile, pleas remember to always <span>Keep It Cheezy</span>!</Col>
+                <Col sm={12} className="intro">We welcome your questions, comments, and well wishes. Just fill out the form to get in touch. In the meanwhile, please remember to always <span>Keep It Cheezy</span>!</Col>
                 <Col md={6} className="pb-4">
                     <InputGroup className="mb-3">
                         <InputGroup.Prepend>

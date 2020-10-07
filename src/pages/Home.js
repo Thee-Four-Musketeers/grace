@@ -33,6 +33,18 @@ const Home = ({ setHeaderClass }) => {
                     </Row>
                 </Container>
             </div>
+            {/* <div className="section">
+                <Row>
+                    <Col>
+                        <Img src="" alt="Our Cheeses" />
+                    </Col>
+                    <Col>
+                        <p>From our artisan cheesemakers to our partner farms, at Cheezy we are passionate about dairy as a force for good. Our original mission to provide delicious cheese from around the word, made with loving hands and a touch of soul. </p>
+                        <Button><Link to="/cheeses"></Link></Button>
+                    </Col>
+                </Row>
+            </div> */}
+
         </>
     )
 }
