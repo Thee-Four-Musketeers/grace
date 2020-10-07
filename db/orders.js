@@ -49,7 +49,7 @@ async function getOrderById(orderId) {
 async function renderCart(id) {
     try {
         const { rows: product } = await client.query(`
-            SELECT o.customer, p.name, p.price, p.id, p."imageUrl", p.description, op."productIdQuantity" AS count
+            SELECT o.customer, p.name, p.price, op.id, op."orderId", p."imageUrl", p.description, op."productIdQuantity" AS count
             FROM orders AS o
             JOIN orders_products as op ON o.id = op."orderId"
             JOIN products as p ON p.id = op."productId"
@@ -88,9 +88,9 @@ async function getOrderByUser(customer) {
             AND status='open';
         `, [customer])
         if (!orders[0]) {
-            const newCart = await createOrder({ customer,status: 'open', urgency: 'usps' });
+            const newCart = await createOrder({ customer, status: 'open', urgency: 'usps' });
             return newCart;
-        }  
+        }
         return orders[0];
     } catch (error) {
         throw error

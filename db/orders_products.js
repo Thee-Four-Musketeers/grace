@@ -16,17 +16,28 @@ async function createCartItem(productId, orderId, productIdQuantity) {
     }
 }
 
-async function deleteCartItem(productId, orderId) {
+async function deleteCartItem(productId, id) {
     console.log('hitting delete on db')
     try {
-        const { rows: [cart] } = await client.query(`
-        DELETE  FROM orders_products AS op
+        const { rows: [product] } = await client.query(`
+        DELETE FROM orders_products AS op
         WHERE op."productId"=$1
-        AND op."orderId"=$2;
-        `, [productId, orderId]);
-        return cart
+        AND op.id=$2;
+        `, [productId, id]);
+        return product
     } catch (error) {
         throw error
+    }
+}
+
+async function addProductsToOrder(orderId, productList) {
+    try {
+        const { rows: [order] } = await client.query(`
+        UPDATE orders_products AS op
+        SET op.productIdQuantity AS count
+        WHERE op."productId"=$2`)
+    } catch (error) {
+        throw error;
     }
 }
 
@@ -47,21 +58,9 @@ async function deleteCartItem(productId, orderId) {
 //     }
 // }
 
-// async function addProductsToOrder(orderId, productList) {
-//     try {
-//         const createProductList = productList.map(
-//             product => createOrderProduct(orderId, product.id)
-//         );
-//         await Promise.all(createProductList);
-//         return await getOrderById(orderId);
-//     } catch (error) {
-//         throw error;
-//     }
-// }
-
 module.exports = {
     createCartItem,
-    deleteCartItem
-    // addProductsToOrder,
+    deleteCartItem,
+    addProductsToOrder
     // createOrderProduct
 };
