@@ -8,6 +8,7 @@ async function createCartItem(productId, orderId, productIdQuantity) {
         const { rows: [cart] } = await client.query(`
         INSERT INTO orders_products ("productId", "orderId", "productIdQuantity")
             VALUES ($1, $2, $3)
+            ON CONFLICT ("productId", "orderId") DO UPDATE SET "productIdQuantity" = orders_products."productIdQuantity" + 1
             RETURNING *;
         `, [productId, orderId, productIdQuantity]);
         return cart;
