@@ -7,13 +7,21 @@ async function createCartItem(productId, orderId, productIdQuantity) {
         const { rows } = await client.query(`
             SELECT * 
             FROM orders_products 
-            WHERE "productId" = $1
-            AND "orderId" = $2
+            WHERE "productId" = $1 AND "orderId" = $2
         `, [productId, orderId]);
 
         console.log('this is rows', rows);
 
-        if(rows) {
+        if(!rows) {
+            const { rows: [cart] } = await client.query(`
+                INSERT INTO orders_products ("productId", "orderId", "productIdQuantity")
+                VALUES ($1, $2, $3)
+                RETURNING *;
+            `, [productId, orderId, productIdQuantity]);
+            
+            console.log('this is the cart', cart)
+            return cart; 
+        } else {
             const updatedItem = await client.query(`
                 UPDATE orders_products
                 SET "productIdQuantity" = $1
@@ -22,18 +30,8 @@ async function createCartItem(productId, orderId, productIdQuantity) {
             `, [rows[0].productIdQuantity + 1, productId, orderId]);
 
             console.log('this is the updated item', updatedItem)
-            
             return updatedItem;
-        } else {
-            const { rows: [cart] } = await client.query(`
-                INSERT INTO orders_products ("productId", "orderId", "productIdQuantity")
-                VALUES ($1, $2, $3)
-                RETURNING *;
-            `, [productId, orderId, productIdQuantity]);
-            
-            console.log('this is the cart', cart)
-            
-            return cart; 
+
         }
     } catch (error) {
         throw error
