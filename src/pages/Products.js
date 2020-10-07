@@ -36,9 +36,10 @@ const Products = ({ products, setProductType, cart, setCart, addToCart, setHeade
             const id = product.id;
             const name = product.name;
             const price = product.price;
-            const description = product.descrition;
-            const result = await addItemToCart({ id, count: 1 });
-            setCart({ id, name, price, count: 1 });
+            const description = product.description;
+            const imageUrl = product.imageUrl;
+            const result = await addItemToCart({ id, name, price, description, imageUrl, count: 1 });
+            setCart({ id, name, price, description, imageUrl, description, count: 1 });
         } catch (error) {
             throw error
         }

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Card, Button, Col, Row, Popover, OverlayTrigger } from 'react-bootstrap';
-import {    Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './ProductCard.css'
 import { addItemToCart } from '../api/index'
 
-const ProductCard = ({ id, customer, orderId, name, imageUrl, type, price, description, cart, setCart, user }) => {
+const ProductCard = ({ id, name, imageUrl, type, price, description, cart, setCart, user }) => {
 
     const popover = (
         <Popover id="popover-basic">
@@ -22,8 +22,7 @@ const ProductCard = ({ id, customer, orderId, name, imageUrl, type, price, descr
     async function handleSubmit(event) {
         event.preventDefault();
         try {
-            const result = await addItemToCart({ id, customer, description, orderId, name, price });
-            console.log('Add item handle submit', result)
+            const result = await addItemToCart({ id, count: 1 });
             setCart({ id, imageUrl, description, name, price, count: 1 });
         } catch (error) {
             throw error
@@ -41,7 +40,9 @@ const ProductCard = ({ id, customer, orderId, name, imageUrl, type, price, descr
             </Card.Body>
             <Card.Footer className="pb-4 pt-0">
                 <Card.Text className="pb-0 price">${price} per pound</Card.Text>
-                {customer.token
+
+
+                {user.token
                     ? <>
                         <Button variant="primary" className="btn-card" type="submit" onClick={handleSubmit}>Add To Cart</Button>
                     </> : <>
