@@ -5,7 +5,9 @@ import CartItem from "./CartItem";
 
 import './Cart.css'
 
-const Cart = ({ id, cart, setCart, addToCart, removeFromCart, getTotal, increaseCart, decreaseCart }) => {
+const Cart = ({ id, orderId, cart, setCart, addToCart, removeFromCart, getTotal, increaseCart, decreaseCart }) => {
+    console.log('Here is the cart', cart)
+
     return (
         <>
 
@@ -25,8 +27,9 @@ const Cart = ({ id, cart, setCart, addToCart, removeFromCart, getTotal, increase
                 <Col className="col-12 p-0">
                     {cart && cart.map(product => (
                         <CartItem
+                            key={id}
+                            orderId={orderId}
                             id={product.id}
-                            key={product.id}
                             cart={cart}
                             setCart={setCart}
                             addToCart={addToCart}

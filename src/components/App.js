@@ -93,7 +93,7 @@ const App = () => {
             case 'increment':
                 return {
                     ...state,
-                    quantity: state.quantity + 1,
+                    quantity: state.count + 1,
                     // price: formatPrice({
                     //     amount: state.unitAmount,
                     //     currency: state.currency,
@@ -104,7 +104,7 @@ const App = () => {
             case 'decrement':
                 return {
                     ...state,
-                    quantity: state.quantity - 1,
+                    quantity: state.count - 1,
                     // price: formatPrice({
                     //     amount: state.unitAmount,
                     //     currency: state.currency,
@@ -114,7 +114,7 @@ const App = () => {
 
             default:
                 return state;
-        
+
         }
     };
 
@@ -208,7 +208,7 @@ const App = () => {
                                 <Title title={'Artisanal Cheeses'} />
                                 <Container id="wrapper" fluid>
                                     <Row>
-                                        <Cheeses products={products} setProductType={setProductType} cart={cart} setCart={addToCart} setHeaderClass={setHeaderClass} user={user}/>
+                                        <Cheeses products={products} setProductType={setProductType} cart={cart} setCart={addToCart} setHeaderClass={setHeaderClass} user={user} />
                                         <Sidebar products={products} cart={cart} setCart={addToCart} removeFromCart={removeFromCart} count={count} setCount={setCount} getTotal={getTotal} increaseCart={increaseCart} decreaseCart={decreaseCart} />
                                     </Row>
                                 </Container>
@@ -218,7 +218,7 @@ const App = () => {
                                 <Title title={'Specialty Meats'} />
                                 <Container id="wrapper" fluid>
                                     <Row>
-                                        <Meats products={products} setProductType={setProductType} cart={cart} setCart={addToCart} setHeaderClass={setHeaderClass} user={user}/>
+                                        <Meats products={products} setProductType={setProductType} cart={cart} setCart={addToCart} setHeaderClass={setHeaderClass} user={user} />
                                         <Sidebar products={products} cart={cart} setCart={addToCart} removeFromCart={removeFromCart} count={count} setCount={setCount} getTotal={getTotal} increaseCart={increaseCart} decreaseCart={decreaseCart} />
                                     </Row>
                                 </Container>

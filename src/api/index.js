@@ -67,8 +67,8 @@ export async function fetchProductsByType(type) {
 
 export async function fetchProductById(id) {
 	try {
-        const { data: product } = await axios.get(`/api/products/${id}`)
-        console.log('product api', product);
+		const { data: product } = await axios.get(`/api/products/${id}`)
+		console.log('product api', product);
 		return product
 	} catch (error) {
 		throw error
@@ -116,10 +116,10 @@ export async function addOrder({ customer, status, subtotal, tax, shipping, tota
 	}
 }
 
-export async function addItemToCart({ id, name, price }) {
+export async function addItemToCart({ id, customer, imageUrl, description, orderId, name, price }) {
 	try {
-        const user = JSON.parse(localStorage.getItem('user'));
-		const { data } = await axios.post(`/api/cart/${id}`, { id, name, price }, {
+		const user = JSON.parse(localStorage.getItem('user'));
+		const { data } = await axios.post(`/api/cart/${id}`, { id, customer, imageUrl, description, orderId, name, price }, {
 			headers: {
 				'Content-Type': 'application/json; charset=utf-8',
 				'Authorization': 'Bearer ' + user.token
@@ -128,8 +128,9 @@ export async function addItemToCart({ id, name, price }) {
 				'Customer': user.customer
 			}
 		});
+		console.log('add item', data)
 		if (data) {
-			return data.item;
+			return data;
 		} else {
 			return {};
 		}
@@ -146,15 +147,17 @@ export async function deleteItemFromCart(id) {
 			{
 				headers: {
 					'Content-Type': 'application/json; charset=utf-8',
-                    // 'Authorization': 'Bearer ' + user.token
+					// 'Authorization': 'Bearer ' + user.token
 				},
 				body: {
 					'Customer': user.customer
 				}
 			}
 		);
+		console.log('DeleteFromCartData', data)
 		if (data) {
-			return data;
+			return data.cart.id;
+
 		} else {
 			return {};
 		}
