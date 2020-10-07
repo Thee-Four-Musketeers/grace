@@ -1,19 +1,17 @@
 import React from 'react';
 import { Card, Button, Col, Row, Popover, OverlayTrigger } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-
 import './ProductCard.css'
 import { addItemToCart } from '../api/index'
 
 const ProductCard = ({ id, name, imageUrl, type, price, description, cart, setCart, user }) => {
-
 
     const popover = (
         <Popover id="popover-basic">
             <Popover.Title as="h2">We're sorry...</Popover.Title>
             <Popover.Content>
                 <div className="pop-font">You must sign up or log in to continue.</div>
-          </Popover.Content>
+            </Popover.Content>
         </Popover>
     );
 
@@ -25,12 +23,12 @@ const ProductCard = ({ id, name, imageUrl, type, price, description, cart, setCa
         event.preventDefault();
         try {
             const result = await addItemToCart({ id, count: 1 });
-            setCart({ id, name, price, count: 1 });
+            setCart({ id, imageUrl, description, name, price, count: 1 });
         } catch (error) {
             throw error
         }
     }
-    
+
     return (
         <Card className="text-center products-card" id={id}>
             <Link to={{ pathname: `/products` + '/' + `${id}` }}>
@@ -43,17 +41,16 @@ const ProductCard = ({ id, name, imageUrl, type, price, description, cart, setCa
             <Card.Footer className="pb-4 pt-0">
                 <Card.Text className="pb-0 price">${price} per pound</Card.Text>
 
-                { user.token
-                ? <>
-                    <Button variant="primary" className="btn-card" type="submit" onClick={handleSubmit}>Add To Cart</Button>
-                </> : <>
-                    <OverlayTrigger rootClose trigger="click" placement="right" overlay={popover}>
-                        <Button variant="primary" className="btn-card" type="submit">Add To Cart</Button>
-                    </OverlayTrigger>
-                </>
-                }
 
-                {/* <Button variant="primary" className="btn-card" type="submit" onClick={handleSubmit}>Add To Cart</Button> */}
+                {user.token
+                    ? <>
+                        <Button variant="primary" className="btn-card" type="submit" onClick={handleSubmit}>Add To Cart</Button>
+                    </> : <>
+                        <OverlayTrigger rootClose trigger="click" placement="right" overlay={popover}>
+                            <Button variant="primary" className="btn-card" type="submit">Add To Cart</Button>
+                        </OverlayTrigger>
+                    </>
+                }
             </Card.Footer>
         </Card>
     );

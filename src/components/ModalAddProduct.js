@@ -4,7 +4,7 @@ import { Modal, Form, Button, Row, Col } from 'react-bootstrap';
 
 import './ModalLogin.css'
 
-const ModalAddProduct = () => {
+const ModalAddProduct = (products, setProducts) => {
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -52,7 +52,7 @@ const ModalAddProduct = () => {
                 <Modal.Body>
                     <Form>
                         <Row>
-                           <Col className="col-md-6">
+                            <Col className="col-md-6">
                                 <Form.Group className="form-group">
                                     <Form.Label>Name</Form.Label>
                                     <Form.Control type="text" placeholder="Enter product name" />
@@ -82,6 +82,24 @@ const ModalAddProduct = () => {
                                 <Form.Group className="form-group">
                                     <Form.Label>Description</Form.Label>
                                     <Form.Control as="textarea" rows="4" placeholder="Enter product description" />
+                                </Form.Group>
+                            </Col>
+                            <Col className="col-md-6">
+                                <Form.Group className="form-group">
+                                    <Form.Label>Origin</Form.Label>
+                                    <Form.Control type="text" placeholder="Enter product origin" />
+                                </Form.Group>
+                            </Col>
+                            <Col className="col-md-6">
+                                <Form.Group className="form-group">
+                                    <Form.Label>Hardness</Form.Label>
+                                    <Form.Control type="text" placeholder="Enter product hardness" />
+                                </Form.Group>
+                            </Col>
+                            <Col className="col-md-6">
+                                <Form.Group className="form-group">
+                                    <Form.Label>Odor</Form.Label>
+                                    <Form.Control type="numeric" placeholder="Enter product odor" />
                                 </Form.Group>
                             </Col>
                         </Row>

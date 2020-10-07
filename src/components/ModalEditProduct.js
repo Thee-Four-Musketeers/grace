@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
-
+import { Link } from 'react-router-dom';
 import EditProdForm from './EditProductForm'
 
 const ModalEditProduct = (products, setProductType) => {
@@ -22,20 +22,17 @@ const ModalEditProduct = (products, setProductType) => {
 
     return (
         <>
+
             <Button variant="primary" onClick={handleShow}><i className="fas fa-plus"></i> Add Product</Button>
+
+            <Link onClick={handleShow}> Edit</Link>
+
             <Modal show={show} onHide={handleClose} size="lg">
                 <Modal.Header closeButton>
                     <Modal.Title>Edit Product</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {/* {
-                        products && products.map(product => (
-                            <EditProdForm
-                                key={product.id}
-                                {...product}>
-                            </EditProdForm>
-                        ))
-                    } */}
+                    <EditProdForm />
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>

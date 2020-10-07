@@ -5,28 +5,29 @@ import './Cart.css'
 
 import { deleteItemFromCart } from '../api/index'
 
-const CartItem = ({ id, name, imageUrl, description, count, price, cart, addToCart, removeFromCart, product, increaseCart, decreaseCart }) => {
-
+const CartItem = ({ id, orderId, name, imageUrl, description, count, price, cart, addToCart, removeFromCart, product, increaseCart, decreaseCart }) => {
+    console.log('CartItemId', id)
     async function handleDelete(event) {
         event.preventDefault();
         try {
             const result = await deleteItemFromCart(id);
+            console.log('deleteItemCart', result)
             removeFromCart({ name });
-            console.log( 'get the name', name);
+            console.log('get the name', name);
         } catch (error) {
             throw error
         }
     }
 
-    // function shorten(str, n) {
-    //     return (str.match(RegExp(".{" + n + "}\\S*")) || [str])[0];
-    // }
+    function shorten(str, n) {
+        return (str.match(RegExp(".{" + n + "}\\S*")) || [str])[0];
+    }
 
     // {shorten(description, 50) + '...'}
 
     return (
         <>
-            <div id={id} className="cart-item">
+            <div key={id} className="cart-item">
 
                 <Row>
                     <Col className="col col-pixel-width-150 pb-3 d-flex">
@@ -34,7 +35,7 @@ const CartItem = ({ id, name, imageUrl, description, count, price, cart, addToCa
                     </Col>
                     <Col className="col d-flex align-items-start flex-column pb-3">
                         <div className="cart-item-name text-left mb-1">{name}</div>
-                        <div className="cart-item-desc text-left">This is a happy little product. Please buy me, I am delicious.</div>
+                        <div className="cart-item-desc text-left">{shorten(description, 50) + '...'}</div>
                     </Col>
                 </Row>
                 <Row>
@@ -57,7 +58,7 @@ const CartItem = ({ id, name, imageUrl, description, count, price, cart, addToCa
                     <Col className="col pb-0 d-flex">
                         <div className="cart-item-price w-100 text-right pr-3">
                             <span>$&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                            <span>{ Number(price) * Number(count) }</span>
+                            <span>{Number(price) * Number(count)}</span>
                         </div>
                     </Col>
                 </Row>
