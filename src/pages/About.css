@@ -1,0 +1,44 @@
+.img-left {
+    float: left;
+    height: auto;
+    margin: 0 2rem 1rem 0;
+    max-width: 260px;
+    width: 100%
+}
+
+.img-right {
+    float: right;
+    height: auto;
+    margin: 0 0 1rem 2rem;
+    max-width: 260px;
+    width: 100%
+}
+
+
+#about-us p {
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 0;
+}
+
+.divider {
+    border-bottom: 1px solid #DFDFDF;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.25rem;
+}
+
+@media (max-width: 767px) {
+
+    #content.col { 
+        padding: 40px 30px;
+        text-align: center;
+    }
+    .img-left,
+    .img-right {
+        float: none;
+        margin: 0 auto 1.5rem;
+        text-align: center;
+    }
+
+
+}
