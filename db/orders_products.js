@@ -17,12 +17,13 @@ async function createCartItem(productId, orderId, productIdQuantity) {
 }
 
 async function deleteCartItem(productId, id) {
-    console.log('hitting delete on db')
+    console.log('hitting delete on db', productId)
+    console.log('database ID', id)
     try {
         const { rows: [product] } = await client.query(`
         DELETE FROM orders_products AS op
         WHERE op."productId"=$1
-        AND op.id=$2;
+        AND op."orderId"=$2;
         `, [productId, id]);
         return product
     } catch (error) {

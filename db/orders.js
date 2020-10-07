@@ -49,7 +49,7 @@ async function getOrderById(orderId) {
 async function renderCart(id) {
     try {
         const { rows: product } = await client.query(`
-            SELECT o.customer, p.name, p.price, op.id, op."orderId", p."imageUrl", p.description, op."productIdQuantity" AS count
+            SELECT o.customer, p.name, op."productId", p.price, op.id, op."orderId", p."imageUrl", p.description, op."productIdQuantity" AS count
             FROM orders AS o
             JOIN orders_products as op ON o.id = op."orderId"
             JOIN products as p ON p.id = op."productId"
@@ -79,7 +79,7 @@ async function getCartById(id) {
 //for user to pull up all orders on user account, checks with user ID
 
 async function getOrderByUser(customer) {
-    console.log('did it make it to the db method?')
+    console.log('did it make it to the db method?', customer)
     try {
         const { rows: orders } = await client.query(`
             SELECT * 
@@ -89,7 +89,10 @@ async function getOrderByUser(customer) {
         `, [customer])
         if (!orders[0]) {
             const newCart = await createOrder({ customer, status: 'open', urgency: 'usps' });
+            console.log('getOrderbyCustomer', orders)
+
             return newCart;
+
         }
         return orders[0];
     } catch (error) {

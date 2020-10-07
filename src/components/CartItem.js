@@ -5,12 +5,12 @@ import './Cart.css'
 
 import { deleteItemFromCart } from '../api/index'
 
-const CartItem = ({ id, orderId, name, imageUrl, description, count, price, cart, addToCart, removeFromCart, product, increaseCart, decreaseCart }) => {
+const CartItem = ({ id, productId, name, imageUrl, description, count, price, cart, addToCart, removeFromCart, product, increaseCart, decreaseCart }) => {
     console.log('CartItemId', id)
     async function handleDelete(event) {
         event.preventDefault();
         try {
-            const result = await deleteItemFromCart(id);
+            const result = await deleteItemFromCart(productId);
             console.log('deleteItemCart', result)
             removeFromCart({ name });
             console.log('get the name', name);
@@ -27,7 +27,7 @@ const CartItem = ({ id, orderId, name, imageUrl, description, count, price, cart
 
     return (
         <>
-            <div key={id} className="cart-item">
+            <div id={id} className="cart-item">
 
                 <Row>
                     <Col className="col col-pixel-width-150 pb-3 d-flex">

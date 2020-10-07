@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './ProductCard.css'
 import { addItemToCart } from '../api/index'
 
-const ProductCard = ({ id, name, imageUrl, type, price, description, cart, setCart, user }) => {
+const ProductCard = ({ id, customer, orderId, name, imageUrl, type, price, description, cart, setCart, user }) => {
 
     const popover = (
         <Popover id="popover-basic">
@@ -22,7 +22,8 @@ const ProductCard = ({ id, name, imageUrl, type, price, description, cart, setCa
     async function handleSubmit(event) {
         event.preventDefault();
         try {
-            const result = await addItemToCart({ id, count: 1 });
+            const result = await addItemToCart({ id, customer, description, orderId, name, price });
+            console.log('Add item handle submit', result)
             setCart({ id, imageUrl, description, name, price, count: 1 });
         } catch (error) {
             throw error
