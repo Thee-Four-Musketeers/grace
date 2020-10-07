@@ -10,7 +10,6 @@ import './Header.css'
 
 const Header = ({ user, setUser, cart, headerClass }) => {
 
-
     const history = useHistory();
 
     const signOutHandler = (event) => {
@@ -50,7 +49,9 @@ const Header = ({ user, setUser, cart, headerClass }) => {
                             <Nav className="nav-controls">
                                 { user.admin && user.token
                                     ? <>
-                                        <Button variant="outline-light" className="btn-controls mx-2">Admin</Button>
+                                        <Button variant="outline-light" className="btn-controls btn-link mx-2">
+                                        <Link to="/admin" onClick={() => setTimeout(() => { setExpanded(false) }, 50)}>Admin</Link>
+                                        </Button>
                                     </> : ''
                                 }
                                 { !user.admin && user.token

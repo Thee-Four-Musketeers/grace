@@ -23,7 +23,7 @@ const ModalEditProduct = (products, setProductType) => {
     return (
         <>
 
-            <Button variant="primary" onClick={handleShow}><i className="fas fa-plus"></i> Add Product</Button>
+            {/* <Button variant="primary" onClick={handleShow}><i className="fas fa-plus"></i> Add Product</Button> */}
 
             <Link onClick={handleShow}> Edit</Link>
 
