@@ -22,10 +22,7 @@ const ModalEditProduct = (products, setProductType) => {
 
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
-                <i className="fas fa-plus"></i> Add Product
-        </Button>
-
+            <Button variant="primary" onClick={handleShow}><i className="fas fa-plus"></i> Add Product</Button>
             <Modal show={show} onHide={handleClose} size="lg">
                 <Modal.Header closeButton>
                     <Modal.Title>Edit Product</Modal.Title>

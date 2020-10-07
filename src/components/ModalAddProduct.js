@@ -43,9 +43,7 @@ const ModalAddProduct = () => {
 
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
-                <i className="fas fa-plus"></i> Add Product
-            </Button>
+            <Button variant="primary" className="btn-add" onClick={handleShow}><i className="fas fa-plus"></i>&nbsp;&nbsp;Add Product</Button>
 
             <Modal show={show} onHide={handleClose} size="lg">
                 <Modal.Header closeButton>
