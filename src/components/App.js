@@ -64,13 +64,13 @@ const App = () => {
 
 
     function cartReducer(state, action) {
-        const formatPrice = ({ amount, currency, quantity }) => {
-            const numberFormat = new Intl.NumberFormat('en-US', {
-                style: 'currency',
-                currency: 'USD',
-                currencyDisplay: 'symbol',
-            })
-        };
+        // const formatPrice = ({ amount, currency, quantity }) => {
+        //     const numberFormat = new Intl.NumberFormat('en-US', {
+        //         style: 'currency',
+        //         currency: 'USD',
+        //         currencyDisplay: 'symbol',
+        //     })
+        // } 
 
         switch (action.type) {
 
@@ -94,26 +94,27 @@ const App = () => {
                 return {
                     ...state,
                     quantity: state.quantity + 1,
-                    price: formatPrice({
-                        amount: state.unitAmount,
-                        currency: state.currency,
-                        quantity: state.quantity + 1,
-                    }),
+                    // price: formatPrice({
+                    //     amount: state.unitAmount,
+                    //     currency: state.currency,
+                    //     quantity: state.quantity + 1,
+                    // }),
                 };
 
             case 'decrement':
                 return {
                     ...state,
                     quantity: state.quantity - 1,
-                    price: formatPrice({
-                        amount: state.unitAmount,
-                        currency: state.currency,
-                        quantity: state.quantity - 1,
-                    }),
+                    // price: formatPrice({
+                    //     amount: state.unitAmount,
+                    //     currency: state.currency,
+                    //     quantity: state.quantity - 1,
+                    // }),
                 };
 
             default:
                 return state;
+        
         }
     };
 
@@ -146,8 +147,7 @@ const App = () => {
         }
     }
 
-    // checks local storage for user and sets user, or not.
-    // technical debt, app crashes when user is logged out    
+    // checks local storage for user and sets user, or not. 
 
     function localStorageUser() {
         if (localStorage.getItem('user')) {
@@ -208,7 +208,7 @@ const App = () => {
                                 <Title title={'Artisanal Cheeses'} />
                                 <Container id="wrapper" fluid>
                                     <Row>
-                                        <Cheeses user={user} setUser={setUser} products={products} setProductType={setProductType} cart={cart} setCart={addToCart} setHeaderClass={setHeaderClass} />
+                                        <Cheeses products={products} setProductType={setProductType} cart={cart} setCart={addToCart} setHeaderClass={setHeaderClass} user={user}/>
                                         <Sidebar products={products} cart={cart} setCart={addToCart} removeFromCart={removeFromCart} count={count} setCount={setCount} getTotal={getTotal} increaseCart={increaseCart} decreaseCart={decreaseCart} />
                                     </Row>
                                 </Container>
@@ -218,7 +218,7 @@ const App = () => {
                                 <Title title={'Specialty Meats'} />
                                 <Container id="wrapper" fluid>
                                     <Row>
-                                        <Meats user={user} setUser={setUser} products={products} setProductType={setProductType} cart={cart} setCart={addToCart} setHeaderClass={setHeaderClass} />
+                                        <Meats products={products} setProductType={setProductType} cart={cart} setCart={addToCart} setHeaderClass={setHeaderClass} user={user}/>
                                         <Sidebar products={products} cart={cart} setCart={addToCart} removeFromCart={removeFromCart} count={count} setCount={setCount} getTotal={getTotal} increaseCart={increaseCart} decreaseCart={decreaseCart} />
                                     </Row>
                                 </Container>
@@ -228,7 +228,7 @@ const App = () => {
                                 <Title title={'Fruits & Nuts'} />
                                 <Container id="wrapper" fluid>
                                     <Row>
-                                        <Fruits user={user} setUser={setUser} products={products} setProductType={setProductType} cart={cart} setCart={addToCart} setHeaderClass={setHeaderClass} />
+                                        <Fruits products={products} setProductType={setProductType} cart={cart} setCart={addToCart} setHeaderClass={setHeaderClass} user={user} />
                                         <Sidebar products={products} cart={cart} setCart={addToCart} removeFromCart={removeFromCart} count={count} setCount={setCount} getTotal={getTotal} increaseCart={increaseCart} decreaseCart={decreaseCart} />
                                     </Row>
                                 </Container>

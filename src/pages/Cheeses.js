@@ -5,7 +5,7 @@ import ProductCard from '../components/ProductCard';
 
 import './Cheeses.css'
 
-const Cheeses = ({ products, setProductType, cart, setCart, addToCart, setHeaderClass }) => {
+const Cheeses = ({ products, setProductType, cart, setCart, addToCart, setHeaderClass, user }) => {
 
     useEffect(() => {
         setProductType(['cheese']);
@@ -21,6 +21,7 @@ const Cheeses = ({ products, setProductType, cart, setCart, addToCart, setHeader
                 {
                     products && products.map(product => (
                         <ProductCard
+                            user={user}
                             key={product.id}
                             addToCart={addToCart}
                             cart={cart}

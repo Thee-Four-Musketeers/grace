@@ -4,19 +4,16 @@ import { Link } from 'react-router-dom';
 import './ProductCard.css'
 import { addItemToCart } from '../api/index'
 
-const popover = (
-    <Popover id="popover-basic">
-        <Popover.Title as="h3">Please Log In</Popover.Title>
-        <Popover.Content>
-            Please log in to add items to your cart.
-            If you don't have an account, sign up today!
-      </Popover.Content>
-    </Popover>
-);
+const ProductCard = ({ id, name, imageUrl, type, price, description, cart, setCart, user }) => {
 
-
-
-const ProductCard = ({ user, id, name, imageUrl, type, price, description, cart, setCart }) => {
+    const popover = (
+        <Popover id="popover-basic">
+            <Popover.Title as="h2">We're sorry...</Popover.Title>
+            <Popover.Content>
+                <div className="pop-font">You must sign up or log in to continue.</div>
+          </Popover.Content>
+        </Popover>
+    );
 
     function shorten(str, n) {
         return (str.match(RegExp(".{" + n + "}\\S*")) || [str])[0];
@@ -33,7 +30,7 @@ const ProductCard = ({ user, id, name, imageUrl, type, price, description, cart,
     }
 
     return (
-        <Card className="text-center" key={id}>
+        <Card className="text-center" id={id}>
             <Link to={{ pathname: `/products` + '/' + `${id}` }}>
                 <Card.Img variant="top" src={imageUrl} />
             </Link>
@@ -43,18 +40,17 @@ const ProductCard = ({ user, id, name, imageUrl, type, price, description, cart,
             </Card.Body>
             <Card.Footer className="pb-4 pt-0">
                 <Card.Text className="pb-0 price">${price} per pound</Card.Text>
-                {/* {user
-                
-                    ? <> */}
-                <Button variant="primary" className="btn-card" type="submit" onClick={handleSubmit}>Add To Cart</Button>
-                {/* </>
-                    :
-                    <>
-                        <OverlayTrigger trigger="click" placement="right" overlay={popover}>
-                            <Button variant="primary" className="btn-card" type="submit">Add To Cart</Button>
-                        </OverlayTrigger>
-                    </>
-                } */}
+
+
+                { user.token
+                ? <>
+                    <Button variant="primary" className="btn-card" type="submit" onClick={handleSubmit}>Add To Cart</Button>
+                </> : <>
+                    <OverlayTrigger rootClose trigger="click" placement="right" overlay={popover}>
+                        <Button variant="primary" className="btn-card" type="submit">Add To Cart</Button>
+                    </OverlayTrigger>
+                </>
+                }
             </Card.Footer>
         </Card>
     );
