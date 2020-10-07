@@ -15,7 +15,7 @@ const popover = (
     </Popover>
 );
 
-const Products = ({ products, setProductType, cart, setCart, addToCart, setHeaderClass, user }) => {
+const Products = ({ products, setProductType, cart, setCart, addToCart, setHeaderClass, user, customer }) => {
 
     const [product, setProduct] = useState({})
     const productId = useParams().id
@@ -36,9 +36,9 @@ const Products = ({ products, setProductType, cart, setCart, addToCart, setHeade
             const id = product.id;
             const name = product.name;
             const price = product.price;
-            const description = product.descrition;
-            const result = await addItemToCart({ id, count: 1 });
-            setCart({ id, name, price, count: 1 });
+            const description = product.description;
+            const result = await addItemToCart({ id, name, price, description, count: 1 });
+            setCart({ id, name, price, description, count: 1 });
         } catch (error) {
             throw error
         }

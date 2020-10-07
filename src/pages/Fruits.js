@@ -21,7 +21,7 @@ const Sides = ({ products, setProductType, cart, setCart, addToCart, setHeaderCl
                 {
                     products && products.map(product => (
                         <ProductCard
-                            user={user}
+                            customer={user}
                             key={product.id}
                             addToCart={addToCart}
                             cart={cart}
