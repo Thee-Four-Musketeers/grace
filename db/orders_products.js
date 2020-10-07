@@ -12,7 +12,7 @@ async function createCartItem(productId, orderId, productIdQuantity) {
 
         console.log('this is rows', rows);
 
-        if(!rows) {
+        if(!rows.length) {
             const { rows: [cart] } = await client.query(`
                 INSERT INTO orders_products ("productId", "orderId", "productIdQuantity")
                 VALUES ($1, $2, $3)
@@ -43,9 +43,9 @@ async function deleteCartItem(productId, id) {
     console.log('database ID', id)
     try {
         const { rows: [product] } = await client.query(`
-        DELETE FROM orders_products AS op
-        WHERE op."productId"=$1
-        AND op."orderId"=$2;
+            DELETE FROM orders_products AS op
+            WHERE op."productId"=$1
+            AND op."orderId"=$2;
         `, [productId, id]);
         return product
     } catch (error) {

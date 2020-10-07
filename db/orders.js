@@ -87,7 +87,7 @@ async function getOrderByUser(customer) {
             WHERE customer=$1
             AND status='open';
         `, [customer])
-        if (!orders[0]) {
+        if (!orders.length) {
             const newCart = await createOrder({ customer, status: 'open', urgency: 'usps' });
             return newCart;
         }

@@ -81,14 +81,14 @@ const App = () => {
                 if(cartEl < 0 ) {
                     return [...state, action.product];
                 }
-
+                
                 const cartArr = state.map( product => {
+                    const newProduct = { ... product };
                     if(product.name === action.product.name) {
-                        product.quantity = product.quantity + 1
+                        newProduct.count = newProduct.count + 1
                     }
-                    return product;
+                    return newProduct;
                 })
-
                 return cartArr;
 
             case 'remove':

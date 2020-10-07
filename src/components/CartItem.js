@@ -10,10 +10,10 @@ const CartItem = ({ id, productId, name, imageUrl, description, count, price, ca
     async function handleDelete(event) {
         event.preventDefault();
         try {
-            const result = await deleteItemFromCart(productId);
+            const result = await deleteItemFromCart(id);
             console.log('deleteItemCart', result)
             removeFromCart({ name });
-            console.log('get the name', name);
+            console.log('get the name', id);
         } catch (error) {
             throw error
         }

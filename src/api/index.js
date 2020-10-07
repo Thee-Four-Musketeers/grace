@@ -143,11 +143,11 @@ export async function deleteItemFromCart(id) {
 	try {
 		console.log('id from api before axios', id)
 		const user = JSON.parse(localStorage.getItem('user'));
-		const { data } = await axios.delete(`/api/cart/${id}`, { id },
-			{
+		const { data } = await axios.delete(`/api/cart/${id}`,
+            {
 				headers: {
 					'Content-Type': 'application/json; charset=utf-8',
-					// 'Authorization': 'Bearer ' + user.token
+					'Authorization': 'Bearer ' + user.token
 				},
 				body: {
 					'Customer': user.customer
