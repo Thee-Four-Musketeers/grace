@@ -30,13 +30,15 @@
 @media (max-width: 1200px) {
     #header.home { background-color: #26292D; position: static; }
     #header { background-color: #26292D; }
+    #header .navbar-nav { margin: 0 auto; max-width: 180px; }
+    #header .nav-link { border-bottom: 1px solid rgba(255,255,255, 0.3); margin-bottom: 3px; }
     #header .screen-cart {display: none; }
     #header .mobile-cart { display: block; padding: 25px 15px; position: absolute; right: 90px; top: 6px; }
     #header .navbar-collapse { 
         background: slategray; padding: 20px 0;  
         text-align: center; width: 100vw; 
     }
-    #header .btn-controls { border-color: transparent !important; font-size: 1.1rem !important; }
+    #header .btn-controls { border-color: transparent !important; border-bottom: 1px solid rgba(255,255,255,0.3) !important; margin-bottom: 3px; font-size: 1.1rem !important; width: 180px; }
     #header .btn-controls:hover { background: transparent !important; }
-
+    #header .btn-controls:last-of-type { border-bottom-color: transparent !important; }
 }

@@ -1,13 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Col, Card, Button, Container} from 'react-bootstrap';
+import { Row, Col, Card, Button, Container, Popover, OverlayTrigger } from 'react-bootstrap';
 import ProductCard from '../components/ProductCard';
 import { useParams } from 'react-router-dom';
 import { addItemToCart, fetchProductById } from '../api/index'
 
 import './Products.css'
 
+const popover = (
+    <Popover id="popover-basic">
+        <Popover.Title as="h2">We're sorry...</Popover.Title>
+        <Popover.Content>
+            <div className="pop-font">You must sign up or log in to continue.</div>
+        </Popover.Content>
+    </Popover>
+);
 
-const Products = ({ products, setProductType, cart, setCart, addToCart, setHeaderClass }) => {
+const Products = ({ products, setProductType, cart, setCart, addToCart, setHeaderClass, user }) => {
 
     console.log('match', useParams());
 
@@ -56,7 +64,15 @@ const Products = ({ products, setProductType, cart, setCart, addToCart, setHeade
                             <Card.Title className="py-2">{product.name}</Card.Title>
                             <Card.Text className="pb-2 price">${product.price} per pound</Card.Text>
                             <Card.Text className="pb-3">{product.description}</Card.Text>
-                            <Button variant="primary" className="btn-card" type="submit" onClick={handleSubmit}>Add To Cart</Button>
+                            {user.token
+                                ? <>
+                                    <Button variant="primary" className="btn-card" type="submit" onClick={handleSubmit}>Add To Cart</Button>
+                                </> : <>
+                                    <OverlayTrigger rootClose trigger="click" placement="right" overlay={popover}>
+                                        <Button variant="primary" className="btn-card" type="submit">Add To Cart</Button>
+                                    </OverlayTrigger>
+                                </>
+                            }
                         </Col>
                     </Row>
                     </Container>

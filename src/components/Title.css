@@ -9,3 +9,8 @@
 
 #title .title { font-family: 'Oleo Script Swash Caps', cursive; font-size: 70px; }
 
+@media (max-width: 1200px) {
+    #title .title {
+        font-size: 50px;
+    }
+}
