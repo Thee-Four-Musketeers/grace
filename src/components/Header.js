@@ -43,6 +43,9 @@ const Header = ({ user, setUser, cart, headerClass }) => {
                                 <Link className="nav-link" to="/cheeses" onClick={() => setTimeout(() => { setExpanded(false) }, 50)}>Our Cheeses</Link>
                                 <Link className="nav-link" to="/meats" onClick={() => setTimeout(() => { setExpanded(false) }, 50)}>Specialty Meats</Link>
                                 <Link className="nav-link" to="/fruits" onClick={() => setTimeout(() => { setExpanded(false) }, 50)}>Fruits&nbsp;&amp;&nbsp;Nuts</Link>
+                                <Link className="nav-link" to="/about" onClick={() => setTimeout(() => { setExpanded(false) }, 50)}>About</Link>
+                                <Link className="nav-link" to="/contact" onClick={() => setTimeout(() => { setExpanded(false) }, 50)}>Contact</Link>
+                                
                             </Nav>
                             <Nav className="nav-controls">
                                 { user.admin && user.token

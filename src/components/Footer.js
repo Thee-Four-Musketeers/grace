@@ -8,22 +8,24 @@ const Footer = () => {
     return (
         <Container id="footer" className="px-0" fluid={true}>
             <Row className="m-auto">
-
-                <Col className="col-12 text-center">Cheezy &copy; 2020 - All Rights Reserved</Col>
-
-                <Col className="col-12 text-center">
+                <Col className="col-12 pb-1 text-center">
                     <Navbar className="justify-content-center pb-0">
                         <Nav>
-                            <Link className="nav-link small" to="/about">About</Link>
+                            <Link className="nav-link" to="/cheeses">Cheeses</Link>
                             <div className="nav-link small"> | </div>
-                            <Link className="nav-link small" to="/contact">Contact</Link>
+                            <Link className="nav-link" to="/meats">Meats</Link>
                             <div className="nav-link small"> | </div>
-                            <Link className="nav-link small" to="/admin">Admin</Link>
+                            <Link className="nav-link" to="/fruits">Fruits &amp; Nuts</Link>
+                            <div className="nav-link small"> | </div>
+                            <Link className="nav-link" to="/about">About</Link>
+                            <div className="nav-link small"> | </div>
+                            <Link className="nav-link" to="/contact">Contact</Link>
+                            <div className="nav-link small"> | </div>
+                            <Link className="nav-link" to="/admin">Admin</Link>
                         </Nav>
                     </Navbar>
                 </Col>
-
-
+                <Col className="col-12 text-center">Cheezy &copy; 2020 - All Rights Reserved</Col>
             </Row>
         </Container>
     )
