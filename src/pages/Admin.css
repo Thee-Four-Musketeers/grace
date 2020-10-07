@@ -1,3 +1,23 @@
 .nav-tabs {
     margin-bottom: 40px;
 }
+
+.btn-add {
+    background: rgb(179, 99, 2);
+    border-color: rgb(179, 99, 2);
+    float: right;
+    line-height: 1;
+    padding: 12px 20px 10px;
+}
+
+.btn-add i {
+    font-size: 12px;
+    position: relative;
+    top: -1px;
+}
+
+
+.btn-add:hover {
+    background: cadetblue;
+    border-color: cadetblue;
+}

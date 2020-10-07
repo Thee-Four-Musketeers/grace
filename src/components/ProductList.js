@@ -15,7 +15,7 @@ const ProductList = ({ id, name, imageUrl, type, price, description, addToCart, 
             <ListGroup.Item className="col col-pixel-width-120 product-img">
                 <img src={`${imageUrl}`} alt="" />
             </ListGroup.Item>
-            <ListGroup.Item className="col product-name"><Link to={{ pathname: `/` + `${type}` + '/' + `${id}` }}>{name}</Link></ListGroup.Item>
+            <ListGroup.Item className="col product-name"><Link to={{ pathname: `/products` + '/' + `${id}` }}>{name}</Link></ListGroup.Item>
             <ListGroup.Item className="col col-pixel-width-150 product-actions text-right">
                 <ModalEditProduct products={products} />
                 <small> | </small>

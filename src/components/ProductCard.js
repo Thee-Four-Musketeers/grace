@@ -30,7 +30,7 @@ const ProductCard = ({ id, name, imageUrl, type, price, description, cart, setCa
     }
 
     return (
-        <Card className="text-center" id={id}>
+        <Card className="text-center products-card" id={id}>
             <Link to={{ pathname: `/products` + '/' + `${id}` }}>
                 <Card.Img variant="top" src={imageUrl} />
             </Link>
