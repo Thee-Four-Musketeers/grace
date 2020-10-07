@@ -11,7 +11,7 @@
     color: #FFFFFF;
     margin: 40px 0;
     max-width: 800px;
-    padding: 40px;
+    padding: 40px 40px;
     text-align: center;
     width: 100%;
 }
@@ -21,8 +21,8 @@
     border-color: rgb(179, 99, 2);
     color: #FFFFFF;
     font-weight: 600;
-    line-height: 2 !important;
-    padding-top: 12px !important;
+    line-height: 1.2 !important;
+    padding: 20px 30px 16px  !important;
     min-width: 240px;
 }
 
@@ -47,13 +47,36 @@
 }
 
 @media (max-width: 1200px) {
+    
     #hero {
         height: auto;
     }
+
+    .hero-content {
+        padding: 30px;
+    }
+
+    .text-white {
+        font-size: 1rem;
+    }
+
     .vh-100 {
         height: auto !important;
         min-height: calc(100vh - 112px) !important;
     }
+
+    .h1 {
+        font-size: 3rem !important;
+    }
+
+    .lead {
+        font-size: 1.2rem !important;
+    }
+
+    .btn-lg {
+        font-size: 1.2rem !important;
+    }
+
 }
 
 
