@@ -195,7 +195,6 @@ const App = () => {
                         <Switch>
                             <Route exact path="/products/:id">
                                 <Title title={'Products'} />
-
                                 <Container id="wrapper" fluid>
                                     <Row>
                                         <Products user={user} setUser={setUser} products={products} setProductType={setProductType} cart={cart} setCart={addToCart} setHeaderClass={setHeaderClass} />

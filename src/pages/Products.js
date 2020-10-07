@@ -58,15 +58,6 @@ const Products = ({ products, setProductType, cart, setCart, addToCart, setHeade
                             <Card.Text className="pb-3">{product.description}</Card.Text>
                             <Button variant="primary" className="btn-card" type="submit" onClick={handleSubmit}>Add To Cart</Button>
                         </Col>
-
-
-                        {/* <Card.Body> 
-                            <Card.Title className="pb-0">{product.name}</Card.Title>
-                            <Card.Text className="pb-0">{product.description}</Card.Text>
-                        </Card.Body>
-                        <Card.Footer className="pb-4 pt-0">
-                            <Card.Text className="pb-0 price">${product.price} per pound</Card.Text>
-                        </Card.Footer> */}
                     </Row>
                     </Container>
                 </> : ''        
