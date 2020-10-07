@@ -29,7 +29,7 @@
 
 @media (max-width: 767px) {
 
-    #content.col { 
+    .about-us.col { 
         padding: 40px 30px;
         text-align: center;
     }
