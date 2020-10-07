@@ -41,7 +41,7 @@ const ProductCard = ({ id, customer, orderId, name, imageUrl, type, price, descr
             </Card.Body>
             <Card.Footer className="pb-4 pt-0">
                 <Card.Text className="pb-0 price">${price} per pound</Card.Text>
-                {user.token
+                {customer.token
                     ? <>
                         <Button variant="primary" className="btn-card" type="submit" onClick={handleSubmit}>Add To Cart</Button>
                     </> : <>
