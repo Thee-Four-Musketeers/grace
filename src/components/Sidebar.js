@@ -12,7 +12,7 @@ const Sidebar = ({ cart, setCart, count, setCount, getTotal, removeFromCart, add
             <Cart products={products} cart={cart} setCart={setCart} count={count} setCount={setCount} getTotal={getTotal} removeFromCart={removeFromCart} addToCart={addToCart} increaseCart={increaseCart} decreaseCart={decreaseCart} />
             { cart.length > 0
                 ?
-                <Link className="cart-link mt-3" to="/checkout">
+                <Link className="cart-checkout-link mt-3 px-3 d-block" to="/checkout">
                     <Button variant="primary" className="btn-checkout" type="submit">Checkout ${getTotal(cart)}</Button>
                 </Link>
                 : ''

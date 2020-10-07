@@ -2,7 +2,7 @@
 .btn-outline-light:focus { box-shadow: 0 0 0 0 transparent !important; }
 
 #sidebar { background: #EEEEEE; padding: 80px 40px; }
-.col-pixel-width-480 { flex: 0 0 480px; }
+.col-pixel-width-480 { flex: 0 0 480px;  }
 
 #content { background: #F9F9F9; min-height: 630px; padding: 80px; }
 
@@ -12,6 +12,11 @@
 
     #content { padding: 40px; }
     .col-pixel-width-480 { flex: 0 0 100% !important; }
+
+    #cart,
+    #cart, 
+    .cart-checkout-link { margin: 0 auto; max-width: 480px; }
+
     
 }
 
