@@ -89,10 +89,7 @@ async function getOrderByUser(customer) {
         `, [customer])
         if (!orders[0]) {
             const newCart = await createOrder({ customer, status: 'open', urgency: 'usps' });
-            console.log('getOrderbyCustomer', orders)
-
             return newCart;
-
         }
         return orders[0];
     } catch (error) {

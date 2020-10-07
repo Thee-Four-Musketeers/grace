@@ -76,7 +76,20 @@ const App = () => {
 
             case
                 'add':
-                return [...state, action.product];
+
+                const cartEl = state.findIndex(item => item.name === action.product.name);
+                if(cartEl < 0 ) {
+                    return [...state, action.product];
+                }
+
+                const cartArr = state.map( product => {
+                    if(product.name === action.product.name) {
+                        product.quantity = product.quantity + 1
+                    }
+                    return product;
+                })
+
+                return cartArr;
 
             case 'remove':
                 const productIndex = state.findIndex(item => item.name === action.product.name);
