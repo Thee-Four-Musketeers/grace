@@ -34,10 +34,11 @@ cartRouter.post('/:productId', requireUser, async (req, res, next) => {
     }
 });
 
-cartRouter.delete('/:productId', async (req, res, next) => {
-    console.log('hiting delete cart router', req.params)
+cartRouter.delete('/:productId', requireUser, async (req, res, next) => {
+    console.log('hiting delete cart router...!!!', req.params)
     try {
-        const cart = await getOrderByUser(req.user)
+        console.log('this is the cart...', req.body);
+        const cart = await getOrderByUser(req.user.username)
         const item = await deleteCartItem(req.params.productId, cart.id)
         res.send({
             cart,
