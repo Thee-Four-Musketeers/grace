@@ -8,12 +8,13 @@ const ContactUsForm = () => {
     document.body.classList.add('solid', 'cheese');
 
     return (
-        <Container fluid className="contactForm">
-            <Row >
-                <Col className="contactRow">
+        <Col id="contact-form">
+            <Row>
+                <Col sm={12} className="intro">We welcome your questions, comments, and well wishes. Just fill out the form to get in touch. In the meanwhile, pleas remember to always <span>Keep It Cheezy</span>!</Col>
+                <Col md={6} className="pb-4">
                     <InputGroup className="mb-3">
                         <InputGroup.Prepend>
-                            <InputGroup.Text id="basic-addon1"><i className="fas fa-portrait"></i></InputGroup.Text>
+                            <InputGroup.Text id="basic-addon1"><i className="fas fa-user"></i></InputGroup.Text>
                         </InputGroup.Prepend>
                         <FormControl
                             placeholder="Enter name"
@@ -22,40 +23,33 @@ const ContactUsForm = () => {
                         />
                     </InputGroup>
                 </Col>
-                <div className="clearWidth"></div>
-                <Col className="contactRow">
-                    <InputGroup className="mb-3">
+                <Col md={6} className="pb-4">
+                    <InputGroup className="mb-3"> 
+                        <InputGroup.Prepend>
+                            <InputGroup.Text placeholder="name@example.com" id="basic-addon2"><i className="fas fa-envelope"></i></InputGroup.Text>
+                        </InputGroup.Prepend>
                         <FormControl
                             placeholder="Enter email"
                             aria-label="User's email"
                             aria-describedby="basic-addon2"
                         />
-                        <InputGroup.Append>
-                            <InputGroup.Text id="basic-addon2">@example.com</InputGroup.Text>
-                        </InputGroup.Append>
                     </InputGroup>
 
                 </Col>
+                <Col sm={12}>
+                    <InputGroup className="pb-4">
+                        {/* <InputGroup.Prepend>
+                            <InputGroup.Text><i className="fas fa-edit"></i></InputGroup.Text>
+                        </InputGroup.Prepend> */}
+                        <FormControl rows="4" as="textarea" placeholder="Enter your message" aria-label="With textarea" />
+                     </InputGroup>
+                    <Button variant="primary" type="submit" className="btn-card" onClick={() => { alert('message sent!') }}>
+                        <i className="fas fa-paper-plane"></i>
+                        <span>&nbsp;&nbsp;&nbsp;Submit</span>
+                    </Button>
+                </Col>
             </Row>
-
-            <Row>
-                <InputGroup>
-                    <InputGroup.Prepend>
-                        <InputGroup.Text>Message</InputGroup.Text>
-                    </InputGroup.Prepend>
-                    <FormControl as="textarea" aria-label="With textarea" />
-                </InputGroup>
-                <br></br>
-                <br></br>
-            </Row>
-            <div className="clearHeight"></div>
-            <Row>
-
-                <Button variant="primary" type="submit" className="btn-card" onClick={() => { alert('message sent!') }}>
-                    <i className="fas fa-paper-plane"></i> Submit
-                </Button>
-            </Row>
-        </Container>
+        </Col>
     )
 };
 

@@ -260,8 +260,8 @@ const App = () => {
                                 </Container>
                             </Route>
 
-                            <Route exact path="/checkoutsuccess">
-                                <Title title={'Thank you for your order!'} />
+                            <Route exact path="/success">
+                                <Title title={'Success!'} />
                                 <Container id="wrapper">
                                     <Row>
                                         <PaymentSuccess setHeaderClass={setHeaderClass} user={user} setUser={setUser} />
@@ -270,7 +270,7 @@ const App = () => {
                             </Route>
 
                             <Route exact path="/contact">
-                                <Title title={'Contact Us'} />
+                                <Title title={'Contact'} />
                                 <Container id="wrapper">
                                     <Row>
                                         <ContactUs setHeaderClass={setHeaderClass} />
@@ -288,7 +288,7 @@ const App = () => {
                             </Route>
 
                             <Route exact path="/about">
-                                <Title title={'About Us'} />
+                                <Title title={'About'} />
                                 <Container id="wrapper">
                                     <Row>
                                         <AboutUs setHeaderClass={setHeaderClass} />

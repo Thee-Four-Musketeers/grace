@@ -8,7 +8,7 @@ import './Sidebar.css'
 const Sidebar = ({ cart, setCart, count, setCount, getTotal, removeFromCart, addToCart, products, increaseCart, decreaseCart }) => {
 
     return (
-        <Col id="sidebar" className="col-pixel-width-480 col-md-12 text-center">
+        <Col id="sidebar" className="col-pixel-width-400 col-md-12 text-center">
             <Cart products={products} cart={cart} setCart={setCart} count={count} setCount={setCount} getTotal={getTotal} removeFromCart={removeFromCart} addToCart={addToCart} increaseCart={increaseCart} decreaseCart={decreaseCart} />
             { cart.length > 0
                 ?
