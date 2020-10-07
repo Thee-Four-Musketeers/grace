@@ -9,7 +9,7 @@ const AboutUs = ({ setHeaderClass }) => {
     }, []);
 
     return (
-        <Col id="content">
+        <Col id="content" className="about-us">
             <Row id="about-us">
 
                 <Col xs={12}>
