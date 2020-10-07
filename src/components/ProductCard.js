@@ -1,14 +1,10 @@
 import React from 'react';
 import { Card, Button, Col, Row, Popover, OverlayTrigger } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-
 import './ProductCard.css'
 import { addItemToCart } from '../api/index'
 
-
-
 const ProductCard = ({ id, name, imageUrl, type, price, description, cart, setCart, user }) => {
-
 
     const popover = (
         <Popover id="popover-basic">
@@ -32,7 +28,7 @@ const ProductCard = ({ id, name, imageUrl, type, price, description, cart, setCa
             throw error
         }
     }
-    
+
     return (
         <Card className="text-center" id={id}>
             <Link to={{ pathname: `/products` + '/' + `${id}` }}>
@@ -45,6 +41,7 @@ const ProductCard = ({ id, name, imageUrl, type, price, description, cart, setCa
             <Card.Footer className="pb-4 pt-0">
                 <Card.Text className="pb-0 price">${price} per pound</Card.Text>
 
+
                 { user.token
                 ? <>
                     <Button variant="primary" className="btn-card" type="submit" onClick={handleSubmit}>Add To Cart</Button>
@@ -54,8 +51,6 @@ const ProductCard = ({ id, name, imageUrl, type, price, description, cart, setCa
                     </OverlayTrigger>
                 </>
                 }
-
-                {/* <Button variant="primary" className="btn-card" type="submit" onClick={handleSubmit}>Add To Cart</Button> */}
             </Card.Footer>
         </Card>
     );

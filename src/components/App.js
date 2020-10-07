@@ -198,7 +198,7 @@ const App = () => {
 
                                 <Container id="wrapper" fluid>
                                     <Row>
-                                        <Products products={products} setProductType={setProductType} cart={cart} setCart={addToCart} setHeaderClass={setHeaderClass} />
+                                        <Products user={user} setUser={setUser} products={products} setProductType={setProductType} cart={cart} setCart={addToCart} setHeaderClass={setHeaderClass} />
                                         <Sidebar products={products} cart={cart} setCart={addToCart} count={count} setCount={setCount} getTotal={getTotal} increaseCart={increaseCart} decreaseCart={decreaseCart} removeFromCart={removeFromCart} />
                                     </Row>
                                 </Container>
