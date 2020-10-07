@@ -53,14 +53,14 @@ const Products = ({ products, setProductType, cart, setCart, addToCart, setHeade
                 ? <>
                 <Container fluid className="max-960">
                     <Row key={product.id} className="product-card">
-                        <Col className="col-md-5 px-4">
+                        <Col className="px-4" xl={5} lg={12}>
                             <img className="mb-4" src={`/${product.imageUrl}`} alt="" />
                             <Card.Text className="aspects mb-1"><strong>Origin:</strong> {product.origin}</Card.Text>
                             <Card.Text className="aspects mb-1"><strong>Texture:</strong> {product.hardness}</Card.Text>
                             <Card.Text className="aspects mb-4"><strong>Bouquet:</strong> {product.odor}</Card.Text>
                         </Col>
 
-                        <Col className="col-md-7 px-4">
+                        <Col className="px-4" xl={7} lg={12}>
                             <Card.Title className="py-2">{product.name}</Card.Title>
                             <Card.Text className="pb-2 price">${product.price} per pound</Card.Text>
                             <Card.Text className="pb-3">{product.description}</Card.Text>

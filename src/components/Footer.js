@@ -10,12 +10,12 @@ const Footer = () => {
             <Row className="m-auto">
                 <Col className="col-12 pb-1 text-center">
                     <Navbar className="justify-content-center pb-0">
-                        <Nav>
+                        <Nav className="justify-content-center flex-wrap">
                             <Link className="nav-link" to="/cheeses">Cheeses</Link>
                             <div className="nav-link small"> | </div>
                             <Link className="nav-link" to="/meats">Meats</Link>
                             <div className="nav-link small"> | </div>
-                            <Link className="nav-link" to="/fruits">Fruits &amp; Nuts</Link>
+                            <Link className="nav-link" to="/fruits">Fruits&nbsp;&amp;&nbsp;Nuts</Link>
                             <div className="nav-link small"> | </div>
                             <Link className="nav-link" to="/about">About</Link>
                             <div className="nav-link small"> | </div>

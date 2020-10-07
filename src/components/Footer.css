@@ -2,12 +2,14 @@
     background-color: #26292D;
 }
 
-#footer { padding: 4rem 1.5rem 4.25rem; }
+#footer { padding: 3rem 1.5rem; }
 #footer .col,
 #footer .col a,
 #footer .col .nav-link {
         color: rgba(255, 255, 255, 0.7) !important; padding: 0 0.25rem;
 }
+
+#footer .small { position: relative; top: 0px; }
 
 #footer .col a:hover { text-decoration: underline; }
 
