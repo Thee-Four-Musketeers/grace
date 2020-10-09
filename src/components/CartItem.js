@@ -3,9 +3,9 @@ import { Container, Col, Row, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
 import './Cart.css'
 
-import { deleteItemFromCart } from '../api/index'
+import { addItemToCart, deleteItemFromCart } from '../api/index'
 
-const CartItem = ({ id, productId, name, imageUrl, description, count, price, cart, addToCart, removeFromCart, product, increaseCart, decreaseCart }) => {
+const CartItem = ({ id, orderId, productId, name, customer, imageUrl, description, count, price, cart, addToCart, removeFromCart, product, increaseCart, decreaseCart }) => {
     console.log('CartItemId', id)
     async function handleDelete(event) {
         event.preventDefault();
@@ -18,6 +18,16 @@ const CartItem = ({ id, productId, name, imageUrl, description, count, price, ca
             throw error
         }
     }
+
+    // async function handleIncrease(event) {
+    //     event.preventDefault();
+    //     try {
+    //         const result = await addItemToCart({ id, customer, description, orderId, name, price });
+    //         increaseCart({ id, imageUrl, description, name, price, count: 1 });
+    //     } catch (error) {
+    //         throw error 
+    //     }
+    // }
 
     function shorten(str, n) {
         return (str.match(RegExp(".{" + n + "}\\S*")) || [str])[0];
@@ -42,13 +52,13 @@ const CartItem = ({ id, productId, name, imageUrl, description, count, price, ca
                     <Col className="col-pixel-width-150 pb-0 d-flex">
                         <div className="cart-item-actions m-auto w-100">
                             <div className="cart-item-quantity">
-                                <button className="btn btn-sm cart-item-change" onClick={() => increaseCart(product)}>
+                                {/* <button className="btn btn-sm cart-item-change" onClick={handleIncrease}>
                                     <i class="fas fa-plus" aria-hidden="true"></i>
-                                </button>
+                                </button> */}
                                 <span className="cart-item-count text-center">{count}</span>
-                                <button className="btn btn-sm cart-item-change" onClick={() => decreaseCart(product)} >
+                                {/* <button className="btn btn-sm cart-item-change" onClick={handleDecrease} >
                                     <i class="fas fa-minus" aria-hidden="true"></i>
-                                </button>
+                                </button> */}
                             </div>
                             <div class="cart-item-remove pt-2 text-center" >
                                 <Link onClick={handleDelete}>remove</Link>

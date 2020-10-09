@@ -64,53 +64,64 @@ const App = () => {
 
 
     function cartReducer(state, action) {
-        // const formatPrice = ({ amount, currency, quantity }) => {
-        //     const numberFormat = new Intl.NumberFormat('en-US', {
-        //         style: 'currency',
-        //         currency: 'USD',
-        //         currencyDisplay: 'symbol',
-        //     })
-        // } 
+        
+        const formatPrice = ({ amount, currency, quantity }) => {
+            const numberFormat = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                currencyDisplay: 'symbol',
+            })
+        } 
 
         switch (action.type) {
 
             case
                 'add':
-                return [...state, action.product];
+
+                    const existingItem = state.findIndex(item => item.name === action.product.name);
+                    if( existingItem < 0 ) {
+                        return [...state, action.product];
+                    }
+                
+                    const newItem = state.map( product => {
+                        const newProduct = { ... product };
+                        if(product.name === action.product.name) {
+                            newProduct.count = newProduct.count + 1
+                        }
+                        return newProduct;
+                    })
+
+                return newItem;
 
             case 'remove':
+
                 const productIndex = state.findIndex(item => item.name === action.product.name);
                 if (productIndex < 0) {
                     return state;
                 }
+
                 const update = [...state];
                 update.splice(productIndex, 1)
+                
                 return update
 
             case 'set':
                 return action.cart;
 
             case 'increment':
-                return {
-                    ...state,
-                    quantity: state.count + 1,
-                    // price: formatPrice({
-                    //     amount: state.unitAmount,
-                    //     currency: state.currency,
-                    //     quantity: state.quantity + 1,
-                    // }),
-                };
 
+                    const increaseQty = state.findIndex(item => item.name === action.product.name);
+                
+                    const addQtyItem = state.map( product => {
+                        const increasedItem = { ... product };
+                        if(increasedItem.name === action.product.name) {
+                            increasedItem.count = increasedItem.count + 1
+                        }
+                        return increasedItem;
+                    })
+                return addQtyItem;    
+                
             case 'decrement':
-                return {
-                    ...state,
-                    quantity: state.count - 1,
-                    // price: formatPrice({
-                    //     amount: state.unitAmount,
-                    //     currency: state.currency,
-                    //     quantity: state.quantity - 1,
-                    // }),
-                };
 
             default:
                 return state;
@@ -128,13 +139,16 @@ const App = () => {
         setCart({ product, type: 'remove' });
     };
 
+    function increaseCart(product) {
+        setCart({ product, type: 'increment' })
+    };
+
+
     function decreaseCart(product) {
         setCart({ product, type: 'decrement' })
     };
 
-    function increaseCart(product) {
-        setCart({ product, type: 'increment' })
-    };
+    
 
     //sum of total of all items in cart
     function getTotal(cart) {

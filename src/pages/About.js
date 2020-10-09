@@ -30,7 +30,7 @@ const AboutUs = ({ setHeaderClass }) => {
 
                     <p>Cheese is one of the oldest man-made foods, dating back as early as 3500-2800 BC in Mesopotamia. There are even other instances of archeological studies showing that it may have been cultivated as far back as 15000-20000 BC! Greek and Roman cultures established the craft after storing milk in hot climates, facilitating the curdling of milk, leading to theaccidental discovery of the treasure that is cheese.</p>
 
-                    <Image className="img-left" src="./images/OldCheese.jpg" thumbnail alt="Tacuinum Sanitatis Casanatensis (14th century)" />
+                    <Image className="img-left" src="./images/oldCheese.jpg" thumbnail alt="Tacuinum Sanitatis Casanatensis (14th century)" />
                     
                     <p>Cheesemaking continued to flourish in Europe and became an established food. In fact, the Pilgrims included cheese in the Mayflower’s supplies when they made their voyage to America in 1620. The making of cheese quickly spread in the New World, but until the 19th century it remained a local farm industry. It wasn’t until 1851 that the first cheese factory in the United States was built by Jesse Williams in Oneida County, New York.</p>
 

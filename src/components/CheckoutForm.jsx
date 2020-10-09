@@ -119,7 +119,7 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }) => {
                     {isProcessing ? "Processing..." : `Pay $${price}`}
                 </SubmitButton>
             </Row> */}
-            <Link to={'/checkoutsuccess'} > <Button>{`Pay $${price}`}</Button></Link>
+            <Link to={'/success'} > <Button>{`Pay $${price}`}</Button></Link>
         </form>
     );
 };
