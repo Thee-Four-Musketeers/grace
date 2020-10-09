@@ -78,20 +78,19 @@ const App = () => {
             case
                 'add':
 
-                    const existingItem = state.findIndex(item => item.name === action.product.name);
-                    if( existingItem < 0 ) {
-                        return [...state, action.product];
-                    }
+                const cartEl = state.findIndex(item => item.name === action.product.name);
+                if(cartEl < 0 ) {
+                    return [...state, action.product];
+                }
                 
-                    const newItem = state.map( product => {
-                        const newProduct = { ... product };
-                        if(product.name === action.product.name) {
-                            newProduct.count = newProduct.count + 1
-                        }
-                        return newProduct;
-                    })
-
-                return newItem;
+                const cartArr = state.map( product => {
+                    const newProduct = { ... product };
+                    if(product.name === action.product.name) {
+                        newProduct.count = newProduct.count + 1
+                    }
+                    return newProduct;
+                })
+                return cartArr;
 
             case 'remove':
 

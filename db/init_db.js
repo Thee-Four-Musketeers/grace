@@ -89,8 +89,7 @@ async function buildTables() {
                 id SERIAL PRIMARY KEY,
                 "productId" INTEGER REFERENCES products(id),
                 "orderId" INTEGER REFERENCES orders(id),
-                "productIdQuantity" INTEGER,
-                UNIQUE ("productId", "orderId")
+                "productIdQuantity" INTEGER
             );
         `);
         console.log('end building orders_products');
