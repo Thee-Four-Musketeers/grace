@@ -16,7 +16,7 @@ const Admin = ({ user, setUser, products, setProductType, setHeaderClass }) => {
         setProductType(['cheese', 'meat', 'fruit', 'nut']);
     }, [])
 
-    let admin = false;
+    let admin = true;
     if (localStorage.getItem('user') && user.admin) {
         admin = true
     }
