@@ -11,19 +11,22 @@ import axios from "axios";
 
 const Button = styled.button`
 display: block;
-height: 40px;
 width: 100%;
-font-size: inherit;
+font-size: 20px;
 font-weight: 600;
-  cursor: pointer;
-  background: rgb(179, 99, 2);
-  border-radius: 4px;
-  color: white;
+line-height: 1;
+cursor: pointer;
+background: rgb(179, 99, 2);
+border-color: rgb(179,99,2);
+border-radius: 4px;
+color: white;
+padding: 20px 20px 16px;
 
-  &: hover {
-      background: cadetblue;
-      text-decoration: none
-  }
+&: hover {
+    background: cadetblue;
+    border-color: cadetblue;
+    text-decoration: none
+}
 `;
 
 const CardElementContainer = styled.div`
@@ -96,7 +99,6 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }) => {
         hidePostalCode: true
     }
 
-
     return (
         <form onSubmit={handleFormSubmit}>
             <div className="checkoutTitle">Billing/Shipping information:</div>
@@ -106,19 +108,26 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }) => {
             </Row>
             <div className="checkoutTitle">Card information:</div>
 
-            <Row >
+            <Row>
 
                 <CardElementContainer>
                     <CardElement options={CardElementOptions} />
                 </CardElementContainer>
             </Row>
+
             {checkoutError && <CheckoutError>{checkoutError}</CheckoutError>}
+
             {/* <Row>
                 <SubmitButton disabled={isProcessing}>
                     {isProcessing ? "Processing..." : `Pay $${price}`}
                 </SubmitButton>
             </Row> */}
-            <Link to={'/success'} > <Button>{`Pay $${price}`}</Button></Link>
+
+            <Row>
+                <Link to={'/success'}>
+                    <Button>{`Pay $${price}`}</Button>
+                </Link>
+            </Row>
         </form>
     );
 };

@@ -14,7 +14,7 @@ const Cart = ({ id, orderId, cart, setCart, addToCart, removeFromCart, getTotal,
                 <Col className="col-12 cart-length pb-4">
                     <h4 className="cart-title text-center">Build Your Own Board</h4>
                     <div className="cart-item-message text-center">
-                        <i className="fas fa-shopping-cart cart-icon1"></i>
+                        <i className="fas fa-shopping-cart cart-icon-dark"></i>
                         <span>&nbsp;&nbsp;Your cart has&nbsp;<span class="cart-length-count">{cart.length}</span>&nbsp;item
                         {
                                 cart.length > 1 || cart.length === 0

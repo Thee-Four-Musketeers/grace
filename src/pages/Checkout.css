@@ -1,8 +1,21 @@
+#totals {
+    font-size: 1.1em;
+}
+
+#totals .grand {
+    font-weight: 600;
+}
+
 a:hover {
     text-decoration:none;
 }
 
 .col_totals {
-padding-right: 45px;
-text-align: right;
+    text-align: right;
+}
+
+.separator {
+    border-bottom: 1px solid #CFCFCF;;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
 }

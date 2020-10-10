@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react";  
 import { Col, Row } from 'react-bootstrap';
 import './Cart.css'
 
@@ -70,7 +70,7 @@ const CartItem = ({ id, orderId, productId, name, customer, imageUrl, descriptio
                         </div>
                     </Col>
                     <Col className="col pb-0 d-flex">
-                        <div className="cart-item-price w-100 text-right pr-3">
+                        <div className="cart-item-price w-100 text-right">
                             <span>$&nbsp;&nbsp;&nbsp;&nbsp;</span>
                             <span>{(Number(price) * Number(count)).toLocaleString(undefined, currencyOptions)}</span>
                         </div>
