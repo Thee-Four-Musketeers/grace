@@ -31,27 +31,27 @@ const Checkout = ({ products, cart, addToCart, count, setCount, setHeaderClass, 
                             count={count} setCount={setCount}
                             setHeaderClass={setHeaderClass}
                             getTotal={getTotal} />
-                        <Row>
 
-                            <Col className="col-3">Subtotal:</Col>
-                            <Col className="col_totals">${getTotal(cart)}</Col>
-                        </Row>
-                        <Row>
+                        <Container id="totals">
+                            <Row>   
+                                <Col className="col-3">Subtotal:</Col>
+                                <Col className="col_totals">${getTotal(cart)}</Col>
+                            </Row>
+                            <Row>
+                                <Col className="col-3">Tax {'(6%)'}: </Col>
+                                <Col className="col_totals">${getTaxes(cart)}</Col>
+                            </Row>
+                            <Row>
+                                <Col className="col-3">Shipping: </Col>
+                                <Col className="col_totals">Free Shipping</Col>
+                            </Row>
+                            <Row>
+                                <Col className="col-12"><div class="separator"></div></Col>
+                                <Col className="col-3 grand">Total: </Col>
+                                <Col className="col_totals">${grandTotal(cart)}</Col>
+                            </Row>
+                        </Container>
 
-                            <Col className="col-3">Tax {'(6%)'}: </Col>
-                            <Col className="col_totals">${getTaxes(cart)}</Col>
-                        </Row>
-                        <Row>
-
-                            <Col className="col-3">Shipping: </Col>
-                            <Col className="col_totals">Free Overnight Shipping!</Col>
-                        </Row>
-                        <hr />
-                        <Row>
-
-                            <Col className="col-3">Total: </Col>
-                            <Col className="col_totals">${grandTotal(cart)}</Col>
-                        </Row>
                     </Col>
                     <Col className="col-6">
                         <Elements stripe={StripePromise}>

@@ -74,12 +74,12 @@
 
 .cart-item-price {
     font-size: 1.1rem;
-    font-weight: 600;
     line-height: 1;
-    padding: 0.4rem 0.75rem;
+    padding: 0.4rem 0;
 }
 
-.cart-item-remove a {
+.cart-item-remove button {
+    background: none;
     color: #999999;
     font-size: 0.8rem;
     font-weight: 600;
@@ -103,9 +103,9 @@
 }
 
 
-.cart-icon1 {
+.cart-icon-dark {
     color: black;
-    font-size: 19px;
+    font-size: 20px;
     padding: 0.4rem 0 0.4rem;
 }
 

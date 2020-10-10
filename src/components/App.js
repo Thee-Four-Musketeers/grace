@@ -246,14 +246,14 @@ const App = () => {
                                 </Container>
                             </Route>
 
-                            <Route exact path="/cart">
+                            {/* <Route exact path="/cart">
                                 <Title title={'Shopping Cart'} />
                                 <Container id="wrapper" fluid>
                                     <Row>
                                         <Checkout products={products} cart={cart} setCart={addToCart} removeFromCart={removeFromCart} count={count} setCount={setCount} setHeaderClass={setHeaderClass} getTotal={getTotal} increaseCart={increaseCart} decreaseCart={decreaseCart} />
                                     </Row>
                                 </Container>
-                            </Route>
+                            </Route> */}
 
                             <Route exact path="/admin">
                                 <Title title={'Admin'} />
@@ -310,7 +310,7 @@ const App = () => {
                             </Route>
 
                             <Route exact path="/control-panel">
-                                <Title title={'About Us'} />
+                                <Title title={'Control Panel'} />
                                 <Container id="wrapper">
                                     <Row>
                                         <ControlPanel setHeaderClass={setHeaderClass} />
