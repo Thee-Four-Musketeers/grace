@@ -1,6 +1,5 @@
 import React from "react";
-import { Container, Col, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Container, Col } from 'react-bootstrap';
 import CartItem from "./CartItem";
 
 import './Cart.css'

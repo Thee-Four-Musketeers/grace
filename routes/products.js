@@ -3,7 +3,6 @@ const productsRouter = express.Router()
 const { requireAdmin, requireUser } = require('./utils');
 
 const {
-  addToCart,
   getProducts,
   getProductsByTypes,
   getProductById
@@ -49,7 +48,6 @@ productsRouter.get('/:id', async (req, res, next) => {
 
 productsRouter.patch('/:productId', requireAdmin, async (req, res, next) => {
 
-  // const [product] = await getProductsById(req.params.productId);
 
   try {
 

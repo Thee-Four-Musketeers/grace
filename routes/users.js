@@ -82,7 +82,7 @@ usersRouter.post("/register", async (req, res, next) => {
                 delete user.password;
                 delete user.id;
                 user.token = token;
-                res.send({ message: "The user was successfully created", user });
+                res.send({ message: "The user was successfully created", user, token });
             });
         }
     } catch ({ name, message }) {

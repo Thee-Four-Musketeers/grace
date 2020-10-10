@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
-import { Col, Row, Button, InputGroup, FormControl, Container } from 'react-bootstrap';
+import React from 'react';
+import { Col, Row, Button, InputGroup, FormControl } from 'react-bootstrap';
 import './Contact.css'
 
 const ContactUsForm = () => {
-    // const [form, setForm] = useState('')
 
     document.body.classList.add('solid', 'cheese');
 
@@ -24,7 +23,7 @@ const ContactUsForm = () => {
                     </InputGroup>
                 </Col>
                 <Col md={6} className="pb-4">
-                    <InputGroup className="mb-3"> 
+                    <InputGroup className="mb-3">
                         <InputGroup.Prepend>
                             <InputGroup.Text placeholder="name@example.com" id="basic-addon2"><i className="fas fa-envelope"></i></InputGroup.Text>
                         </InputGroup.Prepend>
@@ -42,7 +41,7 @@ const ContactUsForm = () => {
                             <InputGroup.Text><i className="fas fa-edit"></i></InputGroup.Text>
                         </InputGroup.Prepend> */}
                         <FormControl rows="4" as="textarea" placeholder="Enter your message" aria-label="With textarea" />
-                     </InputGroup>
+                    </InputGroup>
                     <Button variant="primary" type="submit" className="btn-card" onClick={() => { alert('message sent!') }}>
                         <i className="fas fa-paper-plane"></i>
                         <span>&nbsp;&nbsp;&nbsp;Submit</span>

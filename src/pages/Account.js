@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Col, CardDeck } from 'react-bootstrap';
-import ListGroup from 'react-bootstrap/ListGroup'
+import { Row, Col } from 'react-bootstrap';
 import '../components/ProductList.css'
 import OrderList from '../components/OrderList';
 
 import { fetchOrders } from '../api';
 
 const Account = ({ user, setUser, setHeaderClass }) => {
-    
+
     useEffect(() => {
         setHeaderClass('Account');
     }, []);
 
     const [orders, setOrders] = useState([])
-    
+
     useEffect(() => {
         setUser('customer')
         fetchOrders(customer)

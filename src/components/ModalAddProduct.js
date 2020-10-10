@@ -10,16 +10,11 @@ const ModalAddProduct = (products, setProducts) => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const [name, setName] = useState('');
-    const [description, setDescription] = useState('');
-    const [price, setPrice] = useState('');
-    const [type, setType] = useState('');
-    const [imageUrl, setImageUrl] = useState('');
 
-    const onChange = (update) => (event) => {
-        event.preventDefault();
-        update(event.target.value)
-    }
+    // const onChange = (update) => (event) => {
+    //     event.preventDefault();
+    //     update(event.target.value)
+    // }
 
     // async function handleSubmit(event) {
     //     event.preventDefault();

@@ -1,9 +1,8 @@
 import React from "react";
-import { Container, Col, Row, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom'
+import { Col, Row } from 'react-bootstrap';
 import './Cart.css'
 
-import { addItemToCart, deleteItemFromCart } from '../api/index'
+import { deleteItemFromCart } from '../api/index'
 
 const CartItem = ({ id, orderId, productId, name, customer, imageUrl, description, count, price, cart, addToCart, removeFromCart, product, increaseCart, decreaseCart }) => {
     console.log('CartItemId', id)
@@ -18,6 +17,11 @@ const CartItem = ({ id, orderId, productId, name, customer, imageUrl, descriptio
             throw error
         }
     }
+
+    const currencyOptions = {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+    };
 
     // async function handleIncrease(event) {
     //     event.preventDefault();
@@ -52,23 +56,23 @@ const CartItem = ({ id, orderId, productId, name, customer, imageUrl, descriptio
                     <Col className="col-pixel-width-150 pb-0 d-flex">
                         <div className="cart-item-actions m-auto w-100">
                             <div className="cart-item-quantity">
-                                {/* <button className="btn btn-sm cart-item-change" onClick={handleIncrease}>
-                                    <i class="fas fa-plus" aria-hidden="true"></i>
-                                </button> */}
+                                <button className="btn btn-sm cart-item-change" >
+                                    <i className="fas fa-plus" aria-hidden="true"></i>
+                                </button>
                                 <span className="cart-item-count text-center">{count}</span>
-                                {/* <button className="btn btn-sm cart-item-change" onClick={handleDecrease} >
-                                    <i class="fas fa-minus" aria-hidden="true"></i>
-                                </button> */}
+                                <button className="btn btn-sm cart-item-change">
+                                    <i className="fas fa-minus" aria-hidden="true"></i>
+                                </button>
                             </div>
                             <div class="cart-item-remove pt-2 text-center" >
-                                <Link onClick={handleDelete}>remove</Link>
+                                <button onClick={handleDelete}>remove</button>
                             </div>
                         </div>
                     </Col>
                     <Col className="col pb-0 d-flex">
                         <div className="cart-item-price w-100 text-right pr-3">
                             <span>$&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                            <span>{Number(price) * Number(count)}</span>
+                            <span>{(Number(price) * Number(count)).toLocaleString(undefined, currencyOptions)}</span>
                         </div>
                     </Col>
                 </Row>
