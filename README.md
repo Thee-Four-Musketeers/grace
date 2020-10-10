@@ -10,7 +10,7 @@ Capstone project for FullStack Academy, 2004 UNF Cohort, brought to you by The F
 - A Node JavaScript library manager
 ```We have also integrated Bootstrap, Stripe, @emotion, fontawesome, jwt, bcrypt, and axios.```
 
-# Cheezy is a fully functional mock ecommerce website that allows users to build their own Charcuterie board with the perfect selection of artisanal cheeses, specialty meats, and delicious fruits & nuts.
+Cheezy is a fully functional mock ecommerce website that allows users to build their own Charcuterie board with the perfect selection of artisanal cheeses, specialty meats, and delicious fruits & nuts.
 
 # Key Features
 User shopping and account/order maintenance. 
