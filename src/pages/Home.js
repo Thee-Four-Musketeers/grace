@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Container, Row, Col, Button, Img } from 'react-bootstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 import './Home.css'
@@ -11,7 +11,7 @@ const Home = ({ setHeaderClass }) => {
     }, []);
 
     return (
-        
+
         <>
             <div id="hero" className="hero-wrapper">
                 <Container>
@@ -27,7 +27,7 @@ const Home = ({ setHeaderClass }) => {
                                 <Link to="/cheeses">
                                     <Button className="btn btn-lg py-2 px-5" type="submit">Build Your Own Board!</Button>
                                 </Link>
-                                
+
                             </div>
                         </Col>
                     </Row>
@@ -79,8 +79,8 @@ const Home = ({ setHeaderClass }) => {
                         <Col xl={8} className="d-flex align-items-center px-4">
                             <div>
                                 <h3>Exotic Fruits &amp; Nuts</h3>
-                               <p>We source the highest quality exotic fruits and nuts from around the globe so that you can create a unique culinary experience for your guests. Amplify the savory delights of our artisanal cheese and meats, with these sweet and bold flavors.</p>
-                               <Link to="/fruits">
+                                <p>We source the highest quality exotic fruits and nuts from around the globe so that you can create a unique culinary experience for your guests. Amplify the savory delights of our artisanal cheese and meats, with these sweet and bold flavors.</p>
+                                <Link to="/fruits">
                                     <Button className="btn btn-lg py-2 px-1" type="submit">Shop Fruits &amp; Nuts</Button>
                                 </Link>
                             </div>
@@ -91,7 +91,7 @@ const Home = ({ setHeaderClass }) => {
 
         </>
     )
-}   
+}
 
 export default Home;
 

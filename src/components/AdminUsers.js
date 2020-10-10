@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Col, Form, Button, InputGroup } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Form, Button, InputGroup } from 'react-bootstrap';
 
 import { adminify } from '../api/index'
 

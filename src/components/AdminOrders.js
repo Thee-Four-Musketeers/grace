@@ -1,7 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
 import { Row, Col } from 'react-bootstrap';
-import ProductList from '../components/ProductList';
 import ModalAddProduct from '../components/ModalAddProduct'
 import OrderList from '../components/OrderList';
 import { fetchOrders } from '../api';
@@ -12,7 +11,7 @@ import '../components/ProductList.css'
 const AdminOrders = ({ user, setUser }) => {
 
     const [orders, setOrders] = useState([])
-    
+
     useEffect(() => {
         fetchOrders()
             .then(response => {
@@ -29,14 +28,14 @@ const AdminOrders = ({ user, setUser }) => {
             </Row>
             <Row>
                 <Col>
-                {
-                    orders && orders.map(order => (
-                        <OrderList
-                            key={order.id}
-                            {...order}>
-                        </OrderList>)
-                    )
-                }
+                    {
+                        orders && orders.map(order => (
+                            <OrderList
+                                key={order.id}
+                                {...order}>
+                            </OrderList>)
+                        )
+                    }
                 </Col>
             </Row>
         </>

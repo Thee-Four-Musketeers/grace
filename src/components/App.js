@@ -39,39 +39,15 @@ const App = () => {
     const [headerClass, setHeaderClass] = useState('');
     const [cart, setCart] = useReducer(cartReducer, []);
 
-    function addToCart(product) {
-        setCart({ product, type: 'add' });
-    }
-
-    function removeFromCart(product) {
-        setCart({ product, type: 'remove' });
-    }
-
-    const currencyOptions = {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2,
-    }
-
-    function getTotal(cart) {
-
-        if (cart) {
-            const total = cart.reduce((currentTotal, item) => currentTotal + Number(item.price), 0);
-            return total.toLocaleString(undefined, currencyOptions)
-        } else {
-            return '0';
-        }
-    }
-
-
     function cartReducer(state, action) {
-        
-        const formatPrice = ({ amount, currency, quantity }) => {
-            const numberFormat = new Intl.NumberFormat('en-US', {
-                style: 'currency',
-                currency: 'USD',
-                currencyDisplay: 'symbol',
-            })
-        } 
+
+        // const formatPrice = ({ amount, currency, quantity }) => {
+        //     const numberFormat = new Intl.NumberFormat('en-US', {
+        //         style: 'currency',
+        //         currency: 'USD',
+        //         currencyDisplay: 'symbol',
+        //     })
+        // }
 
         switch (action.type) {
 
@@ -79,13 +55,13 @@ const App = () => {
                 'add':
 
                 const cartEl = state.findIndex(item => item.name === action.product.name);
-                if(cartEl < 0 ) {
+                if (cartEl < 0) {
                     return [...state, action.product];
                 }
-                
-                const cartArr = state.map( product => {
-                    const newProduct = { ... product };
-                    if(product.name === action.product.name) {
+
+                const cartArr = state.map(product => {
+                    const newProduct = { ...product };
+                    if (product.name === action.product.name) {
                         newProduct.count = newProduct.count + 1
                     }
                     return newProduct;
@@ -101,7 +77,7 @@ const App = () => {
 
                 const update = [...state];
                 update.splice(productIndex, 1)
-                
+
                 return update
 
             case 'set':
@@ -109,18 +85,18 @@ const App = () => {
 
             case 'increment':
 
-                    const increaseQty = state.findIndex(item => item.name === action.product.name);
-                
-                    const addQtyItem = state.map( product => {
-                        const increasedItem = { ... product };
-                        if(increasedItem.name === action.product.name) {
-                            increasedItem.count = increasedItem.count + 1
-                        }
-                        return increasedItem;
-                    })
-                return addQtyItem;    
-                
-            case 'decrement':
+                const increaseQty = state.findIndex(item => item.name === action.product.name);
+
+                const addQtyItem = state.map(product => {
+                    const increasedItem = { ...product };
+                    if (increasedItem.name === action.product.name) {
+                        increasedItem.count = increasedItem.count + 1
+                    }
+                    return increasedItem;
+                })
+                return addQtyItem;
+
+            // case 'decrement':
 
             default:
                 return state;
@@ -147,13 +123,37 @@ const App = () => {
         setCart({ product, type: 'decrement' })
     };
 
-    
+    const currencyOptions = {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+    };
+
 
     //sum of total of all items in cart
-    function getTotal(cart) {
+    const getTotal = (cart) => {
 
         if (cart) {
             const total = cart.reduce((currentTotal, item) => currentTotal + Number(item.price), 0);
+            return total.toLocaleString(undefined, currencyOptions)
+        } else {
+            return '0';
+        }
+    }
+
+    const getTaxes = (cart) => {
+
+        if (cart) {
+            const total = cart.reduce((currentTotal, item) => currentTotal + Number(item.price), 0);
+            return (total * .06).toLocaleString(undefined, currencyOptions)
+        } else {
+            return '0';
+        }
+    }
+
+    const grandTotal = (cart) => {
+
+        if (cart) {
+            const total = Number(getTotal(cart)) + Number(getTaxes(cart));
             return total.toLocaleString(undefined, currencyOptions)
         } else {
             return '0';
@@ -268,7 +268,7 @@ const App = () => {
                                 <Title title={'Checkout'} />
                                 <Container id="wrapper">
                                     <Row>
-                                        <Checkout products={products} cart={cart} setCart={addToCart} removeFromCart={removeFromCart} count={count} setCount={setCount} setHeaderClass={setHeaderClass} getTotal={getTotal} increaseCart={increaseCart} decreaseCart={decreaseCart} />
+                                        <Checkout products={products} cart={cart} setCart={addToCart} removeFromCart={removeFromCart} count={count} setCount={setCount} setHeaderClass={setHeaderClass} getTotal={getTotal} increaseCart={increaseCart} decreaseCart={decreaseCart} getTaxes={getTaxes} grandTotal={grandTotal} />
                                     </Row>
                                 </Container>
                             </Route>

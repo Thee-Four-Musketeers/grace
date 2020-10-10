@@ -1,19 +1,19 @@
 import React from 'react';
-import { Card, Button, Col, Row, Popover, OverlayTrigger } from 'react-bootstrap';
-import {    Link } from 'react-router-dom';
+import { Card, Button, Popover, OverlayTrigger } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import './ProductCard.css'
 import { addItemToCart } from '../api/index'
 
-const ProductCard = ({ id, customer, orderId, name, imageUrl, type, price, description, cart, setCart, user }) => {
+const popover = (
+    <Popover id="popover-basic">
+        <Popover.Title as="h2">We're sorry...</Popover.Title>
+        <Popover.Content>
+            <div className="pop-font">You must sign up or log in to continue.</div>
+        </Popover.Content>
+    </Popover>
+);
 
-    const popover = (
-        <Popover id="popover-basic">
-            <Popover.Title as="h2">We're sorry...</Popover.Title>
-            <Popover.Content>
-                <div className="pop-font">You must sign up or log in to continue.</div>
-            </Popover.Content>
-        </Popover>
-    );
+const ProductCard = ({ id, customer, orderId, name, imageUrl, type, price, description, cart, setCart, user }) => {
 
     function shorten(str, n) {
         return (str.match(RegExp(".{" + n + "}\\S*")) || [str])[0];

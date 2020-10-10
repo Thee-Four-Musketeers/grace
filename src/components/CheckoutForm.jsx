@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 import { Link } from 'react-router-dom';
 import Row from "./prebuilt/Row";
 import BillingDetailsFields from "./prebuilt/BillingDetailsFields";
-import SubmitButton from "./prebuilt/SubmitButton";
+// import SubmitButton from "./prebuilt/SubmitButton";
 import CheckoutError from "./prebuilt/CheckoutError";
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import axios from "axios";
@@ -90,7 +90,6 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }) => {
                 fontSize: '16px',
                 color: 'black',
                 backgroundColor: '#ffffff'
-                // ::placeholder: '#87bbfd'
             },
             completed: {}
         },

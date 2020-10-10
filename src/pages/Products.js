@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Col, Card, Button, Container, Popover, OverlayTrigger } from 'react-bootstrap';
-import ProductCard from '../components/ProductCard';
 import { useParams } from 'react-router-dom';
 import { addItemToCart, fetchProductById } from '../api/index'
 
@@ -21,7 +20,6 @@ const Products = ({ products, setProductType, cart, setCart, addToCart, setHeade
     const productId = useParams().id
 
     useEffect(() => {
-
         async function fetchProduct() {
             const result = await fetchProductById(productId);
             setProduct(result.product[0]);
@@ -46,38 +44,38 @@ const Products = ({ products, setProductType, cart, setCart, addToCart, setHeade
 
     return (
 
-        <>  
-        <Col id="content">
-            { product 
-                ? <>
-                <Container fluid className="max-960">
-                    <Row key={product.id} className="product-card">
-                        <Col className="px-4" xl={5} lg={12}>
-                            <img className="mb-4" src={`/${product.imageUrl}`} alt="" />
-                            <Card.Text className="aspects mb-1"><strong>Origin:</strong> {product.origin}</Card.Text>
-                            <Card.Text className="aspects mb-1"><strong>Texture:</strong> {product.hardness}</Card.Text>
-                            <Card.Text className="aspects mb-4"><strong>Bouquet:</strong> {product.odor}</Card.Text>
-                        </Col>
+        <>
+            <Col id="content">
+                {product
+                    ? <>
+                        <Container fluid className="max-960">
+                            <Row key={product.id} className="product-card">
+                                <Col className="px-4" xl={5} lg={12}>
+                                    <img className="mb-4" src={`/${product.imageUrl}`} alt="" />
+                                    <Card.Text className="aspects mb-1"><strong>Origin:</strong> {product.origin}</Card.Text>
+                                    <Card.Text className="aspects mb-1"><strong>Texture:</strong> {product.hardness}</Card.Text>
+                                    <Card.Text className="aspects mb-4"><strong>Bouquet:</strong> {product.odor}</Card.Text>
+                                </Col>
 
-                        <Col className="px-4" xl={7} lg={12}>
-                            <Card.Title className="py-2">{product.name}</Card.Title>
-                            <Card.Text className="pb-2 price">${product.price} per pound</Card.Text>
-                            <Card.Text className="pb-3">{product.description}</Card.Text>
-                            {user.token
-                                ? <>
-                                    <Button variant="primary" className="btn-card" type="submit" onClick={handleSubmit}>Add To Cart</Button>
-                                </> : <>
-                                    <OverlayTrigger rootClose trigger="click" placement="right" overlay={popover}>
-                                        <Button variant="primary" className="btn-card" type="submit">Add To Cart</Button>
-                                    </OverlayTrigger>
-                                </>
-                            }
-                        </Col>
-                    </Row>
-                    </Container>
-                </> : ''        
-            }
-        </Col>
+                                <Col className="px-4" xl={7} lg={12}>
+                                    <Card.Title className="py-2">{product.name}</Card.Title>
+                                    <Card.Text className="pb-2 price">${product.price} per pound</Card.Text>
+                                    <Card.Text className="pb-3">{product.description}</Card.Text>
+                                    {user.token
+                                        ? <>
+                                            <Button variant="primary" className="btn-card" type="submit" onClick={handleSubmit}>Add To Cart</Button>
+                                        </> : <>
+                                            <OverlayTrigger rootClose trigger="click" placement="right" overlay={popover}>
+                                                <Button variant="primary" className="btn-card" type="submit">Add To Cart</Button>
+                                            </OverlayTrigger>
+                                        </>
+                                    }
+                                </Col>
+                            </Row>
+                        </Container>
+                    </> : ''
+                }
+            </Col>
         </>
     );
 

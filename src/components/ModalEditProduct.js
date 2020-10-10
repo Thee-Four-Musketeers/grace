@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import EditProdForm from './EditProductForm'
@@ -14,10 +14,10 @@ const ModalEditProduct = (products, setProductType) => {
     //     setProductType(['']);
     // }, [])
 
-    const onChange = (update) => (event) => {
-        event.preventDefault();
-        update(event.target.value)
-    }
+    // const onChange = (update) => (event) => {
+    //     event.preventDefault();
+    //     update(event.target.value)
+    // }
 
 
     return (

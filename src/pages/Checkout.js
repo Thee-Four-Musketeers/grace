@@ -7,9 +7,10 @@ import CheckoutForm from '../components/CheckoutForm';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js'
 
-const StripePromise = loadStripe('pk_test_Gs27UHBrvRJZqik9NTC3dSID');
+const StripePromise = loadStripe(`process.env.PUBLISHABLE_KEY`);
 
-const Checkout = ({ products, cart, addToCart, count, setCount, setHeaderClass, getTotal, removeFromCart }) => {
+const Checkout = ({ products, cart, addToCart, count, setCount, setHeaderClass, getTotal, removeFromCart, getTaxes, grandTotal }) => {
+
 
     useEffect(() => {
         setHeaderClass('checkout');
@@ -30,10 +31,31 @@ const Checkout = ({ products, cart, addToCart, count, setCount, setHeaderClass, 
                             count={count} setCount={setCount}
                             setHeaderClass={setHeaderClass}
                             getTotal={getTotal} />
+                        <Row>
+
+                            <Col className="col-3">Subtotal:</Col>
+                            <Col className="col_totals">${getTotal(cart)}</Col>
+                        </Row>
+                        <Row>
+
+                            <Col className="col-3">Tax {'(6%)'}: </Col>
+                            <Col className="col_totals">${getTaxes(cart)}</Col>
+                        </Row>
+                        <Row>
+
+                            <Col className="col-3">Shipping: </Col>
+                            <Col className="col_totals">Free Overnight Shipping!</Col>
+                        </Row>
+                        <hr />
+                        <Row>
+
+                            <Col className="col-3">Total: </Col>
+                            <Col className="col_totals">${grandTotal(cart)}</Col>
+                        </Row>
                     </Col>
                     <Col className="col-6">
                         <Elements stripe={StripePromise}>
-                            <CheckoutForm price={getTotal(cart)} onSuccessfulCheckout={() => Router.push("/success")} />
+                            <CheckoutForm price={grandTotal(cart)} onSuccessfulCheckout={() => Router.push("/success")} />
                         </Elements>
                     </Col>
 

@@ -1,8 +1,8 @@
 
-import React, { useState, useEffect } from 'react';
-import { Modal, Form, Button, Row, Col } from 'react-bootstrap';
-import { fetchProductById } from '../api/index';
-import { useParams } from 'react-router-dom';
+import React from 'react';
+import { Form, Row, Col } from 'react-bootstrap';
+// import { fetchProductById } from '../api/index';
+// import { useParams } from 'react-router-dom';
 
 
 const EditProdForm = (
